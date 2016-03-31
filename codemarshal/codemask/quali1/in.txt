@@ -1,0 +1,12 @@
+2
+6
+5   Good
+12  Good
+15  Bad
+17  Ugly
+19  Bad
+44  Ugly
+3
+5   Bad
+19  Good
+44  Ugly

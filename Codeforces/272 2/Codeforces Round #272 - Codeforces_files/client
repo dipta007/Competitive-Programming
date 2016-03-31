@@ -1,0 +1,840 @@
+var jw_app_name = 'SelectionLinks'; 
+var jw_utils = {};
+jw_utils.inArray = Array.prototype.indexOf ? function (arr, val) {if(typeof arr == 'undefined' ) return -1; return arr.indexOf(val) != -1;}:
+function (arr, val) {var i = arr.length;while (i--) {if (arr[i] === val) return true;}	return false;};
+jw_utils.getToken = function() {return '5BAA8A41-572C-7989-111C-F09C9E79A316'; }; 
+var jw_md5 = {};
+jw_md5.removeStart = function (url, l){a = url;for (i = 0; i < l.length; i++) {p = l[i]; if (url.indexOf(p) === 0) {a = url.slice(p.length);break;}} return a;};
+jw_md5.endsWith = function (str, suffix) {return str.indexOf(suffix, str.length - suffix.length) !== -1;};
+jw_md5.BuildKeys = function (url) {if( url.indexOf('chrome-devtools://') === 0 )return null;var protocols = ['http://', 'https://', 'ftp://'];var a = this.removeStart(url,protocols);var prefix = ['www.', 'www2.','www22.','www1.','wwws.','www311.'];a = this.removeStart(a,prefix);
+var b = a.split('?');var c = b[0].split('/');var d = c[0];var e = d.split('.');var e_len = e.length;
+var domain_terminator = ['com','de','net','it','fr','ch','es','se','br','co','org','il','uk','nz','dk','cz','za','th','sk','sg','my','ph','hk','mx','ar', 'au','pt','fm', 'nl', 'us', 'ca', 'pl', 'eu', 'at', 'tv', 'info', 'ag', 'to', 'tr', 'biz', 'fi', 'ie', 'asia', 'bg', 'ro', 'mobi', 'be', 'hu', 'ru', 'no','cl', 'me', 'cn', 'in', 'cc', 'me', 'ua', 'nu', 'jp', 'ae', 'is', 'la', 'ma', 'pro','do'];
+	var i=0;var j=0;
+for(i=0;i<domain_terminator.length;i++){
+	if( e[e_len-1] == domain_terminator[i] ){
+		e.splice(e_len-1,e_len-1);e_len--;
+		for(j=0;j<domain_terminator.length;j++){
+			if ( e[e_len-1] == domain_terminator[j] ){
+				e.splice(e_len-1,e_len-1);
+				e_len--;
+			}}
+	    if(e_len>1)e.splice(0, e_len-1);
+	    break;}}
+for (i = 0; i < e.length; i++) {e[i] = e[i].replace(/-/g,'_');e[i] = this.calcMD5(e[i]);}return e;};
+jw_md5.rhex = function (num) {var hex_chr = '0123456789abcdef'; str = ''; for (j = 0; j <= 3; j++)str += hex_chr.charAt((num >> (j * 8 + 4)) & 0x0F) + hex_chr.charAt((num >> (j * 8)) & 0x0F); return str;};
+jw_md5.str2blks_MD5 = function (str) {
+	var nblk = ((str.length + 8) >> 6) + 1;
+	var blks = new Array(nblk * 16);
+	var i=0;
+	for (i = 0; i < nblk * 16; i++) blks[i] = 0;
+	for (i = 0; i < str.length; i++) blks[i >> 2] |= str.charCodeAt(i) << ((i % 4) * 8);
+	blks[i >> 2] |= 0x80 << ((i % 4) * 8);
+	blks[nblk * 16 - 2] = str.length * 8;
+	return blks;
+};
+jw_md5.add = function (x, y) {var lsw = (x & 0xFFFF) + (y & 0xFFFF);var msw = (x >> 16) + (y >> 16) + (lsw >> 16);	return (msw << 16) | (lsw & 0xFFFF);};
+jw_md5.rol =function(num,cnt) { return (num << cnt) | (num >>> (32 - cnt));};
+jw_md5.cmn =function(q,a,b,x,s,t)   { return this.add(this.rol(this.add(this.add(a, q), this.add(x, t)), s), b);};
+jw_md5.ff = function(a,b,c,d,x,s,t) { return this.cmn((b & c) | ((~b) & d), a, b, x, s, t);};
+jw_md5.gg = function(a,b,c,d,x,s,t) { return this.cmn((b & d) | (c & (~d)), a, b, x, s, t);};
+jw_md5.hh = function(a,b,c,d,x,s,t) { return this.cmn(b ^ c ^ d, a, b, x, s, t);};
+jw_md5.ii = function(a,b,c,d,x,s,t) { return this.cmn(c ^ (b | (~d)), a, b, x, s, t);};
+jw_md5.calcMD5 = function(str) {
+	var x = this.str2blks_MD5(str);
+	var a = 1732584193; var b = -271733879; var c = -1732584194; var d = 271733878;
+	for (var i = 0; i < x.length; i += 16) {
+		var olda = a; var oldb = b; var oldc = c; var oldd = d;
+		a = this.ff(a, b, c, d, x[i + 0], 7, -680876936);		d = this.ff(d, a, b, c, x[i + 1], 12, -389564586);	c = this.ff(c, d, a, b, x[i + 2], 17, 606105819);		b = this.ff(b, c, d, a, x[i + 3], 22, -1044525330);
+		a = this.ff(a, b, c, d, x[i + 4], 7, -176418897);		d = this.ff(d, a, b, c, x[i + 5], 12, 1200080426);	c = this.ff(c, d, a, b, x[i + 6], 17, -1473231341);	b = this.ff(b, c, d, a, x[i + 7], 22, -45705983);
+		a = this.ff(a, b, c, d, x[i + 8], 7, 1770035416);		d = this.ff(d, a, b, c, x[i + 9], 12, -1958414417);	c = this.ff(c, d, a, b, x[i + 10], 17, -42063);		b = this.ff(b, c, d, a, x[i + 11], 22, -1990404162);
+		a = this.ff(a, b, c, d, x[i + 12], 7, 1804603682);	d = this.ff(d, a, b, c, x[i + 13], 12, -40341101);	c = this.ff(c, d, a, b, x[i + 14], 17, -1502002290);	b = this.ff(b, c, d, a, x[i + 15], 22, 1236535329);
+		a = this.gg(a, b, c, d, x[i + 1], 5, -165796510);		d = this.gg(d, a, b, c, x[i + 6], 9, -1069501632);	c = this.gg(c, d, a, b, x[i + 11], 14, 643717713);	b = this.gg(b, c, d, a, x[i + 0], 20, -373897302);
+		a = this.gg(a, b, c, d, x[i + 5], 5, -701558691);		d = this.gg(d, a, b, c, x[i + 10], 9, 38016083);		c = this.gg(c, d, a, b, x[i + 15], 14, -660478335);	b = this.gg(b, c, d, a, x[i + 4], 20, -405537848);
+		a = this.gg(a, b, c, d, x[i + 9], 5, 568446438);		d = this.gg(d, a, b, c, x[i + 14], 9, -1019803690);	c = this.gg(c, d, a, b, x[i + 3], 14, -187363961);	b = this.gg(b, c, d, a, x[i + 8], 20, 1163531501);
+		a = this.gg(a, b, c, d, x[i + 13], 5, -1444681467);	d = this.gg(d, a, b, c, x[i + 2], 9, -51403784);		c = this.gg(c, d, a, b, x[i + 7], 14, 1735328473);	b = this.gg(b, c, d, a, x[i + 12], 20, -1926607734);
+		a = this.hh(a, b, c, d, x[i + 5], 4, -378558);		d = this.hh(d, a, b, c, x[i + 8], 11, -2022574463);	c = this.hh(c, d, a, b, x[i + 11], 16, 1839030562);	b = this.hh(b, c, d, a, x[i + 14], 23, -35309556);
+		a = this.hh(a, b, c, d, x[i + 1], 4, -1530992060);	d = this.hh(d, a, b, c, x[i + 4], 11, 1272893353);	c = this.hh(c, d, a, b, x[i + 7], 16, -155497632);	b = this.hh(b, c, d, a, x[i + 10], 23, -1094730640);
+		a = this.hh(a, b, c, d, x[i + 13], 4, 681279174);		d = this.hh(d, a, b, c, x[i + 0], 11, -358537222);	c = this.hh(c, d, a, b, x[i + 3], 16, -722521979);	b = this.hh(b, c, d, a, x[i + 6], 23, 76029189);
+		a = this.hh(a, b, c, d, x[i + 9], 4, -640364487);		d = this.hh(d, a, b, c, x[i + 12], 11, -421815835);	c = this.hh(c, d, a, b, x[i + 15], 16, 530742520);	b = this.hh(b, c, d, a, x[i + 2], 23, -995338651);
+		a = this.ii(a, b, c, d, x[i + 0], 6, -198630844);		d = this.ii(d, a, b, c, x[i + 7], 10, 1126891415);	c = this.ii(c, d, a, b, x[i + 14], 15, -1416354905);	b = this.ii(b, c, d, a, x[i + 5], 21, -57434055);
+		a = this.ii(a, b, c, d, x[i + 12], 6, 1700485571);	d = this.ii(d, a, b, c, x[i + 3], 10, -1894986606);	c = this.ii(c, d, a, b, x[i + 10], 15, -1051523);		b = this.ii(b, c, d, a, x[i + 1], 21, -2054922799);
+		a = this.ii(a, b, c, d, x[i + 8], 6, 1873313359);		d = this.ii(d, a, b, c, x[i + 15], 10, -30611744);	c = this.ii(c, d, a, b, x[i + 6], 15, -1560198380);	b = this.ii(b, c, d, a, x[i + 13], 21, 1309151649);
+		a = this.ii(a, b, c, d, x[i + 4], 6, -145523070);		d = this.ii(d, a, b, c, x[i + 11], 10, -1120210379);	c = this.ii(c, d, a, b, x[i + 2], 15, 718787259);		b = this.ii(b, c, d, a, x[i + 9], 21, -343485551);
+		a = this.add(a, olda);b = this.add(b, oldb);c = this.add(c, oldc);d = this.add(d, oldd);
+	}
+	return this.rhex(a) + this.rhex(b) + this.rhex(c) + this.rhex(d);
+};
+//
+//	jollywallet search interface file 
+//
+
+var _jw_search = {};
+_jw_search.urls = new Array();
+_jw_search.urls_pos = new Array();
+_jw_search.tid='';
+_jw_search.dist=0;
+_jw_search.dist_sub='';
+_jw_search.index=0;
+_jw_search.jw_debug_mode = false;
+
+jw_jquery = (typeof jw_jquery != "undefined") ? jw_jquery : null;
+if(jw_jquery==null){if(typeof $ != "undefined")	jw_jquery = $;}
+
+//client
+//------
+_jw_search.browse = function(pid,token,uname,pwd){
+	var link = 'http://www.jollywallet.com/jollywallet/redirect?t=search&tid='+this.tid+'&deal='+pid+'&ref='+this.index;
+	if(token && (token != '')) link += '&token=' + token;
+	if(uname){
+		link+='&newuser=1&user='+uname;
+		if(pwd){
+			link+='&pwd='+pwd;
+			this.createCookie("jw_state", 2);
+		}
+	}
+	//document.location = link;
+	setTimeout(function(){try{jw_jquery('#jw_popup').remove();}catch(e){}},10);
+	window.open(link,'_blank');
+};
+
+_jw_search.click = function(e, icon, cb, name, pid) {
+	var token = tbView.getCookie("jw_token");
+	this.browse(pid,token,null,null);
+//	_jw_search.jw_stop_propagation(e);
+};
+
+//_jw_search.jw_stop_propagation=function(e){
+//	if(e && e.stopPropagation) {e.stopPropagation();} 
+//	else {e = window.event;	e.cancelBubble = true;}	
+//};
+
+_jw_search.process=function(n,s){
+	s = s.replace(/\s+/g, '');
+	s = s.replace("www.", '');
+	
+	//17042014
+	var term = [".com",".de",".net",".it",".fr",".ch",".es",".se",".br",".co",".org",".il",".uk",".nz",".dk",".cz",".za",".th",".sk",".sg",".my",".ph",".hk",".mx",".ar", ".au",".pt", ".fm", ".nl", ".us", ".ca", ".pl", ".eu", ".at", ".tv", ".info", ".ag", ".to", ".tr", ".biz", ".fi", ".ie", ".asia", ".bg", ".ro", ".mobi", ".be", ".hu", ".ru", ".no",".cl", ".me", ".cn", ".in", ".cc", ".me", ".ua", ".nu", ".jp", ".ae", ".is", ".la", ".ma", ".pro",".do"];
+
+	var domain="";
+	r=s.indexOf("/");
+	if(r>1) s = s.substring(0,r);
+	parts=s.split(".");
+	var index=parts.length-1;
+	var last=index;
+	while(index>=0){
+		pi="."+parts[index];
+		if(term.indexOf(pi) == -1 ){break;}
+		index--;
+	}
+	if(index<last){
+		for(i=index;i<=last;i++) {
+			if(domain !="") { domain +="."; found=true; }
+			domain+=parts[i];
+		}
+		if(n.id =="") {
+			if( (typeof _jw_search._tmp_index) == "undefined")	_jw_search._tmp_index=0;
+			_jw_search._tmp_index=_jw_search._tmp_index+1;
+			n.id = "jw_"+_jw_search._tmp_index;
+		}
+		d=domain.toLowerCase();
+		this.urls_pos[n.id]=d;
+		if(this.urls.indexOf(d)== -1)
+			this.urls.push(d);
+	}
+};
+
+_jw_search.walk_the_DOM = function jw_walk(node, func) {
+	if(func(node)){
+		node = node.firstChild;
+		while (node) {jw_walk(node, func);node = node.nextSibling;}
+	}
+};
+
+_jw_search.dom_scanner = function(index){
+//	try{
+		this.index=index;
+		var _hook="";
+		var _bypass="";
+		var _link="";
+		switch(index){
+			case 1:	// snap
+				_hook="search-result";
+				_bypass="displayUrl";
+				_link="displayUrl";
+				break;
+			case 2:
+				_hook="ptbs ur";
+				_bypass="";
+				_link=".durl";
+				break;
+			case 3:	// bing
+				_hook="sa_mc";
+				_bypass="sb_tlst";
+				_link="sb_meta";
+				break;
+			case 4:	// AOL
+				_hook="sa_mc";
+				_bypass="sb_tlst";
+				_link="sb_meta";
+				break;
+			case 5:
+				_hook="res"; 
+				_bypass="";
+				_link=".url";
+				break;
+			case 6:	// google
+				_hook="rc"; 
+				_bypass="";
+				_link="cite";
+				break;
+			default:
+				return false;
+		}
+		
+		var root_node = document.body;
+		if (index==5){
+			var ol_elements = jw_jquery('body').find('#web ol');
+			var ptr = -1;
+			for(var i=0; i<ol_elements.length; i++){
+				var o = jw_jquery(ol_elements[i]);
+				if (o.attr('data-bns')=='API'){
+					ptr = i;
+					break;
+				}
+			}
+			if (ptr>=0)
+				root_node = ol_elements[ptr];
+		}else if (index==2){
+			root_node = document.getElementById('lindm');
+		}
+	
+		_jw_search.walk_the_DOM(root_node, 
+			function(node) {
+				if (node.className && node.className.length>0 && node.className==_hook){
+					if (index==2 || index==5 || index==6){
+						var txt = jw_jquery(node).find(_link).text();
+						_jw_search.process(node,txt.replace('http://','').replace('https://',''));
+					} else {	//older code
+						var child_node=node.firstChild;
+						if(_bypass != "")
+							while(child_node && child_node.className != _bypass) 
+								child_node = child_node.nextSibling;
+						if(index==2)
+							while(child_node && (child_node.className === undefined || child_node.className =="")) 
+								child_node = child_node.nextSibling;
+						if(child_node) {
+							if(child_node && child_node.className == _link){
+								var txt = jw_jquery(child_node).text();
+								_jw_search.process(node,txt.replace('http://','').replace('https://',''));
+							}
+						}
+					}
+					return false;
+				}
+				return true;
+		});
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+};
+
+_jw_search.update_node=function(n,data,t2){
+//	try{
+		if(typeof(data) == 'undefined' || data == null)
+			return;
+		if(typeof(t2) == 'undefined' || t2 == null)
+			t2=0;
+		var d=jw_jquery.parseJSON(data);
+		var _name = d.name.replace(/'/g,'`');
+		var title = d.cb +' Cash back on '+_name+'.';
+		var float_dir = (jw_jquery('#MainRTLCss').length>0) ? 'right' : 'left';
+		var o = jw_jquery(document.getElementById(n));
+
+		var h='\
+<div class="jw_search_info_box" jw_deal_id="'+(d.deal?d.deal:'')+'" jw_host_id="'+(d.host?d.host:'')+'"'+ (t2==0 ? ' onclick="_jw_search.click(event,this,\''+d.cb+'\',\''+_name+'\',\''+d.deal+'\');"' : '')+'>\
+	<div style="height:24px;float:'+float_dir+';">\
+		<img class="jw_search_info_img" src="//www.jollywallet.com/resources/images/jw/logo_22X22u.png" />\
+	</div>\
+	<div class="jw_search_info_title" style="float:'+float_dir+';line-height:20px;">'+title+'</div>\
+</div>';
+		
+		if (t2==0)
+			o.prepend(h);
+		else if (t2==1) {
+			if(this.index==5){
+				var titlex = o.find('.yschttl');
+				titlex.prepend(h);
+			} else if (this.index==2){
+				var t =  o.find('h3 a');
+				t.prepend(h);
+			}
+		}
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+};
+
+_jw_search.jw_tab_maker = function(index){
+//	try{
+		var css_index='';
+		if(index==2) css_index='2';
+		return '\
+			<div id="jw_tab_box'+css_index+'">\
+				<div id="jw_tab" onclick="_jw_search.jw_tab_click();">\
+					<div id="jw_tab_logo" title="jollywallet\'s Cash back offers"></div>\
+					<div id="jw_tab_text" class="jw_unselectable">Cash back offers</div>\
+					<div id="jw_tab_arrow" class="jw_tab_arrow_down"></div>\
+					<div id="jw_tab_close" title="Close" class="jw_unselectable" \
+						onclick="jw_jquery(\'#jw_tab_box\').remove();"><img src="//www.jollywallet.com/resources/images/jw/x_8.png" border="0" /></div>\
+				</div>\
+				<div id="jw_tab_lines_box"></div>\
+			</div>';
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+};
+
+_jw_search.jw_tab_line_maker = function(cb, name, deal, logo){
+	var text = cb + ' cash back on '+name+'.';
+	return '\
+		<div class="jw_tab_line" onclick="_jw_search.click(event,this,\''+cb+'\',\''+name+'\',\''+deal+'\');;">\
+			<div class="f_left" style="width:100px;height:30px;text-align:center;">\
+				<img title="'+text+'" style="max-width:100px;max-height:30px;" src="'+logo+'">\
+			</div>\
+			<div style="position:absolute;left:120px;top:5px;overflow:hidden;height:30px;">\
+				<span class="jw_tab_line_text jw_unselectable">'+text+'</span></div>\
+		</div>';
+};
+
+_jw_search.jw_tab_click = function(){
+	var h = jw_jquery('#jw_tab_box').height();
+	if (h>0){
+		jw_jquery('#jw_tab_lines_box').slideUp();
+		jw_jquery('#jw_tab_arrow').removeClass('jw_tab_arrow_up').addClass('jw_tab_arrow_down');
+	} else {
+		jw_jquery('#jw_tab_lines_box').slideDown();
+		jw_jquery('#jw_tab_arrow').removeClass('jw_tab_arrow_down').addClass('jw_tab_arrow_up');
+	}			
+};
+
+_jw_search.t1=function(data,index){
+//	try{
+		var count = 0;
+		for (var prop in data){
+			if (prop!='display') count++;
+		}
+		if (count<1) return;	//there are no relevant cashbacks. don't show the tab
+		
+		jw_jquery('body').append(_jw_search.jw_tab_maker(index));
+		
+		for (var prop in data){
+			if (prop=='display') continue;
+			var obj = JSON.parse(data[prop]);
+			var cb = obj.cb;
+			var name = obj.name;
+			var deal = obj.deal;
+			var logo = '//www.jollywallet.com/resources/images/jw/icon_30x30_usd.png';
+			if(obj.logo) logo = obj.logo;
+			jw_jquery('#jw_tab_lines_box').append(_jw_search.jw_tab_line_maker(cb, name, deal, logo)); 
+		}
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+};
+
+_jw_search.stat_str_maker = function(arr, index, se_index, t_arr){
+//	try{
+		var t_str = ''; 
+		jw_jquery.each(t_arr, function(idx,val){t_str+=val.toString();});
+		var str = se_index+'_'+t_str+'_';
+		jw_jquery.each(arr, function(idx,val){
+			str += (val + 2*(index==idx ? 1 : 0)).toString();
+		});
+		return str;
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+	return '';
+};
+
+_jw_search.jw_reporter = function($this, se_idx){
+//	try{
+		var url, key = $this.attr('jw_stat_key');
+		if (!key) key = '';
+		var deal_id = $this.attr('jw_deal_id');
+		if (!deal_id) deal_id='';
+		
+		if (deal_id.length>0){
+			//url = '//www.jollywallet.com/affiliate_cookie?deal='+deal_id+'&token='+jw_utils.getToken()+'&rnd='+Math.random();
+			//jw_jquery.post(url, '{}', function(obj){});
+			url = '//www.jollywallet.com/affiliate_cookie?deal='+deal_id+'&ref='+se_idx+'&rnd='+Math.random();
+			jw_jquery.ajax({
+				type: "GET",
+				url: url,
+				cache: false,
+				crossDomain: true,
+				dataType: 'json',
+				xhrFields: {withCredentials: true}
+			});
+		}
+//		var host_id = $this.find('.jw_search_info_box').attr('jw_host_id');
+//		if (!host_id) host_id='';
+		url = '//www.jollywallet.com/affiliate_analyze?root=search&key='+key+'&rnd='+Math.random();
+		jw_jquery('#jw_omni_iframe').attr('src',url);
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+};
+
+_jw_search.t3_yahoo = function(t_arr){
+//	try{
+		var ptr=0, is_jw_added, max_len, i, h3, deal_id;
+		var ol = jw_jquery('#web ol');
+		if (ol.length<1) return;	//not found or no search entries
+		if (ol.children('li').length<2) return;	//nothing to relocate
+		max_len = ol.children('li').length;
+	
+		for(i=1; i<=max_len;i++){
+			li = jw_jquery('#jw_'+i).parent();
+			if (li.find('.jw_search_info_box').length<1)continue;
+			if (i==1) { 		//first anyway
+				ptr = 1;
+			}else if (ptr<1){	//make it first
+				li.insertBefore(ol.children('li')[0]);
+				ptr = i;
+			}else{				//stick it after the last jw element
+				li.insertAfter(jw_jquery('#jw_'+ptr).parent());
+				ptr = i;
+			}
+		}
+
+		var arr = new Array();	//tells which entries (after relocate) have jw cashback
+		for (i=0; i<max_len; i++){
+			li = jw_jquery(ol.children('li')[i]);
+			is_jw_added = (li.find('.jw_search_info_box').length>0 ? 1 : 0);
+			arr.push(is_jw_added);
+		}
+
+		for (i=0; i<max_len; i++){
+			li = jw_jquery(ol.children('li')[i]);
+			h3 = li.find('h3');
+			if (h3.length<1) continue;
+			deal_id = h3.find('.jw_search_info_box').attr('jw_deal_id');
+			if (deal_id && deal_id.length>0)
+				h3.attr('jw_deal_id',deal_id);
+			h3.attr('jw_stat_key', this.stat_str_maker(arr, i, this.index, t_arr));
+			h3.click(function(){
+				_jw_search.jw_reporter(jw_jquery(this),5);
+			});
+		}
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+};
+
+_jw_search.t3_ask = function(t_arr){
+//	try{
+		var ptr=0, is_jw_added, h3, deal_id, max_len=0;
+		var header = jw_jquery('#lindm .sectionheader');
+		if (header.length<1) return;
+		
+		while (jw_jquery('#jw_'+(max_len+1)).length>0)
+			max_len++;
+		
+		for(var i=1; i<=max_len;i++){
+			var o = jw_jquery('#jw_'+i).parent();
+			if (o.find('.jw_search_info_box').length<1)continue;
+			if (ptr<1){	//make it first
+				o.insertAfter(header);
+				ptr = i;
+			}else{				//stick it after the last jw element
+				o.insertAfter(jw_jquery('#jw_'+ptr).parent());
+				ptr = i;
+			}
+		}
+		
+		var arr = new Array();	//tells which entries (after relocate) have jw cashback
+		jw_jquery.each(jw_jquery('.tsrc_tled'), function(idx, ox) {
+			var o = jw_jquery(ox);
+			is_jw_added = (o.find('.jw_search_info_box').length>0 ? 1 : 0);
+			arr.push(is_jw_added);
+		});
+		
+		jw_jquery.each(jw_jquery('.tsrc_tled'), function(idx, ox) {
+			var o = jw_jquery(ox);
+			h3 = o.find('h3');
+			if (h3.length<1) return;
+			deal_id = h3.find('.jw_search_info_box').attr('jw_deal_id');
+			if (deal_id && deal_id.length>0)
+				h3.attr('jw_deal_id',deal_id);
+			h3.attr('jw_stat_key', _jw_search.stat_str_maker(arr, idx, _jw_search.index,t_arr));
+			h3.click(function(){
+				_jw_search.jw_reporter(jw_jquery(this),2);
+			});
+		});
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+};
+
+_jw_search.t4_yahoo = function(t_arr){
+//	try{
+		var max_len, is_jw_added, i, res, id, h3, deal_id;
+		var ol = jw_jquery('#web ol');
+		if (ol.length<1) return;	//not found or no search entries
+		if (ol.children('li').length<2) return;	//nothing to relocate
+		
+		jw_jquery('<style>#web a{outline:none !important;}</style>').appendTo('head');
+
+		max_len=0;
+		while(jw_jquery('#jw_'+(max_len+1)).length>0){
+			max_len++;
+		}
+
+		for(i=1; i<=max_len;i++){
+			li = jw_jquery('#jw_'+i).parent();
+			if (li.find('.jw_search_info_box').length<1)continue;
+			if (i<=3) break;	//there is one in the top 3
+			var rnd_pos = Math.floor((Math.random() * 3) + 1);
+			li.insertBefore(jw_jquery('#jw_'+rnd_pos).parent());
+			break;
+		}
+
+		var arr = new Array();	//tells which entries (after relocate) have jw cashback
+		i=0;
+		while (i < ol.children('li').length){
+			li = jw_jquery(ol.children('li')[i]);
+			h3 = li.find('h3');
+			if (h3.length>0){	//if h3 not found it probably means it is an image entry.
+				res = li.find('.res');
+				if (res.length>0){
+					id = res.attr('id');
+					if (!id) id = '';
+					if (id.indexOf('jw_')>=0){
+						is_jw_added = (li.find('.jw_search_info_box').length>0 ? 1 : 0);
+						arr.push(is_jw_added);
+					}
+				}
+			}
+			i++;
+		}
+		
+		i=0;
+		var arr_ptr = 0;
+		while (i < ol.children('li').length){
+			li = jw_jquery(ol.children('li')[i]);
+			h3 = li.find('h3');
+			if (h3.length>0){	//if h3 not found it probably means it is an image entry.
+				res = li.find('.res');
+				if (res.length>0){
+					id = res.attr('id');
+					if (!id) id = '';
+					if (id.indexOf('jw_')>=0){
+						deal_id = h3.find('.jw_search_info_box').attr('jw_deal_id');
+						if (deal_id && deal_id.length>0)
+							h3.attr('jw_deal_id',deal_id);
+						h3.attr('jw_stat_key', this.stat_str_maker(arr, arr_ptr, this.index,t_arr));
+						h3.click(function(){
+							_jw_search.jw_reporter(jw_jquery(this),5);
+						});
+						arr_ptr++;
+					}
+				}
+			}
+			i++;
+		}
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+};
+
+_jw_search.t4_ask = function(t_arr){
+//	try{
+		var deal_id, max_len, i, h3;
+		if (jw_jquery('#lindm').length<1) return;
+		jw_jquery('<style>a{outline:none !important;}</style>').appendTo('head');
+		
+		max_len=0;
+		while (jw_jquery('#jw_'+(max_len+1)).length>0)
+			max_len++;
+		
+		for(i=1; i<=max_len;i++){
+			var o = jw_jquery('#jw_'+i).parent();
+			if (o.find('.jw_search_info_box').length<1)continue;
+			if (i<=3) break;	//there is one in the top 3
+			var rnd_pos = Math.floor((Math.random() * 3) + 1);
+			o.insertBefore(jw_jquery('#jw_'+rnd_pos).parent());
+		}
+		
+		var arr = new Array();	//tells which entries (after relocate) have jw cashback
+		jw_jquery.each(jw_jquery('.tsrc_tled'), function(idx, ox) {
+			var o = jw_jquery(ox);
+			h3 = o.find('h3');
+			if (h3.length>0){
+				ptbs = o.find('.ptbs');
+				if (ptbs.length>0){
+					id = ptbs.attr('id');
+					if (!id) id = '';
+					if (id.indexOf('jw_')>=0){
+						is_jw_added = (o.find('.jw_search_info_box').length>0 ? 1 : 0);
+						arr.push(is_jw_added);
+					}
+				}
+			}
+		});
+
+		var arr_ptr = 0;
+		jw_jquery.each(jw_jquery('.tsrc_tled'), function(idx, ox) {
+			var o = jw_jquery(ox);
+			h3 = o.find('h3');
+			if (h3.length>0){
+				ptbs = o.find('.ptbs');
+				if (ptbs.length>0){
+					id = ptbs.attr('id');
+					if (!id) id = '';
+					if (id.indexOf('jw_')>=0){
+						deal_id = h3.find('.jw_search_info_box').attr('jw_deal_id');
+						if (deal_id && deal_id.length>0)
+							h3.attr('jw_deal_id',deal_id);
+						h3.attr('jw_stat_key', _jw_search.stat_str_maker(arr, arr_ptr, _jw_search.index, t_arr));
+						h3.click(function(){
+							_jw_search.jw_reporter(jw_jquery(this),2);
+						});
+						arr_ptr++;
+					}
+				}
+			}
+		});
+//	}catch(ex){if(this.jw_debug_mode)alert(ex.message);}
+};
+
+_jw_search.t3=function(t_arr){	//relocate all
+	switch(this.index){
+		case 2:
+			this.t3_ask(t_arr);
+			break;
+		case 5:
+			this.t3_yahoo(t_arr);
+			break;
+		default:
+			//do nothing
+	}
+};
+
+_jw_search.t4=function(t_arr){	//relocate one to top 3
+	switch(this.index){
+		case 2:
+			this.t4_ask(t_arr);
+			break;
+		case 5:
+			this.t4_yahoo(t_arr);
+			break;
+		default:
+			//do nothing
+	}
+};
+var tbView = {};
+tbView.isInBlackList = function(url) {
+	var res= false;
+	var d1='';var i=0;
+	if(jw_db && jw_db.bl)
+		{
+			for(i=0;i<jw_db.bl.length;i++)
+			{
+				d1=jw_db.bl[i];
+				if((d1!='search.yahoo')&&(url.indexOf(d1) >= 0)){
+					return true;
+				}
+			}
+	return res;
+		}
+	if(jw_db_bl && jw_db_bl.permanentCache)
+		{
+			for(i=0;i<jw_db_bl.permanentCache.length;i++)
+			{
+				d1=jw_db_bl.permanentCache[i];
+				if(url.indexOf(d1) >= 0){
+					return true;
+				}
+			}
+		}
+	return res;
+};
+tbView.isInsCache = function (url) {if(typeof tbView.sCachDb=='undefined' || tbView.sCachDb == null)return false;
+	var keys = jw_md5.BuildKeys(url);
+	if(keys!==null){
+		var key='';
+		for (var i = 0; i < keys.length; i++) {
+			key = keys[i];
+			for(var j=0;j<tbView.sCachDb.length;j++) { 
+				if(jw_utils.inArray(tbView.sCachDb[j].key, key)) return tbView.sCachDb[j].id;
+			}
+		}
+	}
+	return 0;
+};
+tbView.isInLocalCache = function (url) {
+	var keys = jw_md5.BuildKeys(url);
+	if(keys!==null){for (var i = 0; i < keys.length; i++) {var key = keys[i];if(jw_utils.inArray(tbView.localCachDb, key)) return true;}}
+	return false;
+};
+tbView.loadjscssfile = function (id,filename,filetype,success)
+{
+	if( document.getElementById(id)) {if(success) success(); return;}
+	if (filetype=='js'){
+		var fileref=document.createElement('script');
+		fileref.setAttribute('type','text/javascript');
+		fileref.setAttribute('id',id);
+		fileref.setAttribute('src',filename);
+		var done=false;
+		if(success)fileref.onload = fileref.onreadystatechange = function(){
+if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {done = true;success();fileref.onload = fileref.onreadystatechange = null;
+		}};
+	}else if (filetype=='css'){
+		var fileref=document.createElement('link');
+		fileref.setAttribute('rel','stylesheet');
+		fileref.setAttribute('type','text/css');
+		fileref.setAttribute('id',id);
+		fileref.setAttribute('href',filename);}
+	if (typeof fileref!='undefined')document.getElementsByTagName('head')[0].appendChild(fileref);
+};
+tbView.getCookie = function(c_name) {
+	var c_value = document.cookie;
+	var c_start = c_value.indexOf(' ' + c_name + '=');
+	if (c_start == -1) {c_start = c_value.indexOf(c_name + '=');}
+	if (c_start == -1) {c_value = null;	} else {
+		c_start = c_value.indexOf('=', c_start) + 1;
+		var c_end = c_value.indexOf(';', c_start);
+		if (c_end == -1) {c_end = c_value.length;}
+		c_value = unescape(c_value.substring(c_start, c_end));
+	}
+	return c_value;
+};
+tbView.addInitFrame=function(dist,sub,ver) { if(tbView.isInBlackList(document.URL) ) return false; return true;};
+tbView.isAffiliateRef=function(){
+	var ref=document.referrer;
+	if((ref.indexOf('.google.')>0) && (ref.indexOf('&ai=')>0)) return '1';
+	var aff_list = ['flamingoworld.com','anycodes.com','bradsdeals.com','cdcoupons.com','cheaperseeker.com','chippmunk.com',
+'couponalert.com','couponcabin.com','couponchief.com','coupondudes.com','couponfollow.com','couponmountain.com',
+'couponpaste.com','coupons.com','dealcatcher.com','dealigg.com','deallocker.com','dealspl.us','dealsvario.com',
+'dropdowndeals.com','goodsearch.com','multimediamuse.org','mycoupons.com','offers.com','shareasale.com',
+'piggycoupons.com','promocodesforyou.com','retailmenot.com','riocoupon.com','savings-center.com','slickdeals.net',
+'thecouponscoop.com','tjoos.com','wantacode.com','yourcoupongirl.com','befrugal.com','couponscave.com','toastybear.com',
+'scitechdaily.com','8couponcode.com','couponmom.com','couponwinner.com','dealally.com','deals2buy.com','deals365.us',
+'finddiscountcodes.com','megastoredeals.com','promotioncode.org','shopfest.com','sumocoupon.com','techbargains.com','extrabux.com','ebates.com'];
+	for (var i in aff_list) {aff=aff_list[i];if(ref.indexOf(aff)>1) return '2';}
+	return '0';
+};
+tbView.jw_loaded = false;
+var jw_jquery = null;
+tbView.prepare = function(protocol,tver){
+if(tbView.jw_loaded) return;
+	var host=protocol + 'd2cnb4m0nke2lh.cloudfront.net';
+	var jw_old_jq_detected = false;
+	if(typeof jQuery == 'undefined'){if(typeof $ == 'function'){jw_old_jq_detected = true;}}
+	tbView.loadjscssfile('jw_0',host+'/resources/js/jquery-1.7.1.min.js','js',
+		function(){if (typeof jQuery=='undefined'){}
+			else{tbView.loadjscssfile('jw_6',host +'/tlb/v3/jw_fb206/source/jquery.jw_fancybox.js','js',function(){
+				tbView.jw_loaded=true;
+				jw_jquery=jQuery.noConflict(true);
+			});}});
+	tbView.loadjscssfile('jw_1_2',host+'/tlb/platform/js/jw_interface_2.js','js');
+  if(tver){} else tver='0';  if(tver=='100') return;
+  if(tver=='0') {
+		tbView.loadjscssfile('jw_3',host+'/tlb/v3/jw_bar.css','css');
+		tbView.loadjscssfile('jw_4',host+'/tlb/v3/jw_bar.js','js');
+  } else { 
+		tbView.loadjscssfile('jw_3',host+'/tlb/v4/templates/jw_bar_'+tver+'.js','js');
+		tbView.loadjscssfile('jw_4',host+'/tlb/v4/jw_bar.js','js');
+  }	tbView.loadjscssfile('jw_5',host+'/tlb/v3/jw_fb206/source/jquery.jw_fancybox.css','css');
+};
+tbView.open_myaccount = function(){
+ if (typeof jw_jquery != 'undefined' && jw_jquery != null) {
+	if(document.getElementById('jw_5') && document.getElementById('jw_4') && document.getElementById('jw_3') && document.getElementById('jw_1_2') && document.getElementById('jw_0')) {
+		if(typeof jwBarInterface != 'undefined'){ jwBarInterface.token='5BAA8A41-572C-7989-111C-F09C9E79A316';jwBarInterface.aff_id=''; jwBarInterface.jw_open_popup('myaccount'); return;} 
+	}}
+	setTimeout(function(){tbView.open_myaccount();},20);
+};
+tbView.myaccount = function(ref){
+	var protocol = 'http://';
+	if( document && document.location) if('https:' == document.location.protocol) protocol='https://'; 
+	tbView.prepare(protocol,'0');
+	setTimeout(function(){tbView.open_myaccount();},20);
+};
+tbView.verify_load = function(success,onlyjqery){
+ if (typeof jw_jquery != 'undefined' && jw_jquery != null) {
+		if((typeof onlyjqery != 'undefined') && (onlyjqery===true)) { success(); return;} 
+		if(document.getElementById('jw_5') && document.getElementById('jw_4') && document.getElementById('jw_3') && document.getElementById('jw_1_2') && document.getElementById('jw_0')) {
+			if(typeof jwBarInterface != 'undefined'){ success(); return;} 
+		}}
+	setTimeout(function(){tbView.verify_load(success,onlyjqery);},20);
+};
+tbView.start_search = function(index){
+		_jw_search.tid='';
+		_jw_search.dist='107';
+		_jw_search.dist_sub='541068';
+		var _timeout=1;
+		if(index==6) _timeout=1000;
+		var icon = new Image(); 
+		icon.src = '//www.jollywallet.com/resources/images/jw/logo_22X22u.png';
+		window.setTimeout(function(){
+			_jw_search.dom_scanner(index);
+			if(_jw_search.urls && _jw_search.urls.length>0) 
+			{
+				jw_jquery('#jw_input_email, #jw_input_pass').live('keydown', function(e){e.stopPropagation();});
+				tbView.loadjscssfile('jw_search_css','//api.jollywallet.com/search/jw_search.css', 'css', null);
+				jw_jquery('#jw_input_email').live('input', function(e) {
+					var txt = jw_jquery.trim(jw_jquery(this).val());
+					if (txt.length < 3)
+						jw_jquery('#jw_continue_button').addClass('jw_disabled_btn');
+					else
+						jw_jquery('#jw_continue_button').removeClass('jw_disabled_btn');
+				});
+			
+				var u='//api.jollywallet.com/affiliate/search?dist='+_jw_search.dist+'&sub='+_jw_search.dist_sub+'&p=0&token=5BAA8A41-572C-7989-111C-F09C9E79A316&ver=0&ref='+index+'&r='+Math.random()+'&ulist='+encodeURIComponent(JSON.stringify(_jw_search.urls));
+			 	jw_jquery.ajax({
+					url: u,
+					type: 'GET',
+					crossDomain: true,
+					dataType: 'json',
+					xhrFields: {withCredentials: true},
+					success:function(data){
+						try{
+							var t0=1;	// standard link display, 
+							var t1=0;	// upper bar
+							var t2=0;	// unified link.
+							var t3=0;	// relocate.
+							var t4=0;	// relocate random
+							if(data.display){
+								if(data.display.t0) t0=data.display.t0;
+								if(data.display.t1) t1=data.display.t1;
+								if(data.display.t2) t2=data.display.t2;
+								if(data.display.t3) t3=data.display.t3;
+								if(data.display.t4) t4=data.display.t4;
+							}
+							if(t0==1){
+								for(n in _jw_search.urls_pos){
+									u=_jw_search.urls_pos[n];
+									_jw_search.update_node(n, data[u], t2);
+								}
+							}
+							jw_jquery('body').append('<div style="height:1px;width:1px;position:absolute;top:10000px;left:0px;"><iframe id="jw_omni_iframe" src="" style="visibility:hidden;" width="0px" height="0px" /></div>');
+							if(t1==1 && _jw_search.t1) _jw_search.t1(data,index);
+							if(t3==1 && _jw_search.t3) _jw_search.t3(new Array(t1,t2,t3,t4));
+							if(t4==1 && _jw_search.t4) _jw_search.t4(new Array(t1,t2,t3,t4));
+						}catch(ex){}
+					},
+				});
+			}
+		},_timeout);
+	}
+tbView.start = function(cnt){
+		if(typeof jw_db == 'undefined') { 
+			if(typeof(cnt)=='undefined' || null==cnt) cnt=0;
+			if(cnt<900) setTimeout(function() {tbView.start(cnt+100);},100);
+			return;
+		}
+		tbView.localCachDb = jw_db.permanentCache;
+		if(tbView.isInBlackList(document.URL)) return; 
+tbView.sCachDb = [{id:2,key:'5ed33f7008771c9d49e3716aeaeca581'},{id:5,key:'241fe8af1e038118cd817048a65f803e'}];
+	var search_index= tbView.isInsCache(document.URL);
+	if(search_index>0){
+		if(typeof jQuery != 'undefined' && jQuery != null) {
+			jw_jquery=jQuery.noConflict(true);
+		} else {
+			var protocol = 'http://';
+			if( document && document.location) if('https:' == document.location.protocol) protocol='https://'; 
+			tbView.prepare(protocol,100);
+		}
+		tbView.verify_load(function(){tbView.start_search(search_index);},true)
+	} 
+	else {
+		if(tbView.addInitFrame('107','541068','1') && tbView.isInLocalCache(document.URL)) {
+			var aff_ref=tbView.isAffiliateRef();
+			tbView.loadjscssfile('jw_a','//api.jollywallet.com/affiliate/jsquery2?dist=107&sub=541068&ver=1&p=0&token=5BAA8A41-572C-7989-111C-F09C9E79A316&aff_ref='+aff_ref+'&r='+Math.random(),'js',null);
+		}
+	} 
+};
+if(window==window.top) tbView.loadjscssfile('jw_00','//d2cnb4m0nke2lh.cloudfront.net/jollywallet/resources/js/2/affiliate_client.js','js',tbView.start);

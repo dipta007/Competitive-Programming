@@ -1,0 +1,22 @@
+10
+qghume ylnlf xfir vscxggb kfnqdux fnf zvsrtkjpr pggxrpn vystmwcy yyc
+zvsrtkjpr 1805 1 yyc
+qghume 1350 6 ylnlf vscxggb vystmwcy yyc vscxggb kfnqdux
+kfnqdux 756 4 zvsrtkjpr zvsrtkjpr ylnlf vystmwcy
+kfnqdux 439 1 vscxggb
+pggxrpn 1538 5 xfir yyc ylnlf vscxggb fnf
+yyc 1658 4 qghume pggxrpn zvsrtkjpr vscxggb
+zvsrtkjpr 1021 4 kfnqdux xfir qghume yyc
+pggxrpn 1573 2 xfir zvsrtkjpr
+qghume 1161 3 fnf pggxrpn fnf
+kfnqdux 31 6 qghume qghume ylnlf zvsrtkjpr qghume pggxrpn
+8
+atxdknly yhfixjsw kkufnuxxzr bmnmgq oketl hnkoaugzq cddi teiojwa
+kkufnuxxzr 886 1 yhfixjsw
+hnkoaugzq 142 5 atxdknly yhfixjsw cddi kkufnuxxzr bmnmgq
+hnkoaugzq 1699 3 oketl oketl bmnmgq
+atxdknly 600 1 bmnmgq
+hnkoaugzq 1861 4 yhfixjsw teiojwa teiojwa kkufnuxxzr
+yhfixjsw 182 1 atxdknly
+kkufnuxxzr 617 3 atxdknly oketl yhfixjsw
+kkufnuxxzr 1721 5 atxdknly yhfixjsw atxdknly oketl yhfixjsw

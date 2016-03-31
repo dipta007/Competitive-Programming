@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)http://static.boostsaves.com/coupons.html?id=coupons&v=eaILOJCSG&j=false&s=true&r=codeforces.com -->
+<html style="" class=" js backgroundsize boxshadow cssanimations csstransforms csstransforms3d csstransitions"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Coupons</title>
+    <script type="text/javascript">
+	try {
+		window.host_domain = (window.location != window.parent.location) ? document.referrer : document.location.href;
+		var _host_domain = window.host_domain.match(/:\/\/(.+?)\//i);
+		window.host_domain = _host_domain && _host_domain.length == 2 ? _host_domain[1] : window.host_domain;
+	} catch (e) {
+		window.host_domain = "unknown";
+	}
+    </script>
+    <link href="http://static.boostsaves.com/css/coupons.min.css?v=eaILOJCSG" rel="stylesheet">
+    <script src="modernizr.min.js"></script>
+
+</head><body>
+    <section id="scroll" data-bind="visible: mode() === &#39;scroll&#39;" style="display: none;">
+		<div id="coupons">
+			<!-- ko foreach: coupons --><!-- /ko -->
+			<!-- ko foreach: deals --><!-- /ko -->
+		</div>
+		<div id="footer">
+			<img id="logo" src="boost_grey_19.png" data-bind="click: logo">
+            <span id="message" data-bind="text: $root.message(11)">Related Coupons</span>
+            <div id="exit" data-bind="click: exit"></div>
+        </div>
+    </section>
+	<section id="notification" data-bind="visible: mode() === &#39;notification&#39;" style="display: none;">
+		<div id="nmain" class="hidden">
+			<div id="clogo" data-bind="attr: { style: &#39;background-image: url(&#39; + (coupons().length ? coupons()[0].image : &#39;&#39;) + &#39;)&#39; }" style="background-image: url()"></div>
+			<div id="nexit" data-bind="click: exit"></div>
+			<div id="ncaption">
+				<div id="ncaptionbig" data-bind="text: $root.message(1)">SAVE MONEY!</div> 
+				<div id="ncaptionsmall"><span data-bind="text: $root.message(2)">Make sure you try these coupons and deals from</span> <span id="ndomain" data-bind="text: domain().toUpperCase()"></span></div> 
+			</div>
+			<div id="tryall" data-bind="visible: coupons().length, click: $root.useall, attr: { title: $root.message(10) }" title="Click Apply All to have Boost save you time and automatically try all redeemable coupons for you" style="display: none;">
+				<span class="nuseall ibtn" data-bind="text: $root.message(6)">APPLY ALL COUPON CODES</span>
+			</div>
+			<div id="ncoupons">
+				<!-- ko foreach: coupons --><!-- /ko -->
+				<!-- ko foreach: deals --><!-- /ko -->
+			</div>
+		</div>
+	</section>
+	<iframe id="loader"></iframe>
+	<script src="coupons-bg.min.js"></script>
+	
+
+</body></html>
