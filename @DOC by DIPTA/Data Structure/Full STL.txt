@@ -1,0 +1,125 @@
+VECTOR ==>>
+vector< int > v[100];	// 2 dimensional [1 vector & 1 array of 100 size]
+vector< vector< int > > v; // 2 dimensional both vector
+vector< vector< vector< int > > > v; // 3 dimensional thrice vector :p
+int myints[] = { 10, 20, 30 ,40 };
+vector<int> myvector (myints,myints+4);
+
+v.size() - return size of the vector
+v.empty() - returns 1 if empty or 0 if not
+v.front() - access front element
+v.back() - access last element
+v.clear() - clear vector v
+v.push_back(n) - add n to the last of vector
+v.pop_back() - delete last element
+
+FIND IN VECTOR & ARRAY ==>>
+int myints[] = { 10, 20, 30 ,40 };
+int * p;
+p = std::find (myints,myints+4,30);
+
+vector<int> myvector (myints,myints+4);
+vector<int>::iterator it;
+it = find (myvector.begin(), myvector.end(), 30);
+
+STRING ==>>
+string a,b,c;
+a = "this is a string";		 // easy assigning
+b = a;						 // copy hoye gelo! :O
+c = a + b					 // c te rakhlam a ar b er concatation
+cout << c << endl;			 // print korlam
+printf("%s\n", c.c_str() );  // printf diyei korlam na hoy   
+cout << c.size() << endl; 	 // length print korlam
+for(int i=0; i<c.size(); i++) 
+	cout << c[i] ;  // ekta ekta kore character print korlam
+	
+STACK ==>>
+stack <int> a,b,c;
+a.empty() - return 1 if empty or 0 if not
+a.size() - returns size of the stack
+a.push(n) - insert n to the top position
+a.top() - access last element
+a.pop() - remove last element
+
+QUEUE ==>>
+queue <int> a;
+a.empty() - return 1 if empty or 0 if not
+a.size() - returns size of the stack
+a.push(n) - insert n to the top position
+a.front() - access  first element
+a.back() - access last element
+a.pop() - remove first element
+
+PRIORITY QUEUE ==>>
+priority_queue< int > a;
+a.empty() - return 1 if empty or 0 if not
+a.size() - returns size of the stack
+a.push(n) - insert n to the top position
+a.top() - access top priority element
+a.pop() - remove last element
+
+ITERATOR ==>>
+vector< int > v; v.pb( 1 ); v.pb( 2 ); v.pb( 3 );
+vector< int > :: iterator i;
+for( i = v.begin(); i < v.end(); i++ )
+{
+    printf("%d\n", *i); // shows 1 , 2 , 3 respectively
+}
+
+SORT in VECTOR & ARRAY ==>> //asscending order [1,2,3,....]
+vector <int> v;
+sort(v.begin(),v.end());
+int data[n]; // n= array size
+sort(data,data+n);
+sort(data+3,data+11); // sort index 3 to index 10 [0 based array]
+
+SORT in VECTOR ==>>
+sort(v.rbegin(),v.rend());
+
+SORT by COMPARE FUNCTION ==>>
+struct data
+{
+    int x, y;
+};
+data ar[ 1000010 ];
+
+bool cmp(const data &a, const data &b) //condition er khetre if true = no swap
+									   // false = swap
+{
+    if(a.x < b.x) return true;
+    else if(a.x == b.x)
+    {
+        if(a.y < b.y) return true;
+    }
+    return false;
+}
+int main()
+{
+	vector <int> v;
+	sort(v.begin(),v.end(),cmp);
+}
+
+SET ==>> // set e proti data only 1 ber thakbe and data sorted[asscending] thakbe
+set< int > s;
+s.empty() - returns 1 if empty else 0 if not
+s.size() - returns size
+s.insert(n) - insert n into set s
+s.clear() - clear set s
+s.erase(n) - remove n from set s\n
+s.find(n) - returns iterator address where n is situated
+
+MAP ==>> // data sorted rakhe & index jekon= data type hote pare
+map < int , string > mp;
+mp.clear() - clear map mp
+mp.find() - returns iterator address where n is situated
+
+PERMUTATION ==>>
+vector< int > v;
+for(int i=0; i<11; i++) v.push_back( i );   
+do {
+    // protitat jama prottekke porai dekho shukh maximize hochche kina
+}while( next_permutation( v.begin(), v.end() ) );
+
+REVERSE ==>>	// pura ultai dibe
+vector< int > nacho;
+reverse( nacho.begin(), nacho.end() );

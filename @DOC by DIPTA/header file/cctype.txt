@@ -1,0 +1,14 @@
+#include <ctype.h>
+#include <cctype>
+
+isalnum - check alphanumeric or not
+isalpha - check alphabetic or not
+isdigit - check decimal digit or not
+islower - check lowercase letter or not
+isupper - check check uppercase letter or not
+ispunct - check punctuatuation character
+
+// returns 1 if true or 0 if false
+
+tolower - convert uppercase to lowercase
+toupper - convert lowercase to uppercase

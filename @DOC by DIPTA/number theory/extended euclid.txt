@@ -1,0 +1,16 @@
+typedef pair<int, int> pii;
+#define ff first
+#define ss second
+
+pii extendedEuclid(int a, int b)   // returns x, y jekhane, ax + by = gcd(a,b)
+{
+    if(b == 0) 
+		return pii(1, 0);
+    else
+    {
+        pii d = extendedEuclid(b, a % b);
+        return pii(d.ss, d.ff - d.ss * (a / b));
+    }
+}
+
+// eter proof NCPC er pore MUST dekhte HOBE

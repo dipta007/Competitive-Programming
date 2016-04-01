@@ -1,0 +1,60 @@
+#define MAX = 10000004
+
+int Phi[MAX];
+void sievePHI()   // Phi[i] = phi(i), uses the idea of sieve
+{
+    Phi[1] = 1;
+    int i, j;
+    for( i = 2; i < MAX; i++ ) if( !Phi[i] )
+        {
+            Phi[i] = i - 1;
+            for( j = i + i; j < MAX; j += i )
+            {
+                if( !Phi[j] ) Phi[j] = j;
+                Phi[j] = Phi[j] / i * ( i - 1 );
+            }
+        }
+}
+
+
+int phi (int n) // Oyler er Tochient Function
+{
+    int ret = n;
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            while (n % i == 0)
+            {
+                n /= i;
+            }
+            ret -= ret / i;
+        }
+    }
+
+    // this case will happen if n is a prime number
+    // in that case we won't find any prime that divides n
+    // that's less or equal to sqrt(n)
+
+    if (n > 1) ret =ret - (ret / n);
+    return ret;
+}
+
+// ekhane 1 ta number er jonoo er cheye choto ba soman kon sonkha er co-prime ta ber kore
+// like gcd(9,1)=gcd(9,2)=gcd(9,4)=gcd(9,5)=gcd(9,7)=gcd(9,8)=1 ekhane 9 er jonno 6 ta number er co-prime
+// so, phi(9)=6
+
+
+
+int Phi[MAX];
+void sievePHI() { // Phi[i] = phi(i), uses the idea of sieve
+	Phi[1] = 1;
+	int i, j;
+	for( i = 2; i < MAX; i++ ) if( !Phi[i] ) {
+		Phi[i] = i - 1;
+		for( j = i + i; j < MAX; j += i ) {
+			if( !Phi[j] ) Phi[j] = j;
+			Phi[j] = Phi[j] / i * ( i - 1 );
+		}
+	}
+}

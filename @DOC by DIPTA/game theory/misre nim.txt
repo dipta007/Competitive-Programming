@@ -1,0 +1,5 @@
+Let ? denote the bitwise xor operation on natural numbers. It is both well-known and easy to verify that a Nim position (n1,…,nk) is a second player win in misère Nim if and only if some ni>1 and n1???nk=0, or all ni=1 and n1???nk=1.
+
+If I understand it correctly, this translates to the following structure. Let A=(?,?,0) (in other words, A is the direct sum of countably many copies of the two-element abelian group), let A0={0,1} be its submonoid, and let B=({0,1},?,0) be the two-element semilattice. Then the underlying monoid of the misère quotient of Nim is the submonoid Q=(A×{1})?(A0×{0}) of the product monoid A×B, the misère quotient itself being (Q,{(0,1),(1,0)}). If (n1,…,nk) is a Nim position, its value in Q is (n1???nk,u), where u=0 if ni?{0,1} for each i, and u=1 otherwise. Q has (as a commutative monoid) the infinite presentation ?{an:n??},b|an+an=b+b=0,an+b=an+a0?. Finitely generated submonoids of Q are finite, hence Q itself is not finitely generated.
+
+(Note that the monoid corresponding to normal play Nim is just A.)

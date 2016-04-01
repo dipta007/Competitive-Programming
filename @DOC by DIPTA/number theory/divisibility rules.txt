@@ -1,0 +1,254 @@
+2 ==>>
+The last digit is even (0,2,4,6,8)
+
+2^n ==>>
+The last n digits are divisible by 2^n
+
+3 ==>>
+The sum of the digits is divisible by 3
+
+4 ==>>
+The last 2 digits are divisible by 4
+
+5 ==>>
+the last digit is 0 or 5
+
+5^n ==>>
+The last n digits are divisible by 5^n
+
+6 ==>>
+The number is divisible by both 2 and 3 as 6=2*3
+// 114 (it is even, and 1+1+4=6 and 6÷3 = 2) Yes
+// 308 (it is even, but 3+0+8=11 and 11÷3 = 3 2/3) No
+
+7 ==>>
+If you double the last digit and subtract it from the rest of the number and the answer is:
+0, or
+divisible by 7
+(Note: you can apply this rule to that answer again if you want)
+//672 (Double 2 is 4, 67-4=63, and 63÷7=9) Yes
+//905 (Double 5 is 10, 90-10=80, and 80÷7=11 3/7) No
+
+8 ==>>
+The last 3 digits are divisible by 8
+
+9 ==>>
+The sum of the digits is divisible by 9
+(Note: you can apply this rule to that answer again if you want)
+//1629 (1+6+2+9=18, and again, 1+8=9) Yes
+//2013 (2+0+1+3=6) No
+
+10 ==>>
+The last digit is 0
+
+11 ==>>
+If you sum every second digit and then subtract all other digits and the answer is:
+0, or divisible by 11
+//1364 (1-3+6-4 = 0) Yes
+//3729 (3-7+2-9) = 11) Yes
+//25176 (2-5+1-7+6) = 3) No
+
+12 ==>>
+The number is divisible by both 3 and 4
+//648 
+//(By 3? 6+4+8=18 and 18÷3=6 Yes.
+//By 4? 48÷4=12 Yes) Yes
+
+//524 
+//(By 3? 5+2+4=11, 11÷3= 3 2/3 No.
+//Don't need to check by 4.) No
+
+13 ==>>
+Add four times the last digit to the remaining leading truncated number. 
+If the result is divisible by 13, then so was the first number. 
+Note :: Apply this rule over and over again as necessary. 
+// 50661-->5066+1*4=5070-->507+0*4=507-->50+4*7=78 and 78 is 6*13, so 50661 is divisible by 13.
+
+16 ==>>
+the last 4 digits are divisible by 16
+// 125520 : 5520= 345 * 16
+
+17 ==>>
+Subtract five times the last digit from the remaining leading truncated number. 
+If the result is divisible by 17, then so was the first number.
+Note :: Apply this rule over and over again as necessary. 
+//3978-->397-5*8=357-->35-5*7=0. So 3978 is divisible by 17.
+
+19 ==>>
+Add two times the last digit to the remaining leading truncated number. 
+If the result is divisible by 19, then so was the first number. 
+Note :: Apply this rule over and over again as necessary. 
+//101156-->10115+2*6=10127-->1012+2*7=1026-->102+2*6=114 and 114=6*19, so 101156 is divisible by 19.
+
+21 ==>>
+Subtract twice the last digit from the rest.	
+//168: 16 - (8×2) = 0, 168 is divisible.
+//1050: 105 - (0×2) = 105, 10 - (5×2) = 0, 1050 is divisible.
+
+23 ==>>
+Add 7 times the last digit to the rest.	
+//3128: 312 + (8×7) = 368, 368 ÷ 23 = 16.
+
+27 ==>>
+Subtract 8 times the last digit from the rest.	
+//621: 62 - (1×8) = 54.
+
+29 ==>>
+Add three times the last digit to the rest.	
+//261: 1×3 = 3; 3 + 26 = 29
+
+31 ==>>
+Subtract three times the last digit from the rest.	
+//837: 83 - 3×7 = 62
+
+32 ==>>
+The last 5 digits are divisible by 32
+//25,135,520: 35,520=1110×32
+
+33 ==>>
+Add 10 times the last digit to the rest; it has to be divisible by 3 and 11.
+//627: 62 + 7 × 10 = 132, 13 + 2 × 10 = 33.
+
+35 ==>>
+Number must be divisible by 7 ending in 0 or 5.	
+//700 is divisible by 7 ending in a 0.
+
+37 ==>>
+Subtract 11 times the last digit from the rest.	
+//925: 92 - (5×11) = 37.
+
+39 ==>>
+Add 4 times the last digit to the rest.	
+//351: 1 × 4 = 4; 4 + 35 = 39
+
+41 ==>>
+Subtract 4 times the last digit from the rest.	
+//738: 73 - 8 × 4 = 41.
+
+43 ==>>
+Add 13 times the last digit to the rest.	
+//36,249: 3624 + 9 × 13 = 3741, 374 + 1 × 13 = 387, 38 + 7 × 13 = 129, 12 + 9 × 13 = 129 = 43 × 3.
+
+45 ==>>
+The number must be divisible by 9 ending in 0 or 5.	
+//495: 4 + 9 + 5 = 18, 1 + 8 = 9; (495 is divisible by both 5 and 9.)
+
+47 ==>>
+Subtract 14 times the last digit from the rest.	
+//1,642,979: 164297 - 9 × 14 = 164171, 16417 - 14 = 16403, 1640 - 3 × 14 = 1598, 159 - 8 × 14 = 47.
+
+49 ==>>
+Add 5 times the last digit to the rest.	
+//1,127: 112+(7×5)=147. 147: 14 + (7×5) = 49
+
+50 ==>>	
+The last two digits are 00 or 50.	
+//134,250: 50.
+
+51	==>>
+Subtract 5 times the last digit to the rest.	
+//204: 20-(4×5)=0
+
+55 ==>>	
+Number must be divisible by 11 ending in 0 or 5.	
+//935: 93 - 5 = 88 or 9 + 35 = 44.
+
+59 ==>>
+Add 6 times the last digit to the rest.	
+//295: 5×6 = 30; 30 + 29 = 59
+
+61 ==>>
+Subtract 6 times the last digit from the rest.	
+//732: 73-(2×6)=61
+
+64 ==>>
+The number formed by the last six digits must be divisible by 64.	
+//2,640,000 is divisible by 64.
+
+65 ==>>
+Number must be divisible by 13 ending in 0 or 5.	
+//130 is divisible by 13 ending in 0.
+
+66 ==>>
+Number must be divisible by 6 and 11.	
+//132 is divisible by 6 and 11.
+
+69 ==>>
+Add 7 times the last digit to the rest.	
+//345: 5×7 = 35; 35 + 34 = 69
+
+71 ==>>	
+Subtract 7 times the last digit from the rest.	
+//852: 85-(2×7)=71
+
+75 ==>>	
+Number must be divisible by 3 ending in 00, 25, 50 or 75.	
+//825: ends in 25 and is divisible by 3.
+
+77 ==>>
+Form the alternating sum of blocks of three from right to left.	
+//76,923: 923 - 76 = 847.
+
+79 ==>>
+Add 8 times the last digit to the rest.	
+//711: 1×8 = 8; 8 + 71 = 79
+
+81 ==>>	
+Subtract 8 times the last digit from the rest.	
+//162: 16-(2×8)=0
+
+89 ==>>
+Add 9 times the last digit to the rest.	
+//801: 1×9 = 9; 80 + 9 = 89
+
+91 ==>>
+Subtract 9 times the last digit from the rest.	
+//182: 18-(2×9)=0
+
+99 ==>>	
+Add the digits in blocks of two from right to left.	
+//144,837: 14 + 48 + 37 = 99.
+
+100 ==>>	
+Ends with at least two zeros.	
+//900 ends with 2 zeros
+
+101 ==>>	
+Form the alternating sum of blocks of two from right to left.	
+//40,299: 4 - 2 + 99 = 101.
+
+111 ==>>	
+Add the digits in blocks of three from right to left.	
+//1,370,184: 1 + 370 + 184 = 555
+
+128 ==>>	
+The number formed by the last seven digits must be divisible by 128.
+//11,280,000 is divisible by 128.
+
+143 ==>>
+Form the alternating sum of blocks of three from right to left.	
+//1,774,487: 1 - 774 + 487 = -286
+
+256 ==>>	
+The number formed by the last eight digits must be divisible by 256.	
+//225,600,000 is divisible by 256.
+
+333 ==>>	
+Add the digits in blocks of three from right to left.	
+//410,922: 410 + 922 = 1,332
+
+512 ==>>	
+The number formed by the last nine digits must be divisible by 512.	
+//1,512,000,000 is divisible by 512.
+
+989 ==>>
+Add the last three digits to eleven times the rest.	
+//21758: 21 × 11 = 231; 758 + 231 = 989
+
+999 ==>>	
+Add the digits in blocks of three from right to left.	
+//999,999: 999 + 999 = 1,998
+
+1000 ==>>
+Ends with at least three zeros.	
+//2000 ends with 3 zeros

@@ -1,0 +1,3139 @@
+/* Body Styles ----------  */
+#tces 
+{
+background-color: #001B35;
+padding: 0px;
+margin: 0px;
+}
+
+.bigTitle
+{
+color: #333333;
+font-size: 18px;
+font-weight: bold;
+font-style: normal;
+line-height: 1.4;
+text-align:left;
+border: 0px;
+}
+.aboutTCBody
+{
+ width: 540px;
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+ text-align: left;
+ vertical-align: top;
+line-height: 1.4;
+}
+
+.affidavitCell
+{
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+ vertical-align: top;
+ padding-left:15px;
+ padding-right:15px;
+ padding-top:10px;
+ padding-bottom:10px;
+width: 100%;
+}
+
+.affidavitText
+{
+color: #333333;
+font-size: 12px;
+font-style: normal;
+line-height: 1.4;
+font-weight: normal;
+}
+
+/* Subclass Styles ----------  */
+.bodyGeneric
+{
+color: #0000CC;
+font-size: 12px;
+font-weight: normal;
+text-decoration: none;
+}
+
+A.bodyGeneric:link
+{
+color: #00F;
+text-decoration: none;
+}
+
+A.bodyGeneric:visited
+{
+color: #006;
+text-decoration: none;
+}
+
+A.bodyGeneric:hover
+{
+color: #F00;
+text-decoration: underline;
+}
+
+A.bodyGeneric:active
+{
+color: #F00;
+text-decoration: underline;
+}
+
+.bodySubhead
+{
+color: #666666;
+font-size: 12px;
+font-weight: bold;
+}
+
+.bodyText, .bodyTextBold, .bodyTextItal, .bodyTextTitle
+{
+color: #333333;
+font-size: 12px;
+font-weight: bold;
+font-style: normal;
+}
+
+.bodyText
+{
+line-height: 1.4;
+font-weight: normal;
+}
+
+.bodyTextItal
+{
+font-weight: normal;
+font-style: italic;
+}
+
+A.bodyText:link
+{
+color: #00F;
+text-decoration: underline;
+}
+
+A.bodyText:visited
+{
+color: #006;
+text-decoration: underline;
+}
+
+A.bodyText:hover
+{
+color: #F00;
+text-decoration: none;
+}
+
+A.bodyText:active
+{
+color: #F00;
+text-decoration: none;
+}
+
+.bodyTitle
+{
+font-size: 18px;
+line-height: 1.2;
+font-weight: bold;
+}
+
+.bodySubtitle
+{
+font-size: 14px;
+font-weight: bold;
+}
+
+.bolddate, .bolddateoff
+{
+font-size: 10px;
+font-weight: bold;
+color: #CC0000;
+}
+
+.bolddateoff { color: #000000; }
+
+A.bolddate:link
+{
+color: #CC0000;
+text-decoration: none;
+}
+
+A.bolddate:visited
+{
+color: #CC0000;
+text-decoration: none;
+}
+
+A.bolddate:hover
+{
+color: #666666;
+text-decoration: underline;
+}
+
+A.bolddate:active
+{
+color: #CC0000;
+text-decoration: underline;
+}
+
+.brackets
+{
+color: #000000;
+font-size: 22px;
+font-weight: bold;
+}
+
+.buttonRedL
+{
+ float:left;
+ background:url(/i/handleBG_L.gif)
+no-repeat left;
+ margin:0;
+ padding:0 0 0 10px;}
+
+.buttonRedR
+{
+ display:block;
+ background:url(/i/handleBG_R.gif)
+no-repeat right;
+ padding:4px 10px 4px 0px;
+}
+
+.buttonBar { padding: 11px; }
+
+#calendar, #calendarMini, #calendarBlank, #calendarBlankMini
+{
+color: #000000;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+vertical-align: top;
+background-color: #EEE;
+}
+
+#calChat
+{
+color: #000000;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+vertical-align: top;
+background-color: #FFFFCC;
+}
+
+#calChatDate
+{
+color: #000000;
+font-weight: bold;
+}
+
+A.calChatLink:link
+{
+color: #000066;
+text-decoration: underline;
+}
+
+A.calChatLink:visited
+{
+color: #000000;
+text-decoration: underline;
+}
+
+A.calChatLink:hover
+{
+color: #FF0000;
+text-decoration: none;
+}
+
+#calendarMini
+{
+text-align: center;
+vertical-align: middle;
+background-image: none;
+}
+
+#calendarMonth
+{
+color: #FFFFFF;
+font-size: 13px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+padding: 2px;
+}
+
+#calendarBlank, #calendarBlankMini { background-color: #CCC; }
+
+#calendarBlank { background-image: url(/i/calendar_bg.gif); }
+
+#calendarCRPFMini
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: top;
+background-color: #4C9ED8;
+}
+
+#calendarTCOSRM
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: top;
+background-color: #FFFFFF;
+background-image: url(/i/tournament/tco04/miniTCOSRM.gif);
+}
+
+#calendarFrame
+{
+border: 1px solid #43515E;
+background-color: #43515E;
+}
+
+#calendarDays
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+background-color: #666;
+background-image: url(/i/graybv_xlite_bg.gif);
+}
+
+#calendarSRM
+{
+color: #000;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+vertical-align: top;
+background-color: #FFF;
+}
+
+#calendarSRMMini
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: top;
+background-color: #00F;
+}
+
+#calendarSRMDate
+{
+color: #F00;
+font-weight: bold;
+}
+
+#calendarTCCC05
+{
+color: #FFF;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+vertical-align: top;
+background-color: #7A7A89;
+}
+
+#calendarTCCC05Mini
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+background-color: #7A7A89;
+}
+
+#calendarTCCC05Date
+{
+color: #FFFFFF;
+font-weight: bold;
+}
+
+A.calendarTCCC05Link:link
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+A.calendarTCCC05Link:visited
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+A.calendarTCCC05Link:hover
+{
+color: #0000FF;
+text-decoration: none;
+}
+
+#calendarTCO05
+{
+color: #333;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+vertical-align: top;
+background-color: #FFEA53;
+}
+
+#calendarTCO05Mini
+{
+color: #333;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+background-color: #FFEA53;
+}
+
+#calendarTCO05Date
+{
+color: #333;
+font-weight: bold;
+}
+
+A.calendarTCO05Link:link
+{
+color: #333;
+text-decoration: underline;
+}
+
+A.calendarTCO05Link:visited
+{
+color: #333;
+text-decoration: underline;
+}
+
+A.calendarTCO05Link:hover
+{
+color: #0000FF;
+text-decoration: none;
+}
+
+A.calendarTCCC05Link:active
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+A#miniTCCCDate:link
+{
+color: #FFF;
+text-decoration: none;
+}
+
+A#miniTCCCDate:visited
+{
+color: #FFF;
+text-decoration: none;
+}
+
+A#miniTCCCDate:hover
+{
+color: #FC3;
+text-decoration: none;
+}
+
+A#miniTCCCDate:active
+{
+color: #FC3;
+text-decoration: none;
+}
+
+#calendarTCO03Date
+{
+color: #00FF00;
+font-weight: bold;
+}
+
+#calendarTCO03
+{
+color: #FFF;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+vertical-align: top;
+background-image: url(/i/tournament/tco03/tco03_cal_bkgd.gif);
+background-color: #003300;
+}
+
+#calendarTCO03Mini
+{
+color: #00FF00;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+background-color: #003300;
+}
+
+#calendarGoogleMini
+{
+color: #FF0000;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+background-color: #FFFF00;
+text-decoration: none;
+}
+
+#calendarGoogleDate
+{
+color: #FF0000;
+font-weight: bold;
+}
+
+#calendarTourney
+{
+color: #FFF;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+vertical-align: top;
+background-image: url(/i/tournament/tccc03/tccc03_bkgd.gif);
+background-color: #444;
+}
+
+#calendarTourneyMini
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+background-color: #444;
+}
+
+#calendarIntel
+{
+color: #FFF;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+vertical-align: top;
+background-color: #007dc5;
+}
+#calendarIntelDate
+{
+color: #FFF;
+font-weight: bold;
+}
+A#calendarIntelLink:link
+{
+color: #FFF;
+text-decoration: underline;
+}
+A#calendarIntelLink:visited
+{
+color: #99ccff;
+text-decoration: underline;
+}
+A#calendarIntelLink:hover
+{
+color: #000;
+text-decoration: none;
+}
+
+#calendarIntelMini
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+background-color: #007dc5;
+}
+
+A#miniIntelDate:link
+{
+color: #FFF;
+text-decoration: none;
+}
+
+A#miniIntelDate:visited
+{
+color: #99ccff;
+text-decoration: none;
+}
+
+A#miniIntelDate:hover
+{
+color: #000;
+text-decoration: none;
+}
+
+A#miniSRMDate:link
+{
+color: #FFF;
+text-decoration: none;
+}
+
+A#miniSRMDate:visited
+{
+color: #FFF;
+text-decoration: none;
+}
+
+A#miniSRMDate:hover
+{
+color: #FC3;
+text-decoration: none;
+}
+
+A#miniSRMDate:active
+{
+color: #FC3;
+text-decoration: none;
+}
+
+.captionText
+{
+color: #FFF;
+font-size: 11px;
+line-height: 16px;
+font-weight: normal;
+}
+
+.cardCell
+{
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+ vertical-align: top;
+padding: 0px 15px 15px 15px;
+}
+
+.cardBody
+{
+ width: 540px;
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+ text-align: left;
+ vertical-align: top;
+line-height: 1.4;
+}
+
+.cardCode
+{
+color: #660000;
+font-size: 11px;
+font-weight: normal;
+}
+
+.cardRightTop
+{
+color: #000;
+font-size: 11px;
+font-weight: normal;
+background-color: #FFF;
+vertical-align: top;
+border: 0px;
+padding-left: 0px;
+padding-top: 15px;
+padding-right: 0px;
+padding-bottom: 0px;
+}
+
+.cardRight
+{
+color: #000;
+font-size: 11px;
+font-weight: normal;
+background-color: #FFF;
+vertical-align: top;
+border: 0px;
+padding-left: 0px;
+padding-top: 10px;
+padding-right: 0px;
+padding-bottom: 0px;
+}
+
+.code
+{
+color: #000;
+font-size: 12px;
+font-family:Courier New
+}
+
+.codeOUT
+{
+color: #000;
+font-size: 12px;
+font-family:Courier New;
+text-decoration: line-through;
+}
+
+.coderBrackets
+{
+color: #FFCC33;
+font-size: 11px;
+font-weight: normal;
+text-decoration: none;
+}
+
+.coderTextRedLarge
+{
+color: #FF0000;
+font-size: 11px;
+font-weight: bold;
+text-decoration: none;
+}
+.contractNote
+{
+padding: 10px;
+margin: 20px;
+color: #333;
+font-size: 11px;
+font-weight: normal;
+line-height: 14px;
+background-color: #EEEEEE;
+border: 1px solid #999;
+}
+
+.devProjectText, .devProjectWinner, .devProjectWinner2, .devProjectSecond, .devProjectSecond2, .devProjectSecondMoney, .devProjectSecondMoney2, .devProjectWinnerMoney, .devProjectWinnerMoney2, .devProjectInquire, .devProjectDate
+{
+color: #333;
+font-size: 11px;
+font-weight: normal;
+line-height: 14px;
+background-color: #EEEEEE;
+}
+
+.devProjectWinner, .devProjectWinner2, .devProjectSecond, .devProjectSecond2, .devProjectWinnerMoney, .devProjectWinnerMoney2, .devProjectSecondMoney, .devProjectSecondMoney2, .devProjectInquire, .devProjectDate { font-weight: bold; }
+.devProjectWinner, .devProjectWinnerMoney, .devProjectSecond2, .devProjectSecondMoney2, .devProjectInquire, .devProjectDate { background-color: #FFFFFF; }
+.devProjectWinnerMoney, .devProjectWinnerMoney2, .devProjectSecondMoney, .devProjectSecondMoney2, .devProjectDate { text-align: right; }
+.devProjectWinnerMoney, .devProjectWinnerMoney2 { color: #CC0000; }
+
+.devSubhead
+{
+font-size: 16px;
+font-weight: bold;
+}
+
+.devRightSpacer
+{
+ margin-left:0px;
+ margin-right:0px;
+ margin-top:10px;
+ margin-bottom:0px;
+ vertical-align:top;
+}
+
+.dropdown
+{
+font-size: 11px;
+color: #666666;
+background-color: #FFFFFF;
+}
+
+.errorText, .errorTextEven, .errorTextOdd
+{
+color: #FF0000;
+font-size: 12px;
+font-weight: bold;
+text-decoration: none;
+}
+
+.errorTextEven, .errorTextOdd { background-color: #EEE; }
+.errorTextOdd { background-color: #FFF; }
+
+.extraSmallText
+{
+font-size: 10px;
+font-weight: normal;
+line-height: 12px;
+}
+
+.formFrame { border: 1px solid #999; }
+
+.formHead
+{
+font-size: 18px;
+color: #666;
+font-weight: bold;
+}
+
+.formHeadSmall
+{
+font-size: 16px;
+color: #000;
+font-weight: bold;
+}
+
+.formSubhead
+{
+font-size: 15px;
+color: #666;
+font-weight: bold;
+}
+
+.formHandleEven,.formHandleOdd, .formTextEven, .formTextOdd
+{
+font-size: 11px;
+color: #FFF;
+font-weight: normal;
+vertical-align: top;
+background-color: #222;
+}
+
+.formHandleOdd { background-color: #333; }
+
+.formTextEven, .formTextOdd
+{
+color: #000;
+background-color: #EEE;
+}
+
+.formTextOdd { background-color: #FFF; }
+
+.formLabelEven, .formLabelOdd
+{
+font-size: 12px;
+color: #000;
+font-weight: bold;
+text-align: right;
+vertical-align: middle;
+background-color: #EEE;
+white-space: nowrap;
+}
+
+.formLabelOdd { background-color: #FFF; }
+
+.genTitle
+{
+ background-color: #666666;
+color: #FFFFFF;
+font-size: 14px;
+font-weight: bold;
+text-decoration: none;
+padding-top: 3px;
+padding-bottom: 3px;
+padding-left: 5px;
+padding-right: 5px;
+white-space: nowrap;
+}
+
+.genHeader
+{
+ background-color: #CCCCCC;
+color: #333333;
+font-size: 11px;
+font-weight: bold;
+text-decoration: none;
+padding-top: 3px;
+padding-bottom: 3px;
+padding-left: 5px;
+padding-right: 5px;
+white-space: nowrap;
+}
+
+.genCells
+{
+ background-color: #EEEEEE;
+color: #333333;
+font-size: 11px;
+font-weight: normal;
+text-decoration: none;
+padding-top: 2px;
+padding-bottom: 2px;
+padding-left: 5px;
+padding-right: 5px;
+}
+
+.globalNav, .globalNav_on
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: normal;
+}
+
+A.globalNav:link
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.globalNav:visited
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.globalNav:hover
+{
+color: #000000;
+text-decoration: underline;
+}
+
+A.globalNav:active
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+.globalNavDots
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: normal;
+}
+
+.globalNav_on { color: #000000; }
+
+A.globalNav_on:link
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.globalNav_on:visited
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.globalNav_on:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.globalNav_on:active
+{
+color: #000000;
+text-decoration: underline;
+}
+
+.globalNavSmall
+{
+color: #CCCCCC;
+font-size: 10px;
+font-weight: normal;
+background-color: #333;
+}
+
+A.globalNavSmall:link
+{
+color: #CCCCCC;
+text-decoration: none;
+}
+
+A.globalNavSmall:visited
+{
+color: #CCCCCC;
+text-decoration: none;
+}
+
+A.globalNavSmall:hover
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+A.globalNavSmall:active
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+.globalNavSmall_on
+{
+color: #FFFFFF;
+font-size: 10px;
+font-weight: normal;
+}
+
+A.globalNavSmall_on:link
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.globalNavSmall_on:visited
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.globalNavSmall_on:hover
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+A.globalNavSmall_on:active
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+.grayLine
+{
+color: #CCCCCC;
+font-size: 10px;
+}
+
+.guide
+{
+ width:510px;
+ text-align:left;
+padding: 15px 0px 0px 0px;
+}
+
+.guideSubTitle
+{
+font-family: Arial, Helvetica, Verdana, sans-serif;
+ font-size: 150%;
+font-weight: bold;
+margin: 0px;
+padding: 0px 0px 0px 0px;
+}
+
+.guideQuestion
+{
+color: #990000;
+font-size: 15px;
+font-weight: bold;
+font-style: italic;
+line-height: 20px;
+margin: 0px;
+padding: 0px 0px 0px 0px;
+}
+
+.guideDesc
+{
+color: #333333;
+font-size: 11px;
+font-weight: normal;
+margin: 0px;
+padding: 6px 0px 6px 0px;
+}
+
+.guideTable 
+{ 
+ width: 100%;
+ border: 1px solid #999; 
+ padding: 0px 0px 0px 0px;
+margin: 0px 0px 0px 0px;
+vertical-align: text-top;
+}
+
+.guideHead
+{
+color: #333;
+font-size: 11px;
+font-weight: normal;
+line-height: 14px;
+background-color: #EEEEEE;
+white-space: nowrap;
+padding: 8px 5px 8px 5px;
+vertical-align: text-top;
+}
+
+.guideCell
+{
+color: #333;
+font-size: 11px;
+font-weight: normal;
+line-height: 14px;
+background-color: #EEEEEE;
+padding: 8px 5px 8px 5px;
+vertical-align: text-top;
+}
+.homeTopBar
+{
+font-size: 10px;
+color: #FFF;
+font-style: normal;
+font-weight: bold;
+white-space: nowrap;
+background-color: #333333;
+padding: 3px 10px 3px 10px;
+}
+.homeLogo
+{
+background-color: #000000;
+color: #333333;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+padding: 0px 15px 0px 15px;
+ margin: 0px 0px 0px 0px;
+text-align: left;
+}
+.homeRedBar
+{
+font-size: 12px;
+font-weight: bold;
+text-align: center;
+color: #FFF;
+white-space: nowrap;
+background-color: #000;
+background-image: url(/i/redbv_lite_bg.gif);
+padding: 3px 10px 3px 10px;
+border-top:  4px solid #666666;
+border-bottom:  2px solid #000000;
+}
+.header
+{
+font-size: 14px;
+font-weight: bold;
+color: #FFF;
+white-space: nowrap;
+background-color: #999999;
+vertical-align:top;
+padding-left: 7px;
+padding-top: 3px;
+padding-right: 7px;
+padding-bottom: 3px;
+}
+
+A.header:link
+{
+color: #FFFFFF;
+text-decoration: none;
+ padding: 0px 0px 0px 0px;
+}
+
+A.header:visited
+{
+color: #FFFFFF;
+text-decoration: none;
+ padding: 0px 0px 0px 0px;
+}
+
+A.header:hover
+{
+color: #FFCC00;
+text-decoration: none;
+ padding: 0px 0px 0px 0px;
+}
+
+A.header:hover
+{
+color: #FFCC00;
+text-decoration: none;
+ padding: 0px 0px 0px 0px;
+}
+.headerWhite
+{
+color: #FFFFFF;
+font-size: 18px;
+font-weight: bold;
+}
+
+.headStripe { background: #666; }
+
+.leadPhoto
+{
+float: right;
+position: relative;
+top: 0px;
+width: 200px;
+margin-left: 10px;
+margin-top: 0px;
+margin-right: 2px;
+margin-bottom: 4px;
+}
+
+.leadPhotoCaption
+{
+font-size: 10px;
+font-weight: bold;
+color: #333333;
+margin-top: 5px;
+}
+
+A.left:link
+{
+color: #000;
+text-decoration: none;
+}
+
+A.left:visited
+{
+color: #000;
+text-decoration: none;
+}
+
+A.left:hover
+{
+color: #F00;
+text-decoration: none;
+}
+
+A.left:active
+{
+color: #F00;
+text-decoration: none;
+}
+
+A.leftOn:link
+{
+color: #FFF;
+text-decoration: none;
+}
+
+A.leftOn:visited
+{
+color: #FFF;
+text-decoration: none;
+}
+
+A.leftOn:hover
+{
+color: #F00;
+text-decoration: none;
+}
+
+A.leftOn:active
+{
+color: #F00;
+text-decoration: none;
+}
+
+.leftColumn { background-color: #CCC; }
+
+#leftDate, #leftNav, #leftNavApplet, #leftNavOn, #leftNavSelect, #leftSubnavOld, #leftSubnavOldOn, #leftSubnav, #leftSubnavOn, #leftNavSubtitle, #leftNavTitle
+{
+color: #000;
+font-size: 12px;
+font-weight: normal;
+background-color: #E3E3E3;
+vertical-align: middle;
+padding-top: 4px;
+padding-right: 5px;
+padding-bottom: 4px;
+padding-left: 5px;
+border-style: solid;
+border-top-width: 0px;
+border-right-width: 0px;
+border-bottom-width: 1px;
+border-left-width: 0px;
+border-color: #7D7D7D;
+}
+
+#leftNav { font-weight: bold; }
+
+#leftNavApplet
+{
+font-weight: bold;
+background-color: #FC3;
+}
+
+#leftNavOn
+{
+font-weight: bold;
+background-image: url(/i/left_nav_select_bkgd.gif);
+background-color: #585858;
+border-color: #585858;
+}
+
+#leftNavSelect
+{
+font-weight: bold;
+background-color: #313131;
+border-color: #313131;
+}
+
+#leftSubnav
+{
+font-weight: bold;
+background-image: url(/i/left_nav_select_bkgd.gif);
+background-color: #585858;
+padding-left: 15px;
+border-color: #585858;
+}
+
+#leftSubnavOn
+{
+font-weight: bold;
+background-color: #313131;
+padding-left: 15px;
+border-color: #313131;
+}
+
+#leftSubnavOld
+{
+font-weight: normal;
+background-image: url(/i/left_nav_select_bkgd.gif);
+background-color: #585858;
+padding-left: 15px;
+border-color: #585858;
+}
+
+#leftSubnavOldOn
+{
+font-weight: normal;
+background-color: #313131;
+padding-left: 15px;
+border-color: #313131;
+}
+
+#leftNavSubtitle
+{
+color: #CCC;
+font-weight: bold;
+background-image: url(/i/left_nav_select_bkgd.gif);
+background-color: #585858;
+border-color: #585858;
+}
+
+#leftNavTitle
+{
+font-weight: bold;
+background-color: #CCCCCC;
+}
+
+.devInstrTable
+{
+ margin-top: 5px;
+ border-top: 1px solid #999999;
+ border-bottom: 1px solid #999999;
+}
+
+.devInstrTitle
+{
+ margin-top: 15px;
+}
+
+.devInstrHeader
+{
+ font-size: 12px; 
+font-weight: bold;
+color: #333333;
+vertical-align: top;
+padding: 4px 4px 4px 4px;
+}
+
+.devInstr
+{
+ font-size: 12px; 
+font-weight: normal;
+color: #333333;
+vertical-align: top;
+padding: 4px 4px 4px 4px;
+}
+
+.noSpList
+{
+margin-top: 0px;
+ padding-top: 0px;
+}
+
+.noSpListTitle
+{
+margin-bottom: 0px;
+ padding-bottom: 0px;
+}
+
+.login
+{
+font-size: 10px;
+color: #FFF;
+font-style: normal;
+font-weight: normal;
+}
+
+.loginForm { background-color: #666; }
+
+A.loginLinks:link
+{
+color: #FFFFFF;
+font-weight: bold;
+text-decoration: none;
+}
+
+A.loginLinks:visited
+{
+color: #FFFFFF;
+font-weight: bold;
+text-decoration: none;
+}
+
+A.loginLinks:hover
+{
+color: #FC3;
+font-weight: bold;
+text-decoration: underline;
+}
+
+A.loginLinks:active
+{
+color: #FC3;
+font-weight: bold;
+text-decoration: underline;
+}
+
+.loginText
+{
+color: #FFF;
+font-size: 11px;
+font-weight: normal;
+white-space: nowrap;
+}
+
+A.loginText:link
+{
+color: #FC3;
+font-weight: bold;
+text-decoration: none;
+}
+
+A.loginText:visited
+{
+color: #FC3;
+font-weight: bold;
+text-decoration: none;
+}
+
+A.loginText:hover
+{
+color: #C00;
+font-weight: bold;
+text-decoration: underline;
+}
+
+A.loginText:active
+{
+color: #C00;
+font-weight: bold;
+text-decoration: underline;
+}
+
+.memberhandle
+{
+font-size: 11px;
+font-weight: bold;
+color: #FFFFFF;
+}
+
+.memberPhoto
+{
+border: 2px solid #999999;
+background-color: #FFFFFF;
+}
+
+.messageBoxFrame 
+{ 
+border: 1px solid #999;
+width: 180px;
+}
+
+.messageBoxText
+{
+color: #333333;
+font-size: 12px;
+font-weight: normal;
+padding: 5px;
+background-color: #DDDDFF;
+}
+
+.messageSmall
+{
+color: #FFFFFF;
+font-size: 10px;
+font-weight: normal;
+}
+
+A.messageSmall:link
+{
+color: #FFCC33;
+text-decoration: none;
+}
+
+A.messageSmall:visited
+{
+color: #FFCC33;
+text-decoration: none;
+}
+
+A.messageSmall:hover
+{
+color: #666666;
+text-decoration: underline;
+}
+
+A.messageSmall:active
+{
+color: #666666;
+text-decoration: underline;
+}
+
+.methNav
+{
+font-size: 11px;
+font-weight: normal;
+}
+
+A.methNav:link
+{
+color: #00F;
+text-decoration: none;
+}
+
+A.methNav:visited
+{
+color: #006;
+text-decoration: none;
+}
+
+A.methNav:hover
+{
+color: #F00;
+text-decoration: underline;
+}
+
+A.methNav:active
+{
+color: #F00;
+text-decoration: underline;
+}
+
+.moduleSubhead
+{
+color: #CC0000;
+font-size: 11px;
+font-weight: bold;
+}
+
+A.moduleSubhead:link
+{
+color: #CC0000;
+text-decoration: none;
+}
+
+A.moduleSubhead:visited
+{
+color: #990000;
+text-decoration: none;
+}
+
+A.moduleSubhead:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.moduleSubhead:active
+{
+color: #999999;
+text-decoration: underline;
+}
+
+.moduleText
+{
+font-size: 11px;
+font-weight: normal;
+color: #000000;
+}
+
+A.moduleText:link
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.moduleText:visited
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.moduleText:hover
+{
+color: #000000;
+text-decoration: underline;
+}
+
+A.moduleText:active
+{
+color: #000000;
+text-decoration: underline;
+}
+
+.moduleTitle
+{
+color: #CCCCCC;
+font-size: 10px;
+font-weight: bold;
+}
+
+.multiColText
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: normal;
+margin-left: 5px;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+text-indent: -5px;
+}
+
+.myStatsRatingName, .myStatsRatingAmount, .myStatsEarningsName, .myStatsEarningsAmount, .myStatsTitle
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+vertical-align: middle;
+
+}
+
+.myStatsRatingName, .myStatsEarningsName, .myStatsTitle
+{
+padding-top: 3px;
+padding-right: 3px;
+padding-bottom: 3px;
+padding-left: 5px;
+}
+
+.myStatsRatingAmount, .myStatsEarningsAmount
+{
+text-align: right;
+padding-top: 3px;
+padding-right: 5px;
+padding-bottom: 3px;
+padding-left: 3px;
+}
+
+.myStatsRatingName, .myStatsRatingAmount
+{
+  background-color: #222222;
+}
+
+.myStatsEarningsName, .myStatsEarningsAmount
+{
+  background-color: #333333;
+}
+
+.myStatsPhoto
+{
+border: 2px solid #999999;
+background-color: #FFFFFF;
+margin: 5px;
+}
+
+.myStatsTitle
+{
+font-weight: bold;
+  background-image: url(/i/graybv_lite_bg.gif);
+  background-color: #444444;
+}
+
+.myTCBody
+{
+ width: 540px;
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+ text-align: left;
+ vertical-align: top;
+line-height: 1.4;
+}
+
+.newsIconCell
+{
+color: #333333;
+font-size: 11px;
+font-weight: bold;
+font-style: normal;
+vertical-align: top;
+text-align: left;
+padding: 5px 10px 0px 0px;
+border-top: 1px solid #666666;
+white-space: nowrap;
+}
+
+.newsLinksCell
+{
+vertical-align: top;
+text-align: right;
+padding: 5px 0px 8px 0px;
+color: #333333;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+}
+
+.newsTextCell
+{
+width: 100%;
+vertical-align: top;
+text-align: left;
+padding: 2px 0px 0px 0px;
+border-top: 1px solid #666666;
+color: #333333;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+}
+
+.newsPhotoTable
+{
+width: 100%;
+color: #333333;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+}
+.newsPhoto
+{
+width: 1%;
+white-space: nowrap;
+color: #000000;
+font-size: 11px;
+padding: 0px 0px 0px 5px;
+text-align: right;
+font-style: italic;
+}
+.newsTitle
+{
+font-size: 14px;
+font-weight: bold;
+}
+
+.newsText
+{
+color: #666;
+font-size: 12px;
+font-weight: normal;
+}
+
+.nonBreadcrumb { background-color: #000; }
+
+.ongray
+{
+color: #000000;
+font-size: 11px;
+font-weight: bold;
+}
+
+A.ongray:link
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.ongray:visited
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.ongray:hover
+{
+color: #000000;
+text-decoration: underline;
+}
+
+A.ongray:active
+{
+color: #000000;
+text-decoration: underline;
+}
+
+.oppDesc
+{
+color: #333333;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+padding: 0px 10px 15px 0px;
+ margin: 0px 0px 0px 0px;
+}
+
+.openProjects
+{
+color: #CC0000;
+font-size: 10px;
+font-weight: bold;
+}
+
+A.openProjects:link
+{
+color: #CC0000;
+text-decoration: none;
+}
+
+A.openProjects:visited
+{
+color: #CC0000;
+text-decoration: none;
+}
+
+A.openProjects:hover
+{
+color: #666666;
+text-decoration: underline;
+}
+
+A.openProjects:active
+{
+color: #666666;
+text-decoration: underline;
+}
+
+.outline1
+{
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+line-height: 1.4;
+ padding-left:15px;
+ padding-right:0px;
+ padding-top:0px;
+ padding-bottom:0px;
+}
+
+.outline2
+{
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+line-height: 1.4;
+ padding-left:30px;
+ padding-right:0px;
+ padding-top:0px;
+ padding-bottom:0px;
+}
+
+.outline3
+{
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+line-height: 1.4;
+ padding-left:45px;
+ padding-right:0px;
+ padding-top:0px;
+ padding-bottom:0px;
+}
+
+.outline4
+{
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+line-height: 1.4;
+ padding-left:60px;
+ padding-right:0px;
+ padding-top:0px;
+ padding-bottom:0px;
+}
+.photoFrameBig
+{
+border: 1px solid #000;
+background-color: #CCCCCC;
+}
+
+.photoFrameSmall
+{
+border: 1px solid #000;
+background-color: #CCCCCC;
+margin-left: 4px;
+margin-top: 2px;
+margin-right: 4px;
+margin-bottom: 2px;
+}
+
+.pointsName, .pointsScore, .pointsLabel, .points
+{
+font-size: 12px;
+font-weight: normal;
+color: #333333;
+background-color: #EEEEEE;
+text-align: left;
+padding: 8px;
+margin: 1px;
+white-space: nowrap;
+}
+
+.pointsName { width: 100px; }
+.points, .pointsScore { text-align: right; }
+.pointsScore { width: 30px; }
+
+.pointsTable
+{
+background-color: #FFFFFF;
+border-style: solid;
+border-color: #CCCCCC;
+border-width: 1px;
+}
+
+A.problemText:link
+{
+color: #FFCC33;
+text-decoration: none;
+}
+
+A.problemText:visited
+{
+color: #CCCCCC;
+text-decoration: none;
+}
+
+A.problemText:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.problemText:active
+{
+color: #999999;
+text-decoration: underline;
+}
+
+.promoCallout
+{
+color: #000000;
+font-size: 14px;
+font-weight: bold;
+line-height: 20px;
+}
+
+.projectTitles
+{
+ background-color: #666666;
+color: #FFFFFF;
+font-size: 14px;
+font-weight: bold;
+text-decoration: none;
+padding-top: 3px;
+padding-bottom: 3px;
+padding-left: 5px;
+padding-right: 5px;
+white-space: nowrap;
+}
+
+.projectHeaders
+{
+ background-color: #CCCCCC;
+color: #333333;
+font-size: 11px;
+font-weight: bold;
+text-decoration: none;
+padding-top: 3px;
+padding-bottom: 3px;
+padding-left: 5px;
+padding-right: 5px;
+white-space: nowrap;
+}
+
+.projectCells
+{
+ background-color: #EEEEEE;
+color: #333333;
+font-size: 11px;
+font-weight: normal;
+text-decoration: none;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+}
+
+.promoCorp
+{
+color: #333333;
+font-size: 11px;
+line-height: 1.4;
+font-weight: normal;
+}
+
+.promoText
+{
+color: #000000;
+font-size: 12px;
+font-weight: normal;
+line-height: 18px;
+}
+
+.prHead
+{
+color: #666;
+font-size: 12px;
+font-weight: normal;
+}
+
+.prOtherPubs
+{
+color: #666;
+font-size: 10px;
+font-weight: normal;
+}
+
+.prText
+{
+color: #000000;
+font-size: 13px;
+line-height: 20px;
+font-weight: normal;
+}
+
+.quickstatText
+{
+color: #FFCC33;
+font-size: 10px;
+font-weight: normal;
+text-decoration: none;
+}
+
+A.quickstatText:link
+{
+color: #FFCC33;
+text-decoration: none;
+}
+
+A.quickstatText:visited
+{
+color: #FFCC33;
+text-decoration: none;
+}
+
+A.quickstatText:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.quickstatText:active
+{
+color: #999999;
+text-decoration: underline;
+}
+
+.rPic
+{
+border: 0px;
+margin: 0px 5px 0px 0px;
+}
+
+.registerLabel
+{
+color: #FFFFFF;
+font-size: 12px;
+text-align: right;
+font-weight: bold;
+background-color: #43515E;
+}
+
+A.registerLabel:link
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.registerLabel:visited
+{
+color: #999999;
+text-decoration: none;
+}
+
+A.registerLabel:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.registerLabel:active
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+.registerNav
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: bold;
+}
+
+A.registerNav:link
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.registerNav:visited
+{
+color: #999999;
+text-decoration: none;
+}
+
+A.registerNav:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.registerNav:active
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+.registerNav_on
+{
+color: #000000;
+font-size: 11px;
+font-weight: bold;
+}
+
+A.registerNav_on:link
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.registerNav_on:visited
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.registerNav_on:hover
+{
+color: #000000;
+text-decoration: underline;
+}
+
+A.registerNav_on:active
+{
+color: #000000;
+text-decoration: underline;
+}
+
+.registerToday
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: bold;
+}
+
+A.registerToday:link
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.registerToday:visited
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.registerToday:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.registerToday:active
+{
+color: #999999;
+text-decoration: underline;
+}
+
+.searchSpacer{ 
+width: 550px; 
+padding-left: 50%;
+padding-right: 50%;
+
+}
+.searchHeaders
+{
+ background-color: #CCCCCC;
+color: #333333;
+font-size: 11px;
+font-weight: bold;
+text-decoration: none;
+padding-top: 3px;
+padding-bottom: 3px;
+padding-left: 5px;
+padding-right: 5px;
+white-space: nowrap;
+}
+
+.searchText
+{
+background-color: #EEEEEE;
+color: #333333;
+font-size: 11px;
+font-weight: normal;
+text-decoration: none;
+}
+
+.search
+{
+font-size: 11px;
+color: #FFF;
+font-style: normal;
+font-weight: normal;
+background-color: #333333;
+}
+
+.sectionTitle
+{
+color: #000000;
+font-size: 18px;
+font-weight: bold;
+}
+
+.sectionTitleBrackets
+{
+color: #CC0000;
+font-size: 17px;
+font-weight: bold;
+}
+
+.sidebarBox { border: 1px solid #CCCCCC; }
+
+.sidebarText
+{
+color: #333;
+font-size: 11px;
+font-weight: normal;
+line-height: 14px;
+background-color: #EEEEEE;
+}
+
+.sidebarTextIndent
+{
+color: #333;
+font-size: 11px;
+font-weight: normal;
+line-height: 14px;
+background-color: #EEEEEE;
+padding-left: 25px;
+}
+
+.sidebarTitle
+{
+color: #333;
+font-size: 11px;
+font-weight: bold;
+background-color: #CCCCCC;
+}
+
+.sideNote
+{
+width: 500px;
+padding: 10px;
+margin: 20px;
+color: #333;
+font-size: 11px;
+font-weight: normal;
+line-height: 14px;
+background-color: #EEEEEE;
+border: 1px solid #999;
+}
+
+.smallBrackets
+{
+color: #CC0000;
+font-size: 10px;
+font-weight: bold;
+}
+
+.smallFoot
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: normal;
+}
+
+A.smallFoot:link
+{
+color: #CCC;
+text-decoration: none;
+}
+
+A.smallFoot:visited
+{
+color: #CCC;
+text-decoration: none;
+}
+
+A.smallFoot:hover
+{
+color: #FFF;
+text-decoration: underline;
+}
+
+A.smallFoot:active
+{
+color: #FFF;
+text-decoration: underline;
+}
+
+.smallText
+{
+color: #333333;
+font-size: 11px;
+line-height: 1.4;
+font-weight: normal;
+}
+
+A.smallText:link
+{
+color: #CC0000;
+text-decoration: none;
+}
+
+A.smallText:visited
+{
+color: #990000;
+text-decoration: none;
+}
+
+A.smallText:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.smallText:active
+{
+color: #999999;
+text-decoration: underline;
+}
+
+#specialMessage
+{
+color: #C00;
+font-size: 11px;
+font-weight: bold;
+background-color: #CC6;
+text-align: left;
+vertical-align: middle;
+padding-left: 5px;
+padding-top: 5px;
+padding-right: 5px;
+padding-bottom: 5px;
+}
+
+.statsCellsDk
+{
+ background-color: #EEEEEE;
+color: #333333;
+font-size: 11px;
+font-weight: normal;
+text-decoration: none;
+padding-top: 2px;
+padding-bottom: 2px;
+padding-left: 3px;
+padding-right: 3px;
+}
+
+.statsCellsLt
+{
+ background-color: #FFFFFF;
+color: #333333;
+font-size: 11px;
+font-weight: normal;
+text-decoration: none;
+padding-top: 2px;
+padding-bottom: 2px;
+padding-left: 3px;
+padding-right: 3px;
+}
+
+.statsHighlight
+{
+ background-color: #000000;
+color: #FFFFFF;
+font-size: 11px;
+font-weight: bold;
+text-decoration: none;
+padding-top: 3px;
+padding-bottom: 3px;
+padding-left: 5px;
+padding-right: 5px;
+white-space: nowrap;
+}
+
+.statText, .statTextBig, .statTextLarge
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: normal;
+text-decoration: none;
+}
+
+A.statText:link
+{
+color: #FC3;
+text-decoration: none;
+}
+
+A.statText:visited
+{
+color: #B98B30;
+text-decoration: none;
+}
+
+A.statText:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.statText:active
+{
+color: #999999;
+text-decoration: underline;
+}
+
+.statTextBig, .statTextLarge
+{
+font-weight: bold;
+}
+
+A.statTextBig:link
+{
+color: #FC3;
+text-decoration: none;
+}
+
+A.statTextBig:visited
+{
+color: #B98B30;
+text-decoration: none;
+}
+
+A.statTextBig:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.statTextBig:active
+{
+color: #999999;
+text-decoration: underline;
+}
+
+.statTextSmall
+{
+color: #FFFFFF;
+font-size: 10px;
+font-weight: normal;
+text-decoration: none;
+}
+
+A.statTextSmall:link
+{
+color: #FC3;
+text-decoration: none;
+}
+
+A.statTextSmall:visited
+{
+color: #B98B30;
+text-decoration: none;
+}
+
+A.statTextSmall:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.statTextSmall:active
+{
+color: #999999;
+text-decoration: underline;
+}
+
+.statTableIndent
+{
+width: 100%;
+background-color:#001B35;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.subNav
+{
+color: #FFCC33;
+font-size: 11px;
+font-weight: bold;
+}
+
+A.subNav:link
+{
+color: #FFCC33;
+text-decoration: none;
+}
+
+A.subNav:visited
+{
+color: #FFCC33;
+text-decoration: none;
+}
+
+A.subNav:hover
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+A.subNav:active
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+.subNav_on
+{
+color: #000000;
+font-size: 11px;
+font-weight: normal;
+}
+
+A.subNav_on:link
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.subNav_on:visited
+{
+color: #000000;
+text-decoration: none;
+}
+
+A.subNav_on:hover
+{
+color: #666666;
+text-decoration: underline;
+}
+
+A.subNav_on:active
+{
+color: #000000;
+text-decoration: underline;
+}
+
+.super
+{
+font-size: 6px;
+vertical-align: super;
+}
+
+.surveyButtons
+{
+color: #FFFFFF;
+font-size: 12px;
+font-weight: bold;
+text-align: center;
+padding-top: 0px;
+padding-right: 10px;
+padding-bottom: 5px;
+padding-left: 10px;
+}
+
+.surveyFrame { border: 1px solid #999; }
+
+.surveyText
+{
+color: #333333;
+font-size: 12px;
+font-weight: normal;
+padding: 5px;
+}
+
+.surveyTextBig
+{
+color: #000000;
+font-size: 14px;
+font-weight: bold;
+}
+
+#tccc_banner
+{
+background-image: url(/i/tournament/tccc03/tccc_banner_bkgd.jpg);
+background-color: #333;
+}
+
+#tccc_bkgd
+{
+background-image: url(/i/tournament/tccc03/tccc03_bkgd.gif);
+background-color: #333;
+}
+
+.tco04Message
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: normal;
+padding: 5px;
+background-color: #FF6600;
+}
+
+A.tco04MessageLink:link
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+A.tco04MessageLink:visited
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+A.tco04MessageLink:hover
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.tco04MessageLink:active
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+.tco04DevHeader
+{
+color: #FFFFFF;
+font-size: 14px;
+font-weight: bold;
+text-decoration: none;
+margin: 0px;
+padding: 3px 5px 3px 5px;
+background-color: #FFFFFF;
+background-image: url(/i/tournament/tco04/bv_lite_bg.gif);
+white-space: nowrap;
+}
+
+.tco04UsdcCombo
+{
+color: #FFFFFF;
+font-size: 14px;
+font-weight: bold;
+text-decoration: none;
+margin: 0px;
+padding: 3px 5px 3px 5px;
+background-color: #FFFFFF;
+background-image: url(/i/tournament/tco04Usdc.gif);
+white-space: nowrap;
+}
+.tccc05Message
+{
+color: #FFFFFF;
+font-size: 11px;
+font-weight: normal;
+padding: 5px;
+background-color: #7A7A89;
+}
+
+A.tccc05MessageLink:link
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+A.tccc05MessageLink:visited
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+A.tccc05MessageLink:hover
+{
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.tccc05MessageLink:active
+{
+color: #FFFFFF;
+text-decoration: underline;
+}
+
+.tco05Message
+{
+color: #333333;
+font-size: 11px;
+font-weight: normal;
+padding: 5px;
+background-color: #FFFFFF;
+}
+
+.terciary
+{
+color: #666666;
+font-size: 12px;
+font-weight: bold;
+font-style: normal;
+text-align: right;
+vertical-align: middle;
+white-space: nowrap;
+}
+
+.terciary A:link
+{
+color: #00F;
+font-weight: normal;
+text-decoration: underline;
+}
+
+.terciary A:visited
+{
+color: #006;
+font-weight: normal;
+text-decoration: underline;
+}
+
+.terciary A:hover
+{
+color: #F00;
+font-weight: normal;
+text-decoration: none;
+}
+
+.terciary A:active
+{
+color: #F00;
+font-weight: normal;
+text-decoration: none;
+}
+
+.testTableTitle
+{
+font-size: 12px;
+color: #FFF;
+font-weight: bold;
+vertical-align: middle;
+background-image: url(/i/graybv_lite_bg.gif);
+background-color: #666;
+white-space: nowrap;
+}
+
+.testTableTitle_on
+{
+font-size: 12px;
+color: #FFF;
+font-weight: bold;
+vertical-align: middle;
+background-image: url(/i/graybv_bg.gif);
+background-color: #666;
+white-space: nowrap;
+}
+
+.testTableTitle_off
+{
+font-size: 12px;
+color: #FFF;
+font-weight: bold;
+vertical-align: middle;
+background-image: url(/i/graybv_lite_bg.gif);
+background-color: #666;
+white-space: nowrap;
+}
+
+.testTableTitleSmall
+{
+font-size: 12px;
+color: #FFF;
+font-weight: bold;
+vertical-align: middle;
+background-color: #666;
+white-space: nowrap;
+}
+
+.time
+{
+color: #FFFFFF;
+font-size: 10px;
+font-weight: normal;
+text-decoration: none;
+}
+
+A.time:link
+{
+color: #FC3;
+text-decoration: none;
+}
+
+A.time:visited
+{
+color: #B98B30;
+text-decoration: none;
+}
+
+A.time:hover
+{
+color: #999999;
+text-decoration: underline;
+}
+
+A.time:active
+{
+color: #999999;
+text-decoration: underline;
+}
+
+.topPage { text-align: right; }
+
+.topNavBar
+{
+background-color: #900;
+background-image: url(/i/redbv_lite_bg.gif);
+}
+
+.topNav
+{
+font-size: 12px;
+font-weight: bold;
+color: #FFF;
+white-space: nowrap;
+background-color: #900;
+background-image: url(/i/redbv_lite_bg.gif);
+padding-left: 10px;
+padding-top: 3px;
+padding-right: 10px;
+padding-bottom: 3px;
+}
+
+.topNavOn
+{
+font-size: 12px;
+font-weight: bold;
+color: #FFF;
+white-space: nowrap;
+background-color: #600;
+background-image: url(/i/redbv_dark_bg.gif);
+padding-left: 10px;
+padding-top: 3px;
+padding-right: 10px;
+padding-bottom: 3px;
+}
+
+A.topLink:link
+{
+color: #FFF;
+white-space: nowrap;
+text-decoration: none;
+}
+
+A.topLink:visited
+{
+color: #FFF;
+white-space: nowrap;
+text-decoration: none;
+}
+
+A.topLink:hover
+{
+color: #FC3;
+white-space: nowrap;
+text-decoration: none;
+}
+
+A.topLink:active
+{
+color: #FC3;
+white-space: nowrap;
+text-decoration: none;
+}
+
+.tourney_bkgd { background-color: #2A2A2A; }
+
+.tourney_subhead1
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+margin: 0px;
+padding: 3px;
+background-image: url(/i/graybv_lite_bg.gif);
+background-color: #6C6C6C;
+white-space: nowrap;
+}
+
+.tourney_subhead2
+{
+color: #FFF;
+font-size: 11px;
+font-weight: normal;
+margin: 0px;
+padding: 3px;
+background-color: #4A4A4A;
+white-space: nowrap;
+}
+
+.tourney_subject
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+text-align: left;
+margin: 0px;
+padding-left: 8px;
+padding-top: 3px;
+padding-right: 8px;
+padding-bottom: 3px;
+background-color: #505050;
+}
+
+.tourney_subnav
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+margin: 0px;
+padding-left: 8px;
+padding-top: 3px;
+padding-right: 8px;
+padding-bottom: 3px;
+background-color: #4A4A4A;
+white-space: nowrap;
+}
+
+.tourney_subnav_on
+{
+color: #FFF;
+font-size: 11px;
+font-weight: bold;
+text-align: center;
+margin: 0px;
+padding-left: 8px;
+padding-top: 3px;
+padding-right: 8px;
+padding-bottom: 3px;
+background-color: #3A3A3A;
+white-space: nowrap;
+}
+
+.tutorBody
+{
+ width: 540px;
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+ text-align: left;
+ vertical-align: top;
+line-height: 1.4;
+padding: 10px 15px 10px 15px;
+}
+
+.tutorBodyFull
+{
+ color: #333333;
+ font-size: 12px;
+ font-weight: normal;
+ font-style: normal;
+ text-align: left;
+ vertical-align: top;
+line-height: 1.4;
+padding: 10px 15px 10px 15px;
+}
+
+.tutorHeader
+{
+font-size: 14px;
+font-weight: bold;
+color: #FFF;
+white-space: nowrap;
+background-color: #999999;
+vertical-align:top;
+padding: 3px 5px 3px 5px;
+}
+
+.tutorOdd
+{
+ background-color: #FFFFFF;
+color: #333333;
+font-size: 12px;
+font-weight: normal;
+text-decoration: none;
+vertical-align:top;
+padding: 3px 5px 3px 5px;
+}
+
+.tutorEven
+{
+ background-color: #EEEEEE;
+color: #333333;
+font-size: 12px;
+font-weight: normal;
+text-decoration: none;
+vertical-align:top;
+padding: 3px 5px 3px 5px;
+}
+
+.vbcON
+{
+ background-color: #990000;
+color: #FFFFFF;
+font-size: 12px;
+font-weight: bold;
+text-decoration: none;
+text-align: right;
+white-space: nowrap;
+padding: 0px 5px 0px 5px;
+}
+
+.vbcOFF
+{
+ background-color: #FFFFFF;
+color: #990000;
+font-size: 12px;
+font-weight: bold;
+text-decoration: none;
+text-align: right;
+white-space: nowrap;
+padding: 0px 0px 0px 10px;
+}
+
+A.vbcLINK:link
+{
+color: #990000;
+text-decoration: none;
+}
+
+A.vbcLINK:visited
+{
+color: #990000;
+text-decoration: none;
+}
+
+A.vbcLINK:hover
+{
+color: #FF0000;
+text-decoration: underline;
+}
+
+A.vbcLINK:active
+{
+color: #990000;
+text-decoration: underline;
+}
+
+.usdc_banner
+{
+color: #FFFFFF;
+font-size: 14px;
+font-weight: bold;
+text-decoration: none;
+margin: 0px;
+padding: 3px 5px 3px 5px;
+background-color: #02359B;
+background-image: url(/i/development/usdc_banner.gif);
+white-space: nowrap;
+}
+
+.usdcTitle
+{
+color: #000000;
+font-size: 18px;
+font-weight: bold;
+text-decoration: none;
+}
+
+A.usdcTitle:link
+{
+color: #0000FF;
+text-decoration: underline;
+}
+
+A.usdcTitle:visited
+{
+color: #0000FF;
+text-decoration: underline;
+}
+
+A.usdcTitle:hover
+{
+color: #FF0000;
+text-decoration: underline;
+}
+
+A.usdcTitle:active
+{
+color: #0000FF;
+text-decoration: underline;
+}
+
+.usdcSubtitle
+{
+color: #000000;
+font-size: 15px;
+font-weight: bold;
+text-decoration: none;
+}
+
+A.usdcSubtitle:link
+{
+color: #0000FF;
+text-decoration: underline;
+}
+
+A.usdcSubtitle:visited
+{
+color: #0000FF;
+text-decoration: underline;
+}
+
+A.usdcSubtitle:hover
+{
+color: #FF0000;
+text-decoration: underline;
+}
+
+A.usdcSubtitle:active
+{
+color: #0000FF;
+text-decoration: underline;
+}
+
+.usdcSubNav, .usdcSubNav_On
+{
+font-size: 12px;
+font-weight: bold;
+color: #FFF;
+white-space: nowrap;
+background-color: #003399;
+background-image: url(/i/development/usdc_bv_light.gif);
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.usdcSubNav_On
+{
+background-color: #003399;
+background-image: url(/i/development/usdc_bv_dark.gif);
+}
+
+
+

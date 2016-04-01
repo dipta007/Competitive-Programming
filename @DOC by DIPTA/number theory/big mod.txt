@@ -1,0 +1,15 @@
+#define ll long long
+
+ll Mod; 	 // ja die mod korte hbe
+
+ll BigMod(ll B,ll E)		// B= base & E= expo or power
+{
+	if(E==0) return 1;
+	if(E%2==0)
+	{
+		ll ret=BigMod(B,E/2);
+		return ((ret%Mod)*(ret%Mod))%Mod;
+	}
+	else return ((B%Mod)*(BigMod(B,E-1)%Mod))%Mod;
+
+}

@@ -1,0 +1,13 @@
+#include <string.h>
+#include <cstring>
+
+strcpy(destination,source) - copy whole string
+strncpy(destination,source,size) - copy a part of source
+								 - size from the first
+								 - After that null character must be manually added
+strcat(destination,source) - destination = destination + source
+strcmp(str1,str2) - 0 = equal
+					1 = str1 boro
+					-1 = str2 boro
+strncmp(str1,str2,size) - compare 1st size part
+						- return value same as strcmp

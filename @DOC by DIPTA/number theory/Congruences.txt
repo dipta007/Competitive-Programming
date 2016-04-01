@@ -1,0 +1,78 @@
+Let a=a^' (mod m) and b=b^' (mod m), then important properties of congruences include the following, where => means "implies":
+
+1. Equivalence: a=b (mod 0)=>a=b (which can be regarded as a definition).
+
+2. Determination: either a=b (mod m) or a?b (mod m).
+
+3. Reflexivity: a=a (mod m).
+
+4. Symmetry: a=b (mod m)=>b=a (mod m).
+
+5. Transitivity: a=b (mod m) and b=c (mod m)=>a=c (mod m).
+
+6. a+b=a^'+b^' (mod m).
+
+7. a-b=a^'-b^' (mod m).
+
+8. ab=a^'b^' (mod m).
+
+9. a=b (mod m)=>ka=kb (mod m).
+
+10. a=b (mod m)=>a^n=b^n (mod m).
+
+11. a=b (mod m_1) and a=b (mod m_2)=>a=b (mod [m_1,m_2]), where [m_1,m_2] is the least common multiple.
+
+12. ak=bk (mod m)=>a=b (mod m/((k,m))), where (k,m) is the greatest common divisor.
+
+13. If a=b (mod m), then P(a)=P(b) (mod m), for P(x) a polynomial.
+
+
+// er por ar bujhi nai.... NCPC ER PORE OBOSSOI BUJHTE HOBE
+
+Properties (6-8) can be proved simply by defining
+
+a	=	a^'+rm	
+(3)
+b	=	b^'+sm,	
+(4)
+where r and s are integers. Then
+
+a+b	=	a^'+b^'+(r+s)m	
+(5)
+a-b	=	a^'-b^'+(r-s)m	
+(6)
+ab	=	a^'b^'+(a^'s+b^'r+rsm)m,	
+(7)
+so the properties are true.
+
+Congruences also apply to fractions. For example, note that
+
+ 2×4=1    3×3=2    6×6=1 (mod 7), 	
+(8)
+so
+
+ 1/2=4    1/4=2    2/3=3    1/6=6 (mod 7). 	
+(9)
+To find p/q (mod m) where (q,m)=1 (i.e., q and m are relatively prime), use an algorithm similar to the greedy algorithm. Let q_0=q and find
+
+ p_0=[m/(q_0)], 	
+(10)
+where [x] is the ceiling function, then compute
+
+ q_1=q_0p_0 (mod m). 	
+(11)
+Iterate until q_n=1, then
+
+ p/q=pproduct_(i=0)^(n-1)p_i (mod m). 	
+(12)
+This method always works for m prime, and sometimes even for m composite. However, for a composite m, the method can fail by reaching 0 (Conway and Guy 1996).
+
+Finding a fractional congruence is equivalent to solving a corresponding linear congruence equation
+
+ ax=b (mod m). 	
+(13)
+A fractional congruence of a unit fraction is known as a modular inverse. A fractional congruence can be found in Mathematica using the following function:
+
+  FractionalMod[r_Rational, m_Integer] := Mod[
+    Numerator[r]PowerMod[Denominator[r], -1, m], m]
+or using the undocumented syntax PolynomialMod[r, m] for r an explicit rational number.

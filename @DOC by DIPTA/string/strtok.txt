@@ -1,0 +1,22 @@
+/* strtok example */
+#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+    char str[] ="- This, a sample string.";
+    char * pch;
+    pch = strtok (str," ,.-");			// by which charcters string is tokenized that should be given into "(here)"
+    while (pch != NULL)
+    {
+        printf ("%s\n",pch);
+        pch = strtok (NULL, " ,.-");	// by which charcters string is tokenized that should be given into "(here)"
+    }
+    return 0;
+}
+
+// OUTPUT
+This
+a
+sample
+string

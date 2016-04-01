@@ -1,0 +1,86 @@
+Misc Geometric Formula::
+
+Triangle ==>>
+Circum Radius = a*b*c/(4*area)
+In Radius = area/s, where s = (a+b+c)/2
+length of median to side c = sqrt(2*(a*a+b*b)-c*c)/2
+length of bisector of angle C = sqrt(ab[(a+b)*(a+b)-c*c])/(a+b)
+
+Ellipse	==>>
+Area = PI*a*b
+Circumference = 4a *int(0,PI/2){sqrt(1-(k*sint)*(k*sint))}dt
+              = 2*PI*sqrt((a*a+b*b)/2) approx
+					where k = sqrt((a*a-b*b)/a)
+              = PI*(3*(r1+r2)-sqrt[(r1+3*r2)*(3*r1+r2)])
+
+Spherical cap ==>>
+V = (1/3)*PI*h*h*(3*r-h)
+Surface Area = 2*PI*r*h
+
+Spherical Sector ==>>
+V = (2/3)*PI*r*r*h
+
+Spherical Segment ==>>
+V = (1/6)*PI*h*(3*a*a+3*b*b+h*h)
+
+Torus ==>>
+V = 2*PI*PI*R*r*r
+
+Truncated Conic	==>>
+V = (1/3)*PI*h*(a*a+a*b+b*b)
+
+Surface ==>>
+Area = PI*(a+b)*sqrt(h*h+(b-a)*(b-a))
+     = PI*(a+b)*l
+
+Pyramidal frustum	(1/3)*h*(A1+A2+sqrt(A1*A2))
+
+
+Misc Trigonometric Functions and Formulas::
+
+tan A/2	= +sqrt((1-cos A)/(1+cos A))
+    	= sin A / (1+cos A)
+		= (1-cos A) / sin A
+      	= cosec A – cot A
+sin 3A  = 3*sin A – 4*sin^3 A		
+cos 3A  = 4*cos^3 A – 3*cos A
+tan 3A  = (3*tan A-tan^3 A)/(1-3*tan^2 A)
+sin 4A  = 4*sin A*cos A – 8*sin^3 A*cos A
+cos 4A  = 8*cos^4 A – 8*cos^2 A + 1
+[r*(cost+i*sint)]^p = rp*(cos pt+i*sin pt)
+acosx + bsinx = c, x = 2n*PI + alpha ± bita, where
+cos alpha = a / (sqrt(a^2+b^2)), cos bita = c / (sqrt(a^2+b^2)); 
+
+2sinAcosB = sin(A+B) + sin(A-B)
+2cosAsinB = sin(A+B) - sin(A-B)
+2cosAcosB = cos(A-B) + cos(A+B)
+2sinAsinB = cos(A-B) – cos(A+B)
+sinC + sinD = 2sin[(C+D)/2]cos[(C-D)/2]
+sinC - sinD = 2cos[(C+D)/2]sin[(C-D)/2]
+cosD + cosC = 2cos[(C+D)/2]cos[(C-D)/2]
+cosD - cosC = 2sin[(C+D)/2]sin[(C-D)/2]
+
+
+Misc Integration Formula::
+
+a^x => a^x/ln(a)
+1/sqrt(x*x+a*a) => ln(x+sqrt(x*x+a*a))
+1/sqrt(x*x-a*a) => ln(x+sqrt(x*x-a*a))
+1/(x*sqrt(x*x+a*a) => -(1/a)*ln([a+sqrt(x*x+a*a)]/x)
+1/(x*sqrt(a*a-x*x) => -(1/a)*ln([a+sqrt(a*a-x*x)]/x)
+
+
+Misc Differentiation Formula::
+
+asin x => 1/sqrt(1-x*x)		
+acos x => -1/sqrt(1-x*x)
+atan x => 1/(1+x*x)			
+acot x => -1/(1+x*x)
+asec x => 1/[x*sqrt(x*x-1)]	
+acosec x => -1/[x*sqrt(x*x-1)]
+sin x => cos x
+cos x => -sin x				
+cot x => -cosecsq x
+sec x => sec x * tan x			
+cosec x => -cosec x * cot x
+a^x => a^x*ln(x)
