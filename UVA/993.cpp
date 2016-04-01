@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -83,7 +82,6 @@ template< class T > inline T _min(T a, T b) { return (((a)<(b))?(a):(b)); }
 template< class T > inline T _swap(T &a, T &b) { a=a^b;b=a^b;a=a^b;}
 template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
-template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
 //******************DELETE****************
 #define shubhashis
@@ -113,46 +111,43 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
-
 int main() {
-    //READ("in.txt");
+//    READ("in.txt");
     //WRITE("out.txt");
 
     int t;
     getI(t);
     for(int ci=1;ci<=t;ci++)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
+        int n;
+        getI(n);
+        if(n==1 || n==0)
         {
-            getI(s[i]);
+            printf("%d\n",n);
+            continue;
         }
-
-        for(int i=0;i<m;i++)
+        vi v;
+        int p=9;
+        while(p!=1 && n!=1)
         {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            while(n%p==0)
             {
-                dq.pop_front();
-                mp[s[i]]++;
+                n/=p;
+                v.PB(p);
             }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
+            p--;
         }
+        if(n!=1)
+        {
+            printf("-1\n");
+            continue;
+        }
+        sort(ALL(v));
+        for(int i=0;i<v.size();i++)
+        {
+            printf("%d",v[i]);
+        }
+        printf("\n");
     }
 
     return 0;

@@ -86,7 +86,7 @@ template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b));
 //******************DELETE****************
 #define shubhashis
 #ifdef shubhashis
-     #define debug(args...) {dbg,args; cerr<<endl;}
+     #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
 #else
     #define debug(args...)  // Just strip off all debug tokens
 #endif
@@ -98,58 +98,15 @@ struct debugger{
     }
 }dbg;
 
-/// ********* debug template bt Bidhan Roy *********
-
-template < typename F, typename S >
-ostream& operator << ( ostream& os, const pair< F, S > & p ) {
-    return os << "(" << p.first << ", " << p.second << ")";
-}
-
-template < typename T >
-ostream &operator << ( ostream & os, const vector< T > &v ) {
-    os << "{";
-    typename vector< T > :: const_iterator it;
-    for( it = v.begin(); it != v.end(); it++ ) {
-        if( it != v.begin() ) os << ", ";
-        os << *it;
-    }
-    return os << "}";
-}
-
-template < typename T >
-ostream &operator << ( ostream & os, const set< T > &v ) {
-    os << "[";
-    typename set< T > :: const_iterator it;
-    for ( it = v.begin(); it != v.end(); it++ ) {
-        if( it != v.begin() ) os << ", ";
-        os << *it;
-    }
-    return os << "]";
-}
-
-template < typename F, typename S >
-ostream &operator << ( ostream & os, const map< F, S > &v ) {
-    os << "[";
-    typename map< F , S >::const_iterator it;
-    for( it = v.begin(); it != v.end(); it++ ) {
-        if( it != v.begin() ) os << ", ";
-        os << it -> first << " = " << it -> second ;
-    }
-    return os << "]";
-}
-
-#define deb(x) cerr << #x << " = " << x << endl;
-//******************DELETE****************
-
-int Set(int N,int pos)
+int bitOn(int N,int pos)
 {
     return N=N | (1<<pos);
 }
-int reset(int N,int pos)
+int bitOff(int N,int pos)
 {
     return N=N & ~(1<<pos);
 }
-bool check(int N,int pos)
+bool bitCheck(int N,int pos)
 {
     return (bool)(N & (1<<pos));
 }
@@ -158,7 +115,7 @@ const int MAX = 5000004;
 ull Phi[MAX];
 void sievePHI() { // Phi[i] = phi(i), uses the idea of sieve
 	Phi[1] = 1;
-	int i, j;
+	ull i, j;
 	for( i = 2; i < MAX; i++ ) if( !Phi[i] ) {
 		Phi[i] = i - 1;
 		for( j = i + i; j < MAX; j += i ) {
@@ -166,6 +123,10 @@ void sievePHI() { // Phi[i] = phi(i), uses the idea of sieve
 			Phi[j] = Phi[j] / i * ( i - 1 );
 		}
 	}
+	for(int i=2;i<=MAX-4;i++)
+    {
+        Phi[i]=Phi[i-1]+(Phi[i]*Phi[i]);
+    }
 }
 
 
@@ -176,21 +137,14 @@ int main() {
     int t;
     getI(t);
     sievePHI();
-    Phi[0]=Phi[1]=0;
-    for(int i=2;i<=5000000;i++)
-    {
-        ull k=Phi[i];
-        Phi[i]=Phi[i-1]+(k*k);
-        //debug(dp[i]);
-    }
     for(int ci=1;ci<=t;ci++)
     {
         int a,b;
         getII(a,b);
-//        cout << "Case " << ci << ": " << Phi[b]-Phi[a-1] <<endl;
         printf("Case %d: %llu\n",ci,Phi[b]-Phi[a-1]);
     }
 
     return 0;
 }
+
 

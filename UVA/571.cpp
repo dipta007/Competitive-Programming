@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,46 +112,92 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+int dp[1004][1004];
+bool visited[1004][1004];
+int a,b,n;
+vector <string> vs;
+
+int call(int i,int j)
+{
+    visited[i][j]=1;
+    //debug(i,j)
+    if(j==n)
+    {
+        for(int i=0;i<vs.size();i++)
+        {
+            printf("%s\n",vs[i].c_str());
+        }
+        printf("success\n");
+        return 1;
+    }
+
+    int &ret = dp[i][j];
+    if(ret!=-1) return ret;
+
+    if(i==0 && visited[a][j]==0)
+    {
+        ///fill A
+        vs.PB("fill A");
+        if(call(a,j)) return  ret=1;
+        vs.pop_back();
+    }
+    if(j==0 && visited[i][b]==0)
+    {
+        ///fill B
+        vs.PB("fill B");
+        if(call(i,b)) return ret=1;
+        vs.pop_back();
+    }
+
+    ///pour A to B
+    if(b-j>0)
+    {
+        int k = min(i, b-j);
+        vs.PB("pour A B");
+        if(visited[i-k,j+k]==0 && call(i-k,j+k)) return ret=1;
+        vs.pop_back();
+    }
+
+
+    ///pour B to A
+    if(a-i>0)
+    {
+        int k = min(a-i,j);
+        vs.PB("pour B A");
+        if(visited[i+k][j-k]==0 && call(i+k,j-k)) return ret=1;
+        vs.pop_back();
+    }
+
+    ///empty A
+    if(i>0 && visited[0][j]==0)
+    {
+        vs.PB("empty A");
+        if(call(0,j)) return ret=1;
+        vs.pop_back();
+    }
+
+    ///empty B
+    if(j>0 && visited[i][0]==0)
+    {
+        vs.PB("empty B");
+        if(call(i,0)) return ret=1;
+        vs.pop_back();
+    }
+
+    return ret = 0;
+
+}
 
 int main() {
     //READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+    while(~getIII(a,b,n))
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
-        {
-            getI(s[i]);
-        }
-
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
-            {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
-        }
+        SET(dp);
+        CLR(visited);
+        vs.clear();
+        call(0,0);
     }
 
     return 0;

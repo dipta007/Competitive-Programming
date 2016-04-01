@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -83,7 +82,6 @@ template< class T > inline T _min(T a, T b) { return (((a)<(b))?(a):(b)); }
 template< class T > inline T _swap(T &a, T &b) { a=a^b;b=a^b;a=a^b;}
 template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
-template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
 //******************DELETE****************
 #define shubhashis
@@ -113,49 +111,95 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+ll ext_gcd ( ll A, ll B, ll *X, ll *Y ){
+    ll x2, y2, x1, y1, x, y, r2, r1, q, r;
+    x2 = 1; y2 = 0;
+    x1 = 0; y1 = 1;
+    for (r2 = A, r1 = B; r1 != 0; r2 = r1, r1 = r, x2 = x1, y2 = y1, x1 = x, y1 = y ) {
+        q = r2 / r1;
+        r = r2 % r1;
+        x = x2 - (q * x1);
+        y = y2 - (q * y1);
+    }
+    *X = x2; *Y = y2;
+    return r2;
+}
+
+bool linearDiophantine ( ll A, ll B, ll C, ll *x, ll *y ) {
+    ll g = gcd ( A, B );
+    if ( C % g != 0 ) return false; //No Solution
+
+    ll a = A / g, b = B / g, c = C / g;
+    ext_gcd( a, b, x, y ); //Solve ax + by = 1
+
+    if ( g < 0 ) { //Make Sure gcd(a,b) = 1
+        a *= -1; b *= -1; c *= -1;
+    }
+
+    *x *= c; *y *= c; //ax + by = c
+    return true; //Solution Exists
+}
 
 int main() {
-    //READ("in.txt");
+//    READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+    ll n;
+    while(~getL(n) && n)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
+        ll n1,n2,c1,c2;
+        getLL(c1,n1);
+        getLL(c2,n2);
+        ll x,y;
+        if(linearDiophantine(n1,n2,n,&x,&y)==0)
         {
-            getI(s[i]);
+            printf("failed\n");
+            continue;
         }
+        ll g = gcd(n1,n2);
+        ll rise = n2/g;
+        ll run = n1/g;
+        if(x<0)
+        {
+            ll k =ceil((double)abs(x)/rise);
+            x += (k*rise);
+            y += ((-1)*(k*run));
+        }
+        if(y<0)
+        {
+            ll k = ceil((double)abs(y)/run);
+            y += (k*run);
+            x += ((-1)*(k*rise));
+        }
+//        debug(x,y,rise,run);
+//
+//        int k = min(floor((double)x/rise), floor((double)y/run));
 
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
 
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
-            {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
-        }
+
+
+        ///1st soln x k 0 er kasakasi nibo
+        ll k = floor((double)x/rise);
+        ll x1 = x + ((-1)*rise*k);
+        ll y1 = y + (run*k);
+        ll soln1 = (ll)x1*c1 + (ll)y1*c2;
+        if(x1<0 || y1<0) soln1 = INF;
+
+        ///2nd soln y k 0 er kasakasi nibo
+        k = floor((double)y/run);
+        ll x2 = x + (k*rise);
+        ll y2 = y + ((-1)*k*run);
+        ll soln2 = (ll)x2*c1 + (ll)y2*c2;
+        if(x2<0 || y2<0) soln2 = INF;
+
+        if(soln1==INF && soln2==INF) printf("failed\n");
+        else if(soln1<soln2) printf("%lld %lld\n",x1,y1);
+        else printf("%lld %lld\n",x2,y2);
     }
 
     return 0;
 }
+
+
 
 

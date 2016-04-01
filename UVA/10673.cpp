@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,10 +112,34 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+int ext_gcd ( int A, int B, int *X, int *Y ){
+    int x2, y2, x1, y1, x, y, r2, r1, q, r;
+    x2 = 1; y2 = 0;
+    x1 = 0; y1 = 1;
+    for (r2 = A, r1 = B; r1 != 0; r2 = r1, r1 = r, x2 = x1, y2 = y1, x1 = x, y1 = y ) {
+        q = r2 / r1;
+        r = r2 % r1;
+        x = x2 - (q * x1);
+        y = y2 - (q * y1);
+    }
+    *X = x2; *Y = y2;
+    return r2;
+}
+
+bool linearDiophantine ( int A, int B, int C, int *x, int *y ) {
+    int g = gcd ( A, B );
+    if ( C % g != 0 ) return false; //No Solution
+
+    int a = A / g, b = B / g, c = C / g;
+    ext_gcd( a, b, x, y ); //Solve ax + by = 1
+
+    if ( g < 0 ) { //Make Sure gcd(a,b) = 1
+        a *= -1; b *= -1; c *= -1;
+    }
+
+    *x *= c; *y *= c; //ax + by = c
+    return true; //Solution Exists
+}
 
 int main() {
     //READ("in.txt");
@@ -126,36 +149,20 @@ int main() {
     getI(t);
     for(int ci=1;ci<=t;ci++)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
-        {
-            getI(s[i]);
-        }
-
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
-            {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
-        }
+        int xx,k;
+        getII(xx,k);
+        int a= floor((double)xx/k);
+        int b = ceil((double)xx/k);
+        int g = gcd(a,b);
+        int x,y;
+        linearDiophantine(a,b,g,&x,&y);
+        x *= (xx/g);
+        y *= (xx/g);
+        printf("%d %d\n",x,y);
     }
 
     return 0;
 }
+
 
 

@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,49 +112,87 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+int marked[10];
+string st;
+
+int call(int in,int k)
+{
+    for(int i=k;i>=0;i--)
+    {
+        if(marked[i]<2) return i;
+    }
+    return -1;
+}
 
 int main() {
     //READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+    string st;
+    while(getline(cin,st))
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
-        {
-            getI(s[i]);
-        }
+        CLR(marked);
+        int len=st.size();
 
-        for(int i=0;i<m;i++)
+        int psbl = 1;
+        int flg=0;
+        for(int i=0;i<len;i++)
         {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            if(flg)
             {
-                dq.pop_front();
-                mp[s[i]]++;
+                int k = call(i,9);
+                if(k==-1) psbl=0;
+                else
+                {
+                    st[i] = (char)(k+48);
+                    marked[k]++;
+                }
+                continue;
             }
-            if(mp[s[i]]!=0)
+            int k=st[i]-'0';
+            if(marked[k]<2)
             {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
+                marked[k]++;
+            }
+            else
+            {
+                int kake = call(i,k-1); ///kake boshabo ekhn k er theke choto
+                flg=1;
+                if(kake==-1)
+                {
+                    for(int j=i-1;j>=0;j--)
+                    {
+                        int kk = st[j]-'0';
+                        marked[kk]--;
+                        int ekhn = call(j,kk-1);
+                        if(ekhn!=-1)
+                        {
+                            marked[ekhn]++;
+                            st[j] = (char)(ekhn+48);
+                            i=j;
+                            break;
+                        }
+                        if(j==0)
+                        {
+                            psbl = 0;
+                        }
+                    }
+                }
+                else
+                {
+                    st[i] = (char)(kake + 48);
+                    marked[kake]++;
+                }
             }
         }
+        stringstream ss(st);
+        ll x;
+        ss >> x;
+         printf("%lld\n",x);
     }
 
     return 0;
 }
+
 
 

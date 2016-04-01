@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,49 +112,36 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+#define ll long long
+
+ll Mod; 	 // ja die mod korte hbe
+
+ll BigMod(ll B,ll E)		// B= base & E= expo or power
+{
+	if(E==0) return 1;
+	if(E%2==0)
+	{
+		ll ret=BigMod(B,E/2);
+		return ((ret%Mod)*(ret%Mod))%Mod;
+	}
+	else return ((B%Mod)*(BigMod(B,E-1)%Mod))%Mod;
+
+}
+
 
 int main() {
     //READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+    int b,p,m;
+    while(~getIII(b,p,m))
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
-        {
-            getI(s[i]);
-        }
-
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
-            {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
-        }
+        Mod=m;
+        printf("%lld\n",BigMod(b,p));
     }
 
     return 0;
 }
+
 
 

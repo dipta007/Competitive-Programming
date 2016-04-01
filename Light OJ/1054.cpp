@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,49 +112,123 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+#define M 1000000
+bool marked[M];
+vector <int> primes;
+
+void sieve(int n) {
+	primes.push_back(2);
+	int sqrtn = sqrt(n);
+	for (int i = 3; i  <= sqrtn; i += 2) {
+		if (marked[i] == 0) {
+			primes.push_back(i);
+			for (int j = i * i; j <= sqrtn; j += i + i) {
+				marked[j] = 1;
+		}
+    }
+  }
+}
+
+// prime number sob serially "primes" vector e save hobe
+// like primes[0]=2,primes[1]=3 and so on
+
+vector<int>factors;
+vector <ll> power;
+void factorize( int n )
+{
+    int sqrtn = sqrt ( n );
+    for ( int i = 0; i < primes.size() && primes[i] <= sqrtn; i++ )
+    {
+        if ( n % primes[i] == 0 )
+        {
+            int cnt=0;
+            while ( n % primes[i] == 0 )
+            {
+                cnt++;
+                n /= primes[i];
+            }
+            power.PB(cnt);
+            factors.push_back(primes[i]);
+            sqrtn = sqrt ( n );
+        }
+    }
+    if ( n != 1 )
+    {
+        factors.push_back(n);
+        power.PB(1);
+    }
+}
+
+
+
+ll Mod; 	 // ja die mod korte hbe
+
+ll BigMod(ll B,ll E)		// B= base & E= expo or power
+{
+	if(E==0) return 1;
+	if(E%2==0)
+	{
+		ll ret=BigMod(B,E/2);
+		return ((ret%Mod)*(ret%Mod))%Mod;
+	}
+	else return ((B%Mod)*(BigMod(B,E-1)%Mod))%Mod;
+
+}
+
+pii extendedEuclid(int a, int b)   // returns x, y jekhane, ax + by = gcd(a,b)
+{
+    if(b == 0)
+		return pii(1, 0);
+    else
+    {
+        pii d = extendedEuclid(b, a % b);
+        return pii(d.ss, d.ff - d.ss * (a / b));
+    }
+}
+
+
+int modularInverse(int a, int n) { 	// returns a er modular Inverse ; n dara mod kore
+  pii ret = extendedEuclid(a, n);
+  return ((ret.ff % n) + n) % n;
+}
 
 int main() {
     //READ("in.txt");
     //WRITE("out.txt");
 
+    int n,m;
+    sieve(2147483647);
     int t;
     getI(t);
     for(int ci=1;ci<=t;ci++)
     {
-        dq.clear();
-        int n,m;
+        factors.clear();
+        power.clear();
         getII(n,m);
-        for(int i=0;i<n;i++)
+        factorize(n);
+        for(int i=0;i<power.size();i++)
         {
-            getI(s[i]);
+            power[i] *= m;
+            power[i] ++;
         }
+        ll res=1;
+        Mod = 1000000007;
+        for(int i=0;i<factors.size();i++)
+        {
+            ll upor = BigMod(factors[i],power[i])-1;
+            if(upor<0) upor += Mod;
 
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
+            ll nich = factors[i]-1;
+            nich = (ll)modularInverse((int)nich,Mod);
 
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
-            {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
+            ll tot = (upor%Mod * nich%Mod)%Mod;
+            res = (res%Mod * tot%Mod) %Mod;
         }
+        printf("Case %d: %lld\n",ci,res);
     }
 
     return 0;
 }
+
 
 

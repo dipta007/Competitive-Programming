@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -77,28 +76,49 @@ const double PI=acos(-1.0);
 #define    ld 	 long double
 
 
-template< class T > inline T _abs(T n) { return ((n) < 0 ? -(n) : (n)); }
-template< class T > inline T _max(T a, T b) { return (!((a)<(b))?(a):(b)); }
-template< class T > inline T _min(T a, T b) { return (((a)<(b))?(a):(b)); }
-template< class T > inline T _swap(T &a, T &b) { a=a^b;b=a^b;a=a^b;}
-template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
-template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
-template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
+template< class T > inline T _abs(T n)
+{
+    return ((n) < 0 ? -(n) : (n));
+}
+template< class T > inline T _max(T a, T b)
+{
+    return (!((a)<(b))?(a):(b));
+}
+template< class T > inline T _min(T a, T b)
+{
+    return (((a)<(b))?(a):(b));
+}
+template< class T > inline T _swap(T &a, T &b)
+{
+    a=a^b;
+    b=a^b;
+    a=a^b;
+}
+template< class T > inline T gcd(T a, T b)
+{
+    return (b) == 0 ? (a) : gcd((b), ((a) % (b)));
+}
+template< class T > inline T lcm(T a, T b)
+{
+    return ((a) / gcd((a), (b)) * (b));
+}
 
 //******************DELETE****************
 #define shubhashis
 #ifdef shubhashis
-     #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
+#define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
 #else
-    #define debug(args...)  // Just strip off all debug tokens
+#define debug(args...)  // Just strip off all debug tokens
 #endif
 
-struct debugger{
-    template<typename T> debugger& operator , (const T& v){
+struct debugger
+{
+    template<typename T> debugger& operator, (const T& v)
+    {
         cerr<<v<<" ";
         return *this;
     }
-}dbg;
+} dbg;
 
 int bitOn(int N,int pos)
 {
@@ -113,46 +133,91 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+#define M 1000000
+bool marked[M];
+vector <int> primes;
 
-int main() {
+void sieve(int n)
+{
+    primes.push_back(2);
+    int sqrtn = sqrt(n);
+    for (ll i = 3; i <= sqrtn; i += 2)
+    {
+        if (marked[i] == 0)
+        {
+            primes.push_back(i);
+            for (ll j = i * i; j <= sqrtn; j += i + i)
+            {
+                marked[j] = 1;
+            }
+        }
+    }
+}
+
+// prime number sob serially "primes" vector e save hobe
+// like primes[0]=2,primes[1]=3 and so on
+
+vector<int>factors,power;
+void factorize( int n )
+{
+    int sqrtn = sqrt ( n );
+    for ( int i = 0; i < primes.size() && primes[i] <= sqrtn; i++ )
+    {
+        if ( n % primes[i] == 0 )
+        {
+            //debug(n,primes[i])
+            int cnt=0;
+            while ( n % primes[i] == 0 )
+            {
+                n /= primes[i];
+                cnt++;
+            }
+            power.PB(cnt);
+            factors.push_back(primes[i]);
+            //debug(n)
+            sqrtn = sqrt ( n );
+        }
+    }
+    if ( n != 1 )
+    {
+        power.PB(1);
+        factors.push_back(n);
+    }
+}
+
+
+
+
+int main()
+{
     //READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+    sieve(2147483647);
+    int a,b;
+    while(~getII(a,b))
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
+        factors.clear();
+        power.clear();
+        factorize(b);
+        int flg=1;
+        for(int i=0;i<factors.size();i++)
         {
-            getI(s[i]);
-        }
-
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            int k = factors[i];
+            int x =a;
+            int cnt=0;
+            while(x/k)
             {
-                dq.pop_front();
-                mp[s[i]]++;
+                cnt += x/=k;
             }
-            if(mp[s[i]]!=0)
+            if(power[i]>cnt)
             {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
+                flg=0;
+                break;
             }
         }
+        if(flg) printf("%d divides %d!\n",b,a);
+        else printf("%d does not divide %d!\n",b,a);
     }
 
     return 0;

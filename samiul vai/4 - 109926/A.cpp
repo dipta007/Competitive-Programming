@@ -1,4 +1,3 @@
-#pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
 #include <bitset>

@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -77,28 +76,55 @@ const double PI=acos(-1.0);
 #define    ld 	 long double
 
 
-template< class T > inline T _abs(T n) { return ((n) < 0 ? -(n) : (n)); }
-template< class T > inline T _max(T a, T b) { return (!((a)<(b))?(a):(b)); }
-template< class T > inline T _min(T a, T b) { return (((a)<(b))?(a):(b)); }
-template< class T > inline T _swap(T &a, T &b) { a=a^b;b=a^b;a=a^b;}
-template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
-template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
-template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
+template< class T > inline T _abs(T n)
+{
+    return ((n) < 0 ? -(n) : (n));
+}
+template< class T > inline T _max(T a, T b)
+{
+    return (!((a)<(b))?(a):(b));
+}
+template< class T > inline T _min(T a, T b)
+{
+    return (((a)<(b))?(a):(b));
+}
+template< class T > inline T _swap(T &a, T &b)
+{
+    a=a^b;
+    b=a^b;
+    a=a^b;
+}
+template< class T > inline T gcd(T a, T b)
+{
+    return (b) == 0 ? (a) : gcd((b), ((a) % (b)));
+}
+template< class T > inline T lcm(T a, T b)
+{
+    return ((a) / gcd((a), (b)) * (b));
+}
+template <typename T> string NumberToString ( T Number )
+{
+    ostringstream ss;
+    ss << Number;
+    return ss.str();
+}
 
 //******************DELETE****************
 #define shubhashis
 #ifdef shubhashis
-     #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
+#define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
 #else
-    #define debug(args...)  // Just strip off all debug tokens
+#define debug(args...)  // Just strip off all debug tokens
 #endif
 
-struct debugger{
-    template<typename T> debugger& operator , (const T& v){
+struct debugger
+{
+    template<typename T> debugger& operator, (const T& v)
+    {
         cerr<<v<<" ";
         return *this;
     }
-}dbg;
+} dbg;
 
 int bitOn(int N,int pos)
 {
@@ -113,46 +139,56 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+#define M 1000020
+bool marked[M];
+vector <int> primes;
 
-int main() {
-    //READ("in.txt");
-    //WRITE("out.txt");
-
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+void sieve(int n)
+{
+    //debug("*")
+    primes.push_back(2);
+    for (ll i = 3; i * i <= n; i += 2)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
+        //debug(i)
+        if (marked[i] == 0)
         {
-            getI(s[i]);
-        }
-
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            //primes.PB(i);
+            for (ll j = i * i; j <= n; j += i + i)
             {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
+                marked[j] = 1;
             }
         }
+    }
+    for(int i=3;i<=n;i+=2) if(marked[i]==0) primes.PB(i);
+}
+
+
+int main()
+{
+//    READ("in.txt");
+//    WRITE("out.txt");
+
+    sieve(1000016);
+    ll Mod=10000000;
+    int n;
+    while(~getI(n) && n)
+    {
+        ll ans=1;
+        int two=0,five=0;
+        for(int i=2;i<=n;i*=2) two++;
+        for(int i=5;i<=n;i*=5) five++;
+        for(int i=0;i<abs(two-five);i++) ans = (ans*2)%10;
+
+        for(int i=0;i<primes.size() && primes[i]<=n;i++)
+        {
+            int p = primes[i];
+            if(p==2 || p==5) continue;
+            for(ll j=(ll)p;j<=(ll)n;j*=p)
+            {
+                ans = (ans * p) %10;
+            }
+        }
+        printf("%lld\n",ans%10);
     }
 
     return 0;

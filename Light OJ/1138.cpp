@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,46 +112,63 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+vector <pair <int,int> > vp;
+
+void pre()
+{
+    int c=5;
+    while(1)
+    {
+        int cnt=0;
+        int p=5;
+        int x=c;
+        while(x)
+        {
+            cnt += x/5;
+            x /= 5;
+        }
+        vp.PB(pii(c,cnt));
+        c*=5;
+        if(c>100000000) break;
+    }
+}
+
+int check(int x)
+{
+    int cnt=0;
+    while(x)
+    {
+        cnt += x/5;
+        x/=5;
+    }
+    return cnt;
+}
 
 int main() {
-    //READ("in.txt");
-    //WRITE("out.txt");
+//    READ("in.txt");
+//    WRITE("out.txt");
 
     int t;
     getI(t);
     for(int ci=1;ci<=t;ci++)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
-        {
-            getI(s[i]);
-        }
+        int n;
+        getI(n);
 
-        for(int i=0;i<m;i++)
+        int low=5,high = 500000000,res;
+        while(low<high)
         {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            int mid=(low+high)/2;
+            if(check(mid)>=n)
             {
-                dq.pop_front();
-                mp[s[i]]++;
+                res=mid;
+                high=mid-1;
             }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
+            else low=mid+1;
         }
+        printf("Case %d: ",ci);
+        if(check(res)!=n) printf("impossible\n");
+        else printf("%d\n",res-(res%5));
     }
 
     return 0;

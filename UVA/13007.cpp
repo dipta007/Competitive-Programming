@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,49 +112,69 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
-
 int main() {
-    //READ("in.txt");
+//    READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+    int n,m;
+    vi money;
+    money.PB(1);
+    money.PB(10);
+    money.PB(100);
+    money.PB(1000);
+    money.PB(10000);
+    while(~getII(n,m))
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
-        {
-            getI(s[i]);
-        }
-
+        int cur=0;
+        int best=0;
         for(int i=0;i<m;i++)
         {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            int b;
+            getI(b);
+            int sum=0;
+            int dead;
+            for(int j=0;j<n;j++)
             {
-                dq.pop_front();
-                mp[s[i]]++;
+                int x;
+                getI(x);
+                if(j==0)
+                {
+                    dead=x;
+                }
+                sum+=x;
             }
-            if(mp[s[i]]!=0)
+            if(sum<=b)
             {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
+                sum-=dead;
+                cur += dead;
+                for(int k=4;k>=0;k--)
+                {
+                    if(sum+money[k]<=b)
+                    {
+                        best += money[k];
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                sum-=dead;
+                for(int k=4;k>=0;k--)
+                {
+                    if(sum+money[k]<=b)
+                    {
+                        best += money[k];
+                        break;
+                    }
+                }
             }
         }
+//        debug(cur,best)
+        printf("%d\n",best-cur);
     }
 
     return 0;
 }
+
 
 

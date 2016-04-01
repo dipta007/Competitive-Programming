@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,10 +112,25 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+int mod=1000000007;
+
+
+pii extendedEuclid(int a, int b)   // returns x, y jekhane, ax + by = gcd(a,b)
+{
+    if(b == 0)
+		return pii(1, 0);
+    else
+    {
+        pii d = extendedEuclid(b, a % b);
+        return pii(d.ss, d.ff - d.ss * (a / b));
+    }
+}
+
+
+int modularInverse(int a, int n) { 	// returns a er modular Inverse ; n dara mod kore
+  pii ret = extendedEuclid(a, n);
+  return ((ret.ff % n) + n) % n;
+}
 
 int main() {
     //READ("in.txt");
@@ -126,36 +140,18 @@ int main() {
     getI(t);
     for(int ci=1;ci<=t;ci++)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
-        {
-            getI(s[i]);
-        }
-
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
-            {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
-        }
+        ll n;
+        getL(n);
+        ll res =0;
+        res = ((n*(n+1))%mod * (2*n+1)%mod)%mod;
+        res = (res%mod + (3*n*(n+1))%mod )%mod;
+        ll niche = modularInverse(6,mod);
+        res =(res * niche)%mod;
+        printf("Case %d: %lld\n",ci,res);
     }
 
     return 0;
 }
+
 
 

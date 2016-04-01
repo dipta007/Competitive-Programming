@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,49 +112,101 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+
+#define M 1000000
+bool marked[M];
+vector <int> primes;
+
+void sieve(int n) {
+	primes.push_back(2);
+	for (int i = 3; i * i <= n; i += 2) {
+		if (marked[i] == 0) {
+			primes.push_back(i);
+			for (int j = i * i; j <= n; j += i + i) {
+				marked[j] = 1;
+		}
+    }
+  }
+}
+
+// prime number sob serially "primes" vector e save hobe
+// like primes[0]=2,primes[1]=3 and so on
+
+int prime[10004];
+void factorize( int n )
+{
+    int sqrtn = sqrt ( n );
+    for ( int i = 0; i < primes.size() && primes[i] <= sqrtn; i++ )
+    {
+        if ( n % primes[i] == 0 )
+        {
+            int cnt=0;
+            while ( n % primes[i] == 0 )
+            {
+                n /= primes[i];
+                cnt++;
+            }
+            prime[primes[i]] = max(prime[primes[i]] , cnt);
+            sqrtn = sqrt ( n );
+        }
+    }
+    if ( n != 1 )
+    {
+        prime[n] = max(prime[n], 1);
+    }
+}
+
+string multiply( string a, int b ) {
+    // a contains the biginteger in reversed form
+    int carry = 0;
+    for( int i = 0; i < a.size(); i++ ) {
+        carry += (a[i] - 48) * b;
+        a[i] = ( carry % 10 + 48 );
+        carry /= 10;
+    }
+    while( carry ) {
+        a += ( carry % 10 + 48 );
+        carry /= 10;
+    }
+    return a;
+}
+
 
 int main() {
-    //READ("in.txt");
+//    READ("in.txt");
     //WRITE("out.txt");
 
     int t;
     getI(t);
+    sieve(10000);
     for(int ci=1;ci<=t;ci++)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
+        int n;
+        getI(n);
+        CLR(prime);
         for(int i=0;i<n;i++)
         {
-            getI(s[i]);
+            int x;
+            getI(x);
+            factorize(x);
         }
 
-        for(int i=0;i<m;i++)
+        string res = "1";
+        for(int i=0;i<=10000;i++)
         {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            while(prime[ i ]--)
             {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
+                res = multiply(res, i);
             }
         }
+        reverse(ALL(res));
+//        cout << res.a <<endl;
+        printf("Case %d: %s",ci,res.c_str());
+        printf("\n");
     }
 
     return 0;
 }
+
 
 

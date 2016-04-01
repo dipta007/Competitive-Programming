@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -26,34 +25,24 @@
 #include <vector>
 using namespace std;
 
-
-
 const double EPS = 1e-9;
 const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
 #define    WRITE(f)   	     freopen(f, "w", stdout)
-
 #define    MP(x, y) 	     make_pair(x, y)
-#define    SZ(c) 	         (int)c.size()
 #define    PB(x)             push_back(x)
-
-#define    rep(i,n)          for(i=1;i<=n;i++)
-#define    repI(i,n)         for(i=0;i<n;i++)
-#define    F(i,L,R)	         for (int i = L; i < R; i++)
-#define    FF(i,L,R) 	     for (int i = L; i <= R; i++)
-#define    FR(i,L,R) 	     for (int i = L; i > R; i--)
-#define    FRF(i,L,R) 	     for (int i = L; i >= R; i--)
+#define    rep(i,n)          for(int i = 1 ; i<=(n) ; i++)
+#define    repI(i,n)         for(int i = 0 ; i<(n) ; i++)
+#define    FOR(i,L,R) 	     for (int i = L; i <= R; i++)
+#define    ROF(i,L,R) 	     for (int i = L; i >= R; i--)
 #define    FOREACH(i,t)      for (typeof(t.begin()) i=t.begin(); i!=t.end(); i++)
 #define    ALL(p) 	         p.begin(),p.end()
 #define    ALLR(p) 	         p.rbegin(),p.rend()
-
 #define    SET(p) 	         memset(p, -1, sizeof(p))
 #define    CLR(p)            memset(p, 0, sizeof(p))
 #define    MEM(p, v)         memset(p, v, sizeof(p))
-#define    CPY(d, s)         memcpy(d, s, sizeof(s))
-
 #define    getI(a) 	         scanf("%d", &a)
 #define    getII(a,b) 	     scanf("%d%d", &a, &b)
 #define    getIII(a,b,c)     scanf("%d%d%d", &a, &b, &c)
@@ -63,19 +52,17 @@ const double PI=acos(-1.0);
 #define    getC(n)           scanf("%c",&n)
 #define    getF(n)           scanf("%lf",&n)
 #define    getS(n)           scanf("%s",n)
-
+#define    bitCheck(N,in)    ((bool)(N&(1<<(in))))
+#define    bitOff(N,in)      (N&(~(1<<(in))))
+#define    bitOn(N,in)       (N|(1<<(in)))
+#define    iseq(a,b)          (fabs(a-b)<EPS)
 #define    vi 	 vector < int >
 #define    vii 	 vector < vector < int > >
 #define    pii 	 pair< int, int >
-#define    psi 	 pair< string, int >
 #define    ff 	 first
 #define    ss 	 second
 #define    ll	 long long
 #define    ull 	 unsigned long long
-#define    ui    unsigned int
-#define    us 	 unsigned short
-#define    ld 	 long double
-
 
 template< class T > inline T _abs(T n) { return ((n) < 0 ? -(n) : (n)); }
 template< class T > inline T _max(T a, T b) { return (!((a)<(b))?(a):(b)); }
@@ -85,9 +72,7 @@ template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
 template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
-//******************DELETE****************
-#define shubhashis
-#ifdef shubhashis
+#ifdef dipta007
      #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
 #else
     #define debug(args...)  // Just strip off all debug tokens
@@ -100,62 +85,108 @@ struct debugger{
     }
 }dbg;
 
-int bitOn(int N,int pos)
-{
-    return N=N | (1<<pos);
-}
-int bitOff(int N,int pos)
-{
-    return N=N & ~(1<<pos);
-}
-bool bitCheck(int N,int pos)
-{
-    return (bool)(N & (1<<pos));
-}
+double graph[54][54];
+double dp[(1<<12)+4][54];
+bool visited[(1<<12)+4][54];
+int s;
+vector < pair<int,double> > profit;
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+double call(int mask,int store)
+{
+//    debug(store)
+    if(__builtin_popcount(mask)==s) return -graph[store][0];
+
+    if(visited[mask][store]==1) return dp[mask][store];
+    visited[mask][store]=1;
+
+    double res = -100000.0;
+    FOR(i,0,s-1)
+    {
+        if(bitCheck(mask,i)==0) ///this product has not bought yet from store
+        {
+            int nextStore = profit[i].ff;
+            res = max(res, profit[i].ss-graph[store][nextStore]+
+                      call(bitOn(mask,i),nextStore));
+
+        }
+    }
+    res = max(res , -graph[store][0]);
+
+    return dp[mask][store] = res;
+}
 
 int main() {
-    //READ("in.txt");
-    //WRITE("out.txt");
+    #ifdef dipta007
+        READ("in.txt");
+//        WRITE("out.txt");
+    #endif // dipta007
 
     int t;
     getI(t);
-    for(int ci=1;ci<=t;ci++)
+    FOR(ci,1,t)
     {
-        dq.clear();
+        CLR(visited);
+        profit.clear();
+
+        FOR(i,0,50)
+        {
+            FOR(j,0,50)
+            {
+                if(i==j)
+                {
+                    graph[i][j]=0.0;
+                    continue;
+                }
+                graph[i][j]=10000.0;
+            }
+        }
         int n,m;
         getII(n,m);
-        for(int i=0;i<n;i++)
+        FOR(i,1,m)
         {
-            getI(s[i]);
+            int u,v;
+            double w;
+            getII(u,v);
+            getF(w);
+            graph[u][v]=min(graph[u][v], w);
+            graph[v][u]=min(graph[v][u], w);
         }
 
-        for(int i=0;i<m;i++)
+        FOR(k,0,n)
         {
-            getI(t[i]);
-            mp[t[i]]++;
+            FOR(i,0,n)
+            {
+                FOR(j,0,n)
+                {
+                    if(graph[i][k]+graph[k][j]<graph[i][j])
+                    {
+                        graph[i][j]=graph[i][k]+graph[k][j];
+                    }
+                }
+            }
         }
 
-        for(int i=0;i<n;i++)
+        getI(s);
+        FOR(i,0,s-1)
         {
-            while(dq.front()==s[i])
-            {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
+            int k;
+            double val;
+            getI(k);
+            getF(val);
+
+            profit.PB(MP(k,val));
         }
+
+        double res = call(0,0);
+
+        if(res<EPS) printf("Don't leave the house\n");
+        else printf("Daniel can save $%.2lf\n",res);
+
     }
+
 
     return 0;
 }
+
 
 

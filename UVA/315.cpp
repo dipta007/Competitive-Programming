@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,49 +112,70 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+#define DFS_WHITE -1 // normal DFS, do not change this with other values (other than 0), because we usually use memset with conjunction with DFS_WHITE
+#define DFS_BLACK 1
+vi visited;
+vector < vector<int> > AdjList;
+
+void DFS(int u,int rmv)
+{
+    visited[u]=DFS_BLACK;
+    for(int j=0;j<AdjList[u].size();j++)
+    {
+        int v=AdjList[u][j];
+        if(v==rmv) continue;
+        if(visited[v]==DFS_WHITE)
+        {
+            DFS(v,rmv);
+        }
+    }
+}
 
 int main() {
     //READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+    int n;
+    while(~getI(n) && n)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
+        AdjList.assign(n+4,vi());
+        string st;
+        getchar();
+        while(getline(cin,st))
         {
-            getI(s[i]);
-        }
-
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            stringstream ss(st);
+            int src,x;
+            ss >> src;
+            if(src==0) break;
+            while(ss>>x)
             {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
+                AdjList[src].PB(x);
+                AdjList[x].PB(src);
             }
         }
+
+        int cnt=0;
+        for(int i=1;i<=n;i++)
+        {
+            visited.assign(n+4,DFS_WHITE);
+            if(i==1) DFS(i+1,i);
+            else DFS(1,i);
+            for(int j=1;j<=n;j++)
+            {
+                if(i==j) continue;
+                if(visited[j]==-1)
+                {
+                    //debug(i,j)
+                    cnt++;
+                    break;
+                }
+            }
+        }
+        printf("%d\n",cnt);
     }
 
     return 0;
 }
+
 
 

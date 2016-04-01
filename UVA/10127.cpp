@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -113,46 +112,26 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
-
 int main() {
     //READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+    int n;
+    while(~getI(n))
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
+        int c=1,one=1;
         for(int i=0;i<n;i++)
         {
-            getI(s[i]);
-        }
-
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            c=c%n;
+            if(c%n==0)
             {
-                dq.pop_front();
-                mp[s[i]]++;
+                //printf("%d\n",c);
+                break;
             }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
+            one++;
+            c=c*10+1;
         }
+        printf("%d\n",one);
     }
 
     return 0;

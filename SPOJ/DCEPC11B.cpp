@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -66,7 +65,7 @@ const double PI=acos(-1.0);
 
 #define    vi 	 vector < int >
 #define    vii 	 vector < vector < int > >
-#define    pii 	 pair< int, int >
+#define    pii 	 pair< ll, ll >
 #define    psi 	 pair< string, int >
 #define    ff 	 first
 #define    ss 	 second
@@ -112,11 +111,52 @@ bool bitCheck(int N,int pos)
 {
     return (bool)(N & (1<<pos));
 }
+//
+//int ext_gcd ( int A, int B, int *X, int *Y ){
+//    int x2, y2, x1, y1, x, y, r2, r1, q, r;
+//    x2 = 1; y2 = 0;
+//    x1 = 0; y1 = 1;
+//    for (r2 = A, r1 = B; r1 != 0; r2 = r1, r1 = r, x2 = x1, y2 = y1, x1 = x, y1 = y ) {
+//        q = r2 / r1;
+//        r = r2 % r1;
+//        x = x2 - (q * x1);
+//        y = y2 - (q * y1);
+//    }
+//    *X = x2; *Y = y2;
+//    return r2;
+//}
+//
+//bool linearDiophantine ( int A, int B, int C, int *x, int *y ) {
+//    int g = gcd ( A, B );
+//    if ( C % g != 0 ) return false; //No Solution
+//
+//    int a = A / g, b = B / g, c = C / g;
+//    ext_gcd( a, b, x, y ); //Solve ax + by = 1
+//
+//    if ( g < 0 ) { //Make Sure gcd(a,b) = 1
+//        a *= -1; b *= -1; c *= -1;
+//    }
+//
+//    *x *= c; *y *= c; //ax + by = c
+//    return true; //Solution Exists
+//}
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+pii extendedEuclid(ll a, ll b)   // returns x, y jekhane, ax + by = gcd(a,b)
+{
+    if(b == 0)
+		return pii(1, 0);
+    else
+    {
+        pii d = extendedEuclid(b, a % b);
+        return pii(d.ss, d.ff - d.ss * (a / b));
+    }
+}
+
+
+ll modularInverse(ll a, ll n) { 	// returns a er modular Inverse ; n dara mod kore
+  pii ret = extendedEuclid(a, n);
+  return ((ret.ff % n) + n) % n;
+}
 
 int main() {
     //READ("in.txt");
@@ -126,36 +166,33 @@ int main() {
     getI(t);
     for(int ci=1;ci<=t;ci++)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
+        ll a,b;
+        getLL(a,b);
+        if(b<=a)
         {
-            getI(s[i]);
+            printf("0\n");
+            continue;
         }
-
-        for(int i=0;i<m;i++)
+        ll k=1;
+        ll c=1;
+        ll res=b-1;
+        //debug(modularInverse(a,b))
+        ll upore=b-1;
+        for(ll i=b-1;i>a;i--)
         {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            if(i==b-1)
             {
-                dq.pop_front();
-                mp[s[i]]++;
+                res=1;
+                upore=1;
+                continue;
             }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
-            }
+            ll ekhn = (upore*modularInverse(i,b))%b;
+            res = (res * ekhn)%b;
+            upore=1;
         }
+        printf("%lld\n",res);
     }
 
     return 0;
 }
-
 

@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -83,7 +82,6 @@ template< class T > inline T _min(T a, T b) { return (((a)<(b))?(a):(b)); }
 template< class T > inline T _swap(T &a, T &b) { a=a^b;b=a^b;a=a^b;}
 template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
-template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
 //******************DELETE****************
 #define shubhashis
@@ -113,49 +111,99 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+//#define ull long long
+
+ull Mod; 	 // ja die mod korte hbe
+
+ull BigMod(ull B,ull E)		// B= base & E= expo or power
+{
+	if(E==0) return 1;
+	if(E%2==0)
+	{
+		ull ret=BigMod(B,E/2);
+		return ((ret%Mod)*(ret%Mod))%Mod;
+	}
+	else return ((B%Mod)*(BigMod(B,E-1)%Mod))%Mod;
+
+}
+
+#define M 1000000
+bool marked[M];
+
+bool isPrime(int n) {
+  if (n < 2) return 1;
+  if (n == 2) return 0;
+  if (n % 2 == 0) return 1;
+  return marked[n];
+}
+
+void sieve(int n) {
+  for (ll i = 3; i <= n; i += 2) {
+    if (marked[i] == 0) {
+      for (ll j = i * i; j <= n; j += i + i) {
+        marked[j] = 1;
+      }
+    }
+  }
+}
+
+// jodi kono number prime hoi then 0 return korbe
+// noito 1 return korbe
+// mane
+// prime = 0
+//composite = 1
 
 int main() {
     //READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+
+    ull MAX = 18446744073709551615;
+    Mod = MAX;
+    set <ull> s;
+    ull sq = 65537;
+    bool markForPower[70000];
+    sieve(sq-1);
+    CLR(markForPower);
+    for(ll i=2;i<sq;i++)
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
+        //if(markForPower[i]==0)
+        for(ll j=i*i;j<=sq;j*=i)
         {
-            getI(s[i]);
+            markForPower[j]=1;
         }
-
-        for(int i=0;i<m;i++)
+    }
+    //debug(sq);
+    s.insert(1);
+    for(ull i=2;i<sq;i++)
+    {
+        if(markForPower[i]==0)
         {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            ull k = ceil(64/(log(i)/log(2)));
+            //debug(i)
+            int in=1;
+            ull res=i;
+            for(ull j=4;j<k;j++)
             {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
+                if(isPrime(j)==1)
+                {
+                    while(in<j)
+                    {
+                        res*=i;
+                        in++;
+                    }
+                    s.insert(res);
+                }
             }
         }
+    }
+    FOREACH(it,s)
+    {
+        printf("%llu\n",*it);
     }
 
     return 0;
 }
+
 
 

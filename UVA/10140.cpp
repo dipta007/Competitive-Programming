@@ -1,4 +1,3 @@
-
 #pragma comment(linker, "/stack:640000000")
 
 #include <algorithm>
@@ -83,7 +82,6 @@ template< class T > inline T _min(T a, T b) { return (((a)<(b))?(a):(b)); }
 template< class T > inline T _swap(T &a, T &b) { a=a^b;b=a^b;a=a^b;}
 template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
-template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
 //******************DELETE****************
 #define shubhashis
@@ -113,49 +111,103 @@ bool bitCheck(int N,int pos)
     return (bool)(N & (1<<pos));
 }
 
-int s[200004];
-int t[200004];
-map <int,int> mp;
-deque <pii> dq;
+
+#define M 1000004
+bool marked[M];
+vector <int> primes;
+
+void sieve(ll n)
+{
+    primes.push_back(2);
+    ll sqrtn = sqrt(n);
+    for (ll i = 3; i <= sqrtn; i += 2)
+    {
+        if (marked[i] == 0)
+        {
+            primes.push_back(i);
+            for (ll j = i * i; j <= sqrtn; j += i + i)
+            {
+                marked[j] = 1;
+            }
+        }
+    }
+}
+
+
+void segSieve(int a,int b)
+{
+    if(a==1) a++;
+
+    int sqrtn = sqrt(b);
+
+    CLR(marked);
+
+    for(int i=0; i<primes.size() && primes[i]<=sqrtn; i++)
+    {
+        ll p = primes[i];
+        ll j = p*p;
+
+        ///If j is smaller than a, then shift it inside of segment [a,b]
+        if ( j < a ) j = ( ( a + p - 1 ) / p ) * p;
+
+
+        for( ; j<=b ; j+=p)
+        {
+            marked[j-a]=1;
+        }
+    }
+
+}
+
 
 int main() {
     //READ("in.txt");
     //WRITE("out.txt");
 
-    int t;
-    getI(t);
-    for(int ci=1;ci<=t;ci++)
+    int a,b;
+    sieve(2147483647);
+    while(~getII(a,b))
     {
-        dq.clear();
-        int n,m;
-        getII(n,m);
-        for(int i=0;i<n;i++)
+        segSieve(a,b);
+        int prev=-1;
+        int mini=INF;
+        int maxy=-INF;
+        int aa,bb,c,d;
+        int cnt=0;
+        if(a==1) a++;
+        for(int i=a;i<=b;i++)
         {
-            getI(s[i]);
-        }
-
-        for(int i=0;i<m;i++)
-        {
-            getI(t[i]);
-            mp[t[i]]++;
-        }
-
-        for(int i=0;i<n;i++)
-        {
-            while(dq.front()==s[i])
+            if(marked[i-a]==0)
             {
-                dq.pop_front();
-                mp[s[i]]++;
-            }
-            if(mp[s[i]]!=0)
-            {
-                dq.push_back(pii(s[i],i));
-                mp[s[i]]--;
+                cnt++;
+                if(prev==-1)
+                {
+                    prev=i;
+                }
+                else
+                {
+                    if(i-prev<mini)
+                    {
+                        mini=i-prev;
+                        aa=prev;
+                        bb=i;
+                    }
+                    if(i-prev>maxy)
+                    {
+                        maxy=i-prev;
+                        c=prev;
+                        d=i;
+                    }
+                    prev=i;
+                }
             }
         }
+        if(cnt<=1) printf("There are no adjacent primes.\n");
+        else printf("%d,%d are closest, %d,%d are most distant.\n",aa,bb,c,d);
     }
 
     return 0;
 }
+
 
 
