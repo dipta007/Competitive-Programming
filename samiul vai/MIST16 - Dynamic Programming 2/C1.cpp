@@ -1,0 +1,151 @@
+#pragma comment(linker, "/stack:640000000")
+
+#include <algorithm>
+#include <bitset>
+#include <cassert>
+#include <cctype>
+#include <climits>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <iterator>
+#include <list>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <utility>
+#include <vector>
+using namespace std;
+
+const double EPS = 1e-9;
+const int INF = 10000;
+const double PI=acos(-1.0);
+
+#define    READ(f) 	         freopen(f, "r", stdin)
+#define    WRITE(f)   	     freopen(f, "w", stdout)
+#define    MP(x, y) 	     make_pair(x, y)
+#define    PB(x)             push_back(x)
+#define    rep(i,n)          for(int i = 1 ; i<=(n) ; i++)
+#define    repI(i,n)         for(int i = 0 ; i<(n) ; i++)
+#define    FOR(i,L,R) 	     for (int i = L; i <= R; i++)
+#define    ROF(i,L,R) 	     for (int i = L; i >= R; i--)
+#define    FOREACH(i,t)      for (typeof(t.begin()) i=t.begin(); i!=t.end(); i++)
+#define    ALL(p) 	         p.begin(),p.end()
+#define    ALLR(p) 	         p.rbegin(),p.rend()
+#define    SET(p) 	         memset(p, -1, sizeof(p))
+#define    CLR(p)            memset(p, 0, sizeof(p))
+#define    MEM(p, v)         memset(p, v, sizeof(p))
+#define    getI(a) 	         scanf("%d", &a)
+#define    getII(a,b) 	     scanf("%d%d", &a, &b)
+#define    getIII(a,b,c)     scanf("%d%d%d", &a, &b, &c)
+#define    getL(a)           scanf("%lld",&a)
+#define    getLL(a,b)        scanf("%lld%lld",&a,&b)
+#define    getLLL(a,b,c)     scanf("%lld%lld%lld",&a,&b,&c)
+#define    getC(n)           scanf("%c",&n)
+#define    getF(n)           scanf("%lf",&n)
+#define    getS(n)           scanf("%s",n)
+#define    bitCheck(N,in)    ((bool)(N&(1<<(in))))
+#define    bitOff(N,in)      (N&(~(1<<(in))))
+#define    bitOn(N,in)       (N|(1<<(in)))
+#define    iseq(a,b)          (fabs(a-b)<EPS)
+#define    vi 	 vector < int >
+#define    vii 	 vector < vector < int > >
+#define    pii 	 pair< int, int >
+#define    ff 	 first
+#define    ss 	 second
+#define    ll	 long long
+#define    ull 	 unsigned long long
+
+template< class T > inline T _abs(T n) { return ((n) < 0 ? -(n) : (n)); }
+template< class T > inline T _max(T a, T b) { return (!((a)<(b))?(a):(b)); }
+template< class T > inline T _min(T a, T b) { return (((a)<(b))?(a):(b)); }
+template< class T > inline T _swap(T &a, T &b) { a=a^b;b=a^b;a=a^b;}
+template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
+template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
+template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
+
+#ifdef dipta007
+     #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
+#else
+    #define debug(args...)  // Just strip off all debug tokens
+#endif
+
+struct debugger{
+    template<typename T> debugger& operator , (const T& v){
+        cerr<<v<<" ";
+        return *this;
+    }
+}dbg;
+
+int rr,cc;
+int a[104][104];
+int dp[104][104][210];
+
+int call(int ar,int ac,int br,int bc)
+{
+    if(ar<0 || ar>=rr || ac<0 || ac>=cc) return -INF;
+    if(br<0 || br>=rr || bc<0 || bc>=cc) return -INF;
+    if(ar==rr-1 && ac==cc-1 && br==rr-1 && bc==cc-1) return a[ar][ac];
+    if(ar==br && ac==bc) return -INF;
+
+    int dist=abs(ar-br)+abs(ac-bc);
+    int &ret = dp[ar][ac][dist];
+    if(ret!=-1) return ret;
+    debug(ar,ac,br,bc)
+
+    ret=-INF-INF-INF-INF;
+    ret = max(ret , a[ar][ac]+a[br][bc]+ call(ar,ac, br,bc+1));
+    ret = max(ret , a[ar][ac]+a[br][bc]+ call(ar+1,ac, br,bc));
+    ret = max(ret , a[ar][ac]+a[br][bc]+ call(ar,ac+1, br+1,bc));
+
+    return ret;
+}
+
+
+
+int main() {
+    #ifdef dipta007
+        READ("in.txt");
+//        WRITE("out.txt");
+    #endif // dipta007
+
+    int t;
+    getI(t);
+    FOR(ci,1,t)
+    {
+        getII(rr,cc);
+        FOR(i,0,rr-1)
+        {
+            FOR(j,0,cc-1)
+            {
+                getI(a[i][j]);
+            }
+        }
+        SET(dp);
+        int ret;
+        ret = a[0][0]+call(0,0,0,1);
+//        ret = max(ret, a[0][0]+call(0,0,1,0));
+//        ret = max(ret, a[0][0]+call(0,1,0,0));
+//        ret = max(ret, a[0][0]+call(0,1,0,1));
+        ret = max(ret, a[0][0]+call(0,1,1,0));
+        ret = max(ret, a[0][0]+call(1,0,0,0));
+//        ret = max(ret, a[0][0]+call(1,0,0,1));
+//        ret = max(ret, a[0][0]+call(1,0,1,0));
+        printf("Case %d: %d\n",ci,ret);
+
+    }
+
+    return 0;
+}
+
+
+
+
