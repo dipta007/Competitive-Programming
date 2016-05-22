@@ -25,34 +25,24 @@
 #include <vector>
 using namespace std;
 
-
-
 const double EPS = 1e-9;
 const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
 #define    WRITE(f)   	     freopen(f, "w", stdout)
-
 #define    MP(x, y) 	     make_pair(x, y)
-#define    SZ(c) 	         (int)c.size()
 #define    PB(x)             push_back(x)
-
-#define    rep(i,n)          for(i=1;i<=n;i++)
-#define    repI(i,n)         for(i=0;i<n;i++)
-#define    F(i,L,R)	         for (int i = L; i < R; i++)
-#define    FF(i,L,R) 	     for (int i = L; i <= R; i++)
-#define    FR(i,L,R) 	     for (int i = L; i > R; i--)
-#define    FRF(i,L,R) 	     for (int i = L; i >= R; i--)
+#define    rep(i,n)          for(int i = 1 ; i<=(n) ; i++)
+#define    repI(i,n)         for(int i = 0 ; i<(n) ; i++)
+#define    FOR(i,L,R) 	     for (int i = L; i <= R; i++)
+#define    ROF(i,L,R) 	     for (int i = L; i >= R; i--)
 #define    FOREACH(i,t)      for (typeof(t.begin()) i=t.begin(); i!=t.end(); i++)
 #define    ALL(p) 	         p.begin(),p.end()
 #define    ALLR(p) 	         p.rbegin(),p.rend()
-
 #define    SET(p) 	         memset(p, -1, sizeof(p))
 #define    CLR(p)            memset(p, 0, sizeof(p))
 #define    MEM(p, v)         memset(p, v, sizeof(p))
-#define    CPY(d, s)         memcpy(d, s, sizeof(s))
-
 #define    getI(a) 	         scanf("%d", &a)
 #define    getII(a,b) 	     scanf("%d%d", &a, &b)
 #define    getIII(a,b,c)     scanf("%d%d%d", &a, &b, &c)
@@ -62,19 +52,18 @@ const double PI=acos(-1.0);
 #define    getC(n)           scanf("%c",&n)
 #define    getF(n)           scanf("%lf",&n)
 #define    getS(n)           scanf("%s",n)
-
+#define    bitCheck(N,in)    ((bool)(a&(1<<(k))))
+#define    bitOff(N,in)      (a&(~(1<<(k))))
+#define    bitOn(N,in)       (a|(1<<(k)))
+#define    iseq(a,b)          (fabs(a-b)<EPS)
+#define    iseq(a,b)          (fabs(a-b)<EPS)
 #define    vi 	 vector < int >
 #define    vii 	 vector < vector < int > >
 #define    pii 	 pair< int, int >
-#define    psi 	 pair< string, int >
 #define    ff 	 first
 #define    ss 	 second
 #define    ll	 long long
 #define    ull 	 unsigned long long
-#define    ui    unsigned int
-#define    us 	 unsigned short
-#define    ld 	 long double
-
 
 template< class T > inline T _abs(T n) { return ((n) < 0 ? -(n) : (n)); }
 template< class T > inline T _max(T a, T b) { return (!((a)<(b))?(a):(b)); }
@@ -84,9 +73,7 @@ template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
 template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
-//******************DELETE****************
-#define shubhashis
-#ifdef shubhashis
+#ifdef dipta007
      #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
 #else
     #define debug(args...)  // Just strip off all debug tokens
@@ -99,79 +86,45 @@ struct debugger{
     }
 }dbg;
 
-int bitOn(int N,int pos)
+ll trail(ll n)
 {
-    return N=N | (1<<pos);
-}
-int bitOff(int N,int pos)
-{
-    return N=N & ~(1<<pos);
-}
-bool bitCheck(int N,int pos)
-{
-    return (bool)(N & (1<<pos));
-}
-
-vector <pair <int,int> > vp;
-
-void pre()
-{
-    int c=5;
-    while(1)
+    ll cnt=0;
+    while(n)
     {
-        int cnt=0;
-        int p=5;
-        int x=c;
-        while(x)
-        {
-            cnt += x/5;
-            x /= 5;
-        }
-        vp.PB(pii(c,cnt));
-        c*=5;
-        if(c>100000000) break;
-    }
-}
-
-int check(int x)
-{
-    int cnt=0;
-    while(x)
-    {
-        cnt += x/5;
-        x/=5;
+        cnt += n/5;
+        n/=5;
     }
     return cnt;
 }
 
 int main() {
-//    READ("in.txt");
-//    WRITE("out.txt");
+    #ifdef dipta007
+        READ("in.txt");
+        //WRITE("out.txt");
+    #endif // dipta007
 
     int t;
     getI(t);
-    for(int ci=1;ci<=t;ci++)
+    FOR(ci,1,t)
     {
+        int flg=0;
         int n;
         getI(n);
-
-        int low=5,high = 500000000,res;
+        ll low=0,high=100000000000;
+        printf("Case %d: ",ci);
         while(low<high)
         {
-            int mid=(low+high)/2;
-            if(check(mid)>=n)
-            {
-                res=mid;
-                high=mid-1;
-            }
-            else low=mid+1;
-        }
-        printf("Case %d: ",ci);
-        if(check(res)!=n) printf("impossible\n");
-        else printf("%d\n",res-(res%5));
-    }
+            ll mid = (low+high)/2;
+            ll k = trail(mid);
 
+            if(k<n) low=mid+1;
+            else high=mid;
+        }
+        if(trail(low)==n) printf("%d\n",low);
+        else printf("impossible\n");
+    }
     return 0;
 }
+
 
 

@@ -197,7 +197,7 @@ int BFS(string s)
 }
 
 int main() {
-    READ("in.txt");
+    //READ("in.txt");
     //WRITE("out.txt");
 
     int t;
