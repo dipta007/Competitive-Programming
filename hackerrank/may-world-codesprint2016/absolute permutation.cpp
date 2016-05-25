@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -85,40 +85,13 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
-
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
+int check(int m,int n)
 {
-    int dxx=abs(diff);
-    //debug(dxx)
-    if(in>=n)
-    {
-        if(diff==0) return 0;
-        return -INF;
-    }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
-
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
-
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
-
-    return ret = res;
+    while(m>n) m-=n;
+    return m;
 }
+
+int a[100004];
 
 int main() {
     #ifdef dipta007
@@ -128,22 +101,39 @@ int main() {
 
     int t;
     getI(t);
-    CLR(vis);
     FOR(ci,1,t)
     {
-        cs=ci;
-        getI(n);
-        FOR(i,0,n-1)
+        int n,k;
+        getII(n,k);
+        SET(a);
+        int flg=1;
+        FOR(i,1,n)
         {
-            getI(a[i]);
-            maxy+=a[i];
+            if(i-k>=1 && a[i-k]==-1)
+            {
+                a[i-k]=i;
+            }
+            else if(i+k<=n && a[i+k]==-1)
+            {
+                a[i+k]=i;
+            }
+            else
+            {
+                flg=0;
+                break;
+            }
         }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+        if(flg==0)
+        {
+            printf("-1\n");
+            continue;
+        }
+        FOR(i,1,n)
+        {
+            if(i!=1) printf(" ");
+            printf("%d",a[i]);
+        }
+        printf("\n");
     }
 
     return 0;

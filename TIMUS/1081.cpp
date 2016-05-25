@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -85,65 +85,61 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
+ll dp[50][2];
+int n,k;
 
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
+ll call(int in,int flg)
 {
-    int dxx=abs(diff);
-    //debug(dxx)
-    if(in>=n)
+    if(in<=0)
     {
-        if(diff==0) return 0;
-        return -INF;
+        dp[in][flg]=1;
+        return 1;
     }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
 
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
+    ll &ret = dp[in][flg];
+    if(ret!=-1) return ret;
 
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
+    ret=0;
+    ret += call(in-1,0);
+    if(!flg) ret += call(in-1,1); ///1 boshailam
+    return ret;
+}
 
-    return ret = res;
+void print(int in,int k, string st)
+{
+    if(in<=0)
+    {
+        printf("%s\n",st.c_str());
+        return;
+    }
+
+    if(dp[in-1][0]>=k)
+    {
+        print(in-1,k, st+"0");
+    }
+    else
+    {
+        print(in-1,k-dp[in-1][0],st+"1");
+    }
+
 }
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
+        //READ("in.txt");
         //WRITE("out.txt");
     #endif // dipta007
 
-    int t;
-    getI(t);
-    CLR(vis);
-    FOR(ci,1,t)
+    while(~getII(n,k))
     {
-        cs=ci;
-        getI(n);
-        FOR(i,0,n-1)
+        SET(dp);
+        ll res = call(n,0);
+        if(res<k)
         {
-            getI(a[i]);
-            maxy+=a[i];
+            printf("-1\n");
+            continue;
         }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+        print(n,k,"");
     }
 
     return 0;

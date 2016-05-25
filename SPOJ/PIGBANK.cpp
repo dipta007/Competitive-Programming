@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 999999999;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -85,65 +85,52 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
+int n;
+vector <pii> vp;
+int dp[504][10004];
 
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
+int call(int in,int we)
 {
-    int dxx=abs(diff);
-    //debug(dxx)
     if(in>=n)
     {
-        if(diff==0) return 0;
-        return -INF;
+        if(we==0) return 0;
+        return INF;
     }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
 
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
+    int &ret = dp[in][we];
+    if(ret!=-1) return ret;
 
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
+    ret = INF;
+    if(we-vp[in].ss>=0) ret = min(ret, vp[in].ff + call(in,we-vp[in].ss));
+    ret = min(ret, call(in+1, we));
 
-    return ret = res;
+    return ret;
 }
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
+        //READ("in.txt");
         //WRITE("out.txt");
     #endif // dipta007
 
     int t;
     getI(t);
-    CLR(vis);
     FOR(ci,1,t)
     {
-        cs=ci;
+        SET(dp);
+        vp.clear();
+        int pig,tpig;
+        getII(pig,tpig);
         getI(n);
         FOR(i,0,n-1)
         {
-            getI(a[i]);
-            maxy+=a[i];
+            int p,w;
+            getII(p,w);
+            vp.PB(pii(p,w));
         }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+        int k = call(0,tpig-pig);
+        if(k>=INF) printf("This is impossible.\n");
+        else printf("The minimum amount of money in the piggy-bank is %d.\n",k);
     }
 
     return 0;

@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -85,65 +85,75 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
+int n,tim;
+int t[54][54];
+int p[54][54];
+pii dp[54][1004];
+int vis[54][1004];
 
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
+pii add(pii a,pii b)
 {
-    int dxx=abs(diff);
-    //debug(dxx)
-    if(in>=n)
+    pii c;
+    c.ff = a.ff + b.ff;
+    c.ss = a.ss + b.ss;
+    return c;
+}
+
+pii call(int in, int we)
+{
+    if(in==n-1) return pii(0,0);
+
+    pii &ret = dp[in][we];
+    if(vis[in][we]==1) return ret;
+    vis[in][we]=1;
+
+    ret.ff = INF;
+    ret.ss = INF;
+    FOR(i,0,n-1)
     {
-        if(diff==0) return 0;
-        return -INF;
+        if(i==in) continue;
+        if(we-t[in][i]>=0)
+        {
+            pii a;
+            a.ff = p[in][i];
+            a.ss = t[in][i];
+            pii k = add(a,call(i, we-t[in][i]));
+            if(k.ff<ret.ff)
+            {
+                ret = k;
+            }
+        }
     }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
-
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
-
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
-
-    return ret = res;
+    return ret;
 }
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
+        //READ("in.txt");
         //WRITE("out.txt");
     #endif // dipta007
 
-    int t;
-    getI(t);
-    CLR(vis);
-    FOR(ci,1,t)
+    while(~getII(n,tim))
     {
-        cs=ci;
-        getI(n);
+        if(n==0 && tim==0) break;
+
         FOR(i,0,n-1)
         {
-            getI(a[i]);
-            maxy+=a[i];
+            FOR(j,0,n-1)
+            {
+                getI(t[i][j]);
+            }
         }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+        FOR(i,0,n-1)
+        {
+            FOR(j,0,n-1)
+            {
+                getI(p[i][j]);
+            }
+        }
+        CLR(vis);
+        pii res = call(0,tim);
+        printf("%d %d\n",res.ff,res.ss);
     }
 
     return 0;

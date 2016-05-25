@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -55,6 +55,7 @@ const double PI=acos(-1.0);
 #define    bitCheck(N,in)    ((bool)(N&(1<<(in))))
 #define    bitOff(N,in)      (N&(~(1<<(in))))
 #define    bitOn(N,in)       (N|(1<<(in)))
+#define    iseq(a,b)          (fabs(a-b)<EPS)
 #define    iseq(a,b)          (fabs(a-b)<EPS)
 #define    vi 	 vector < int >
 #define    vii 	 vector < vector < int > >
@@ -85,39 +86,33 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
+int n;
+ll dp[32][4][(1<<4)+4];
 
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
+ll call(int in, int pos, int mask)
 {
-    int dxx=abs(diff);
-    //debug(dxx)
-    if(in>=n)
+    if(in>=n) return 1;
+    if(pos>=3) return call(in+1, 0, mask);
+
+    ll &ret = dp[in][pos][mask];
+    if(ret != -1) return ret;
+
+    ret=0;
+    if(bitCheck(mask,pos)==1)
     {
-        if(diff==0) return 0;
-        return -INF;
+        ret += call(in,pos+1, bitOff(mask,pos));
     }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
-
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
-
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
-
-    return ret = res;
+    else if(pos<=1)
+    {
+        if(bitCheck(mask,pos+1)==0) ret += call(in,pos+2, mask);
+        //else
+        if(in<n-1) ret += call(in, pos+1, bitOn(mask,pos));
+    }
+    else
+    {
+        if(in<n-1) ret += call(in,pos+1, bitOn(mask,pos));
+    }
+    return ret;
 }
 
 int main() {
@@ -126,28 +121,14 @@ int main() {
         //WRITE("out.txt");
     #endif // dipta007
 
-    int t;
-    getI(t);
-    CLR(vis);
-    FOR(ci,1,t)
+    while(~getI(n))
     {
-        cs=ci;
-        getI(n);
-        FOR(i,0,n-1)
-        {
-            getI(a[i]);
-            maxy+=a[i];
-        }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+        if(n==-1) break;
+        SET(dp);
+        printf("%lld\n",call(0,0,0));
     }
 
     return 0;
 }
-
 
 

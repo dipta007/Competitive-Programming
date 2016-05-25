@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -85,65 +85,63 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
+int dp[(1<<17)+4][16];
+ll cn[(1<<17)+4][16];
+int n;
+int a[18];
+ll cnt;
+int res;
 
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
+int call(int mask,int prev)
 {
-    int dxx=abs(diff);
-    //debug(dxx)
-    if(in>=n)
+    if(__builtin_popcount(mask)==n)
     {
-        if(diff==0) return 0;
-        return -INF;
+        cn[mask][prev]=1;
+        return a[prev]+n;
     }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
 
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
+    int &ret = dp[mask][prev];
+    if(ret!=-1) return ret;
 
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
-
-    return ret = res;
+    ret = 0;
+    FOR(i,1,n)
+    {
+        if(bitCheck(mask,i)==0)
+        {
+            int kk = abs(a[i]-a[prev]) + 1 + call( bitOn(mask,i) , i );
+            if(kk > ret)
+            {
+                ret = kk;
+                cn[mask][prev]=0;
+            }
+            if(kk==ret) cn[mask][prev] += cn[bitOn(mask,i)][i];
+        }
+    }
+    cnt = cn[mask][prev];
+    return ret;
 }
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
+        //READ("in.txt");
         //WRITE("out.txt");
     #endif // dipta007
 
-    int t;
-    getI(t);
-    CLR(vis);
-    FOR(ci,1,t)
+    while(~getI(n))
     {
-        cs=ci;
-        getI(n);
-        FOR(i,0,n-1)
+        if(!n) break;
+        SET(dp);
+        a[0]=0;
+        FOR(i,1,n)
         {
             getI(a[i]);
-            maxy+=a[i];
         }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+        cnt=0;
+        res=0;
+        int k = call(0,0);
+
+        printf("%d %lld\n",k,cnt);
+
     }
 
     return 0;

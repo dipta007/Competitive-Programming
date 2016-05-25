@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -85,65 +85,107 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
+string s1,s2;
+int dp[84][84];
+int pri[84][84];
 
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
+int call(int i,int j)
 {
-    int dxx=abs(diff);
-    //debug(dxx)
-    if(in>=n)
+    if(i>=s1.size() || j>=s2.size()) return 0;
+
+    int &ret= dp[i][j];
+    if(ret!=-1) return ret;
+    int o1,o2;
+
+    if(s1[i]==s2[j])
     {
-        if(diff==0) return 0;
-        return -INF;
+        pri[i][j]=0;
+        return ret = 1+ call(i+1,j+1);
     }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
+    else
+    {
+        o1 = call(i+1,j);
+        o2 = call(i,j+1);
+    }
+    if(o1>o2) pri[i][j]=1;
+    else if(o2>o1) pri[i][j]=2;
+    else pri[i][j]=3;
 
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
+    return ret = max(o1,o2);
+}
 
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
+set <string> vs;
+map <string,bool> processed[81][81];
 
-    return ret = res;
+void print(int i, int j, string st)
+{
+    if(processed[i][j].find(st)!=processed[i][j].end()) return;
+    processed[i][j][st]=1;
+    if(i>=s1.size() || j>=s2.size())
+    {
+        vs.insert(st);
+        return;
+    }
+
+    if(pri[i][j]==0)
+    {
+        print(i+1,j+1,st+s1[i]);
+    }
+    else if(pri[i][j]==1)
+    {
+        print(i+1,j,st);
+    }
+    else if(pri[i][j]==2)
+    {
+        print(i,j+1,st);
+    }
+    else
+    {
+//        if(s1[i]<s2[j])
+        {
+            print(i+1,j,st);
+            print(i,j+1,st);
+        }
+//        else
+        {
+//            print(i,j+1,st);
+//            print(i+1,j,st);
+        }
+    }
 }
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
+        //READ("in.txt");
         //WRITE("out.txt");
     #endif // dipta007
 
     int t;
     getI(t);
-    CLR(vis);
+    getchar();
     FOR(ci,1,t)
     {
-        cs=ci;
-        getI(n);
-        FOR(i,0,n-1)
+        SET(dp);
+        getline(cin,s1);
+        getline(cin,s2);
+
+        FOR(i,0,80)
         {
-            getI(a[i]);
-            maxy+=a[i];
+            FOR(j,0,80)
+            {
+                processed[i][j].clear();
+            }
         }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+
+        call(0,0);
+        vs.clear();
+        print(0,0,"");
+        FOREACH(it,vs)
+        {
+            {
+                printf("%s\n",it->c_str());
+            }
+        }
     }
 
     return 0;

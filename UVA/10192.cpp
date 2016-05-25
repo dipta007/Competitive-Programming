@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -85,65 +85,43 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
+int dp[104][104];
+string s1,s2;
 
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
+int call(int i, int j)
 {
-    int dxx=abs(diff);
-    //debug(dxx)
-    if(in>=n)
+    if(i>=s1.size() || j>=s2.size()) return 0;
+
+    int &ret = dp[i][j];
+    if(ret!=-1) return ret;
+
+    int o1,o2;
+
+    if(s1[i]==s2[j])
     {
-        if(diff==0) return 0;
-        return -INF;
+        return ret = 1 + call(i+1, j+1);
     }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
-
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
-
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
-
-    return ret = res;
+    else
+    {
+        o1 = call(i+1, j);
+        o2 = call(i, j+1);
+    }
+    return ret = max(o1,o2);
 }
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
+        //READ("in.txt");
         //WRITE("out.txt");
     #endif // dipta007
 
-    int t;
-    getI(t);
-    CLR(vis);
-    FOR(ci,1,t)
+    int ci=1;
+    while(getline(cin,s1))
     {
-        cs=ci;
-        getI(n);
-        FOR(i,0,n-1)
-        {
-            getI(a[i]);
-            maxy+=a[i];
-        }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+        if(s1.size()==1 && s1[0]=='#') break;
+        getline(cin,s2);
+        SET(dp);
+        printf("Case #%d: you can visit at most %d cities.\n",ci++,call(0,0));
     }
 
     return 0;

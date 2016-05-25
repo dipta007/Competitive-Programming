@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -85,65 +85,52 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
+vector <pii> vp;
+int n;
+int dp[100004][2];
 
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
+int call(int in, int fell)
 {
-    int dxx=abs(diff);
-    //debug(dxx)
-    if(in>=n)
-    {
-        if(diff==0) return 0;
-        return -INF;
-    }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
+    if(in>n) return 0;
 
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
+    int &ret = dp[in][fell];
+    if(ret!=-1) return ret;
 
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
+    int lft, rgt;
+    if(fell) lft = vp[in-1].ff + vp[in-1].ss;
+    else lft = vp[in-1].ff;
 
-    return ret = res;
+    rgt = vp[in+1].ff;
+
+    ret = 0;
+    if(vp[in].ff-vp[in].ss>lft) ret = max(ret, 1 + call(in+1, 0));
+    if(vp[in].ff+vp[in].ss<rgt) ret = max(ret, 1 + call(in+1, 1));
+    ret = max(ret, call(in+1, 0));
+
+    //debug(in,ret)
+
+    return ret;
 }
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
+        //READ("in.txt");
         //WRITE("out.txt");
     #endif // dipta007
 
-    int t;
-    getI(t);
-    CLR(vis);
-    FOR(ci,1,t)
+    while(~getI(n))
     {
-        cs=ci;
-        getI(n);
+        vp.clear();
+        vp.PB(pii(-1000000000,0));
         FOR(i,0,n-1)
         {
-            getI(a[i]);
-            maxy+=a[i];
+            int x,y;
+            getII(x,y);
+            vp.PB(pii(x,y));
         }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+        vp.PB(pii(2000000004,0));
+        SET(dp);
+        printf("%d\n",call(1,0));
     }
 
     return 0;

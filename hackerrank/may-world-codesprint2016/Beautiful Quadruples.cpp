@@ -26,7 +26,7 @@
 using namespace std;
 
 const double EPS = 1e-9;
-//const int INF = 6000000;
+const int INF = 0x7f7f7f7f;
 const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -85,69 +85,82 @@ struct debugger{
     }
 }dbg;
 
-const int MS  = 250000;
-const int MN  = 2 * MS + 10;
-const int INF = MS * 10;
-
-int dp[3][MN];
-int vis[3][MN];
-int sum;
-int cs,n,a[54],maxy;
-
-
-int call(int in, int diff,int flg)
-{
-    int dxx=abs(diff);
-    //debug(dxx)
-    if(in>=n)
-    {
-        if(diff==0) return 0;
-        return -INF;
-    }
-    int &ret = dp[flg][dxx];
-    if(vis[flg][dxx]==cs) return ret;
-
-    int res=-INF;
-//    if((diff+a[in])<=sum)
-        res = max(res, a[in] + call(in+1, diff+a[in], flg^1) );
-    if(abs(diff-a[in])<=sum)
-        res = max(res, call(in+1, diff-a[in], flg^1));
-    res = max(res, call(in+1, diff, flg^1));
-
-    //debug(res,a[in],in)
-    vis[flg][dxx]=cs;
-
-    return ret = res;
-}
-
 int main() {
     #ifdef dipta007
-        READ("in.txt");
+        //READ("in.txt");
         //WRITE("out.txt");
     #endif // dipta007
 
-    int t;
-    getI(t);
-    CLR(vis);
-    FOR(ci,1,t)
+    int a,b,c,d;
+    while(~getII(a,b))
     {
-        cs=ci;
-        getI(n);
-        FOR(i,0,n-1)
+        getII(c,d);
+        int cnt=0;
+        int aa[4];
+        aa[0]=a;
+        aa[1]=b;
+        aa[2]=c;
+        aa[3]=d;
+        sort(aa,aa+4);
+        FOR(i,1,aa[0])
         {
-            getI(a[i]);
-            maxy+=a[i];
+            FOR(j,i,aa[1])
+            {
+                FOR(k,j,aa[2])
+                {
+                    FOR(l,k,aa[3])
+                    {
+                        int kk = i^j^k^l;
+                        if(kk!=0)
+                        {
+                            cnt++;
+                        }
+                    }
+                }
+            }
         }
-        sum = (maxy+1)/2;
-        maxy += 2;
-        int k = call(0,0,0);
-        printf("Case %d: ",ci);
-        if(k<=0) printf("impossible\n");
-        else printf("%d\n",k);
+        printf("%d\n",cnt);
+
+        ///LARGE
+        a=aa[0];
+        b=aa[1];
+        c=aa[2];
+        d=aa[3];
+        int mark[5000];
+        CLR(mark);
+        vi v;
+        FOR(i,1,a)
+        {
+            FOR(j,i,b)
+            {
+                int x = i^j;
+                v.PB(x);
+                mark[j][x]++;;
+            }
+        }
+        int res=0;
+        FOR(i,1,c)
+        {
+            FOR(j,i,d)
+            {
+                int x = i^j;
+                int k =v.size();
+                if(mark[x])
+                {
+                    k-=mark[i][x];
+                }
+                debug(i,j,k,v.size())
+//                if(i<=a && j<=b) k--;
+//                if(i<=b && j<=c) k--;
+                //if(i<=a && j<=c) k--;
+                debug(i,j,k,v.size());
+                res += k;
+            }
+        }
+        printf("%d\n",res);
     }
 
     return 0;
 }
-
 
 
