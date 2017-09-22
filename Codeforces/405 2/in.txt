@@ -1,0 +1,8 @@
+8 3
+NO NO YES YES YES NO
+
+9 8
+YES NO
+
+3 2
+NO NO

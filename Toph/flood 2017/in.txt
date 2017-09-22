@@ -1,0 +1,21 @@
+2
+a b c 2 3
+a b c 3 2
+mysql -u root -p People
+use people
+order by first_name desc
+select * from people
+Lol:Exit
+
+5
+Humaun kabir Rajshahi 24 50
+Didarul Islam Tangail 24 52
+Sakibul Rumi Vulegesi 65 120
+Shakir Romeo Jessore 65 350
+Soummyo Avik Chittagong 120 350
+mysql -u root -p People
+use people
+order by first_name asc
+select * from people
+use people
+Lol:Exit

@@ -1,0 +1,48 @@
+3 1
+abc
+
+LanguageA
+a
+
+LanguageAB
+ab
+
+LanguageB
+b
+
+10 9
+1234567890
+!@#$%^&*()
+qwertyuiop
+QWERTYUIOP
+asdfghjkl;
+ASDFGHJKL:
+zxcvbnm,./
+ZXCVBNM<>?
+ []{}='"-|
+
+Pascal
+begin
+  reset(input, 'filename.in');
+  rewrite(output, 'filename.out');
+end.
+
+C
+int main()
+{
+    freopen("filename.in", "r", stdin);
+    freopen("filename.out", "w", stdout);
+}
+
+Java
+import java.io.*;
+import java.util.*;
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Scanner in = new Scanner(new File("filename.in"));
+        PrintWriter out = new PrintWriter("filename.out");
+        //TODO
+        in.close();
+        out.close();
+    }
+}

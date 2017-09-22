@@ -1,0 +1,14 @@
+3 2 2
+abc
+ab
+
+9 12 4
+bbaaababb
+abbbabbaaaba
+
+
+
+
+4 4 2
+bbab
+bbba
