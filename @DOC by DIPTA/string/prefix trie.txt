@@ -5,10 +5,10 @@ struct node
     node()
     {
         endmark=0;
-        for(int i=0; i<26; i++) 
+        for(int i=0; i<26; i++)
 			next[i]=NULL;
     }
-};
+}*root;
 
 void insert(char *str,int len)			// parameter = word & length of word
 {
@@ -49,7 +49,6 @@ void del(node *cur)						// parameter hisebe root pathate hbe
 
 int main()
 {
-    node *root;
     root=new node();
 
     puts("ENTER NUMBER OF WORDS");
@@ -61,7 +60,7 @@ int main()
         scanf("%s",str);
         insert(str,strlen(str));
     }
-    
+
     puts("ENTER NUMBER OF QUERY";);		// Query starts HERE
     int query;
     cin>>query;
@@ -69,12 +68,12 @@ int main()
     {
         char str[50];
         scanf("%s",str);
-        if(search(str,strlen(str)))	
+        if(search(str,strlen(str)))
             puts("FOUND");
-        else 
+        else
             puts("NOT FOUND");
     }
-	
+
     del(root); 							// Delete the TRIE starts HERE
     return 0;
 }

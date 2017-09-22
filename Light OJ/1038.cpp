@@ -132,14 +132,22 @@ double call(int n)
     }
 
     int sz=v.size();
-    double gun=1/sz;
+    double gun=1/(double)sz;
     double res=0.0;
-    debug(n,sz)
+    //debug(n,sz)
+    double tot = 0.0;
     for(int i=0;i<sz;i++)
     {
-        res += gun*(1.0+call(n/v[i]));
+        if(v[i]==1) continue;
+        tot += (1.0+call(n/v[i]));
     }
-    return dp[n]=res;
+    //debug(tot)
+    tot += 1.0; ///for 1 extra 1 move
+    tot /= sz;
+    ///for 1 left side er gula gun hbe
+    tot *= sz;
+    tot /= (sz-1);
+    return dp[n]=tot;
 }
 
 int main() {
@@ -148,12 +156,13 @@ int main() {
 
     int t;
     getI(t);
+    CLR(visited);
     for(int ci=1;ci<=t;ci++)
     {
         int n;
         getI(n);
-        CLR(visited);
-        debug(call(n));
+        //debug(call(n))
+        printf("Case %d: %.12lf\n",ci,call(n));
     }
 
     return 0;

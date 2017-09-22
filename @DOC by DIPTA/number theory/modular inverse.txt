@@ -4,7 +4,7 @@ typedef pair<int, int> pii;
 
 pii extendedEuclid(int a, int b)   // returns x, y jekhane, ax + by = gcd(a,b)
 {
-    if(b == 0) 
+    if(b == 0)
 		return pii(1, 0);
     else
     {

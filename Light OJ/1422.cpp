@@ -112,8 +112,7 @@ bool check(int N,int pos)
 }
 
 int n,a[104];
-map<pair< int , stack<int> >,int> mp;
-pair< int , stack<int> > p;
+map<stack <int>,int> mp[104];
 
 int call(int in,stack<int> s)
 {
@@ -123,8 +122,7 @@ int call(int in,stack<int> s)
         return 0;
     }
 
-    p=make_pair(in,s);
-    if(mp.find(p)!=mp.end()) return mp[p];
+    if(mp[in].find(s)!=mp[in].end()) return mp[in][s];
 
     int s1,s2;
     s1=s2=INF;
@@ -147,25 +145,24 @@ int call(int in,stack<int> s)
 
     //debug(s1,s2);
 
-    return mp[p]=min(s1,s2);
+    return mp[in][s]=min(s1,s2);
 }
 
 int main() {
-    READ("in.txt");
+//    READ("in.txt");
     //WRITE("out.txt");
 
     int t;
     getI(t);
     for(int ci=1;ci<=t;ci++)
     {
-        mp.clear();
+        for(int i=0; i<104; i++) mp[i].clear();
         getI(n);
         for(int i=0;i<n;i++)
         {
             getI(a[i]);
         }
         stack <int> s;
-        while(!s.empty()) s.pop();
         printf("Case %d: %d\n",ci,call(0,s));
     }
 

@@ -84,8 +84,7 @@ template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
 
 //******************DELETE****************
-#define shubhashis
-#ifdef shubhashis
+#ifdef dipta007
      #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
 #else
     #define debug(args...)  // Just strip off all debug tokens
@@ -97,49 +96,6 @@ struct debugger{
         return *this;
     }
 }dbg;
-
-/// ********* debug template bt Bidhan Roy *********
-
-template < typename F, typename S >
-ostream& operator << ( ostream& os, const pair< F, S > & p ) {
-    return os << "(" << p.first << ", " << p.second << ")";
-}
-
-template < typename T >
-ostream &operator << ( ostream & os, const vector< T > &v ) {
-    os << "{";
-    typename vector< T > :: const_iterator it;
-    for( it = v.begin(); it != v.end(); it++ ) {
-        if( it != v.begin() ) os << ", ";
-        os << *it;
-    }
-    return os << "}";
-}
-
-template < typename T >
-ostream &operator << ( ostream & os, const set< T > &v ) {
-    os << "[";
-    typename set< T > :: const_iterator it;
-    for ( it = v.begin(); it != v.end(); it++ ) {
-        if( it != v.begin() ) os << ", ";
-        os << *it;
-    }
-    return os << "]";
-}
-
-template < typename F, typename S >
-ostream &operator << ( ostream & os, const map< F, S > &v ) {
-    os << "[";
-    typename map< F , S >::const_iterator it;
-    for( it = v.begin(); it != v.end(); it++ ) {
-        if( it != v.begin() ) os << ", ";
-        os << it -> first << " = " << it -> second ;
-    }
-    return os << "]";
-}
-
-#define deb(x) cerr << #x << " = " << x << endl;
-//******************DELETE****************
 
 int on(int N,int pos)
 {
@@ -155,46 +111,63 @@ bool check(int N,int pos)
 }
 
 int n,m,k;
-int mod=1000000007;
-int dp[1004][1004],mark[1004];
+ll mod=1000000007;
+ll dp[1004][1004];
+ll dp1[1004];
 
-int call(int m,int r)
+ll nCr(ll n,ll r)
 {
-    if(r==1) return m;
-    if(m==r) return 1;
-    int &ret = dp[m][r];
+    if(r==1)
+        return n;
+    if(n==r || r==0)
+        return 1;
+    ll &ret=dp[n][r];
+    if(ret!=-1)
+        return ret;
+    ret=(nCr(n-1,r-1)%mod+nCr(n-1,r)%mod)%mod;
+    return ret;
+}
+
+ll call(int in)
+{
+    if(in==1)
+    {
+        return 0;
+    }
+    if(in==0)
+    {
+        return 1;
+    }
+
+    ll &ret = dp1[in];
     if(ret!=-1) return ret;
-    return ret=(call(m-1,r)%mod+call(m-1,r-1)%mod)%mod;
+
+    ret = 0;
+
+    ret = ((ll)(in-1) * (call(in-1) + call(in-2)))%mod;
+
+    return ret;
 }
 
 int main() {
-    READ("in.txt");
+//    READ("in.txt");
     //WRITE("out.txt");
 
     int t;
     getI(t);
-    ll fact[1004];
-    fact[0]=1;
-    for(int i=1;i<=1000;i++)
-    {
-        fact[i]=(fact[i-1]*i)%mod;
-    }
-    //debug(t,t)
     SET(dp);
+    SET(dp1);
     for(int ci=1;ci<=t;ci++)
     {
         getIII(n,m,k);
-        ll res=call(m,k)*fact[n-k];
-        //debug(res);
-        ll l=-1;
-        for(int i=1;i<=n-k;i++)
+        ll res=0;
+        for(int i=0;i<=n-m;i++)
         {
-            //debug(res);
-            res=(res + l*(call(n-k,i)*fact[n-k-i])%mod)%mod;
-
-            l=l*(-1);
+            res += (nCr(n-m, i) * call(n-k-i))%mod;
+            res %= mod;
         }
-        cout << "Case " << ci << ": " <<res << endl;
+        res = (res*nCr(m,k))%mod;
+        printf("Case %d: %lld\n",ci,res);
     }
 
     return 0;

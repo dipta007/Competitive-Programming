@@ -35,8 +35,8 @@ const double PI=acos(-1.0);
 #define    PB(x)             push_back(x)
 #define    rep(i,n)          for(int i = 1 ; i<=(n) ; i++)
 #define    repI(i,n)         for(int i = 0 ; i<(n) ; i++)
-#define    FOR(i,L,R) 	     for (int i = L; i <= R; i++)
-#define    ROF(i,L,R) 	     for (int i = L; i >= R; i--)
+#define    FOR(i,L,R) 	     for (int i = (int)(L); i <= (int)(R); i++)
+#define    ROF(i,L,R) 	     for (int i = (int)(L); i >= (int)(R); i--)
 #define    FOREACH(i,t)      for (typeof(t.begin()) i=t.begin(); i!=t.end(); i++)
 #define    ALL(p) 	         p.begin(),p.end()
 #define    ALLR(p) 	         p.rbegin(),p.rend()
@@ -52,10 +52,9 @@ const double PI=acos(-1.0);
 #define    getC(n)           scanf("%c",&n)
 #define    getF(n)           scanf("%lf",&n)
 #define    getS(n)           scanf("%s",n)
-#define    bitCheck(N,in)    ((bool)(a&(1<<(k))))
-#define    bitOff(N,in)      (a&(~(1<<(k))))
-#define    bitOn(N,in)       (a|(1<<(k)))
-#define    iseq(a,b)          (fabs(a-b)<EPS)
+#define    bitCheck(N,in)    ((bool)(N&(1<<(in))))
+#define    bitOff(N,in)      (N&(~(1<<(in))))
+#define    bitOn(N,in)       (N|(1<<(in)))
 #define    iseq(a,b)          (fabs(a-b)<EPS)
 #define    vi 	 vector < int >
 #define    vii 	 vector < vector < int > >
@@ -86,6 +85,87 @@ struct debugger{
     }
 }dbg;
 
+
+struct edge
+{
+    int u,v,w;
+    edge()
+    {
+
+    }
+    edge(int x,int y,int z)
+    {
+        u=x,v=y,w=z;
+    }
+    bool operator < (const edge &p) const
+    {
+        return w < p.w;
+    }
+};
+
+class UnionFind
+{
+private:
+    vi p,rank;
+public:
+    UnionFind(int n)
+
+    {
+        rank.assign(n+1,0);
+        p.assign(n+1,0);
+        for(int i=0; i<=n; i++)
+            p[i]=i;
+    }
+    int findSet(int i)
+    {
+        return (p[i] == i) ? i : (p[i]=findSet(p[i]));
+    }
+    bool isSameSet(int i,int j)
+    {
+        return findSet(i) == findSet(j);
+    }
+    void unionSet(int i,int j)
+    {
+        if(!isSameSet(i,j))
+        {
+            int x=findSet(i);
+            int y=findSet(j);
+            if(rank[x]>rank[y]) p[y]=x;
+            else
+            {
+                p[x]=y;
+                if(rank[x]==rank[y])
+                    rank[y]++;
+            }
+        }
+    }
+};
+
+vector <edge> e;
+
+int MST(int node)
+{
+    sort(ALL(e));
+    UnionFind uMst(node);
+
+    int cnt=0,sum=0;
+    for(int i=0;i<e.size();i++)
+    {
+        int x=uMst.findSet(e[i].u);
+        int y=uMst.findSet(e[i].v);
+        if(x!=y)
+        {
+            cnt++;
+            uMst.unionSet(x,y);
+            sum += e[i].w;
+            if(cnt==node-1) break;
+        }
+    }
+    if(cnt!=node-1) return -1;
+    return sum;
+}
+
+
 int main() {
     #ifdef dipta007
         READ("in.txt");
@@ -98,65 +178,28 @@ int main() {
     {
         int n;
         getI(n);
-        int adj[n][n];
+        e.clear();
 
-        FOR(i,0,n-1)
+        int sum = 0;
+        FOR(i,1,n)
         {
-            FOR(j,0,n-1)
+            FOR(j,1,n)
             {
-                getI(adj[i][j]);
+                int x;
+                getI(x);
+                sum += x;
+                if(x) e.PB( edge(i,j,x) );
             }
         }
-        int flg=1;
-        int cnt=0;
 
-        FOR(i,0,n-1)
-        {
-            FOR(j,i,n-1)
-            {
-                if(i==j)
-                {
-                    cnt += adj[i][j];
-                    continue;
-                }
-                if(adj[i][j]==0 || adj[j][i]==0) continue;
-                cnt += max(adj[i][j],adj[j][i]);
-            }
-        }
-        FOR(i,0,n-1)
-        {
-            FOR(j,0,n-1)
-            {
-                if(adj[i][j]==0)
-                adj[i][j]=INF;
-            }
-        }
-        int node=n;
-        for(int k=0;k<node;k++)
-        {
-            for(int i=0;i<node;i++)
-            {
-                for(int j=0;j<node;j++)
-                {
-                    if(adj[i][k]+adj[k][j]<adj[i][j])
-                    {
-                        adj[i][j] = adj[i][k]+adj[k][j];
-                    }
-                }
-            }
-        }
-        FOR(i,0,n-1)
-        {
-            FOR(j,0,n-1)
-            {
-                if(adj[i][j]==INF)
-                    cnt=-1;
-            }
-        }
-        printf("Case %d: %d\n",ci,cnt);
+        int kk = MST(n);
+        printf("Case %d: ",ci);
+        if(kk==-1) printf("-1\n");
+        else printf("%d\n",sum-kk);
     }
 
     return 0;
 }
+
 
 
