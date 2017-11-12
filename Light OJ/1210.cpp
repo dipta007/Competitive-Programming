@@ -1,31 +1,6 @@
 #pragma comment(linker, "/stack:640000000")
-
-#include <algorithm>
-#include <bitset>
-#include <cassert>
-#include <cctype>
-#include <climits>
-#include <cmath>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <iostream>
-#include <iomanip>
-#include <iterator>
-#include <list>
-#include <map>
-#include <numeric>
-#include <queue>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <string>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
-
-
 
 const double EPS = 1e-9;
 const int INF = 0x7f7f7f7f;
@@ -33,212 +8,226 @@ const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
 #define    WRITE(f)   	     freopen(f, "w", stdout)
-
 #define    MP(x, y) 	     make_pair(x, y)
-#define    SZ(c) 	         (int)c.size()
 #define    PB(x)             push_back(x)
-
-#define    F(i,L,R)	         for (int i = L; i < R; i++)
-#define    FF(i,L,R) 	     for (int i = L; i <= R; i++)
-#define    FR(i,L,R) 	     for (int i = L; i > R; i--)
-#define    FRF(i,L,R) 	     for (int i = L; i >= R; i--)
+#define    rep(i,n)          for(int i = 1 ; i<=(n) ; i++)
+#define    repI(i,n)         for(int i = 0 ; i<(n) ; i++)
+#define    FOR(i,L,R) 	     for (int i = (int)(L); i <= (int)(R); i++)
+#define    ROF(i,L,R) 	     for (int i = (int)(L); i >= (int)(R); i--)
 #define    FOREACH(i,t)      for (typeof(t.begin()) i=t.begin(); i!=t.end(); i++)
 #define    ALL(p) 	         p.begin(),p.end()
 #define    ALLR(p) 	         p.rbegin(),p.rend()
-
 #define    SET(p) 	         memset(p, -1, sizeof(p))
 #define    CLR(p)            memset(p, 0, sizeof(p))
 #define    MEM(p, v)         memset(p, v, sizeof(p))
-#define    CPY(d, s)         memcpy(d, s, sizeof(s))
-
 #define    getI(a) 	         scanf("%d", &a)
 #define    getII(a,b) 	     scanf("%d%d", &a, &b)
 #define    getIII(a,b,c)     scanf("%d%d%d", &a, &b, &c)
-#define    getL(a)           scanf("%I64d",&a)
-#define    getLL(a,b)        scanf("%I64d%I64d",&a,&b)
-#define    getLLL(a,b,c)     scanf("%I64d%I64d%I64d",&a,&b,&c)
+#define    getL(a)           scanf("%lld",&a)
+#define    getLL(a,b)        scanf("%lld%lld",&a,&b)
+#define    getLLL(a,b,c)     scanf("%lld%lld%lld",&a,&b,&c)
 #define    getC(n)           scanf("%c",&n)
-#define    getL(n)           scanf("%I64d",&n)
 #define    getF(n)           scanf("%lf",&n)
 #define    getS(n)           scanf("%s",n)
+#define    bitCheck(N,in)    ((bool)(N&(1<<(in))))
+#define    bitOff(N,in)      (N&(~(1<<(in))))
+#define    bitOn(N,in)       (N|(1<<(in)))
+#define    bitFlip(a,k)      (a^(1<<(k)))
+#define    bitCount(a)        __builtin_popcount(a)
+#define    bitCountLL(a)      __builtin_popcountll(a)
+#define    bitLeftMost(a)     (63-__builtin_clzll((a)))
+#define    bitRightMost(a)    (__builtin_ctzll(a))
+#define    iseq(a,b)          (fabs(a-b)<EPS)
+#define    UNIQUE(V)          (V).erase(unique((V).begin(),(V).end()),(V).end())
+#define    vi 	              vector < int >
+#define    vii 	              vector < vector < int > >
+#define    pii 	              pair< int, int >
+#define    ff 	              first
+#define    ss 	              second
+#define    ll	              long long
+#define    ull 	              unsigned long long
+#define    POPCOUNT           __builtin_popcount
+#define    POPCOUNTLL         __builtin_popcountll
+#define    RIGHTMOST          __builtin_ctzll
+#define    LEFTMOST(x)        (63-__builtin_clzll((x)))
 
-#define    vi 	 vector < int >
-#define    vii 	 vector < vector < int > >
-#define    pii 	 pair< int, int >
-#define    psi 	 pair< string, int >
-#define    ff 	 first
-#define    ss 	 second
-#define    ll	 long long
-#define    ull 	 unsigned long long
-#define    ui    unsigned int
-#define    us 	 unsigned short
-#define    ld 	 long double
+template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
+template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
+template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
-
-template< class T > inline T _abs(T n)
-{
-    return ((n) < 0 ? -(n) : (n));
-}
-template< class T > inline T _max(T a, T b)
-{
-    return (!((a)<(b))?(a):(b));
-}
-template< class T > inline T _min(T a, T b)
-{
-    return (((a)<(b))?(a):(b));
-}
-template< class T > inline T _swap(T &a, T &b)
-{
-    a=a^b;
-    b=a^b;
-    a=a^b;
-}
-template< class T > inline T gcd(T a, T b)
-{
-    return (b) == 0 ? (a) : gcd((b), ((a) % (b)));
-}
-template< class T > inline T lcm(T a, T b)
-{
-    return ((a) / gcd((a), (b)) * (b));
-}
-
-//******************DELETE****************
-#define shubhashis
-#ifdef shubhashis
-#define debug(args...) {dbg,args; cerr<<endl;}
+#ifdef dipta007
+     #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
+     #define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
+        template <typename Arg1>
+        void __f(const char* name, Arg1&& arg1){
+            cerr << name << " : " << arg1 << std::endl;
+        }
+        template <typename Arg1, typename... Args>
+        void __f(const char* names, Arg1&& arg1, Args&&... args){
+            const char* comma = strchr(names + 1, ',');cerr.write(names, comma - names) << " : " << arg1<<" | ";__f(comma+1, args...);
+        }
 #else
-#define debug(args...)  // Just strip off all debug tokens
+    #define debug(args...)  /// Just strip off all debug tokens
+    #define trace(...) ///yeeeee
 #endif
 
-struct debugger
-{
-    template<typename T> debugger& operator , (const T& v)
-    {
-        cerr<<"Debug " << v<<" ";
+struct debugger{
+    template<typename T> debugger& operator , (const T& v){
+        cerr<<v<<" ";
         return *this;
     }
-} dbg;
+}dbg;
+///****************** template ends here ****************
+int t,n,m;
 
-/// ********* debug template bt Bidhan Roy *********
+int tcnt;
+//Cycle contains which scc node belongs too.
+#define NODE 20004
 
-template < typename F, typename S >
-ostream& operator << ( ostream& os, const pair< F, S > & p )
-{
-    return os << "(" << p.first << ", " << p.second << ")";
-}
+struct SCC{
+    int num[NODE], low[NODE], col[NODE], cycle[NODE], st[NODE];
+    int tail, cnt, cc;
+    vi adj[NODE];
 
-template < typename T >
-ostream &operator << ( ostream & os, const vector< T > &v )
-{
-    os << "{";
-    typename vector< T > :: const_iterator it;
-    for( it = v.begin(); it != v.end(); it++ )
-    {
-        if( it != v.begin() ) os << ", ";
-        os << *it;
+    SCC():tail(0),cnt(0),cc(0) {}
+    void clear () {
+        cc += 3;
+        SET(cycle);
+        FOR(i,0,NODE-1) adj[i].clear();
+        tail = 0;
     }
-    return os << "}";
-}
-
-template < typename T >
-ostream &operator << ( ostream & os, const set< T > &v )
-{
-    os << "[";
-    typename set< T > :: const_iterator it;
-    for ( it = v.begin(); it != v.end(); it++ )
-    {
-        if( it != v.begin() ) os << ", ";
-        os << *it;
-    }
-    return os << "]";
-}
-
-template < typename F, typename S >
-ostream &operator << ( ostream & os, const map< F, S > &v )
-{
-    os << "[";
-    typename map< F , S >::const_iterator it;
-    for( it = v.begin(); it != v.end(); it++ )
-    {
-        if( it != v.begin() ) os << ", ";
-        os << it -> first << " = " << it -> second ;
-    }
-    return os << "]";
-}
-
-#define deb(x) cerr << #x << " = " << x << endl;
-//******************DELETE****************
-
-int Set(int N,int pos)
-{
-    return N=N | (1<<pos);
-}
-int reset(int N,int pos)
-{
-    return N=N & ~(1<<pos);
-}
-bool check(int N,int pos)
-{
-    return (bool)(N & (1<<pos));
-}
-
-#define M 1000000
-bool marked[M];
-vector <int> primes;
-
-void sieve(int n)
-{
-    CLR(marked);
-    primes.push_back(2);
-    for (int i = 3; i * i <= n; i += 2)
-    {
-        if (marked[i] == 0)
-        {
-            for (int j = i * i; j <= n; j += i + i)
-            {
-                marked[j] = 1;
+    void tarjan ( int s ) {
+        num[s] = low[s] = cnt++;
+        col[s] = cc + 1;
+        st[tail++] = s;
+        FOR(i,0,(int)adj[s].size()-1) {
+            int t = adj[s][i];
+            if ( col[t] <= cc ) {
+                tarjan ( t );
+                low[s]=min(low[s],low[t]);
+            }
+            /*Back edge*/
+            else if (col[t]==cc+1)
+                low[s]=min(low[s],low[t]);
+        }
+        if ( low[s] == num[s] ) {
+                tcnt++;
+            while ( 1 ) {
+                int temp=st[tail-1];
+                tail--;
+                col[temp] = cc + 2;
+                cycle[temp] = s;
+                if ( s == temp ) break;
             }
         }
     }
-    for(int i=3;i<=10000;i+=2)
-    {
-        if(marked[i]==0) primes.PB(i);
-    }
-}
-
-int main()
-{
-    //READ("in.txt");
-    //WRITE("out.txt");
-
-    int n;
-    int res[10004];
-    CLR(res);
-    sieve(10004);
-    int cum[1240];
-    int len=primes.size();
-    cum[0]=0;
-    for(int i=0;i<len;i++)
-    {
-        cum[i+1]=cum[i]+primes[i];
-    }
-    for(int i=1;i<=len;i++)
-    {
-        for(int j=i;j<=len;j++)
-        {
-            int k = cum[j]-cum[i-1];
-            if(k<=10000) res[k]++;
+    void shrink( int n ) {
+        FOR(i,0,n){
+            FOR(j,0,(int)adj[i].size()-1){
+                adj[i][j] = cycle[adj[i][j]]; ///Careful. This will create self-loop. Just ignore i->i edges when processing.
+            }
+        }
+        FOR(i,0,n){
+            if ( cycle[i] == i ) continue;
+            int u = cycle[i];
+            FOR(j,0,(int)adj[i].size()-1){
+                int v = adj[i][j];
+                adj[u].PB ( v );
+            }
+            adj[i].clear();
+        }
+        FOR(i,0,n){ ///Not always necessary
+            sort ( ALL(adj[i]) );
+            UNIQUE(adj[i]);
         }
     }
-    while(~getI(n))
-    {
-        if(n==0) break;
 
-        printf("%d\n",res[n]);
+    void findSCC( int n ) {
+        FOR(i,0,n) {
+            if ( col[i] <= cc ) {
+                tarjan ( i );
+            }
+        }
     }
+}sc;
+
+
+int main() {
+    #ifdef dipta007
+        //READ("in.txt");
+//        WRITE("out.txt");
+    #endif // dipta007
+//    ios_base::sync_with_stdio(0);cin.tie(0);
+
+    int t;
+    getI(t);
+    FOR(ci,1,t)
+    {
+        int n,m;
+        getII(n,m);
+
+        sc.clear();
+
+        int mark[n+2];
+        CLR(mark);
+        FOR(i,1,m)
+        {
+            int x,y;
+            getII(x,y);
+            sc.adj[x].PB(y);
+            mark[x] = 1;
+            mark[y] = 1;
+        }
+
+        if(n==1)
+        {
+            printf("Case %d: 0\n",ci);
+            continue;
+        }
+
+        tcnt = 0;
+
+        sc.findSCC(n);
+
+//        if(tcnt <= 1)
+//        {
+//            printf("Case %d: 0\n",ci);
+//            continue;
+//        }
+
+        sc.shrink(n);
+
+        int in[n+4], out[n+4],a=0,b=0;
+        CLR(in);
+        CLR(out);
+
+        FOR(i,1,n)
+        {
+            FOR(j,0,(int)sc.adj[i].size()-1)
+            {
+                int x = sc.adj[i][j];
+                if(i==x) continue;
+
+                out[i]++;
+                in[x]++;
+            }
+        }
+
+        FOR(i,1,n)
+        {
+//            debug(mark[i], in[i], out[i])
+            if(mark[i]==0)
+            {
+                a++,b++;
+            }
+            if(in[i]==0) a++;
+            if(out[i]==0) b++;
+        }
+        printf("Case %d: %d\n",ci, max(a,b));
+    }
+
 
     return 0;
 }
-
 
 

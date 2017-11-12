@@ -1,28 +1,5 @@
 #pragma comment(linker, "/stack:640000000")
-
-#include <algorithm>
-#include <bitset>
-#include <cassert>
-#include <cctype>
-#include <climits>
-#include <cmath>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <iostream>
-#include <iomanip>
-#include <iterator>
-#include <list>
-#include <map>
-#include <numeric>
-#include <queue>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <string>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 const double EPS = 1e-9;
@@ -55,29 +32,43 @@ const double PI=acos(-1.0);
 #define    bitCheck(N,in)    ((bool)(N&(1<<(in))))
 #define    bitOff(N,in)      (N&(~(1<<(in))))
 #define    bitOn(N,in)       (N|(1<<(in)))
+#define    bitFlip(a,k)      (a^(1<<(k)))
 #define    bitCount(a)        __builtin_popcount(a)
+#define    bitCountLL(a)      __builtin_popcountll(a)
+#define    bitLeftMost(a)     (63-__builtin_clzll((a)))
+#define    bitRightMost(a)    (__builtin_ctzll(a))
 #define    iseq(a,b)          (fabs(a-b)<EPS)
-#define UNIQUE(V) (V).erase(unique((V).begin(),(V).end()),(V).end())
-#define    vi 	 vector < int >
-#define    vii 	 vector < vector < int > >
-#define    pii 	 pair< int, int >
-#define    ff 	 first
-#define    ss 	 second
-#define    ll	 long long
-#define    ull 	 unsigned long long
+#define    UNIQUE(V)          (V).erase(unique((V).begin(),(V).end()),(V).end())
+#define    vi 	              vector < int >
+#define    vii 	              vector < vector < int > >
+#define    pii 	              pair< int, int >
+#define    ff 	              first
+#define    ss 	              second
+#define    ll	              long long
+#define    ull 	              unsigned long long
+#define    POPCOUNT           __builtin_popcount
+#define    POPCOUNTLL         __builtin_popcountll
+#define    RIGHTMOST          __builtin_ctzll
+#define    LEFTMOST(x)        (63-__builtin_clzll((x)))
 
-template< class T > inline T _abs(T n) { return ((n) < 0 ? -(n) : (n)); }
-template< class T > inline T _max(T a, T b) { return (!((a)<(b))?(a):(b)); }
-template< class T > inline T _min(T a, T b) { return (((a)<(b))?(a):(b)); }
-template< class T > inline T _swap(T &a, T &b) { a=a^b;b=a^b;a=a^b;}
 template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
 template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
-#ifdef dipta007
+#ifdef dipta00
      #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
+     #define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
+        template <typename Arg1>
+        void __f(const char* name, Arg1&& arg1){
+            cerr << name << " : " << arg1 << std::endl;
+        }
+        template <typename Arg1, typename... Args>
+        void __f(const char* names, Arg1&& arg1, Args&&... args){
+            const char* comma = strchr(names + 1, ',');cerr.write(names, comma - names) << " : " << arg1<<" | ";__f(comma+1, args...);
+        }
 #else
-    #define debug(args...)  // Just strip off all debug tokens
+    #define debug(args...)  /// Just strip off all debug tokens
+    #define trace(...) ///yeeeee
 #endif
 
 struct debugger{
@@ -86,85 +77,94 @@ struct debugger{
         return *this;
     }
 }dbg;
+///****************** template ends here ****************
+//int t,n,m;
 
 string st;
-map <char, int> mp;
-ll fact[22];
+int n, len;
 
-void solve(int sz, int nth, int mask)
+ll fact[24];
+map <int, int > mp;
+
+ll check(int l)
 {
-    if(bitCount(mask)==st.size())
-    {
-        cout << endl;
-        return;
-    }
-    FOR(i,0,(int)st.size()-1)
-    {
-        if(bitCheck(mask, i)==1) continue;
-        ll now = fact[sz-1];
-        mp[st[i]]--;
-        FOR(j,0,25)
-        {
-            char ch = j + 'a';
-            now /= fact[mp[ch]];
-        }
+    ll now = fact[l];
 
-        debug(sz, i, now, nth)
-        if(now < nth)
+    FOR(i,0,25)
+    {
+        if(mp[i])
         {
-            nth -= now;
-            mp[st[i]]++;
-        }
-        else
-        {
-            cout << st[i];
-            solve(sz-1, nth, bitOn(mask, i));
-            break;
+            now /= fact[mp[i]];
         }
     }
+    return now;
 }
-
 
 int main() {
     #ifdef dipta007
-//        READ("in.txt");
+        READ("in.txt");
 //        WRITE("out.txt");
     #endif // dipta007
     ios_base::sync_with_stdio(0);cin.tie(0);
 
     int t;
     cin >> t;
+
     fact[0] = 1;
     FOR(i,1,20)
     {
-        fact[i] = fact[i-1] * i;
-//        debug(fact[i])
+        fact[i] = (ll)fact[i-1]*i;
     }
-    FOR(ci, 1, t)
+    FOR(ci,1,t)
     {
-        int nn;
-        cin >> st >> nn;
+        cin >> st >> n;
         sort(ALL(st));
+        len = st.size();
         mp.clear();
-        FOR(i,0,(int)st.size()-1)
+
+        FOR(i,0,len-1)
         {
-            mp[st[i]]++;
+            int kk = (int)(st[i] - 'a');
+            debug(kk)
+            mp[kk]++;
         }
-        ll now = fact[st.size()];
-//        debug(now)
-        FOR(i,0,25)
-        {
-            char ch = i + 'a';
-            if(mp[ch]==0) continue;
-            now /= mp[ch];
-        }
-//        debug(now)
-//        debug("*")
-//        if(nn > now )
+
+        ll tot = check(len);
+//        debug(tot);
         cout << "Case " << ci << ": ";
-        if(nn > now) cout << "Impossible" << "\n";
-        else solve(st.size(), nn, 0);
+        if(n > tot) cout << "Impossible" << endl;
+        else
+        {
+            FOR(i,0,len-1)
+            {
+                FOR(j,0,25)
+                {
+//                    debug(j, mp[j])
+                    if(mp[j])
+                    {
+//                        debug(j)
+                        mp[j]--;
+                        ll tmp = check(len - i - 1);
+//                        debug(i, j, tmp)
+                        if(tmp < n)
+                        {
+                            n-=tmp;
+                            mp[j]++;
+                        }
+                        else
+                        {
+                            cout << (char)(j+'a');
+                            break;
+                        }
+                    }
+                }
+            }
+            cout << endl;
+        }
+//        debug(tot)
+//        dpPrint(0, n);
     }
+
 
     return 0;
 }

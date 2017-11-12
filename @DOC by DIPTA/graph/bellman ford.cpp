@@ -1,43 +1,41 @@
-struct edge
+#define edge pair < pii, ll >
+
+vector < edge > edges;
+const int MAX = 204;
+ll dist[204];
+
+int bellmanFord(int n, int src, int dest=0)
 {
-    int x,y,w;
-};
+    repI(i, 201) dist[i] = LLONG_MAX;
 
-vector <edge> ve;
-
-void bellmanFord(int u)
-{
-    CLR(dist);
-    FOR(i,0,n)
+    dist[src] = 0;
+    FOR(step, 1, n-1)
     {
-        dist[i]=-1;
-    }
-    dist[src]=0;
-
-    FOR(i,1,n-1)
-    {
-        FOR(j,0,e-1)
+        for(auto e: edges)
         {
-            edge e = ve[j];
-            int u = e.x;
-            int v = e.y;
-            int weight = e.w;
-            if(dist[u]!=-1 && dist[u]+weight<dist[v])
+            int u = e.ff.ff;
+            int v = e.ff.ss;
+            ll w = e.ss;
+
+            if(dist[v] > dist[u] + w)
             {
-                dist[v]=dist[u]+weight;
+                dist[v] = dist[u] + w;
             }
         }
     }
 
-    FOR(i,0,e-1)
-    {
-        edge e = ve[j];
-        int u = e.x;
-        int v = e.y;
-        int weight = e.w;
-        if(dist[u]!=-1 && dist[u]+weight<dist[v])
-        {
-            ///negetive
-        }
-    }
+    /// For finding negative cycle
+//    for(auto e: edges)
+//    {
+//        int u = e.ff.ff;
+//        int v = e.ff.ss;
+//        ll w = e.ss;
+//
+//        if(dist[v] > dist[u] + w)
+//        {
+//            return -1;
+//        }
+//    }
+
+    return dist[dest];
 }

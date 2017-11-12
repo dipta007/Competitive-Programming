@@ -193,11 +193,15 @@ struct line {
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
-        WRITE("out.txt");
+//        READ("in.txt");
+//        WRITE("out.txt");
     #endif // dipta007
 //    ios_base::sync_with_stdio(0);cin.tie(0);
 
+
+//    line a( point( 0, 0), point(5,0));
+//    line b( point(2,-1), point(2,5));
+//    debug(a.segcrossseg(b));
     int t;
     getI(t);
     FOR(ci,1,t)
@@ -206,10 +210,12 @@ int main() {
         getI(n);
         vector < line > vl;
         vector < point > vp;
+        map < pii, int > mp;
         FOR(i,0,n-1)
         {
             int x,y;
             getII(x,y);
+            mp[ pii(x,y) ] = 1;
             vp.PB(point(x,y));
         }
 
@@ -229,30 +235,29 @@ int main() {
         {
             int x,y;
             getII(x,y);
-            line l(inf, point(x,y));
-
-            int cnt = 0;
-            set < pair < double, double> > s;
+            int flg = 0;
             FOR(j,0,(int)vl.size()-1)
             {
-                if( vl[j].pointonseg(point(x,y)))
+                if(vl[j].pointonseg(point(x,y)))
                 {
-                    s.clear();
-                    s.insert({0,0});
-//                    cnt = 1;
+                    flg=1;
+                    printf("Yes\n");
                     break;
                 }
-//                debug(vl[j].a.x, vl[j].a.y, vl[j].b.x, vl[j].b.y, l.linecrossline(vl[j]));
-//                debug(l.a.x, l.a.y, l.b.x, l.b.y)
-                if ( l.segcrossseg(vl[j]) == 2 )
+            }
+            if(flg) continue;
+
+            line l(point(x+30000,y+1), point(x,y));
+
+            int cnt = 0, minuss = 0;
+            FOR(j,0,(int)vl.size()-1)
+            {
+                if (l.segcrossseg(vl[j]) != 0 )
                 {
-                    point p = l.crosspoint(vl[j]);
-                    s.insert( {p.x, p.y} );
-//                    cnt++;
+                    cnt++;
                 }
             }
-            cnt = s.size();
-//            debug(cnt)
+//            cnt -= minuss/2;
             if(cnt & 1) printf("Yes\n");
             else printf("No\n");
         }

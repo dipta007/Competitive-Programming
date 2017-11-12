@@ -1,6 +1,6 @@
 // jodi proti ber 1 ta value update korte hoi dn eita use kora better
 
-#define MAX 100005
+#define MAX 100004
 int arr[MAX];
 
 

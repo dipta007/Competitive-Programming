@@ -143,9 +143,9 @@ struct line {
     }
     int relation(point a, point b, point c) ///a-b line c er sathe relation
     {
-        int c=EQ(p.sub(a).cross(b.sub(a)));
-        if (c<0)return 1;
-        if (c>0)return 2;
+        int cc=EQ(p.sub(a).cross(b.sub(a)));
+        if (cc<0)return 1;
+        if (cc>0)return 2;
         return 3;
     }
     bool pointonseg(point p) {
