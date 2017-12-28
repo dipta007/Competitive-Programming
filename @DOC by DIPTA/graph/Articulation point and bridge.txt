@@ -1,0 +1,76 @@
+#define MAX 10050
+// result[i] will contain true if the ith node is an articulation
+int deg[MAX], n, visited[MAX], assignedVal;
+vector<int> adj[MAX];
+bool result[MAX];
+int articulation( int u, int depth ) {
+	if( visited[u] > 0 ) return visited[u];
+	visited[u] = ++assignedVal;
+	int mn = visited[u], rootCalled = 0;
+	for(int i = 0; i < deg[u]; i++) {
+		int v = adj[u][i];
+		if( !visited[v] ) {
+			if( !depth ) rootCalled++;
+			int k = articulation( v, depth + 1 );
+			if( k >= visited[u] ) result[u] = true;
+		}
+		mn = min( mn, visited[v] );
+	}
+	if( !depth ) result[u] = ( rootCalled >= 2 );
+	return visited[u] = mn;
+}
+void processArticulation() {
+	assignedVal = 0;
+	memset( result, 0, sizeof( result ) );
+	memset( visited, 0, sizeof( visited ) );
+	for( int i = 0; i < n; i++ ) if( !visited[i] ) articulation( i, 0 );
+}
+// prints the bridges in arbitrary order
+int bridge( int u, int parent ) {
+	visited[u] = ++assignedVal;
+	int mn = visited[u];
+	for( int i = 0; i < deg[u]; i++ ) if( adj[u][i] != parent ) {
+		int v = adj[u][i];
+		if( !visited[v] ) {
+			int k = bridge( v, u );
+			if( k > visited[u] ) printf("%d - %d\n", u, v);
+		}
+		mn = min( mn, visited[v] );
+	}
+	return visited[u] = mn;
+}
+void processBridge() {
+	assignedVal = 0;
+	memset( visited, 0, sizeof( visited ) );
+	for( int i = 0; i < n; i++ ) if( !visited[i] ) bridge( i, -1 );
+}
+
+
+int main() {
+    //READ("in.txt");
+    //WRITE("out.txt");
+    int i,j,t,cs,m;
+    getI(t);
+    rep(cs,t)
+    {
+        getII(n,m);
+        repI(i,n)adj[i].clear();
+        int x,y;
+        CLR(deg);
+        rep(i,m)
+        {
+            getII(x,y);
+            x--;y--;
+            adj[x].push_back(y);
+            adj[y].push_back(x);
+            deg[x]++;deg[y]++;
+        }
+        processArticulation();
+        int ans=0;
+        repI(i,n)if(result[i])ans++;
+        printf("Case %d: %d\n",cs,ans);
+
+
+    }
+    return 0;
+}
