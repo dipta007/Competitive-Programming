@@ -1,5 +1,26 @@
-#pragma comment(linker, "/stack:640000000")
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <bitset>
+#include <cassert>
+#include <cctype>
+#include <climits>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <iterator>
+#include <list>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <utility>
+#include <vector>
 using namespace std;
 
 const double EPS = 1e-9;
@@ -55,6 +76,7 @@ template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
 template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
+#define dipta00
 #ifdef dipta007
      #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
      #define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
@@ -78,69 +100,174 @@ struct debugger{
     }
 }dbg;
 ///****************** template ends here ****************
-int t,n,m;
-int vis[50004];
-int* dp[50004];
-vii adj;
 
-void dfs(int u)
-{
-    vis[u] = 1;
+// g++ -g -O2 -std=gnu++11 A.cpp
+// ./a.out
+//Cycle contains which scc node belongs too.
 
-    FOR(i,0,(int)adj[u].size()-1)
-    {
-        int v = adj[u][i];
-        if(vis[v]==0)
+const int NODE = 50004;
+int in[NODE], dis[NODE];
+
+struct SCC{
+    int num[NODE], low[NODE], col[NODE], cycle[NODE], st[NODE];
+    int tail, cnt, cc;
+    vi adj[NODE];
+
+    SCC():tail(0),cnt(0),cc(0) {}
+    void clear () {
+        cc += 3;
+        FOR(i,0,NODE-1)
         {
-            dfs(v);
-            dp[u] = dp[v];
+            dis[i] = 1;
+            adj[i].clear();
         }
-        else
-        {
-            dp[u] = dp[v];
+        tail = 0;
+    }
+    void tarjan ( int s ) {
+        num[s] = low[s] = cnt++;
+        col[s] = cc + 1;
+        st[tail++] = s;
+        FOR(i,0,(int)adj[s].size()-1) {
+            int t = adj[s][i];
+            if ( col[t] <= cc ) {
+                tarjan ( t );
+                low[s]=min(low[s],low[t]);
+            }
+            /*Back edge*/
+            else if (col[t]==cc+1)
+                low[s]=min(low[s],low[t]);
+        }
+        if ( low[s] == num[s] ) {
+            while ( 1 ) {
+                int temp=st[tail-1];
+                tail--;
+                col[temp] = cc + 2;
+                cycle[temp] = s;
+
+                if ( s == temp ) break;
+                debug(s, temp, dis[s], dis[temp])
+                dis[s] += dis[temp];
+                dis[temp] = 0;
+            }
         }
     }
-    dp[u] = (dp[u] + 1);
-    return;
+    void shrink( int n ) {
+        FOR(i,0,n){
+            FOR(j,0,(int)adj[i].size()-1){
+                debug("shrink", i, adj[i][j], cycle[adj[i][j]])
+//                if(i != cycle[adj[i][j]] )
+                    adj[i][j] = cycle[adj[i][j]]; ///Careful. This will create self-loop. Just ignore i->i edges when processing.
+            }
+        }
+        FOR(i,0,n){
+            if ( cycle[i] == i ) continue;
+            int u = cycle[i];
+            FOR(j,0,(int)adj[i].size()-1){
+                int v = adj[i][j];
+                adj[u].PB ( v );
+            }
+            adj[i].clear();
+        }
+        FOR(i,0,n){ ///Not always necessary
+            sort ( ALL(adj[i]) );
+            UNIQUE(adj[i]);
+        }
+    }
+
+    void findSCC( int n ) {
+        FOR(i,0,n-1) {
+            if ( col[i] <= cc ) {
+                tarjan ( i );
+            }
+        }
+    }
+}helper;
+
+int vis[NODE];
+int dfs(int u)
+{
+    vis[u] = 1;
+    int ret = dis[u];
+    FOR(i,0,(int)helper.adj[u].size()-1)
+    {
+        int v = helper.adj[u][i];
+        if(vis[v] == 0)
+        {
+            debug(u, v)
+            ret += dfs(v);
+        }
+        else ret += dis[v];
+    }
+    return dis[u] = ret;
 }
 
 int main() {
     #ifdef dipta007
         //READ("in.txt");
-//        WRITE("out.txt");
+       //WRITE("out.txt");
     #endif // dipta007
-//    ios_base::sync_with_stdio(0);cin.tie(0);
+   // ios_base::sync_with_stdio(0);cin.tie(0);
 
     int t;
     getI(t);
+
     FOR(ci,1,t)
     {
+        helper.clear();
         int n;
         getI(n);
-        adj.assign(n+4, vi());
         FOR(i,1,n)
         {
             int u,v;
             getII(u,v);
-            adj[u].PB(v);
+            u--, v--;
+            helper.adj[u].PB(v);
         }
 
-        FOR(i,1,n)
+        helper.findSCC(n);
+        helper.shrink(n);
+
+        CLR(in);
+        FOR(i,0,n-1)
         {
-            if(vis[i]==0)
+            FOR(j,0,(int)helper.adj[i].size()-1)
             {
-                dfs(i);
+                int v = helper.adj[i][j];
+                debug("link", i+1, v+1)
+                if(i == helper.adj[i][j]) continue;
+                in[v]++;
             }
         }
 
-        FOR(i,1,n)
+        CLR(vis);
+        int maxy = 0, pos = -1;
+        FOR(i,0,n-1)
         {
-            debug(i, *dp[i])
+            if(in[i] == 0)
+            {
+                int kk = dfs(i);
+                debug("tot node", i, kk)
+                if(kk > maxy)
+                {
+                    maxy = kk;
+                    pos = helper.cycle[i];
+                }
+            }
+        }
+
+        FOR(i,0,n-1) debug("dist", i, dis[i]);
+
+        FOR(i,0,n-1)
+        {
+            if(helper.cycle[i] == pos)
+            {
+                printf("Case %d: %d\n", ci, pos+1);
+                break;
+            }
         }
     }
 
+
     return 0;
 }
-
-
 

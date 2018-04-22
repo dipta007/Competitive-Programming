@@ -176,15 +176,36 @@ int main() {
         cin >> l >> r;
         ll tot = 0;
 
-        FOR(i,0,len-1)
+        int sz = len - SA[0];
+        if(sz>=l) tot += min(sz-l+1, r-l+1);
+        FOR(i,1,len-1)
         {
             int sz = len - SA[i];
-            //if(sz>l && LCP[i]<=r)
+            if(sz < l) continue;
+
+            debug(SA[i], sz, LCP[i], tot)
+            if(LCP[i] >= l && LCP[i] < r)
             {
-//                debug(text.substr(SA[i]), cal(sz,l,min(sz,r)),sz, LCP[i], cal(LCP[i], l, min(r,LCP[i])))
-                tot += (cal(sz, l, min(sz,r)) - cal(LCP[i], l, min(r,LCP[i])));
+                int kk = LCP[i] - l + 1;
+                int maxy = (r-l+1);
+                tot += (min(sz-l+1, maxy) - kk);
+            }
+            else if(LCP[i] < l)
+            {
+                int maxy = (r-l+1);
+                tot += min(sz-l+1, maxy);
             }
         }
+
+//        FOR(i,0,len-1)
+//        {
+//            int sz = len - SA[i];
+//            //if(sz>l && LCP[i]<=r)
+//            {
+////                debug(text.substr(SA[i]), cal(sz,l,min(sz,r)),sz, LCP[i], cal(LCP[i], l, min(r,LCP[i])))
+//                tot += (cal(sz, l, min(sz,r)) - cal(LCP[i], l, min(r,LCP[i])));
+//            }
+//        }
         cout << "Case " << ci << ": " << tot << endl;
     }
 

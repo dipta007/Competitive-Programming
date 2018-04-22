@@ -85,25 +85,49 @@ struct debugger{
     }
 }dbg;
 
+int n;
+int vis[100004];
+long double dp[100004];
+
+//double call(int in)
+//{
+//    if(in >= n) return 0.0;
+//
+//    if(vis[in] == 1) return dp[in];
+//    vis[in] = 1;
+//
+//    double &ret = dp[in];
+//    ret = ((double)(n-in) / n) * call(in + 1);
+//    ret += 1.0;
+//    debug(in, ret)
+//    ret /= (1.0 - ((double)in/n));
+//
+//    return ret;
+//}
 
 int main() {
     #ifdef dipta007
-        //READ("in.txt");
-        //WRITE("out.txt");
+        READ("in.txt");
+        WRITE("out.txt");
     #endif // dipta007
 //    ios_base::sync_with_stdio(0);cin.tie(0);
 
     int t;
     getI(t);
+    debug(t)
     FOR(ci,1,t)
     {
-        int n;
         getI(n);
-        double bam=0.0,dan=0.0;
-        FOR(i,0,n-1)
+        CLR(vis);
+
+        double res = 0.0;
+        FOR(i,1,n)
         {
-            bam =
+            res += (double)n/i;
         }
+
+//        debug(n)
+        printf("Case %d: %.12f\n", ci, res);
     }
 
     return 0;

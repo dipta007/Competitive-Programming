@@ -112,40 +112,22 @@ bool check(int N,int pos)
 }
 
 int n,a[104];
-map<stack <int>,int> mp[104];
+int dp[104][104];
 
-int call(int in,stack<int> s)
+int call(int l, int r)
 {
-    //debug(in)
-    if(in>=n)
+    int &ret = dp[l][r];
+    if(ret != -1) return ret;
+
+    if(l == r) return 1;
+    if(l > r) return 0;
+
+    ret = 1 + call(l+1, r);
+    FF(i,l+1, r)
     {
-        return 0;
+        if(a[l] == a[i]) ret = min(ret, call(l+1, i) + call(i+1, r));
     }
-
-    if(mp[in].find(s)!=mp[in].end()) return mp[in][s];
-
-    int s1,s2;
-    s1=s2=INF;
-
-    s.push(a[in]);          //new entry
-    s1=1+call(in+1,s);
-    s.pop();
-
-    int flg=0;              //puran theke khujbo
-    while(!s.empty())
-    {
-        if(s.top()==a[in])
-        {
-            flg=1;
-            break;
-        }
-        s.pop();
-    }
-    if(flg) s2=call(in+1,s);
-
-    //debug(s1,s2);
-
-    return mp[in][s]=min(s1,s2);
+    return ret;
 }
 
 int main() {
@@ -156,14 +138,13 @@ int main() {
     getI(t);
     for(int ci=1;ci<=t;ci++)
     {
-        for(int i=0; i<104; i++) mp[i].clear();
         getI(n);
         for(int i=0;i<n;i++)
         {
             getI(a[i]);
         }
-        stack <int> s;
-        printf("Case %d: %d\n",ci,call(0,s));
+        SET(dp);
+        printf("Case %d: %d\n",ci,call(0,n-1));
     }
 
     return 0;

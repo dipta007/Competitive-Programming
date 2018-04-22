@@ -1,0 +1,26 @@
+/// Odd - Even checking ==>>
+int x;
+if(x & 1) --> Odd
+else --> Even
+
+/// 2^n dara gun or vag ==>>
+gun --> x<<n
+vag --> x>>n
+
+/// 2^n or 2 er power kina ==>>
+int x;
+if(x & (x-1)) --> 2 er power na
+else --> 2 er power
+
+/// 2^n dara divisible naki ==>>
+let, d=2^n
+
+int x,d=8; // 8=2^3
+if(x & (d-1)) --> x,d dara divisible
+else --> x,d dara divisible na
+
+/// SWAP ==>>
+int x,y;
+x = x ^ y;
+y = x ^ y;
+x = x ^ y;

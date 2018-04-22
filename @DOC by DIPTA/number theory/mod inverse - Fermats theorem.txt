@@ -1,1 +1,0 @@
-( A / B ) % m = ( ( A % m ) * ( B^( m - 2 ) % m ) ) % m  , if m is prime

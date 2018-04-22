@@ -51,83 +51,174 @@ const double PI=acos(-1.0);
 #define    RIGHTMOST          __builtin_ctzll
 #define    LEFTMOST(x)        (63-__builtin_clzll((x)))
 
-template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
-template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
-template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
+template< class T > inline T gcd(T a, T b)
+{
+    return (b) == 0 ? (a) : gcd((b), ((a) % (b)));
+}
+template< class T > inline T lcm(T a, T b)
+{
+    return ((a) / gcd((a), (b)) * (b));
+}
+template <typename T> string NumberToString ( T Number )
+{
+    ostringstream ss;
+    ss << Number;
+    return ss.str();
+}
 
 #ifdef dipta007
-     #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
-     #define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
-        template <typename Arg1>
-        void __f(const char* name, Arg1&& arg1){
-            cerr << name << " : " << arg1 << std::endl;
-        }
-        template <typename Arg1, typename... Args>
-        void __f(const char* names, Arg1&& arg1, Args&&... args){
-            const char* comma = strchr(names + 1, ',');cerr.write(names, comma - names) << " : " << arg1<<" | ";__f(comma+1, args...);
-        }
+#define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
+#define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
+template <typename Arg1>
+void __f(const char* name, Arg1&& arg1)
+{
+    cerr << name << " : " << arg1 << std::endl;
+}
+template <typename Arg1, typename... Args>
+void __f(const char* names, Arg1&& arg1, Args&&... args)
+{
+    const char* comma = strchr(names + 1, ',');
+    cerr.write(names, comma - names) << " : " << arg1<<" | ";
+    __f(comma+1, args...);
+}
 #else
-    #define debug(args...)  /// Just strip off all debug tokens
-    #define trace(...) ///yeeeee
+#define debug(args...)  /// Just strip off all debug tokens
+#define trace(...) ///yeeeee
 #endif
 
-struct debugger{
-    template<typename T> debugger& operator , (const T& v){
+struct debugger
+{
+    template<typename T> debugger& operator, (const T& v)
+    {
         cerr<<v<<" ";
         return *this;
     }
-}dbg;
+} dbg;
 ///****************** template ends here ****************
 int t,n,m;
 
-string giveMe(string &st)
+const int MS = 100004;
+const int MN = 54;
+
+inline int getId(char ch)
 {
-    if(st.size() <= 2) return st;
-    string tmp = st.substr(1, st.size()-2);
-    sort(ALL(tmp));
-    string now = st[0] + tmp + st[st.size()-1];
-    return now;
+    if(islower(ch))
+        return ch - 'a' + 26;
+    else
+        return ch - 'A';
 }
 
-int main() {
-    #ifdef dipta007
-        //READ("in.txt");
+struct trie
+{
+    struct node
+    {
+        int c;
+        int a[MN];
+    };
+
+    node tree[MS];
+    void clear()
+    {
+        tree[nodes].c = 0;
+        memset(tree[nodes].a, -1, sizeof tree[nodes].a);
+        nodes++;
+    }
+
+    int nodes;
+
+    void init()
+    {
+        nodes = 0;
+        clear();
+    }
+
+    void add(const string &s, bool query = 0)
+    {
+        int cur_node = 0;
+        for(int i = 0; i < s.size(); ++i)
+        {
+            int id = getId(s[i]);
+            if(tree[cur_node].a[id] == -1)
+            {
+                tree[cur_node].a[id] = nodes;
+                clear();
+            }
+            cur_node = tree[cur_node].a[id];
+        }
+        tree[cur_node].c++;
+    }
+
+    int query(const string &s)
+    {
+        int cur_node = 0;
+        for(int i = 0; i < s.size(); ++i)
+        {
+            int id = getId(s[i]);
+            if(tree[cur_node].a[id] == -1)
+            {
+                return 0;
+            }
+            cur_node = tree[cur_node].a[id];
+        }
+        return tree[cur_node].c;
+    }
+}root;
+
+template<typename T> inline int toInt(T t)
+{
+    stringstream ss;
+    ss<<t;
+    int r;
+    ss>>r;
+    return r;
+}
+
+string buffer;
+int nextInt()
+{
+    getline(cin,buffer);
+    return toInt(buffer);
+}
+string st;
+
+int main()
+{
+#ifdef dipta007
+    READ("in.txt");
 //        WRITE("out.txt");
-    #endif // dipta007
-    ios_base::sync_with_stdio(0);cin.tie(0);
+#endif // dipta007
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
     int t;
-    cin >> t;
+    t = nextInt();
     FOR(ci,1,t)
     {
-        map < string, ll > mp;
-        int n;
-        cin >> n;
+        root.init();
+        int n = nextInt();
         FOR(i,1,n)
         {
-            string st;
-            cin >> st;
-            string now = giveMe(st);
-            mp[now]++;
+            getline(cin, st);
+            if(st.size() > 3)
+                sort(st.begin()+1, st.end()-1);
+            root.add(st);
         }
 
         int m;
-        cin >> m;
-        cin.get();
-        cout << "Case " << ci << ":" << endl;
+        m = nextInt();
+        printf("Case %d:\n",ci);
         FOR(i,1,m)
         {
-            string st;
             getline(cin, st);
             stringstream ss(st);
-            string tmp;
-            ll cnt = 1;
-            while(ss >> tmp)
+            int cnt = 1;
+            while(ss >> st)
             {
-                tmp = giveMe(tmp);
-                cnt *= mp[tmp];
+                if(st.size() > 3)
+                    sort(st.begin()+1, st.end()-1);
+                cnt *= root.query(st);
             }
-            cout << cnt << endl;
+            printf("%d\n", cnt);
         }
     }
 

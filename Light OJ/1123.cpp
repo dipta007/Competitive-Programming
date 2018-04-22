@@ -80,6 +80,50 @@ struct debugger{
 ///****************** template ends here ****************
 int t,n,m;
 
+#define MAXN 100005
+struct edge
+{
+	int u,v,w;
+	bool operator < ( const edge& p ) const
+	{
+		return w < p.w;
+	}
+};
+int pr[MAXN];
+priority_queue <edge> e[2];
+int find(int r)
+{
+    if(pr[r]==r) return r;
+    return pr[r]=find(pr[r]);
+}
+int mst(int n, int now, int prev)
+{
+	for(int i=1;i<=n;i++) pr[i]=i;
+
+	int count=0,s=0;
+	while(!e[now].empty())
+	{
+	    edge tmp = e[now].top(); e[now].pop();
+//	    e[prev].push(tmp);
+
+		int u=find(tmp.u);
+		int v=find(tmp.v);
+//		debug(tmp.u,tmp.v)
+		if(u!=v)
+		{
+			pr[u]=v;
+			count++;
+			s+= (-1 * tmp.w);
+
+//			debug("add", prev, e[prev].size(), tmp.u, tmp.v, tmp.w)
+			e[prev].push(tmp);
+			if(count==n-1) break;
+		}
+	}
+	if(count != n-1) return -1;
+	return s;
+}
+
 int main() {
     #ifdef dipta007
         //READ("in.txt");
@@ -87,6 +131,34 @@ int main() {
     #endif // dipta007
 //    ios_base::sync_with_stdio(0);cin.tie(0);
 
+
+    int t;
+    getI(t);
+
+    FOR(ci,1,t)
+    {
+        while(!e[0].empty()) e[0].pop();
+        while(!e[1].empty()) e[1].pop();
+
+        int n,m;
+        getII(n,m);
+
+        int kk = 0;
+        printf("Case %d:\n",ci);
+        FOR(i,1,m)
+        {
+            edge tmp;
+            getIII(tmp.u,tmp.v,tmp.w);
+            tmp.w *= -1;
+            e[kk].push(tmp);
+
+            int res = mst(n, kk, kk^1);
+//            debug(res, kk, e[kk].size(), e[kk^1].size())
+            kk = kk ^ 1;
+
+            printf("%d\n", res);
+        }
+    }
 
     return 0;
 }

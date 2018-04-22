@@ -87,6 +87,14 @@ struct debugger{
 
 int n,k,s;
 
+ll mod = 100000007;
+ll MOD(ll x)
+{
+    return (x%mod + mod)%mod;
+}
+
+ll dp[2][15004];
+
 int main() {
     #ifdef dipta007
         //READ("in.txt");
@@ -100,6 +108,29 @@ int main() {
     {
         getIII(n,k,s);
 
+        CLR(dp);
+        FOR(i,0,s)
+        {
+            dp[0][i] = (i <= k && i != 0);
+        }
+
+        int c = 1;
+        FOR(i,2,n)
+        {
+            FOR(j,1,s)
+            {
+                int l = max( j - k, 1);
+                int r = j - 1;
+
+                dp[c][j] = MOD(dp[c^1][r] - dp[c^1][l-1]);
+                dp[c][j] %= mod;
+                dp[c][j] += dp[c][j-1];
+                dp[c][j] %= mod;
+            }
+            c = c^1;
+        }
+
+        printf("Case %d: %lld\n", ci, dp[c^1][s]);
     }
 
     return 0;

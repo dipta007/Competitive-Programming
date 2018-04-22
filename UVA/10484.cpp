@@ -238,39 +238,6 @@ int main()
         }
         if(d!=1) res=0;
         printf("%lld\n",res);
-//
-//        ll res=1;
-//        fore
-//
-//        int loop = 1,res=0;
-//        for(int i=d; loop || res<=250; i+=d)
-//        {
-//            //debug(i)
-//            factors.clear();
-//            power.clear();
-//            factorize(i);
-//
-//
-//            int flg=1;
-//            for(int j=0; j<factors.size(); j++)
-//            {
-//                int cnt=0;
-//                int x=n;
-//                while(x)
-//                {
-//                    cnt += x/factors[j];
-//                    x /= factors[j];
-//                }
-//                //debug(factors[j],power[j],cnt,i)
-//                if(cnt< power[j])
-//                {
-//                    flg=0;
-//                    break;
-//                }
-//            }
-//            if(flg==0) loop=1;
-//            else res++;
-//        }
     }
 
     return 0;

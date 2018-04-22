@@ -63,7 +63,7 @@ struct point {
     point rotate(point p,double angle) { //rotate this point counter clockwise on the besis of point p
         point v=this->sub(p);
         double c=cos(angle),s=sin(angle);
-        return point(p.x+v.x*c-v.y*s,p.y+v.x*s+v.y*c);
+        return point(p.x+v.x*c-v.y*s,     p.y+v.x*s+v.y*c);
     }
     point rotleft() {
         return point(-y,x);

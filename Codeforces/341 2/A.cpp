@@ -146,10 +146,11 @@ int main() {
             sum+=odd[i];
 
         }
-        printf("%I64d\n",sum);
+        printf("%lld\n",sum);
+
+        printf("%d\n", if);
+        printf("%d\n", if);
     }
 
     return 0;
 }
-
-

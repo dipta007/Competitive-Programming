@@ -9,21 +9,21 @@ to remove co-linear points on hull, call compress() after convexHull()
 
 struct point
 {
-    int x,y;
+    ll x,y;
 };
 
 point P[MAX], C[MAX], P0;
 
-inline int triArea2(const point &a, const point &b, const point &c) {
+inline ll triArea2(const point &a, const point &b, const point &c) {
     return (a.x*(b.y-c.y) + b.x*(c.y-a.y) + c.x*(a.y-b.y));
 }
 
-inline int sqDist(const point &a, const point &b) {
+inline ll sqDist(const point &a, const point &b) {
     return ((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y));
 }
 
 inline bool comp(const point &a, const point &b) {
-    int d = triArea2(P0, a, b);
+    ll d = triArea2(P0, a, b);
     if(d < 0) return false;
     if(!d && sqDist(P0, a) > sqDist(P0, b)) return false;
     return true;
@@ -84,8 +84,8 @@ inline bool inConvexPoly(point *C, int nc, const point &p) {
         if(triArea2(C[0], C[mid], p) < 0) en = mid;
         else st = mid;
     }
-    if(triArea2(C[0], C[st], p) < 0) return false;
-    if(triArea2(C[st], C[en], p) < 0) return false;
-    if(triArea2(C[en], C[0], p) < 0) return false;
+    if(triArea2(C[0], C[st], p) <= 0) return false;
+    if(triArea2(C[st], C[en], p) <= 0) return false;
+    if(triArea2(C[en], C[0], p) <= 0) return false;
     return true;
 }

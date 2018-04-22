@@ -1,5 +1,12 @@
-2
-1
-1
-2
-1 1
+3 3
+bbb
+bbb
+bbb
+7 6
+bbbbbb
+bbbbbb
+bbbbbb
+bbbbbb
+bbbbbb
+ababab
+ababbb

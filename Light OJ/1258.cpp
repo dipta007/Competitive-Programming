@@ -1,5 +1,3 @@
-#pragma comment(linker, "/stack:640000000")
-
 #include <algorithm>
 #include <bitset>
 #include <cassert>
@@ -55,29 +53,46 @@ const double PI=acos(-1.0);
 #define    bitCheck(N,in)    ((bool)(N&(1<<(in))))
 #define    bitOff(N,in)      (N&(~(1<<(in))))
 #define    bitOn(N,in)       (N|(1<<(in)))
+#define    bitFlip(a,k)      (a^(1<<(k)))
 #define    bitCount(a)        __builtin_popcount(a)
+#define    bitCountLL(a)      __builtin_popcountll(a)
+#define    bitLeftMost(a)     (63-__builtin_clzll((a)))
+#define    bitRightMost(a)    (__builtin_ctzll(a))
 #define    iseq(a,b)          (fabs(a-b)<EPS)
-#define UNIQUE(V) (V).erase(unique((V).begin(),(V).end()),(V).end())
-#define    vi 	 vector < int >
-#define    vii 	 vector < vector < int > >
-#define    pii 	 pair< int, int >
-#define    ff 	 first
-#define    ss 	 second
-#define    ll	 long long
-#define    ull 	 unsigned long long
+#define    UNIQUE(V)          (V).erase(unique((V).begin(),(V).end()),(V).end())
+#define    vi 	              vector < int >
+#define    vii 	              vector < vector < int > >
+#define    pii 	              pair< int, int >
+#define    ff 	              first
+#define    ss 	              second
+#define    ll	              long long
+#define    ull 	              unsigned long long
+#define    POPCOUNT           __builtin_popcount
+#define    POPCOUNTLL         __builtin_popcountll
+#define    RIGHTMOST          __builtin_ctzll
+#define    LEFTMOST(x)        (63-__builtin_clzll((x)))
+#define    FMT(...)           (sprintf(CRTBUFF, __VA_ARGS__)?CRTBUFF:0)
+char CRTBUFF[30000];
 
-template< class T > inline T _abs(T n) { return ((n) < 0 ? -(n) : (n)); }
-template< class T > inline T _max(T a, T b) { return (!((a)<(b))?(a):(b)); }
-template< class T > inline T _min(T a, T b) { return (((a)<(b))?(a):(b)); }
-template< class T > inline T _swap(T &a, T &b) { a=a^b;b=a^b;a=a^b;}
 template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((a) % (b))); }
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
 template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
+#define dipta00
 #ifdef dipta007
      #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
+     #define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
+        template <typename Arg1>
+        void __f(const char* name, Arg1&& arg1){
+            cerr << name << " : " << arg1 << std::endl;
+        }
+        template <typename Arg1, typename... Args>
+        void __f(const char* names, Arg1&& arg1, Args&&... args){
+            const char* comma = strchr(names + 1, ',');cerr.write(names, comma - names) << " : " << arg1<<" | ";__f(comma+1, args...);
+        }
 #else
-    #define debug(args...)  // Just strip off all debug tokens
+    #define debug(args...)  /// Just strip off all debug tokens
+    #define trace(...) ///yeeeee
 #endif
 
 struct debugger{
@@ -86,119 +101,78 @@ struct debugger{
         return *this;
     }
 }dbg;
+///****************** template ends here ****************
 
-#include<bits/stdc++.h>
-using namespace std;
-void computeLPSArray(string pat, int M, int *lps);
+// g++ -g -O2 -std=gnu++11 A.cpp
+// ./a.out
 
-int KMPSearch(string pat, string txt)
+const int MAX = 2e6 + 4;
+int Z[MAX];
+void zAlgo(string &st)
 {
-    int M = pat.size();
-    int N = txt.size();
+    int n = st.size();
 
-    // create lps[] that will hold the longest prefix suffix values for pattern
-    int *lps = (int *)malloc(sizeof(int)*M);
-    int j  = 0;  // index for pat[]
-
-    // Preprocess the pattern (calculate lps[] array)
-    computeLPSArray(pat, M, lps);
-
-    int i = 0;  // index for txt[]
-    int len = 0;
-    while(i < N)
+    int L = 0, R = 0;
+    for (int i = 1; i < n; i++)
     {
-        if(pat[j] == txt[i])
+        if (i > R)
         {
-            j++;
-            i++;
-            len = max(len, j);
+            L = R = i;
+            while (R < n && st[R-L] == st[R])
+                R++;
+            Z[i] = R-L;
+            R--;
         }
-
-        if (j == M)
+        else
         {
-//            printf("Found pattern at index %d \n", i-j);
-            j = lps[j-1];
-        }
-
-        // mismatch after j matches
-        else if(pat[j] != txt[i])
-        {
-            // Do not match lps[0..lps[j-1]] characters,
-            // they will match anyway
-            if(j != 0)
-                j = lps[j-1];
+            /// We are operating in the box
+            int k = i-L;
+            /// Does not touch the right of the box
+            if (i + Z[k] < R+1)
+                Z[i] = Z[k];
+            /// Touched the right of the box, so calculate again
             else
-                i = i+1;
-        }
-    }
-    free(lps); // to avoid memory leak
-    return j;
-}
-
-void computeLPSArray(string pat, int M, int *lps)
-{
-    int len = 0;  // lenght of the previous longest prefix suffix
-    int i;
-
-    lps[0] = 0; // lps[0] is always 0
-    i = 1;
-
-    // the loop calculates lps[i] for i = 1 to M-1
-    while(i < M)
-    {
-        if(pat[i] == pat[len])
-        {
-            len++;
-            lps[i] = len;
-            i++;
-        }
-        else // (pat[i] != pat[len])
-        {
-            if( len != 0 )
             {
-                // This is tricky. Consider the example AAACAAAA and i = 7.
-                len = lps[len-1];
-
-                // Also, note that we do not increment i here
-            }
-            else // if (len == 0)
-            {
-                lps[i] = 0;
-                i++;
+                L = i;
+                while (R < n && st[R-L] == st[R])
+                    R++;
+                Z[i] = R-L;
+                R--;
             }
         }
     }
-
-//    /// LPS array print
-//    cout << "LPS array" << endl;
-//    for(int i=0; i<M; i++)
-//    {
-//        cout << pat[i] << " " << lps[i] << endl;
-//    }
 }
+
 
 int main() {
     #ifdef dipta007
         //READ("in.txt");
-//        WRITE("in.txt");
+       //WRITE("out.txt");
     #endif // dipta007
-//    ios_base::sync_with_stdio(0);cin.tie(0);
+   // ios_base::sync_with_stdio(0);cin.tie(0);
 
     int t;
     cin >> t;
-    FOR(ci, 1, t)
+    FOR(ci,1,t)
     {
         string st;
         cin >> st;
-        string pat = st;
-        reverse(ALL(pat));
-        int kk = KMPSearch(pat, st);
-        debug(kk,st.size())
-        cout << "Case " << ci << ": " << st.size() + (st.size() - kk) << endl;
+        string rev = st;
+        reverse(ALL(rev));
+        string now = rev + "#" + st;
+        zAlgo(now);
+
+        FOR(i, (int)rev.size(), (int)now.size()-1)
+        {
+            if(Z[i] + i == now.size())
+            {
+                int kk = st.size() - Z[i];
+//                debug(i, st + now.substr(0, kk))
+                cout << "Case " << ci << ": " << st.size() + kk << endl;
+                break;
+            }
+        }
     }
 
     return 0;
 }
-
-
-
