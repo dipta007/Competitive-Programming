@@ -129,7 +129,7 @@ int main() {
         if(A==200)
         {
             int ff = 1;
-            for(int i=2;ff &&  i<=66; i+=3)
+            for(int i=2;ff &&  i<=69; i+=3)
             {
                 while(1)
                 {

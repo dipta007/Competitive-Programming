@@ -55,6 +55,7 @@ const double PI=acos(-1.0);
 #define    bitCheck(N,in)    ((bool)(N&(1<<(in))))
 #define    bitOff(N,in)      (N&(~(1<<(in))))
 #define    bitOn(N,in)       (N|(1<<(in)))
+#define    bitCount(a)        __builtin_popcount(a)
 #define    iseq(a,b)          (fabs(a-b)<EPS)
 #define    vi 	 vector < int >
 #define    vii 	 vector < vector < int > >
@@ -85,18 +86,7 @@ struct debugger{
     }
 }dbg;
 
-ll dp[104][104];
-
-ll call(int n, int r)
-{
-    if(r==1) return n;
-    if(n==r) return 1;
-
-    ll &ret = dp[n][r];
-    if(ret!=-1) return ret;
-
-    return ret = call(n-1,r-1) + call(n-1,r);
-}
+ll ncr[104][104];
 
 int main() {
     #ifdef dipta007
@@ -106,15 +96,22 @@ int main() {
 //    ios_base::sync_with_stdio(0);cin.tie(0);
 
     int n,m;
-    SET(dp);
+    ncr[0][0] = 1 ;
+    int limncr = 100 ;
+    for (int i = 1 ; i <= limncr ; i++)
+        for (int j = 0 ; j <= limncr ; j++)
+        {
+            if ( j > i ) ncr[i][j] = 0 ;
+            else if ( j == i || j == 0 ) ncr[i][j] = 1 ;
+            else ncr [i][j] = ncr[i-1][j - 1] + ncr[i-1][j] ;
+        }
     while(~getII(n,m))
     {
         if(n==0 && m==0) break;
-        printf("%d things taken %d at a time is %lld exactly.\n",n,m,call(n,m));
+        printf("%d things taken %d at a time is %lld exactly.\n",n,m,ncr[n][m]);
     }
 
     return 0;
 }
-
 
 

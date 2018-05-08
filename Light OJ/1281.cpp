@@ -55,7 +55,7 @@ template< class T > inline T gcd(T a, T b) { return (b) == 0 ? (a) : gcd((b), ((
 template< class T > inline T lcm(T a, T b) { return ((a) / gcd((a), (b)) * (b)); }
 template <typename T> string NumberToString ( T Number ) { ostringstream ss; ss << Number; return ss.str(); }
 
-#ifdef dipta007
+#ifdef dipta00
      #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
      #define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
         template <typename Arg1>
@@ -81,14 +81,16 @@ struct debugger{
 int t,n,m;
 
 vector < pair < pii, int > > adj[10004];
-int dist[10][10004];
+int dist[12][10004];
 
 int dj(int s, int d, int atMost)
 {
     SET(dist);
-    dist[atMost][s] = 0;
-    priority_queue < pair < pii, int > > pq;
-    pq.push( MP( MP(-0, atMost), s));
+    dist[0][s] = 0;
+    priority_queue < pair < pii, int > , vector < pair < pii, int > >, greater < pair < pii, int > > > pq;
+
+    /// distance, new road, node
+    pq.push( MP( MP(0, 0), s));
 
     while(!pq.empty())
     {
@@ -96,7 +98,7 @@ int dj(int s, int d, int atMost)
         pq.pop();
 
         int u = p.ss;
-        int now = -p.ff.ff;
+        int now =  p.ff.ff;
         int baki = p.ff.ss;
 
         debug(u, now, baki)
@@ -105,24 +107,24 @@ int dj(int s, int d, int atMost)
         FOR(i, 0, (int)adj[u].size()-1)
         {
             pair < pii, int > q = adj[u][i];
-            if(baki==0 && q.ss) continue;
+            if(baki==atMost && q.ss) continue;
 
             int v = q.ff.ff;
             int w = q.ff.ss;
             int type = q.ss;
             debug("in", u, v, w, type)
 
-            if(dist[baki][v]==-1)
+            if(dist[baki+type][v]==-1)
             {
-                debug("1")
-                dist[baki][v] = dist[baki][u] + w;
-                pq.push( MP(MP(-dist[baki][v], baki - type), v) );
+                debug("1st time", baki, type, v, dist[baki][u], w)
+                dist[baki+type][v] = dist[baki][u] + w;
+                pq.push( MP(MP(dist[baki+type][v], baki + type), v) );
             }
-            else if(dist[baki][v] > dist[baki][u] + w)
+            else if(dist[baki+type][v] > dist[baki][u] + w)
             {
                 debug("2")
-                dist[baki][v] = dist[baki][u] + w;
-                pq.push( MP(MP(-dist[baki][v], baki - type), v) );
+                dist[baki+type][v] = dist[baki][u] + w;
+                pq.push( MP(MP(dist[baki+type][v], baki + type), v) );
             }
         }
     }
