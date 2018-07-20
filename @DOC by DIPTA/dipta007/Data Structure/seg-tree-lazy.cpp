@@ -1,4 +1,4 @@
-#define mx 100001
+#define mx 100004
 int arr[mx];
 struct info
 {
@@ -59,7 +59,6 @@ int query(int node,int b,int e,int i,int j) ///range i theke j
     int p1 = query(Left,b,mid,i,j);
     int p2 = query(Right,mid+1,e,i,j);
     return  p1+p2;
-
 }
 void update(int node,int b,int e,int i,int j, int newVal)
 {

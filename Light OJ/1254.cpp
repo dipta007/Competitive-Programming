@@ -108,7 +108,58 @@ struct debugger{
 // g++ -g -O2 -std=gnu++11 A.cpp
 // ./a.out
 
+int dist[104];
+vector < vector < pii > > adj;
 
+struct node
+{
+    int cost, oil, nn;
+    node() {}
+    node(int c, int o, int n)
+    {
+        cost = c, oil = o, nn = n;
+    }
+    bool operator <(node &b) const {
+        if(cost == b.cost) return oil > b.oil;
+        return cost < b.cost;
+    }
+};
+
+
+int dj(int s, int d, int c)
+{
+    SET(dist);
+    priority_queue < node > pq;
+    pq.push(node(0, 0, s)));
+    dist[s] = 0;
+
+    while(!pq.empty())
+    {
+        node p = pq.top(); pq.pop();
+
+        if(p.nn == d) retunr p.cost;
+        if(p.oil < c)
+        {
+            pq.push(node(costOfOil[p.nn]+p.cost, p.oil+1, p.nn));
+        }
+
+        FOR(i,0,(int)adj[p.nn].size()-1)
+        {
+            pii vp = adj[p.nn][i];
+            int v = vp.ff;
+            int w = vp.ss;
+
+            if(p.oil >= w) /// I can go :D
+            {
+                if(dist[v] == -1)
+                {
+                    int baki = p.
+                    dist[v] = p.cost;
+                }
+            }
+        }
+    }
+}
 
 int main() {
     #ifdef dipta007
@@ -128,6 +179,7 @@ int main() {
             getI(costOfOil[i]);
         }
 
+        adj.assign(n+4, vector < pii > ());
         FOR(i,1,m)
         {
             int u, v, w;

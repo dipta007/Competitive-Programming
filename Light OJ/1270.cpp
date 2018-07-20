@@ -80,30 +80,122 @@ struct debugger{
 ///****************** template ends here ****************
 int t,n,m;
 
-int bit[12];
+int bit[102];
 int r,c;
+ull dp[104][(1<<8)+4];
+int vis[104][(1<<8)+4];
+int tt;
 
-int call(int i, int now, int fut)
+ull call(int in, int mask);
+ull gen(int rr, int cc, int now, int fut)
 {
+    if(cc >= c) return call(rr+1, fut);
+    if(bitCheck(now, cc) == 1) return gen(rr, cc+1, now, fut);
 
+    ull ret = 0;
+    int fstIn = cc;
+//    FOR(i,0,c-1) if(bitCheck(now, i) == 0) { fstIn = i; break; }
+    if(fstIn < c && fstIn+1 < c)
+    {
+        /// **
+        if(bitCheck(now, fstIn)==0 && bitCheck(now, fstIn+1)==0)
+        {
+            int tmp = now;
+            tmp = bitOn(tmp, fstIn);
+            tmp = bitOn(tmp, fstIn+1);
+            ret += gen(rr, fstIn+2, tmp, fut);
+        }
+        /// *
+        /// **
+        if(bitCheck(now, fstIn)==0 && bitCheck(fut, fstIn)==0 && bitCheck(fut, fstIn+1)==0)
+        {
+            int tmp = fut;
+            tmp = bitOn(tmp, fstIn);
+            tmp = bitOn(tmp, fstIn+1);
+            ret += gen(rr, fstIn+1, bitOn(now, fstIn), tmp);
+        }
 
+        /// **
+        /// *
+        if(bitCheck(now, fstIn)==0 && bitCheck(now, fstIn+1)==0 && bitCheck(fut, fstIn)==0)
+        {
+            int tmp = now;
+            tmp = bitOn(tmp, fstIn);
+            tmp = bitOn(tmp, fstIn+1);
+            ret += gen(rr, fstIn+2, tmp, bitOn(fut, fstIn));
+        }
+
+        /// **
+        ///  *
+        if(bitCheck(now, fstIn)==0 && bitCheck(now, fstIn+1)==0 && bitCheck(fut, fstIn+1)==0)
+        {
+            int tmp = now;
+            tmp = bitOn(tmp, fstIn);
+            tmp = bitOn(tmp, fstIn+1);
+            ret += gen(rr, fstIn+2, tmp, bitOn(fut, fstIn+1));
+        }
+    }
+
+    if(fstIn < c && rr<r-1)
+    {
+        ///  *
+        /// **
+        if(fstIn-1 >= 0 && bitCheck(now, fstIn)==0 && bitCheck(fut, fstIn-1)==0 && bitCheck(fut, fstIn)==0)
+        {
+            int tmp = fut;
+            tmp = bitOn(tmp, fstIn);
+            tmp = bitOn(tmp, fstIn-1);
+            ret += gen(rr, fstIn+1, bitOn(now, fstIn), tmp);
+        }
+    }
+
+    /// *
+    /// *
+    if(rr < r-1 && fstIn < c && bitCheck(now, fstIn)==0 && bitCheck(fut,fstIn)==0)
+    {
+        ret += gen(rr, fstIn+1, bitOn(now, fstIn), bitOn(fut, fstIn));
+    }
+
+    return ret;
+}
+
+ull call(int in, int mask)
+{
+    if(in >= r)
+    {
+        trace(mask);
+        return mask == 0;
+    }
+    ull &ret = dp[in][mask];
+
+    if(vis[in][mask] == tt) return ret;
+    vis[in][mask] = tt;
+
+    ret = gen(in, 0, mask, bit[in+1]);
+
+    return ret;
 }
 
 int main() {
     #ifdef dipta007
-        //READ("in.txt");
+//        READ("in.txt");
 //        WRITE("out.txt");
     #endif // dipta007
     ios_base::sync_with_stdio(0);cin.tie(0);
 
     int t;
     cin >> t;
+    tt = 0;
+    CLR(vis);
     FOR(ci,1,t)
     {
+        tt = ci;
         cin >> r >> c;
-        if( r < c)
+
+        CLR(bit);
+        if(r < c)
         {
-            string st[c];
+            string st[r];
             FOR(i,0,r-1)
             {
                 cin >> st[i];
@@ -113,7 +205,7 @@ int main() {
             {
                 FOR(j,0,r-1)
                 {
-                    bit[i] - bitOn(bit[i], j);
+                    if(st[j][i] == '#') bit[i] = bitOn(bit[i], j);
                 }
             }
             swap(r,c);
@@ -126,10 +218,14 @@ int main() {
                 cin >> st;
                 FOR(j,0,c-1)
                 {
-                    if(st[j]=='.') bit[i] = bitOn(bit[i], j);
+                    if(st[j]=='#') bit[i] = bitOn(bit[i], j);
                 }
             }
         }
+
+        trace(bit[r], bitCount(bit[r]));
+
+        cout << "Case " << ci << ": " << call(0, bit[0]) << endl;
     }
 
     return 0;

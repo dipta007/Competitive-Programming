@@ -1,0 +1,242 @@
+15-Puzzle (Manhattan distance + Linear conflict heuristic).c
+2D Pattern Matcher.c
+2D Pattern Matcher.cpp
+2SAT.cpp
+2SAT_OP.cpp
+Aho Corasick (Dynamic + Global).cpp
+Aho Corasick (Dynamic + Map).cpp
+Aho Corasick (Dynamic).cpp
+Aho Corasick.c
+Aho Corasick.cpp
+Algorithm X + Dancing Links.cpp
+All Divisors in Range.c
+Alpha Beta Pruning.cpp
+Anti Polynomial Hash.c
+Anti Polynomial Hash.cpp
+Articulation Point.cpp
+Assembly.c
+Berlekamp Massey + Matrix Expo.cpp
+Berlekamp Massey.cpp
+Bernoulli Numbers.c
+BigInteger.cpp
+Binomial (dp).c
+Binomial Coefficients Modulo Prime Powers.cpp
+Binomial from Factorial.c
+Binomial from Prime Factorization.c
+Bit Hacks.c
+Bit String LCS.c
+Bitset Iteration.c
+Blocks DP.c
+Brent Pollard Rho OP 2.cpp
+Brent Pollard Rho OP.cpp
+Brent Pollard Rho.cpp
+Bridge Extended.cpp
+Bridge.cpp
+Cartesian Tree.cpp
+Chinese Remainder Theorem.cpp
+Circle Circle Intersection Area.cpp
+CKY Algorithm.c
+Code Hash.cpp
+code.txt
+Combsort.c
+Convex Hull.cpp
+Coordinate Compression.cpp
+Digits of Factorial.c
+Dinic's Algorithm (Edge List).cpp
+Directed MST.cpp
+Discrete Log (General).cpp
+Discrete Log.cpp
+Divisors From Factorization (Iterative).c
+Divisors From Factorization.c
+Divisors From Factorization.cpp
+Divisors in Range.c
+Double Hashing.cpp
+DSU.cpp
+Eulerian Numbers.c
+Extended Euclid.cpp
+Fast Exponentiation Without Overflow.c
+Fast Exponentiation.c
+Fast Fibonacci LL MOD.cpp
+Fast Fibonacci LL.cpp
+Fast Fibonacci OP.cpp
+Fast Fibonacci.cpp
+Fast Input Output.c
+Fast Input Output.cpp
+Fast Integer Cube and Square Root.c
+Fast Sqrt.c
+Bipartite Matching.c
+Dinic's Algorithm (Matrix).cpp
+DSU On Subtree.cpp
+LCA.cpp
+Maximum Matching in General Graphs (Randomized Algorithm).c
+Pollard Rho OP.cpp
+Radix Sort uint_64 (Unrolled with Bucket Arrays).c
+Sparse Table.c
+Suffix Array.cpp
+Faulhaber's Formula (Custom Algorithm).cpp
+Faulhaber's Formula 2.c
+Faulhaber's Formula 3.c
+Faulhaber's Formula.c
+Fenwick Tree 2D + HashMap.cpp
+Fenwick Tree 2D.cpp
+Fenwick Tree 3D.cpp
+Fenwick Tree.cpp
+FFT 2.cpp
+FFT Extended + OP.cpp
+FFT Extended.cpp
+FFT OP 2.cpp
+FFT OP.cpp
+FFT.cpp
+Fractions Class.cpp
+Gambler's Ruin.c
+Gaussian Elimination Extended.cpp
+Gaussian Elimination in GF(2).cpp
+Gaussian Elimination in Modular Field.cpp
+Gaussian Elimination On Band Matrix.c
+Gaussian Elimination.cpp
+GCD.c
+Geometry.cpp
+Gradient.cpp
+Gray Codes.c
+Great Circle Distance.c
+Greedy Coin Change.c
+HakmemItem175.c
+Hash Table.c
+Hashing RMQ.c
+HashMap.cpp
+Heavy Light + RMQ.cpp
+Histogram Area.c
+HLD + RMQ On Edges.cpp
+HLD + RMQ On Nodes.cpp
+Hopcroft Karp.c
+Hopcroft Karp.cpp
+Hungarian Algorithm.c
+Hungarian Algorithm.cpp
+Hunt-Szymanski.cpp
+IDAStar.c
+Integral Determinant LL.c
+Integral Determinant.c
+Inverse Factorial (Linear).c
+Inverse Modulo 1 to N (Linear).c
+Johnson's Algorithm.cpp
+Josephus Problem.c
+Judge Data File.cpp
+K'TH Number.cpp
+Karatsuba LL.cpp
+Karatsuba Unrolled.cpp
+Karatsuba.cpp
+Knight's Tour In Infinite Chessboard.c
+Knuth-Morris-Pratt.c
+Lagrange's Polynomial Interpolation.py
+Lagrnage's Polynomial Interpolation.py
+LCA Extended.cpp
+LCA OP.cpp
+LCIS.c
+LIS + LDS.cpp
+Lucas Theorem Extended.cpp
+Lucas Theorem.cpp
+Lucas.c
+Macros.c
+Macros.cpp
+Manacher's Algorithm.c
+Manacher's Algorithm.cpp
+Matrix Expo.cpp
+Matrix.cpp
+Maximum Divisors.c
+Maximum Square + Diamond.c
+Maximum XOR Subest.cpp
+Merge Sort Tree.cpp
+Miller Rabin (Deterministic + Integer).cpp
+Miller Rabin (Deterministic).cpp
+Miller Rabin OP.c
+Miller Rabin.c
+Miller Rabin.cpp
+Mincost Maxflow (Bellman Ford).cpp
+Mincost Maxflow (Dijkstra + Potentials).cpp
+Mincost Maxflow (Network Simplex).cpp
+Minimum Lexicographic Rotation.c
+Minimum Path Cover in DAG.cpp
+Misc.c
+Mo's Algorithm 2.cpp
+Mo's Algorithm 3.cpp
+Mo's Algorithm On Trees (Edges).cpp
+Mo's Algorithm On Trees (Nodes).cpp
+Mo's Algorithm On Trees.cpp
+Mo's Algorithm.cpp
+Mobius Function.c
+Modular Inverse.cpp
+MST.cpp
+N Queen.c
+Network Simplex OP.cpp
+Network Simplex.cpp
+Next Palindrome.c
+Next Small.c
+Ordered Multiset.cpp
+Ordered Set.cpp
+Output Compression.c
+Overflow.c
+Pairsum.cpp
+Palindrome Factorization.cpp
+Palindrome Tree.cpp
+Period.cpp
+Permutation Index.c
+Permutation Rank.cpp
+Phi OP.c
+Phi.c
+Pick's Theorem.cpp
+Point In Polygon.cpp
+Point Rotations.cpp
+Pollard Rho OP 2.cpp
+Pollard Rho.cpp
+Prime Counting Functions (Prime Sums).cpp
+Prime Counting Functions LL (Simple).cpp
+Prime Counting Functions LL.cpp
+Prime Counting Functions.cpp
+Radix Sort (Unrolled with Bucket Arrays).c
+Radix Sort (Unrolled).c
+Radix Sort.c
+Random Prime Generator.cpp
+Range Factorization.c
+Rolling Hash.c
+Rope.cpp
+run
+run.cpp
+SCC.cpp
+Segment Line Point.cpp
+Segment Tree (Lazy Propagation).c
+Segment Tree Generic.cpp
+Segmented Sieve.c
+Shank's Factorization Algorithm OP 2.cpp
+Shank's Factorization Algorithm OP.cpp
+Shank's Factorization Algorithm.cpp
+Sieve(Bitmask).c
+Sieve.c
+Simple Polygon From Points.c
+Simplex (Namespace + Long Double).cpp
+Simplex OP.cpp
+Simplex.cpp
+Sparse Table OP.cpp
+Sparse Table.cpp
+Square Root Decomposition.c
+String Hash + Segment Tree.cpp
+String Hash.c
+String Hash.cpp
+Subtree To Array.cpp
+Sudoku Solver.c
+Suffix Array.c
+Sum of Divisors in Range.c
+Sum Of Powers - Lagrange Polynomial OP.cpp
+Sum Of Powers - Lagrange Polynomial.cpp
+Thomas Algorithm.cpp
+Treap (Static).cpp
+Treap (Static, Split And Merge).cpp
+Treap With Implicit Keys (Run Length Encoding + Mod Delete).cpp
+Treap With Implicit Keys (Run Length Encoding).cpp
+Treap With Implicit Keys Extended (Run Length Encoding).cpp
+Treap With Implicit Keys.cpp
+Trie.c
+U128.cpp
+Walsh-Hadamard Transformation.c
+Walsh-Hadamard Transformation.cpp
+Z Algorithm.c
+

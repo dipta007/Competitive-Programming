@@ -1,0 +1,302 @@
+Case #1: 0
+Case #2: 0
+Case #3: 1
+0.0
+Case #4: 0
+Case #5: 1
+0.0
+Case #6: 1
+0.0
+Case #7: 1
+0.0
+Case #8: 1
+0.0
+Case #9: 0
+Case #10: 1
+0.0
+Case #11: 0
+Case #12: 1
+0.0
+Case #13: 1
+0.0
+Case #14: 0
+Case #15: 1
+0.0
+Case #16: 1
+0.0
+Case #17: 0
+Case #18: 0
+Case #19: 0
+Case #20: 1
+0.0
+Case #21: 0
+Case #22: 1
+0.0
+Case #23: 0
+Case #24: 0
+Case #25: 1
+0.0
+Case #26: 0
+Case #27: 1
+0.0
+Case #28: 1
+0.0
+Case #29: 1
+0.0
+Case #30: 1
+0.0
+Case #31: 1
+0.0
+Case #32: 0
+Case #33: 1
+0.0
+Case #34: 1
+0.0
+Case #35: 0
+Case #36: 0
+Case #37: 1
+0.0
+Case #38: 0
+Case #39: 1
+0.0
+Case #40: 0
+Case #41: 0
+Case #42: 0
+Case #43: 1
+0.0
+Case #44: 0
+Case #45: 1
+0.0
+Case #46: 0
+Case #47: 0
+Case #48: 1
+0.0
+Case #49: 0
+Case #50: 0
+Case #51: 1
+0.0
+Case #52: 0
+Case #53: 0
+Case #54: 0
+Case #55: 0
+Case #56: 0
+Case #57: 1
+0.0
+Case #58: 1
+0.0
+Case #59: 1
+0.0
+Case #60: 1
+0.0
+Case #61: 1
+0.0
+Case #62: 1
+0.0
+Case #63: 0
+Case #64: 1
+0.0
+Case #65: 1
+0.0
+Case #66: 1
+0.0
+Case #67: 0
+Case #68: 1
+0.0
+Case #69: 0
+Case #70: 1
+0.0
+Case #71: 1
+0.0
+Case #72: 0
+Case #73: 0
+Case #74: 1
+0.0
+Case #75: 1
+0.0
+Case #76: 1
+0.0
+Case #77: 1
+0.0
+Case #78: 0
+Case #79: 1
+0.0
+Case #80: 0
+Case #81: 1
+0.0
+Case #82: 1
+0.0
+Case #83: 1
+0.0
+Case #84: 0
+Case #85: 1
+0.0
+Case #86: 0
+Case #87: 0
+Case #88: 1
+0.0
+Case #89: 1
+0.0
+Case #90: 0
+Case #91: 0
+Case #92: 1
+0.0
+Case #93: 1
+0.0
+Case #94: 0
+Case #95: 0
+Case #96: 0
+Case #97: 0
+Case #98: 0
+Case #99: 1
+0.0
+Case #100: 1
+0.0
+Case #101: 0
+Case #102: 0
+Case #103: 1
+0.0
+Case #104: 0
+Case #105: 1
+0.0
+Case #106: 0
+Case #107: 0
+Case #108: 1
+0.0
+Case #109: 1
+0.0
+Case #110: 1
+0.0
+Case #111: 0
+Case #112: 0
+Case #113: 0
+Case #114: 0
+Case #115: 1
+0.0
+Case #116: 1
+0.0
+Case #117: 0
+Case #118: 1
+0.0
+Case #119: 0
+Case #120: 0
+Case #121: 1
+0.0
+Case #122: 1
+0.0
+Case #123: 1
+0.0
+Case #124: 0
+Case #125: 0
+Case #126: 0
+Case #127: 0
+Case #128: 1
+0.0
+Case #129: 1
+0.0
+Case #130: 1
+0.0
+Case #131: 1
+0.0
+Case #132: 0
+Case #133: 0
+Case #134: 0
+Case #135: 1
+0.0
+Case #136: 1
+0.0
+Case #137: 0
+Case #138: 1
+0.0
+Case #139: 1
+0.0
+Case #140: 1
+0.0
+Case #141: 0
+Case #142: 1
+0.0
+Case #143: 1
+0.0
+Case #144: 1
+0.0
+Case #145: 0
+Case #146: 0
+Case #147: 1
+0.0
+Case #148: 0
+Case #149: 0
+Case #150: 1
+0.0
+Case #151: 1
+0.0
+Case #152: 0
+Case #153: 1
+0.0
+Case #154: 1
+0.0
+Case #155: 1
+0.0
+Case #156: 0
+Case #157: 1
+0.0
+Case #158: 1
+0.0
+Case #159: 0
+Case #160: 1
+0.0
+Case #161: 1
+0.0
+Case #162: 1
+0.0
+Case #163: 0
+Case #164: 1
+0.0
+Case #165: 0
+Case #166: 0
+Case #167: 1
+0.0
+Case #168: 1
+0.0
+Case #169: 0
+Case #170: 1
+0.0
+Case #171: 1
+0.0
+Case #172: 1
+0.0
+Case #173: 0
+Case #174: 1
+0.0
+Case #175: 1
+0.0
+Case #176: 0
+Case #177: 1
+0.0
+Case #178: 0
+Case #179: 0
+Case #180: 1
+0.0
+Case #181: 1
+0.0
+Case #182: 0
+Case #183: 0
+Case #184: 0
+Case #185: 1
+0.0
+Case #186: 1
+0.0
+Case #187: 0
+Case #188: 0
+Case #189: 0
+Case #190: 0
+Case #191: 0
+Case #192: 1
+0.0
+Case #193: 0
+Case #194: 1
+0.0
+Case #195: 0
+Case #196: 0
+Case #197: 0
+Case #198: 0
+Case #199: 0
+Case #200: 0

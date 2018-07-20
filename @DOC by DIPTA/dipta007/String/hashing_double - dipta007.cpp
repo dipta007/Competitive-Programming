@@ -7,12 +7,12 @@ Procedure:
     5. For query call getForwardHashingQuery / getBackwardHashingQuery
 **/
 const int SZ = 1e5+4;
-ll forwardHashTable[2][SZ];
-ll backwardHashTable[2][SZ];
 ll power[2][SZ];
 
 class Hashing
 {
+    ll forwardHashTable[2][SZ];
+    ll backwardHashTable[2][SZ];
     const long long mod[2] = {1000000007LL, 2117566807LL};
     const long long base[2] = {1572872831LL, 1971536491LL};
 public:

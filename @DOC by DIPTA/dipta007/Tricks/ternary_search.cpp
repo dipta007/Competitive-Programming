@@ -4,13 +4,12 @@ double ts()
     double low = 0;
     double high = 1;
     int c = 100; //for higher precision have to increase
-    double k, l, f, g;
     while (c--)
     {
-        m1 = ( low * 2.0 + high ) / 3.0;
-        m2 = ( low + high * 2.0) / 3.0;
-        y1 = fun(m1);
-        y2 = fun(m2);
+        double m1 = ( low * 2.0 + high ) / 3.0;
+        double m2 = ( low + high * 2.0) / 3.0;
+        double y1 = fun(m1);
+        double y2 = fun(m2);
 
         /// boro - choto - boro
         if (y1 > y2)

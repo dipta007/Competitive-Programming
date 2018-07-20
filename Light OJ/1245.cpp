@@ -120,35 +120,15 @@ int main() {
         ll n;
         getL(n);
 
-        ll prev = n;
-        ll res = 0, pno = 1;
-        ll low = 1, high = n;
-        while(1)
+        ll res = n;
+        ll last = n, lim = n;
+        FOR(i,2,lim)
         {
-            ll now;
-            while(low <= high)
-            {
-                ll mid = (low + high) / 2;
-                if(n/mid >= prev)
-                {
-                    low = mid + 1;
-                    now = mid;
-                }
-                else
-                {
-                    high = mid - 1;
-                }
-            }
-
-            res += (prev * (now - pno + 1));
-            pno = now+1;
-            prev = n/pno;
-            low = now+1;
-            high = n;
-
-//            debug(pno, prev, now)
-
-            if(prev == 0) break;
+            lim = n / i;
+            res += (last - lim) * (i-1);
+//            trace(i, lim, res, last - lim);
+            if(i <= lim) res += lim;
+            last = lim;
         }
 
         printf("Case %d: %lld\n",ci, res);

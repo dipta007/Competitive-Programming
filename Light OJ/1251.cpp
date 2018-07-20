@@ -1,234 +1,279 @@
+
+//#include <algorithm>
+//#include <bitset>
+//#include <cassert>
+//#include <cctype>
+//#include <climits>
+//#include <cmath>
+//#include <cstdio>
+//#include <cstdlib>
+//#include <cstring>
+//#include <fstream>
+//#include <iostream>
+//#include <iomanip>
+//#include <iterator>
+//#include <list>
+//#include <map>
+//#include <numeric>
+//#include <queue>
+//#include <set>
+//#include <sstream>
+//#include <stack>
+//#include <string>
+//#include <utility>
+//#include <vector>
 #include <bits/stdc++.h>
 using namespace std;
-
-const double EPS = 1e-9;
-const int INF = 0x7f7f7f7f;
-const double PI=acos(-1.0);
 
 #define    READ(f) 	         freopen(f, "r", stdin)
 #define    WRITE(f)   	     freopen(f, "w", stdout)
 #define    MP(x, y) 	     make_pair(x, y)
 #define    PB(x)             push_back(x)
-#define    rep(i,n)          for(int i = 1 ; i<=(n) ; i++)
-#define    repI(i,n)         for(int i = 0 ; i<(n) ; i++)
 #define    FOR(i,L,R) 	     for (int i = (int)(L); i <= (int)(R); i++)
 #define    ROF(i,L,R) 	     for (int i = (int)(L); i >= (int)(R); i--)
-#define    FOREACH(i,t)      for (typeof(t.begin()) i=t.begin(); i!=t.end(); i++)
 #define    ALL(p) 	         p.begin(),p.end()
 #define    ALLR(p) 	         p.rbegin(),p.rend()
 #define    SET(p) 	         memset(p, -1, sizeof(p))
 #define    CLR(p)            memset(p, 0, sizeof(p))
-#define    MEM(p, v)         memset(p, v, sizeof(p))
 #define    getI(a) 	         scanf("%d", &a)
 #define    getII(a,b) 	     scanf("%d%d", &a, &b)
 #define    getIII(a,b,c)     scanf("%d%d%d", &a, &b, &c)
 #define    getL(a)           scanf("%lld",&a)
 #define    getLL(a,b)        scanf("%lld%lld",&a,&b)
 #define    getLLL(a,b,c)     scanf("%lld%lld%lld",&a,&b,&c)
-#define    getC(n)           scanf("%c",&n)
 #define    getF(n)           scanf("%lf",&n)
-#define    getS(n)           scanf("%s",n)
 #define    bitCheck(N,in)    ((bool)(N&(1<<(in))))
-#define    bitOff(N,in)      (N&(~(1<<(in))))
 #define    bitOn(N,in)       (N|(1<<(in)))
+#define    bitOff(N,in)      (N&(~(1<<(in))))
 #define    bitFlip(a,k)      (a^(1<<(k)))
 #define    bitCount(a)        __builtin_popcount(a)
 #define    bitCountLL(a)      __builtin_popcountll(a)
 #define    bitLeftMost(a)     (63-__builtin_clzll((a)))
 #define    bitRightMost(a)    (__builtin_ctzll(a))
-#define    iseq(a,b)          (fabs(a-b)<EPS)
+#define    ranL(a, b)         ((((rand() << 15) ^ rand()) % ((b) - (a) + 1)) + (a))
+#define    ranI(a, b)         ((((ll)rand() * rand()) % ((b) - (a) + 1)) + (a))
+#define    ranF(a, b)         (((double)rand()/RAND_MAX)*((b) - (a)) + (a))
 #define    UNIQUE(V)          (V).erase(unique((V).begin(),(V).end()),(V).end())
-#define    vi 	              vector < int >
-#define    vii 	              vector < vector < int > >
-#define    pii 	              pair< int, int >
 #define    ff 	              first
 #define    ss 	              second
-#define    ll	              long long
-#define    ull 	              unsigned long long
-#define    POPCOUNT           __builtin_popcount
-#define    POPCOUNTLL         __builtin_popcountll
-#define    RIGHTMOST          __builtin_ctzll
-#define    LEFTMOST(x)        (63-__builtin_clzll((x)))
+#define    sf                 scanf
+#define    pf                 printf
+typedef    long long          ll;
+typedef    unsigned long long ull;
+typedef    vector < int >     vi;
+typedef    vector < vi >      vii;
+typedef    pair < int, int>   pii;
+#define    FMT(...)           (sprintf(CRTBUFF, __VA_ARGS__)?CRTBUFF:0)
+char CRTBUFF[30000];
 
-template< class T > inline T gcd(T a, T b)
-{
-    return (b) == 0 ? (a) : gcd((b), ((a) % (b)));
-}
-template< class T > inline T lcm(T a, T b)
-{
-    return ((a) / gcd((a), (b)) * (b));
-}
-template <typename T> string NumberToString ( T Number )
-{
-    ostringstream ss;
-    ss << Number;
-    return ss.str();
-}
-
-#ifdef dipta00
-#define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
-#define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
-template <typename Arg1>
-void __f(const char* name, Arg1&& arg1)
-{
-    cerr << name << " : " << arg1 << std::endl;
-}
-template <typename Arg1, typename... Args>
-void __f(const char* names, Arg1&& arg1, Args&&... args)
-{
-    const char* comma = strchr(names + 1, ',');
-    cerr.write(names, comma - names) << " : " << arg1<<" | ";
-    __f(comma+1, args...);
-}
+#ifdef dipta007
+     #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
+     #define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
+        template <typename Arg1>
+        void __f(const char* name, Arg1&& arg1){
+            cerr << name << " : " << arg1 << std::endl;
+        }
+        template <typename Arg1, typename... Args>
+        void __f(const char* names, Arg1&& arg1, Args&&... args){
+            const char* comma = strchr(names + 1, ',');cerr.write(names, comma - names) << " : " << arg1<<" | ";__f(comma+1, args...);
+        }
 #else
-#define debug(args...)  /// Just strip off all debug tokens
-#define trace(...) ///yeeeee
+    #define debug(args...)  /// Just strip off all debug tokens
+    #define trace(...) ///yeeeee
 #endif
 
-struct debugger
-{
-    template<typename T> debugger& operator, (const T& v)
-    {
+struct debugger{
+    template<typename T> debugger& operator , (const T& v){
         cerr<<v<<" ";
         return *this;
     }
-} dbg;
-///****************** template ends here ****************
+}dbg;
+
+const double EPS = 1e-9;
+const int INF = 0x3f3f3f3f;
+const double PI = 2.0 * acos(0.0);
+
+ll MIN() { return INF; }
+template <typename T, typename... Args >
+inline T MIN(T a, Args... args) { return min(a, (T)MIN(args...)); }
+
+ll MAX() { return -INF; }
+template <typename T, typename... Args >
+inline T MAX(T a, Args... args) { return max(a, (T)MAX(args...)); }
 
 // g++ -g -O2 -std=gnu++11 A.cpp
 // ./a.out
 
-#define MAX 2*8000 + 5
-vector <vector <int> > g, gt;
-bool used[MAX];
-vector <int> order;
-int comp[MAX];
-map < int, int > tru, fal, flip;
+///****************** template ends here ****************
 
-void dfs1 (int v)
-{
-    used [v] = true;
-    for (int i = 0; i <g [v] .size (); ++ i)
-    {
-        int to = g [v] [i];
-        if (! used [to])
-            dfs1 (to);
-    }
-    order.push_back (v);
-}
+/// 2 SAT (1 based index for variables)
+/// Each variable can have two possible values (true or false)
+/// Variables must satisfy a system of constraints on pairs of variables
 
-void dfs2 (int v, int cl)
-{
-    comp [v] = cl;
-    for (int i = 0; i <gt [v] .size (); ++ i)
-    {
-        int to = gt [v] [i];
-        if (comp [to] == -1)
-            dfs2 (to, cl);
+namespace sat{
+    #define MAX 8004
+    bool visited[MAX * 2];
+    vector <int> adj[MAX * 2], rev[MAX * 2];
+    int n, m, l, dfs_t[MAX * 2], order[MAX * 2], parent[MAX * 2];
+
+    inline int neg(int x){
+        return ((x) <= n ? (x + n) : (x - n));
     }
 
+    /// Call init once
+    void init(int nodes){
+        n = nodes, m = nodes * 2;
+        for (int i = 0; i < MAX * 2; i++){
+            adj[i].clear();
+            rev[i].clear();
+        }
+    }
+
+    /// Add implication, if a then b
+    inline void add_implication(int a, int b){
+        if (a < 0) a = n - a;
+        if (b < 0) b = n - b;
+
+        adj[a].push_back(b);
+        rev[b].push_back(a);
+    }
+
+    inline void add_or(int a, int b){
+        add_implication(-a, b);
+        add_implication(-b, a);
+    }
+
+    inline void add_xor(int a, int b){
+        add_or(a, b);
+        add_or(-a, -b);
+    }
+
+    inline void add_and(int a, int b){
+        add_or(a, b);
+        add_or(a, -b);
+        add_or(-a, b);
+    }
+
+    inline void add_equal(int a, int b) {
+        add_implication(a,b);
+        add_implication(-a,-b);
+    }
+
+    /// force variable x to be true (if x is negative, force !x to be true)
+    inline void force_true(int x){
+        if (x < 0) x = n - x;
+        add_implication(neg(x), x);
+    }
+
+    /// force variable x to be false (if x is negative, force !x to be false)
+    inline void force_false(int x){
+        if (x < 0) x = n - x;
+        add_implication(x, neg(x));
+    }
+
+    inline void topsort(int i){
+        visited[i] = true;
+        int j, x, len = rev[i].size();
+
+        for (j = 0; j < len; j++){
+            x = rev[i][j];
+            if (!visited[x]) topsort(x);
+        }
+        dfs_t[i] = ++l;
+    }
+
+    inline void dfs(int i, int p){
+        parent[i] = p;
+        visited[i] = true;
+        int j, x, len = adj[i].size();
+
+        for (j = 0; j < len; j++){
+            x = adj[i][j];
+            if (!visited[x]) dfs(x, p);
+        }
+    }
+
+    void build(){
+        int i, x;
+        CLR(visited);
+        for (i = m, l = 0; i >= 1; i--){
+            if (!visited[i]){
+                topsort(i);
+            }
+            order[dfs_t[i]] = i;
+        }
+
+        CLR(visited);
+        for (i = m; i >= 1; i--){
+            x = order[i];
+            if (!visited[x]){
+                dfs(x, x);
+            }
+        }
+    }
+
+    /// Returns true if the system is 2-satisfiable and returns the solution (nodes set to true) in vector res
+    bool satisfy(vector <int>& res){
+        build();
+        CLR(visited);
+
+        for (int i = 1; i <= m; i++){
+            int x = order[i];
+            if (parent[x] == parent[neg(x)]) return false;
+
+            if (!visited[parent[x]]){
+                visited[parent[x]] = true;
+                visited[parent[neg(x)]] = false;
+            }
+        }
+
+        res.clear();
+        for (int i = 1; i <= n; i++){
+            if (visited[parent[i]]) res.push_back(i);
+        }
+        return true;
+    }
 }
 
-int main()
-{
-#ifdef dipta007
-    //READ("in.txt");
-    //WRITE("out.txt");
-#endif // dipta007
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
+int main() {
+    #ifdef dipta007
+        //READ("in.txt");
+       //WRITE("out.txt");
+    #endif // dipta007
+//    ios_base::sync_with_stdio(0);cin.tie(0);
 
     int t;
-    cin >> t;
+    getI(t);
     FOR(ci,1,t)
     {
         int n,m;
-        cin >> n >> m;
-        g.assign(m+m+4, vi());
-        gt.assign(m+m+4, vi());
-        tru.clear();
-        fal.clear();
-        flip.clear();
-        order.clear();
-
-
-        FOR(i,1,m)
-        {
-            tru[i] = i;
-            fal[i] = m+i;
-            flip[i] = m+i;
-            flip[m+i] = i;
-        }
-
+        getII(n,m);
+        sat::init(m);
         FOR(i,1,n)
         {
-            char aa, bb;
-            int a, b;
-            cin >>  a >> b;
-
-            if(a < 0)
-                a = m+abs(a);
-            if(b < 0)
-                b = m+abs(b);
-
-
-            g[flip[a]].push_back(b);
-            gt[b].push_back(flip[a]);
-            g[flip[b]].push_back(a);
-            gt[a].push_back(flip[b]);
+            int x,y;
+            getII(x,y);
+            sat::add_or(x,y);
         }
-
-        CLR(used);
-        for (int i = 1; i <=m+m; ++i)
-            if (! used [i])
-                dfs1 (i);
-
-//        debug("SAd")
-        SET(comp);
-        int nn = order.size();
-        reverse(order.begin(),order.end());
-        for (int i = 0, j = 0; i < order.size(); ++i)
+        vi v;
+        if(sat::satisfy(v))
         {
-            int v = order[i];
-            if (comp [v] == -1)
-                dfs2 (v, j ++);
-            debug(v, comp[v])
-
-        }
-
-        int flg = 1;
-        cout << "Case " << ci << ": ";
-        for (int i = 1; i <= m; ++ i)
-            if (comp [i] == comp [flip[i]])
-            {
-                debug(i)
-                cout << "No" << endl;
-                flg = 0;
-                break;
-            }
-
-        if(flg)
-        {
-            cout << "Yes" << endl;
-            vi v;
-            for (int i = 1; i <= m; ++ i)
-            {
-                if(comp[i] > comp[ flip[i] ])
-                {
-                    v.PB(i);
-                }
-            }
-            sort(ALL(v));
-            cout << v.size();
+            pf("Case %d: Yes\n", ci);
+            vi res;
             FOR(i,0,(int)v.size()-1)
             {
-                cout << " " << v[i];
+                if(v[i] <= m) res.PB(v[i]);
             }
-            cout << endl;
+            pf("%d", (int)res.size());
+            FOR(i,0,(int)res.size()-1)
+            {
+                pf(" %d", res[i]);
+            }
+            pf("\n");
         }
+        else pf("Case %d: No\n",ci);
     }
-
-
 
     return 0;
 }
+

@@ -1,3 +1,5 @@
+/// Axy + Bx + Cy = D
+
 bool isValidSolution ( int a, int b, int c, int p, int div ) {
     if ( ( ( div - c )% a ) != 0 ) return false; //x = (div - c) / a
     if ( ( (p-b*div) % (a*div) ) != 0 ) return false;// y = (p-b*div) /(a*div)

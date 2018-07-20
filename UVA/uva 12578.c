@@ -6,7 +6,7 @@
 int main()
 {
     int T,count=1,le;
-    float w,r,A_c,A_re;
+    double w,r,A_c,A_re;
     scanf("%d",&T);
     if(T>100) return 0;
 

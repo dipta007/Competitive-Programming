@@ -87,6 +87,8 @@ struct debugger{
 // ./a.out
 
 ll a[100004];
+ll b[100004];
+ll c[100004];
 ll cum[100004];
 int mark[100004];
 int n;
@@ -158,8 +160,8 @@ void callPrint(int in, int last)
 
 int main() {
     #ifdef dipta007
-        //READ("in.txt");
-       //WRITE("out.txt");
+        READ("in.txt");
+       WRITE("out1.txt");
     #endif // dipta007
    // ios_base::sync_with_stdio(0);cin.tie(0);
 
@@ -172,14 +174,16 @@ int main() {
         FOR(i,1,n)
         {
             getL(a[i]);
+            b[i] = a[i];
+            c[i] = a[i];
             cum[i] = cum[i-1] + a[i];
         }
         a[0] = a[n+1] = LLONG_MAX;
 
 
-        ll sum = 0;
+//        ll sum = 0;
 
-        ll res1 =0, res2 = 0;
+//        ll res1 =0, res2 = 0;
         CLR(mark);
         FOR(i,1,n)
         {
@@ -188,10 +192,112 @@ int main() {
                 mark[i] = 1;
             }
         }
+//
+//        ll res1 = 0;
+//        ll cum = 0;
+//        int last = -1;
+//        int in = -1;
+//        FOR(i,1,n)
+//        {
+//            if(mark[i])
+//            {
+//                if(i == 1 || cum - b[i] > 0)
+//                {
+//                    b[i] *= -1;
+//                    last = b[i];
+//                    in = i;
+//                }
+//                else if(in != -1 && cum - last - b[i] > 0 && b[i] > abs(last))
+//                {
+//                    b[in] *= -1;
+//                    b[i] *= -1;
+//                    last = b[i];
+//                    res1 += b[in] + b[in];
+//                    cum += b[in] + b[in];
+//                    in = i;
+//                }
+//            }
+//
+//            cum += b[i];
+//            if(b[i] <= cum)
+//            {
+//                if(b[i] < 0) in = i;
+//                else in = -1;
+//                cum = b[i];
+//            }
+//            res1 += b[i];
+//
+//            trace(cum, res1, b[i]);
+//        }
+//
+//        ll res2 = 0;
+//        cum = 0;
+//        last = -1;
+//        in = -1;
+//        ROF(i,n,1)
+//        {
+//            if(mark[i])
+//            {
+//                if(i == n || cum - c[i] > 0)
+//                {
+//                    c[i] *= -1;
+//                    last = c[i];
+//                    in = i;
+//                }
+//                else if(in != -1 && cum - last - c[i] > 0 && c[i] > abs(last))
+//                {
+//                    c[in] *= -1;
+//                    c[i] *= -1;
+//                    last = c[i];
+//                    res2 += c[in] + c[in];
+//                    cum += c[in] + c[in];
+//                    in = i;
+//                }
+//            }
+//
+//            cum += c[i];
+//            if(c[i] <= cum)
+//            {
+//                if(c[i] < 0) in = i;
+//                else in = -1;
+//                cum = c[i];
+//            }
+//            res2 += c[i];
+//        }
+//
+//        trace(res1, res2);
 
-        dp.clear();
-        call(1,0);
-        callPrint(1,0);
+        #ifdef dipta007
+            int ddd[n+4];
+        {
+            dp.clear();
+            ll res = call(1,0);
+            trace(res);
+            callPrint(1,0);
+//            FOR(i,1,n)
+//            {
+//                pf("%d ", a[i]);
+//                ddd[i] = a[i];
+//            }
+//            pf("\n");
+        }
+        #endif // dipta007
+//
+//        if(res1 < res2)
+//        {
+//            FOR(i,1,n)
+//            {
+//                a[i] = b[i];
+//            }
+//        }
+//        else
+//        {
+//            FOR(i,1,n)
+//            {
+//                a[i] = c[i];
+//            }
+//        }
+
 
         FOR(i,1,n)
         {
@@ -199,6 +305,14 @@ int main() {
             pf("%d",a[i]);
         }
         pf("\n");
+
+//        FOR(i,1,n)
+//        {
+//            cout << ci << endl;
+//            assert(a[i] == ddd[i]);
+//        }
+
+//        cout << endl;
 
         continue;
 

@@ -1,7 +1,7 @@
 #define MAXN 100002
 int dp[MAXN][5];
 int par[MAXN];
-vectoredges[MAXN];
+vector edges[MAXN];
 
 int f(int u, int isGuard)
 {

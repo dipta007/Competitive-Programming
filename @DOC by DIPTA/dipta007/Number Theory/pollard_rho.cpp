@@ -1,5 +1,6 @@
 /**
 Procedure:
+    1. Call sieve() once for all test cases
     1. Call llfactorize()
 **/
 #define MAXL (50000>>5)+1
@@ -14,7 +15,7 @@ void sieve() {
     for (i = 2; i <= n; i++) {
         if (!GETP(i)) {
             for (k = n/i, j = i*k; k >= i; k--, j -= i)
-                SET(j);
+                SETP(j);
             P[Pt++] = i;
         }
     }

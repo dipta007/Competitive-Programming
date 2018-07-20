@@ -94,7 +94,6 @@ Procedure:
     1. Call bionomial(n, r, mod)
 **/
 
-#define ll ll
 #define forab(i,a,b) for (__typeof(b) i = (a); i <= (b); ++i)
 #define rep(i,n) forab (i, 0, (n) - 1)
 #define For(i,n) forab (i, 1, n)

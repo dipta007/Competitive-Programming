@@ -71,6 +71,8 @@ const double PI=acos(-1.0);
 #define    POPCOUNTLL         __builtin_popcountll
 #define    RIGHTMOST          __builtin_ctzll
 #define    LEFTMOST(x)        (63-__builtin_clzll((x)))
+#define    FMT(...)           (sprintf(CRTBUFF, __VA_ARGS__)?CRTBUFF:0)
+char CRTBUFF[30000];
 
 template< class T > inline T gcd(T a, T b)
 {
@@ -121,68 +123,19 @@ struct debugger
 // g++ -g -O2 -std=gnu++11 A.cpp
 // ./a.out
 
-#define LINE 0
-#define SEGMENT 1
-#define RAY 2
-
 struct point
 {
     double x, y, z;
-    point() {};
-    point(double _x, double _y, double _z)
-    {
-        x=_x;
-        y=_y;
-        z=_z;
-    }
-    point operator+ (point p)
-    {
-        return point(x+p.x, y+p.y, z+p.z);
-    }
-    point operator- (point p)
-    {
-        return point(x-p.x, y-p.y, z-p.z);
-    }
-    point operator* (double c)
-    {
-        return point(x*c, y*c, z*c);
-    }
 };
 
-double dot(point a, point b)
+inline double sq(double x)
 {
-    return a.x*b.x + a.y*b.y + a.z*b.z;
+    return x*x;
 }
 
-point cross(point a, point b)
+double dist(point &a, point &b)
 {
-    return point(a.y*b.z-a.z*b.y,
-                 a.z*b.x-a.x*b.z,
-                 a.x*b.y-a.y*b.x);
-}
-
-double distSq(point a, point b)
-{
-    return dot(a-b, a-b);
-}
-
-// square distance between point and line, ray or segment
-double ptLineDistSq(point s1, point s2, point p, int type)
-{
-    double pd2 = distSq(s1, s2);
-    point r;
-    if(pd2 == 0)
-        r = s1;
-    else
-    {
-        double u = dot(p-s1, s2-s1) / pd2;
-        r = s1 + (s2 - s1)*u;
-        if(type != LINE && u < 0.0)
-            r = s1;
-        if(type == SEGMENT && u > 1.0)
-            r = s2;
-    }
-    return distSq(r, p);
+    return sqrt( sq(a.x-b.x) + sq(a.y-b.y) + sq(a.z-b.z) );
 }
 
 int main()
@@ -199,15 +152,35 @@ int main()
     FOR(ci,1,t)
     {
         point a,b,c;
-        cin >> a.x >> a.y >> a.y;
+        cin >> a.x >> a.y >> a.z;
         cin >> b.x >> b.y >> b.z;
         cin >> c.x >> c.y >> c.z;
 
-        double ans = ptLineDistSq(a,b,c,SEGMENT);
-        debug(ans);
-        ans = sqrt(ans);
-        debug(ans);
-        printf("Case %d: %.10f\n", ci, ans);
+        int cnt = 100;
+        double fx, fy;
+        while(cnt--)
+        {
+            point x,y;
+            x.x = (2*a.x + b.x) / 3.0;
+            x.y = (2*a.y + b.y) / 3.0;
+            x.z = (2*a.z + b.z) / 3.0;
+
+            y.x = (a.x + 2*b.x) / 3.0;
+            y.y = (a.y + 2*b.y) / 3.0;
+            y.z = (a.z + 2*b.z) / 3.0;
+
+            fx = dist(x, c);
+            fy = dist(y, c);
+
+//            trace(fx, fy);
+
+            if(fx+EPS < fy) b = y;
+            else a = x;
+        }
+
+        double ans = abs(fx + fy) / 2.0;
+        cout << setprecision(10) << fixed;
+        cout << "Case " << ci << ": " << ans << endl;
     }
 
 

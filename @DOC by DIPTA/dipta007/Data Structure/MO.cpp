@@ -50,7 +50,7 @@ struct node {
     }
 }q[N];
 
-int lf=0, rt-1;
+int lf=0, rt=-1;
 
 inline void add(int position) {
 	cnt[a[position]]++;

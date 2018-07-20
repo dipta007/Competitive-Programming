@@ -1,26 +1,4 @@
-#include <algorithm>
-#include <bitset>
-#include <cassert>
-#include <cctype>
-#include <climits>
-#include <cmath>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <iostream>
-#include <iomanip>
-#include <iterator>
-#include <list>
-#include <map>
-#include <numeric>
-#include <queue>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <string>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 const double EPS = 1e-9;
@@ -71,6 +49,8 @@ const double PI=acos(-1.0);
 #define    POPCOUNTLL         __builtin_popcountll
 #define    RIGHTMOST          __builtin_ctzll
 #define    LEFTMOST(x)        (63-__builtin_clzll((x)))
+#define    sf scanf
+#define    pf printf
 #define    FMT(...)           (sprintf(CRTBUFF, __VA_ARGS__)?CRTBUFF:0)
 char CRTBUFF[30000];
 
@@ -106,7 +86,77 @@ struct debugger{
 // g++ -g -O2 -std=gnu++11 A.cpp
 // ./a.out
 
-int mark[400004];
+/***
+   * Multiply (7x^2 + 8x^1 + 9x^0) with (6x^1 + 5x^0)
+   * ans = 41x^3 + 83x^2 + 94x^1 + 45x^0
+   * A = {9, 8, 7}
+   * B = {5, 6}
+   * V = multiply(A,B)
+   * V = {45, 94, 83, 42}
+***/
+
+using cd = complex<double>;
+void fft(vector<cd> & a, bool invert) {
+    int n = a.size();
+
+    for (int i = 1, j = 0; i < n; i++) {
+        int bit = n >> 1;
+        for (; j & bit; bit >>= 1)
+            j ^= bit;
+        j ^= bit;
+
+        if (i < j)
+            swap(a[i], a[j]);
+    }
+
+    for (int len = 2; len <= n; len <<= 1) {
+        double ang = 2 * PI / len * (invert ? -1 : 1);
+        cd wlen(cos(ang), sin(ang));
+        for (int i = 0; i < n; i += len) {
+            cd w(1);
+            for (int j = 0; j < len / 2; j++) {
+                cd u = a[i+j], v = a[i+j+len/2] * w;
+                a[i+j] = u + v;
+                a[i+j+len/2] = u - v;
+                w *= wlen;
+            }
+        }
+    }
+
+    if (invert) {
+        for (cd & x : a)
+            x /= n;
+    }
+}
+
+vector<int> multiply(vector<int> const& a, vector<int> const& b) {
+    vector<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
+    int n = 1;
+    while (n < a.size() + b.size())
+        n <<= 1;
+    fa.resize(n);
+    fb.resize(n);
+
+    fft(fa, false);
+    fft(fb, false);
+    for (int i = 0; i < n; i++)
+        fa[i] *= fb[i];
+    fft(fa, true);
+
+    vector<int> result(n);
+    for (int i = 0; i < n; i++)
+        result[i] = round(fa[i].real());
+
+    /********** For Base 10 Multiplication **********/
+//    int carry = 0;
+//    for (int i = 0; i < n; i++){
+//        result[i] += carry;
+//        carry = result[i] / 10;
+//        result[i] %= 10;
+//    }
+    return result;
+}
+
 
 int main() {
     #ifdef dipta007
@@ -118,21 +168,15 @@ int main() {
     int n;
     while(~getI(n))
     {
-        int a[n];
-        FOR(i,0,n-1)
+        vi v(200004);
+        FOR(i,1,n)
         {
-            getI(a[i]);
+            int x;
+            getI(x);
+            v[x] = 1;
         }
 
-        CLR(mark);
-        FOR(i,0,n-1)
-        {
-            mark[ a[i] ] = 1;
-            FOR(j,i,n-1)
-            {
-                mark[ a[i] + a[j] ] = 1;
-            }
-        }
+        vi ans = multiply(v, v);
 
         int m;
         getI(m);
@@ -141,9 +185,10 @@ int main() {
         {
             int x;
             getI(x);
-            cnt += mark[x];
+            if(ans[x] || v[x]) cnt++;
         }
-        printf("%d\n", cnt);
+
+        pf("%d\n", cnt);
     }
 
     return 0;

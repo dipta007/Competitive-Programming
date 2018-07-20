@@ -174,9 +174,10 @@ vector <point> vp;
 int dist(point a,point b)
 {
     double dis=(a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y)+(a.z-b.z)*(a.z-b.z);
-    dis=sqrt(dis);
     return (int)floor(dis);
 }
+
+int res[12];
 
 int main() {
     //READ("in.txt");
@@ -188,17 +189,23 @@ int main() {
         vp.PB(point(x,y,z));
     }
     int len=vp.size();
-    int res[10];
     CLR(res);
     for(int i=0;i<len;i++)
     {
-        for(int j=i+1;j<len;j++)
+        int mn = INF;
+//        map < int, int > mp;
+        for(int j=0;j<len;j++)
         {
+            if(i == j) continue;
             int k=dist(vp[i],vp[j]);
-            debug(k);
-            if(k<10)
-            res[k]++;
+            mn = min(mn, k);
+//            mp[k]++;
+//            debug(i, k);
         }
+
+        int dis = floor((double)sqrt(mn));
+//        debug(i, dis, mp[mn]);
+        if(dis < 10) res[dis] += 1;
     }
     for(int i=0;i<10;i++)
     {
