@@ -1,0 +1,1 @@
+mwareDetect.returned({"succes":false});

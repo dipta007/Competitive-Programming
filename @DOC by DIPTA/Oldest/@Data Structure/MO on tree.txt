@@ -1,0 +1,136 @@
+#include <bits/stdtr1c++.h>
+
+#define MAX 100010
+#define clr(ar) memset(ar, 0, sizeof(ar))
+#define read() freopen("lol.txt", "r", stdin)
+#define dbg(x) cout << #x << " = " << x << endl
+
+using namespace std;
+
+typedef pair<int, int> Pair;
+
+const int block_size = 317;
+
+namespace mo{
+    double out[MAX];
+    bitset <MAX> visited;
+    vector <Pair> adj[MAX];
+    int t, q, n, counter, dp[1010], val[MAX], freq[MAX], depth[MAX], parent[MAX];
+
+    struct query{
+        int l, r, idx;
+
+        query(){}
+        query(int a, int b, int c){
+            idx = c;
+            l = a, r = b;
+        }
+
+        bool operator < (const query& other) const{
+            int d1 = out[l] / block_size, d2 = out[other.l] / block_size;
+            if (d1 != d2) return (d1 < d2);
+            return ((d1 & 1) ? (out[r] < out[other.r]) : (out[r] > out[other.r]));
+        }
+    } Q[MAX];
+
+    void init(int nodes){
+        counter = 0;
+        t = q = 0, n = nodes;
+        for (int i = 0; i < MAX; i++) adj[i].clear();
+    }
+
+    inline void add_edge(int u, int v, int w){
+        adj[u].push_back(Pair(v, w));
+        adj[v].push_back(Pair(u, w));
+    }
+
+    inline void push(int l, int r){
+        q++;
+        Q[q] = query(l, r, q);
+    }
+
+    inline void dfs(int i){
+        out[i] = ++t;
+        int j, x, len = adj[i].size();
+        for (j = 0; j < len; j++){
+            x = adj[i][j].first;
+            if (x != parent[i]){
+                val[x] = adj[i][j].second;
+                parent[x] = i, depth[x] = depth[i] + 1;
+                dfs(x);
+            }
+        }
+    }
+
+    inline void jump(int& i){
+        if (!visited[i]){
+            counter++;
+            freq[val[i]]++;
+            dp[val[i] / block_size]++;
+        }
+        else{
+            counter--;
+            freq[val[i]]--;
+            dp[val[i] / block_size]--;
+        }
+        visited[i].flip();
+        i = parent[i];
+    }
+
+    inline void update(int u, int v){
+        while (depth[u] > depth[v]) jump(u);
+        while (depth[u] < depth[v]) jump(v);
+        while (u != v) jump(u), jump(v);
+    }
+
+    inline int kth(int k){
+        for (int i = 0; i < 325; i++){
+            if (dp[i] < k) k -= dp[i];
+            else{
+                for (int j = 0, l = block_size * i; j < block_size; j++, l++){
+                    if (freq[l] >= k) return l;
+                    k -= freq[l];
+                }
+            }
+        }
+        return -1;
+    }
+
+    void run(){
+        visited.reset();
+        clr(dp), clr(freq);
+        parent[1] = 1, depth[1] = 0, Q[0] = query(1, 1, 0);
+
+        dfs(1);
+        sort(Q + 1, Q + q + 1);
+        for (int i = 1; i <= q; i++){
+            update(Q[i - 1].l, Q[i].l);
+            update(Q[i - 1].r, Q[i].r);
+            if (counter & 1) out[Q[i].idx] = kth((counter + 1) >> 1);
+            else out[Q[i].idx] = (kth(counter >> 1) + kth((counter >> 1) + 1)) / 2.0;
+        }
+        for (int i = 1; i <= q; i++) printf("%0.1f\n", out[i]);
+    }
+}
+
+int main(){
+    int t, n, q, i, j, k, a, b, c;
+
+    scanf("%d", &t);
+    while (t--){
+        scanf("%d", &n);
+        mo::init(n);
+        for (i = 1; i < n; i++){
+            scanf("%d %d %d", &a, &b, &c);
+            mo::add_edge(a, b, c);
+        }
+
+        scanf("%d", &q);
+        for (i = 1; i <= q; i++){
+            scanf("%d %d", &a, &b);
+            mo::push(a, b);
+        }
+        mo::run();
+    }
+    return 0;
+}

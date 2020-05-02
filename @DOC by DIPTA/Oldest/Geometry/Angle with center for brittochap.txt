@@ -1,0 +1,4 @@
+cin >> x1 >> y1 >> x2 >> y2 ;
+double deg =  atan2(y1,x1) - atan2(y2,x2) ;
+deg = fabs(deg);
+if(deg > pi ) deg = 2.0*pi - deg;

@@ -1,0 +1,81 @@
+//not sure
+#define mod 1000000007
+#define mx 1005
+ll ncr[mx][mx];
+ll fact[mx];
+ll modulas(ll num)
+{
+    while(num<=0)num+=mod;
+    return num%mod;
+}
+
+void ncrcalc()
+{
+    ncr[0][0] = 1 ;
+    int limncr = mx-1 ;
+    for (int i = 1 ; i <= limncr ; i++)
+        for (int j = 0 ; j <= limncr ; j++)
+        {
+            if ( j > i ) ncr[i][j] = 0 ;
+            else if ( j == i || j == 0 ) ncr[i][j] = 1 ;
+            else ncr [i][j] = (ncr[i-1][j - 1]%mod + ncr[i-1][j]%mod)%mod ;
+        }
+}
+void genfact()
+{
+
+    fact[0]=1;
+    rep(i,mx-1)
+    {
+        fact[i]=((fact[i-1]%mod)*(i%mod))%mod;
+
+    }
+
+}
+void derangement(int n)
+{
+    ll res=fact[n];
+    ll gun=-1;
+    rep(i,n)
+    {
+//        res=(res%mod+(gun*((ncr[m-k][i]%mod)*(fact[n-k-i])%mod)%mod))%mod;
+        res=modulas(modulas(res)+modulas((gun*((ncr[n][i]%mod)*(fact[n-i])%mod)%mod)));
+        gun*=-1;
+    }
+    return res;
+}
+
+
+
+// not sure if it is correct or not
+
+#define mx 1005
+#define mod 1000000007
+ll dp[mx][mx];
+ll fact[mx];
+void genfact(int n){
+
+	int i;
+	fact[0]=1; fact[1]=1;
+
+	for(i=2;i<mx;i++){
+		fact[i]=((fact[i-1]%mod)*i)%mod;
+	}
+}
+ll MD(int i,int j){
+	
+	if(j<0) return 0;
+	if(i==0) return 1;
+	if(j==0) return fact[i];
+
+	if(dp2[i][j]!=-1) return dp[i][j];
+
+	ii ret=0,right=i-j;
+
+	ret=((j-1)*(MD(i-1,j-1)%mod+MD(i-2,j-2)%mod))%mod;
+	ret=ret+(right*(MD(i-1,j-1)%mod))%mod;
+
+	return dp[i][j]=ret%mod;
+	
+}
+

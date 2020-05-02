@@ -1,0 +1,57 @@
+#include<cstdio>
+#include<vector>
+using namespace std;
+
+#define MAX 100000 			//maximum node
+vector<int>edges[MAX];
+vector<int>cost[MAX]; 		//parallel vector to store costs;
+int node,edge;
+
+void BFS(int src)
+{
+	queue<int>Q;
+	Q.push(src);
+	CLR(visited);
+	CLR(level);
+	int parent[100];
+	visited[src]=1; 
+    level[src]=0;
+	while(!Q.empty())
+	{
+		int u=Q.front();
+		Q.pop();
+		for(int i=0;i<G[u].size();i++)
+		{
+			int v=G[u][i];
+			if(!visited[v])
+			{
+				level[v]=level[u]+1; 
+				parent[v]=u;
+				visited[v]=1;
+				Q.push(v);
+			}
+		}
+		
+	}
+	for(int i=1;i<=node;i++)
+		printf("%d to %d distance %d",src,i,level[i]);
+}
+
+
+
+int main()
+{
+
+	scanf("%d %d",&node,&edge);
+	for(int i=1;i<=edge;i++)
+	{
+        int x,y;
+		scanf("%d%d",&x,&y);
+        edges[x].push_back(y);
+        edges[y].push_back(x);
+        cost[x].push_back(1);
+        cost[y].push_back(1);
+	}
+	BFS(1);
+	return 0;
+}

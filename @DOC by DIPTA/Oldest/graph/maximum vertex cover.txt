@@ -1,0 +1,60 @@
+#define MAXN 1005
+int dp[MAXN][5];
+int par[MAXN];
+vector<int>edges[MAXN];
+int visit[1005];
+int tot;
+int call(int u, int isGuard)
+{
+//    if(visit[u]==0)tot++;
+    visit[u]=1;
+    if (edges[u].size() == 0)return 1;
+    if (dp[u][isGuard] != -1)return dp[u][isGuard];
+    int sum = 0;
+    for (int i = 0; i < (int)edges[u].size(); i++)
+    {
+        int v = edges[u][i];
+        if (v != par[u])
+        {
+            par[v] = u;
+            if (isGuard == 1)sum += call(v, 0);
+            else sum += max(call(v, 1), call(v, 0));
+        }
+    }
+    return dp[u][isGuard] = sum + isGuard;
+}
+
+int main()
+{
+#ifdef mamun
+//    READ("in.txt");
+//        WRITE("out.txt");
+#endif // mamun
+    getI(t);
+    rep(cs,t)
+    {
+        getII(n,m);
+        rep(i,n)edges[i].clear();
+        rep(i,m)
+        {
+            int u, v;
+            getII(u,v);
+            edges[u].push_back(v);
+            edges[v].push_back(u);
+        }
+        SET(dp);
+        SET(par);
+        CLR(visit);
+        int ans=0;
+        rep(i,n)
+        {
+            if(!visit[i])
+            {
+                ans+= max(call(i, 1), call(i, 0));
+            }
+        }
+        printf("Case %d: %d\n",cs,ans);
+    }
+    return 0;
+}
+

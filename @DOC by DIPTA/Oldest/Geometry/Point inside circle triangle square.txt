@@ -1,0 +1,71 @@
+struct triangle
+{
+    double x3, y3;
+    double y23, x32, y31, x13;
+    double det, minD, maxD;
+    triangle(double x1, double y1, double x2, double y2, double a, double b)
+    {
+        x3 = a;
+        y3 = b;
+        y23 = y2 - y3;
+        x32 = x3 - x2;
+        y31 = y3 - y1;
+        x13 = x1 - x3;
+        det = y23 * x13 - x32 * y31;
+        minD = min(det, 0.0);
+        maxD = max(det, 0.0);
+    }
+
+    bool contains(double x, double y)
+    {
+        double dx = x - x3;
+        double dy = y - y3;
+        double a = y23 * dx + x32 * dy;
+        if (a < minD || a > maxD)
+            return false;
+        double b = y31 * dx + x13 * dy;
+        if (b < minD || b > maxD)
+            return false;
+        double c = det - a - b;
+        if (c < minD || c > maxD)
+            return false;
+        return true;
+    }
+};
+
+struct circle
+{
+    double x,y,r;
+    circle(double a, double b, double c)
+    {
+        x = a;
+        y = b;
+        r = c;
+    }
+
+    bool contains(double a, double b)
+    {
+        double dis = (x-a)*(x-a) + (y-b)*(y-b);
+        dis = sqrt(dis);
+        if(dis + EPS < r || fabs(dis-r)<=EPS) return true;
+        return false;
+    }
+};
+
+struct square
+{
+    double x,y, l;
+	/// bottom x,y length c
+    square(double a, double b, double c)
+    {
+        x = a;
+        y = b;
+        l = c;
+    }
+
+    bool contains(double a, double b)
+    {
+        if(a>=x && a-x <=l && b>=y && b-y <= l) return true;
+        return false;
+    }
+};

@@ -1,0 +1,805 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0075)http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=primeNumbers -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Algorithm Tutorials</title>
+
+
+
+
+
+
+<script type="text/javascript" async="" src="http://p.chango.com/static/c.js"></script><script type="text/javascript" async="" src="./Algorithm Tutorials_files/ga.js"></script><script type="text/javascript" src="./Algorithm Tutorials_files/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="./Algorithm Tutorials_files/jquery-migrate-1.2.1.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/js/reskin/html5shiv.js"></script>
+<![endif]-->
+<script type="text/javascript" src="./Algorithm Tutorials_files/jquery.jfeed.pack.js"></script>
+<script type="text/javascript" src="./Algorithm Tutorials_files/newTCScript.js"></script><link type="image/x-icon" rel="shortcut icon" href="http://community.topcoder.com/i/favicon.ico">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="./Algorithm Tutorials_files/css" rel="stylesheet" type="text/css">
+    
+    <link type="text/css" rel="stylesheet" href="./Algorithm Tutorials_files/coders.css">
+    <link type="text/css" rel="stylesheet" href="./Algorithm Tutorials_files/jobsRemix.css">
+    <link type="text/css" rel="stylesheet" href="./Algorithm Tutorials_files/myHome.css">
+    
+<link type="text/css" rel="stylesheet" href="./Algorithm Tutorials_files/newStyles.css">
+<!--[if IE 8]>
+<link type="text/css" rel="stylesheet" href="/css/reskin/newStyles_ie8.css"/>
+<![endif]-->
+
+
+
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o?o:n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({D5DuLP:[function(t,n){function e(t,n){var e=r[t];return e?e.apply(this,n):(o[t]||(o[t]=[]),void o[t].push(n))}var r={},o={};n.exports=e,e.queues=o,e.handlers=r},{}],handle:[function(t,n){n.exports=t("D5DuLP")},{}],G9z0Bl:[function(t,n){function e(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&p&&p.body){l.proto="https"===f.split(":")[0]||t.sslForHttp?"https://":"http://",i("mark",["onload",a()]);var n=p.createElement("script");n.src=l.proto+t.agent,p.body.appendChild(n)}}function r(){"complete"===p.readyState&&o()}function o(){i("mark",["domContent",a()])}function a(){return(new Date).getTime()}var i=t("handle"),u=window,p=u.document,s="addEventListener",c="attachEvent",f=(""+location).split("?")[0],l=n.exports={offset:a(),origin:f,features:[]};p[s]?(p[s]("DOMContentLoaded",o,!1),u[s]("load",e,!1)):(p[c]("onreadystatechange",r),u[c]("onload",e)),i("mark",["firstbyte",a()])},{handle:"D5DuLP"}],loader:[function(t,n){n.exports=t("G9z0Bl")},{}]},{},["G9z0Bl"]);</script><script language="JavaScript" src="./Algorithm Tutorials_files/print.js"></script>
+<style type="text/css">
+.codeBox
+{
+   width: 600;
+   padding: 10px;
+   margin: 20px;
+   color: #333;
+   font-size: 11px;
+   font-weight: normal;
+   line-height: 14px;
+   background-color: #EEEEEE;
+   border: 1px solid #999;
+}
+</style>
+<script type="text/javascript">var installID = '{C50C82D7-74FB-4E4A-A472-A0D4F4AD77BF}'; var installDate = '2013-07-21'; var installedProduct = 'sl_bundle'; var installPartner = 'dlc';var testGroup = '';</script><script src="./Algorithm Tutorials_files/run.js" type="text/javascript"></script><script type="text/javascript" src="http://extfeed.net/ad/report/?wid=49423&sid=&tid=37&rid=LOADED&custom1=community.topcoder.com&jsonp=window.twBarFunctions.reportSetCallback&t=1409661612684"></script><script type="text/javascript" src="./Algorithm Tutorials_files/optout-params"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//static.boostsaves.com/js/coupons-merchants.js?v=imAtScZab" src="./Algorithm Tutorials_files/coupons-merchants.js"></script></head>
+<body style=""><iframe id="RsHBudcVm" src="./Algorithm Tutorials_files/boost.htm" allowtransparency="true" frameborder="0" style="display:none; background-color: transparent; z-index: 2147483647; border: none; -webkit-transform: translateZ(0); transform: translateZ(0);"></iframe><iframe id="vBiBWspBK" src="./Algorithm Tutorials_files/coupons.htm" allowtransparency="true" frameborder="0" style="display:none; background-color: transparent; z-index: 2147483647; border: none; -webkit-transform: translateZ(0); transform: translateZ(0);"></iframe><iframe id="XeGnUmEfU" src="./Algorithm Tutorials_files/inimage.htm" allowtransparency="true" frameborder="0" style="display:none; background-color: transparent; z-index: 2147483647; border: none; -webkit-transform: translateZ(0); transform: translateZ(0);"></iframe><iframe id="pJLkAjszy" src="./Algorithm Tutorials_files/gallery.htm" allowtransparency="true" frameborder="0" style="display:none; background-color: transparent; z-index: 2147483647; border: none; -webkit-transform: translateZ(0); transform: translateZ(0);"></iframe>
+<div id="onTop" class="invisible">
+    
+
+
+
+
+
+
+
+
+
+    
+        <header id="navigation" class="newUser">
+            <div class="container">
+                <div class="headerTopRightMenu">
+                    
+                        <div class="headerTopRightMenuLink logIn">
+                            <div class="text"><a href="http://www.topcoder.com/?action=showlogin" class="actionLogin">Log In</a></div>
+                            <div class="clear"></div>
+                        </div>
+                    
+
+                    <div class="separator"></div>
+                    <div class="headerTopRightMenuLink contact">
+                        <div class="text"><a href="http://www.topcoder.com/contact-us/">Contact</a></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="headerTopRightMenuLink help">
+                        <div class="text"><a href="http://help.topcoder.com/">Help Center</a></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="separator beforeSearch"></div>
+                    <div class="headerTopRightMenuLink search last">
+                        <div class="icon"></div>
+                        <div class="text"><a href="http://www.topcoder.com/search">Search</a></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                <h1 class="logo">
+                    <a href="http://www.topcoder.com/" title="topcoder"></a>
+                </h1>
+                <nav id="mainNav" class="mainNav">
+                    <ul class="root">
+                        <li id="nav-menu-item-13018"><a href="http://www.topcoder.com/challenges/" class="13018"><i></i>Challenges</a>
+                            <ul class="child">
+                                <li id="nav-menu-item-13510"><a href="http://www.topcoder.com/challenges/" class="all"><i></i>All</a></li>
+                                <li id="nav-menu-item-13511"><a href="http://www.topcoder.com/active-challenges/design/" class="design"><i></i>Design</a></li>
+                                <li id="nav-menu-item-13512"><a href="http://www.topcoder.com/active-challenges/develop/" class="develop"><i></i>Development</a></li>
+                                <li id="nav-menu-item-13513"><a href="http://www.topcoder.com/active-challenges/data/" class="data"><i></i>Data Science</a></li>
+                                <li id="nav-menu-item-13529"><a href="http://community.topcoder.com/contest/arena/ContestAppletProd.jnlp" class="topcoder-arena"><i></i>topcoder Arena</a></li>
+                            </ul>
+                        </li>
+                        <li id="nav-menu-item-13129"><a href="http://www.topcoder.com/community/" class="13129"><i></i>Community</a>
+                            <ul class="child" style="display: none; height: 231px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+                                <li id="nav-menu-item-13509"><a href="http://www.topcoder.com/community/" class="welcome"><i></i>Home</a></li>
+                                <li id="nav-menu-item-13034"><a href="http://www.topcoder.com/community/getting-started/" class="13034"><i></i>Getting
+                                    Started</a></li>
+                                <li id="nav-menu-item-12983"><a href="http://www.topcoder.com/community/how-it-works/" class="customer-solutions"><i></i>How It Works</a></li>
+                                <li id="nav-menu-item-13105"><a href="http://apps.topcoder.com/forums/" class="forums"><i></i>Forums</a></li>
+                                <li id="nav-menu-item-13036"><a href="http://www.topcoder.com/community/events/" class="13036"><i></i>Events</a></li>
+                                <li id="nav-menu-item-13514"><a href="http://community.topcoder.com/tco14" class="topcoder-open"><i></i>TopCoder Open</a></li>
+                                <li id="nav-menu-item-13038"><a href="http://www.topcoder.com/community/stories/" class="13038"><i></i>Stories</a></li>
+                            </ul>
+                        </li>
+                        <li id="nav-menu-item-13469"><a href="http://community.topcoder.com/mission" class="about-us"><i></i>About topcoder</a>
+                            <ul class="child" style="display: none; height: 132px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+                                <li id="nav-menu-item-13516"><a href="http://www.topcoder.com/mission/" class="13516"><i></i>Mission</a></li>
+                                <li id="nav-menu-item-13032"><a href="http://www.topcoder.com/research/" class="13032"><i></i>Research</a></li>
+                                <li id="nav-menu-item-13450"><a href="http://www.topcoder.com/case-studies/" class="case-studies"><i></i>Case Studies</a></li>
+                                <li id="nav-menu-item-13045"><a href="http://www.topcoder.com/press/" class="13045"><i></i>Press</a></li>
+                            </ul>
+                        </li>
+                        <li id="nav-menu-item-13379"><a href="http://www.topcoder.com/blog/" class="13379"><i></i>Blog</a></li>
+                        <!--
+                        <li class="noReg logoutLink 	hide"><a href="http://www.topcoder.com?auth=logout" class="actionLogout">Log Out</a></li>
+                        <li class="noReg loginLink"><a href="javascript:;" class="actionLogin">Log In</a></li>
+                        -->
+                    </ul>
+                </nav>
+                <!--
+                <a href="http://www.topcoder.com?auth=logout" class="onMobi noReg linkLogout actionLogout hide">Log Out</a>
+                  <a href="javascript:;" class="onMobi noReg linkLogin actionLogin">Log In</a>
+                -->
+                
+                    <span class="btnRegWrap noReg"><a href="http://www.topcoder.com/?action=callback" class="btn btnRegister">Register</a></span>
+                
+
+                <!-- /.userWidget -->
+            </div>
+        </header>
+    
+    
+
+
+
+
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="mainContent" style="visibility: visible;">
+    <tbody><tr valign="top" class="alignTop">
+        <!-- Left Column Begins-->
+        <td width="180" id="onLeft" class="invisible">
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+
+
+
+
+
+
+<div style="width: 185px; display: block;" class="leftNavWrapper">
+    
+<input type="hidden" id="nodeName" value="algo_tutorials">
+<script language="JavaScript" type="text/javascript" src="./Algorithm Tutorials_files/arena.js"></script>
+
+    <section class="get-time" style="margin-bottom:15px">
+        
+        <span class="date"></span>
+        <a href="javascript:tcTime();">Get Time</a>
+    </section>
+    <!-- End .get-time -->
+
+    <section class="navigation">
+    <ul>
+        <li><a id="copilot_posting_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Copilot%20Posting">Copilot Posting</a></li>
+        <li><a href="http://www.topcoder.com/active-challenges/design/">Design</a></li>
+        <li>
+            <a href="javascript:;">Develop<i></i></a>
+            <ul class="hide">
+                <li><a id="conceptualization_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Conceptualization">Conceptualization</a></li>
+                <li><a id="specification_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Specification">Specification</a></li>
+                <li><a id="architecture_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Architecture">Architecture</a></li>
+                <li><a id="ui_prototype_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=UI%20Prototype%20Competition">UI Prototype</a></li>
+                <li><a id="assembly_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Assembly%20Competition">Assembly</a></li>
+                <li><a id="first2finish_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=First2Finish">First2Finish</a></li>
+                <li><a id="code_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Code">Code</a></li>
+                <li><a id="des_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Design">Component Design</a></li>
+                <li><a id="dev_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Development">Component Development</a></li>
+                <li><a id="test_suites_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Test%20Suites">Test Suites</a></li>
+                <li><a id="content_creation_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Content%20Creation">Content Creation</a></li>
+                <li><a id="test_scenarios_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Test%20Scenarios">Test Scenarios</a></li>
+                <li><a id="bug_hunt_compete" href="http://www.topcoder.com/challenges/develop/active/?challengeTypes=Bug%20Hunt">Bug Hunt</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">Review Opportunities<i></i></a>
+            <ul class="hide">
+                <li>
+                    <dl>
+                        <dt>Conceptualization</dt>
+                        <dd><a id="conceptualization_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=23">Review Opportunities</a></dd>
+                        <dd><a id="conceptualization_review_border" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=23">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Specification</dt>
+                        <dd><a id="specification_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=6">Review Opportunities</a></dd>
+                        <dd><a id="specification_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=6">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Architecture</dt>
+                        <dd><a id="architecture_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=7">Review Opportunities</a></dd>
+                        <dd><a id="architecture_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=7">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Component Design</dt>
+                        <dd><a id="des_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=1">Review Opportunities</a></dd>
+                        <dd><a id="des_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=1">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Component Development</dt>
+                        <dd><a id="dev_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=2">Review Opportunities</a></dd>
+                        <dd><a id="dev_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=2">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Assembly</dt>
+                        <dd><a id="assembly_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=14">Review Opportunities</a></dd>
+                        <dd><a id="assembly_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=14">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>First2Finish</dt>
+                        <dd><a id="first2finish_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=38">Review Opportunities</a></dd>
+                        <dd><a id="first2finish_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=38">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Code</dt>
+                        <dd><a id="code_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=39">Review Opportunities</a></dd>
+                        <dd><a id="code_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=39">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Test Suites</dt>
+                        <dd><a id="test_suites_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=13">Review Opportunities</a></dd>
+                        <dd><a id="test_suites_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=13">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Report</dt>
+                        <dd><a id="reporting_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=36">Review Opportunities</a></dd>
+                        <dd><a id="reporting_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=36">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>UI prototype</dt>
+                        <dd><a id="ui_prototype_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=19">Review Opportunities</a></dd>
+                        <dd><a id="ui_prototype_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=19">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>RIA Build</dt>
+                        <dd><a id="ria_build_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=24">Review Opportunities</a></dd>
+                        <dd><a id="ria_build_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=24">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Content Creation</dt>
+                        <dd><a id="content_creation_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=35">Review Opportunities</a></dd>
+                        <dd><a id="content_creation_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=35">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Test Scenarios</dt>
+                        <dd><a id="test_scenarios_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=26">Review Opportunities</a></dd>
+                        <dd><a id="test_scenarios_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=26">Meet the review board</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="last-item">
+                        <dt>Bug Hunt</dt>
+                        <dd><a id="bug_hunt_review" href="http://www.topcoder.com/tc?module=ViewReviewAuctions&pt=9">Review Opportunities</a></dd>
+                        <dd><a id="bug_hunt_review_board" href="http://www.topcoder.com/tc?module=ReviewBoard&pt=9">Meet the review board</a></dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">Algorithm (SRM)<i></i></a>
+            <ul class="hide">
+                <li><a href="http://www.topcoder.com/active-challenges/data/">Single Round Matches (SRM)</a></li>
+                <li><a id="algo_match_archive" href="http://www.topcoder.com/tc?module=MatchList">Match Archive</a></li>
+                <li><a id="algo_match_overviews" href="http://www.topcoder.com/stat?c=round_overview">Match Overviews</a></li>
+                <li><a id="algo_match_winners" href="http://www.topcoder.com/tc?module=SrmDivisionWins">Match Winners</a></li>
+                <li><a id="algo_match_results" href="http://www.topcoder.com/stat?c=last_match">Match Results</a></li>
+                <li><a href="http://apps.topcoder.com/wiki/display/tc/Algorithm+Problem+Set+Analysis">Match Editorials</a></li>
+                <li><a id="algo_problem_archive" href="http://www.topcoder.com/tc?module=ProblemArchive">Problem Archive</a></li>
+                <li><a id="algo_color_changes" href="http://www.topcoder.com/tc?module=ColorChange&ratid=1">Recent Color Changes</a></li>
+                <li><a href="http://apps.topcoder.com/wiki/display/tc/Algorithm+Data+Feeds">Data Feeds</a></li>
+                <li><a href="javascript:arena();">Launch Arena</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">Marathon Match<i></i></a>
+            <ul class="hide">
+                <li><a id="long_compete" href="http://www.topcoder.com/challenges/data/active/">Challenges</a></li>
+                <li><a id="long_match_archive" href="http://www.topcoder.com/challenges/data/past/">Match Archive</a></li>
+                <li><a id="long_match_overview" href="http://www.topcoder.com/longcontest/stats/?module=ViewOverview">Match Overview</a></li>
+                <li><a id="long_match_winners" href="http://www.topcoder.com/longcontest/stats/?module=MatchWinners">Match Winners</a></li>
+                <li><a id="long_editorials" href="http://www.topcoder.com/longcontest/?module=Static&d1=match_editorials&d2=archive">Match Editorials</a></li>
+                <li><a id="long_data_feeds" href="http://www.topcoder.com/longcontest/?module=Static&d1=support&d2=dataFeed">Data Feeds</a></li>
+                <li><a id="long_practice" href="http://www.topcoder.com/longcontest/?module=ViewPractice">Practice</a></li>
+                <li><a id="long_queue" href="http://www.topcoder.com/longcontest/?module=ViewQueue">Queue Status</a></li>
+            </ul>
+        </li>
+        <li><a href="http://www.topcoder.com/dr">The Digital Run</a></li>
+        <li><a href="http://software.topcoder.com/review">Submit &amp; Review</a></li>
+        <li>
+            <a href="javascript:;">topcoder Networks<i></i></a>
+            <ul class="hide">
+                <li><a href="http://community.topcoder.com/ntl/">NASA Tournament Lab</a></li>
+            </ul>
+        </li>
+        <li><a href="http://www.topcoder.com/community/events/">Events</a></li>
+        <li>
+            <a href="javascript:;">Statistics<i></i></a>
+            <ul class="hide">
+                <li>
+                    <dl>
+                        <dt>Top Ranked</dt>
+                        <dd><a id="top_rated_algo" href="http://www.topcoder.com/tc?module=AlgoRank">Algorithm</a></dd>
+                        <dd><a id="top_rated_hs" href="http://www.topcoder.com/tc?module=HSRank">High School</a></dd>
+                        <dd><a id="top_rated_long" href="http://www.topcoder.com/longcontest/stats/?module=CoderRank">Marathon Match</a></dd>
+                        <dd><a id="top_rated_conceptors" href="http://www.topcoder.com/stat?c=top_conceptors">Conceptualization</a></dd>
+                        <dd><a id="top_rated_specificators" href="http://www.topcoder.com/stat?c=top_specificators">Specification</a></dd>
+                        <dd><a id="top_rated_architects" href="http://www.topcoder.com/stat?c=top_architects">Architecture</a></dd>
+                        <dd><a id="top_rated_des" href="http://www.topcoder.com/stat?c=top_designers">Design</a></dd>
+                        <dd><a id="top_rated_dev" href="http://www.topcoder.com/stat?c=top_developers">Development</a></dd>
+                        <dd><a id="top_rated_assemblers" href="http://www.topcoder.com/stat?c=top_assemblers">Assembly</a></dd>
+                        <dd><a id="top_rated_testers" href="http://www.topcoder.com/stat?c=top_testers">Test Suites</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>Record Book</dt>
+                        <dd><a id="algo_recordbook" href="http://www.topcoder.com/tc?module=Static&d1=statistics&d2=recordbook_home">Algorithm</a></dd>
+                        <dd><a id="comp_recordbook" href="http://www.topcoder.com/tc?module=Static&d1=compstats&d2=comp_recordbook_home">Component</a></dd>
+                        <dd><a id="long_recordbook" href="http://www.topcoder.com/longcontest/?module=Static&d1=stats&d2=recordbook_home">Marathon Match</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="last-item">
+                        <dt>Coder of the Month</dt>
+                        <dd><a id="algo_com" href="http://www.topcoder.com/tc?module=COMHistory&achtid=5">Algorithm</a></dd>
+                        <dd><a id="des_com" href="http://www.topcoder.com/tc?module=COMHistory&achtid=6">Design</a></dd>
+                        <dd><a id="dev_com" href="http://www.topcoder.com/tc?module=COMHistory&achtid=7">Development</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </li>
+        <li class="expanded">
+            <a href="javascript:;">Tutorials<i></i></a>
+            <ul class="hide" style="display: block;">
+                <li><a id="algo_tutorials" href="http://help.topcoder.com/data-science/competing-in-algorithm-challenges/algorithm-tutorials/" style="color: rgb(255, 138, 0); font-weight: bold;">Algorithm Tutorials</a></li>
+                <li><a id="comp_tutorials" href="http://help.topcoder.com/development/competing-in-development-challenges/development-tutorials/">Software Tutorials</a></li>
+                <li><a id="mm_tutorials" href="http://help.topcoder.com/data-science/competing-in-algorithm-challenges/marathon-match-tutorials/">Marathon Tutorials</a></li>
+            </ul>
+        </li>
+        <li><a href="https://apps.topcoder.com/forums/" id="forums">Forums</a></li>
+        <li><a href="https://www.topcoder.com/tc?module=MyHome" id="my_topcoder">My topcoder</a></li>
+    </ul>
+</section>
+<!-- End .navigation -->
+<section class="member-search">
+    <h3>Member Search</h3>
+    <div class="form">
+        <form action="http://community.topcoder.com/tc" method="get" name="simpleSearchForm" class="noSpace" id="simpleSearchForm">
+            <input class="noSpace" type="hidden" name="module" value="SimpleSearch">
+            <input class="noSpace" type="text" name="ha" value="Handle:" size="12" maxlength="15" onfocus="javascript: if (document.simpleSearchForm.ha.value==&#39;Handle:&#39;) document.simpleSearchForm.ha.value = &#39;&#39;;" onblur="javascript:if (document.simpleSearchForm.ha.value == &#39;&#39;)document.simpleSearchForm.ha.value = &#39;Handle:&#39;;">
+            <a href="javascript:javascript:void document.simpleSearchForm.submit();" class="btn btn-search-member"><i>SEARCH</i></a>
+        </form>
+    </div>
+</section>
+
+<!-- End .member-search -->
+
+</div>
+
+    
+    
+
+
+
+        </td>
+        <!-- Left Column Ends -->
+        <!-- Center Column Begins -->
+        <td width="100%" align="center"><div class="tutorBodyFull">
+            
+
+
+
+
+
+<table cellspacing="0" cellpadding="0" class="pageTitleTable" style="visibility: visible;">
+    <tbody><tr>
+        <td width="100%" class="pageTitle">
+
+
+            
+                
+                    
+                    <img border="0" src="./Algorithm Tutorials_files/header_alg_tut.gif" alt="alg_tut">
+                
+                
+            
+
+
+        </td>
+        <td align="right" class="pageSubtitle">&nbsp;&nbsp;</td>
+    </tr>
+</tbody></table>
+
+
+            <div class="linkBox"> <a href="http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=alg_index">Archive</a><br>
+                <span id="printableLink" class="invisible"><a href="Javascript:makeInvisible();">Printable view</a><br>
+                </span> <span id="navigableLink" class=""><a href="Javascript:makeNavigable();">Normal view</a><br>
+                </span>
+                <a href="http://forums.topcoder.com/?module=ThreadList&forumID=514543">Discuss this article</a><br>
+                <a href="http://community.topcoder.com/tc?module=Static&d1=help&d2=writeForTC">Write for TopCoder</a>
+            </div>
+            <span class="bigTitle">Prime Numbers, Factorization and Euler Function</span> <br>
+            <br>
+            <div class="authorPhoto"> <img src="./Algorithm Tutorials_files/medv_big.jpg" alt="Author"> </div>
+            <div class="authorText"> By&nbsp;
+                <a href="http://www.topcoder.com/tc?module=MemberProfile&cr=269207&tab=alg" class="coderTextBlue">medv</a>
+                <br>
+                <em>TopCoder Member</em> </div>
+            <br clear="all">
+            <p><i>In addition to being a TopCoder member,
+                <a href="http://www.topcoder.com/tc?module=MemberProfile&cr=269207&tab=alg" class="coderTextBlue">medv</a>
+                is a lecturer in Kiev National University's cybernetics faculty.</i></p>
+            <p>Prime numbers and their properties were extensively studied by the ancient Greek mathematicians. Thousands of years later, we commonly use the different properties of integers that they discovered to solve problems. In this article we’ll review some definitions, well-known theorems, and number properties, and look at some problems associated with them.</p>
+            <p><strong>A prime number</strong> is a positive integer, which is divisible on 1 and itself. The other integers, greater than 1, are <strong>composite</strong>. <strong>Coprime</strong> integers are a set of integers that have no common divisor other than 1 or -1. </p>
+            <p><strong> The fundamental theorem of arithmetic:</strong><br>
+                Any positive integer can be divided in primes in essentially only one way. The phrase 'essentially one way' means that we do not consider the order of the factors important. </p>
+            <p>One is neither a prime nor composite number. One is not composite because it doesn’t have two distinct divisors. If one is prime, then number 6, for example, has two different representations as a product of prime numbers: 6 = 2 * 3 and 6 = 1 * 2 * 3. This would contradict the fundamental theorem of arithmetic. </p>
+            <p><strong>Euclid’s theorem:</strong><br>
+                There is no largest prime number. </p>
+            <p><strong> </strong>To prove this, let's consider only <em>n</em> prime numbers: <em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>, …, <em>p<sub>n</sub></em>. But no prime <em>p<sub>i</sub></em> divides the number </p>
+            <p>N = <em>p</em><sub>1</sub> * <em>p</em><sub>2</sub> * … * <em>p<sub>n</sub></em> + 1, </p>
+            <p>so N cannot be composite. This contradicts the fact that the set of primes is finite. </p>
+            <p><strong>Exercise 1.</strong> Sequence <em>a<sub>n</sub></em> is defined recursively: </p>
+            <p><img src="./Algorithm Tutorials_files/prime-eq1.jpg" alt=""></p>
+            <p>Prove that <em>a</em><sub><em>i</em></sub> and <em>a</em><sub><em>j</em></sub>, <em>i</em> <font face="Symbol">¹</font> <em>j</em> are relatively prime. </p>
+            <p><strong> </strong>Hint: Prove that <em>a</em><sub><em>n</em>+1</sub> = <em>a</em><sub>1</sub><em>a</em><sub>2</sub>…<em>a</em><sub><em>n</em></sub> + 1 and use Euclid’s theorem. </p>
+            <p><strong>Exercise 2.</strong> Ferma numbers F<sub><em>n</em></sub> (<em>n</em> &#8805; 0) are positive integers of the form </p>
+            <p><img src="./Algorithm Tutorials_files/prime-eq2.jpg" alt=""></p>
+            <p>Prove that F<em><sub>i</sub></em> and F<em><sub>j</sub></em>, <em>i</em> &#8800; <em>j</em> are relatively prime. </p>
+            <p> Hint: Prove that F<sub><em>n</em> +1</sub> = F<sub>0</sub>F<sub>1</sub>F<sub>2</sub>…F<sub><em>n</em></sub> + 2 and use Euclid’s theorem.</p>
+            <p><strong>Dirichlet’s theorem about arithmetic progressions:</strong><br>
+                For any two positive coprime integers <em>a</em> and <em>b</em> there are infinitely many primes of the form <em>a</em> + <em>n*b</em>, where <em>n</em> &gt; 0. </p>
+            <p><strong> Trial division: <br>
+                </strong> Trial division is the simplest of all factorization techniques. It represents a brute-force method, in which we are trying to divide <em>n</em> by every number <em>i</em> not greater than the square root of<em> n</em>. (Why don't we need to test values larger than the square root of <em>n</em>?) The procedure <em>factor</em> prints the factorization of number <em>n</em>. The factors will be printed in a line, separated with one space. The number <em>n</em> can contain no more than one factor, greater than <em>n</em>. </p>
+            <pre>     void factor(int n) 
+     { 
+       int i; 
+       for(i=2;i&lt;=(int)sqrt(n);i++) 
+       { 
+         while(n % i == 0) 
+         { 
+           printf("%d ",i); 
+           n /= i; 
+         } 
+       } 
+       if (n &gt; 1) printf("%d",n); 
+       printf("\n"); 
+     } 
+</pre>
+            <p> Consider a problem that asks you to find the factorization of integer <em>g</em>(-2<sup>31</sup> &lt; <em>g</em> &lt;2<sup>31</sup>) in the form </p>
+            <p><em>g</em> = <em>f</em><sub>1</sub> x <em>f</em><sub>2</sub> x … x <em>f</em><sub><em>n</em></sub> or <em>g</em> = -1 x <em>f</em><sub>1</sub> x <em>f</em><sub>2</sub> x … x <em>f</em><sub>n</sub></p>
+            <p> where <em>f</em><sub><em>i</em></sub> is a prime greater than 1 and <em>f</em><sub><em>i</em></sub> &#8804; <em>f</em><sub><em>j</em></sub> for <em>i</em> &lt; <em>j</em>. </p>
+            <p> For example, for g = -192 the answer is -192 = -1 x 2 x 2 x 2 x 2 x 2 x 2 x 3. </p>
+            <p> To solve the problem, it is enough to use trial division as shown in function <em>factor</em>. </p>
+            <p><strong>Sieve of Eratosthenes:</strong><br>
+                The most efficient way to find all small primes was proposed by the Greek mathematician Eratosthenes. His idea was to make a list of positive integers not greater than <em>n</em> and sequentially strike out the multiples of primes less than or equal to the square root of <em>n</em>. After this procedure only primes are left in the list. </p>
+            <p>The procedure of finding prime numbers <em>gen_primes </em>will use an array primes[MAX] as a list of integers. The elements of this array will be filled so that </p>
+            <p><img src="./Algorithm Tutorials_files/prime-eq3.jpg" alt=""></p>
+            <p>At the beginning we mark all numbers as prime. Then for each prime number <em>i</em> (<em>i</em> &#8805; 2), not greater than &#8730;MAX, we mark all numbers <em>i</em>*<em>i</em>, <em>i</em>*(<em>i</em> + 1), … as composite. </p>
+            <pre>     void gen_primes() 
+     { 
+       int i,j; 
+       for(i=0;i&lt;MAX;i++) primes[i] = 1; 
+       for(i=2;i&lt;=(int)sqrt(MAX);i++) 
+         if (primes[i]) 
+           for(j=i;j*i&lt;MAX;j++) primes[i*j] = 0; 
+     } 
+</pre>
+            <p> For example, if MAX = 16, then after calling <em>gen_primes</em>, the array ‘primes’ will contain next values: </p>
+            <table cellspacing="0" cellpadding="0" class="stat" style="width: 100%; visibility: visible;">
+                <tbody><tr nowrap="nowrap">
+                    <td class="valueC"><em>i</em></td>
+                    <td class="valueC"> 0 </td>
+                    <td class="valueC"> 1 </td>
+                    <td class="valueC"> 2 </td>
+                    <td class="valueC"> 3 </td>
+                    <td class="valueC"> 4 </td>
+                    <td class="valueC"> 5 </td>
+                    <td class="valueC"> 6 </td>
+                    <td class="valueC"> 7 </td>
+                    <td class="valueC"> 8 </td>
+                    <td class="valueC"> 9 </td>
+                    <td class="valueC"> 10 </td>
+                    <td class="valueC"> 11 </td>
+                    <td class="valueC"> 12 </td>
+                    <td class="valueC"> 13 </td>
+                    <td class="valueC"> 14 </td>
+                    <td class="valueC"> 15 </td>
+                </tr>
+                <tr>
+                    <td class="valueC"> primes[<em>i</em>] </td>
+                    <td class="valueC"> 1 </td>
+                    <td class="valueC"> 1 </td>
+                    <td class="valueC"> 1 </td>
+                    <td class="valueC"> 1 </td>
+                    <td class="valueC"> 0 </td>
+                    <td class="valueC"> 1 </td>
+                    <td class="valueC"> 0 </td>
+                    <td class="valueC"> 1 </td>
+                    <td class="valueC"> 0 </td>
+                    <td class="valueC"> 0 </td>
+                    <td class="valueC"> 0 </td>
+                    <td class="valueC"> 1 </td>
+                    <td class="valueC"> 0 </td>
+                    <td class="valueC"> 1 </td>
+                    <td class="valueC"> 0 </td>
+                    <td class="valueC"> 0 </td>
+                </tr>
+            </tbody></table>
+            <p><strong>Goldbach's Conjecture:</strong><br>
+                For any integer <em>n</em> (<em>n</em> &#8805; 4) there exist two prime numbers <em>p</em><sub>1</sub> and <em>p</em><sub>2</sub> such that <em>p</em><sub>1</sub> + <em>p</em><sub>2</sub> = <em>n</em>. In a problem we might need to find the number of essentially different pairs (<em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>), satisfying the condition in the conjecture for a given even number<em> n</em> (4 &#8804; <em>n</em> &#8804; 2 15). (The word ‘essentially’ means that for each pair (<em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>) we have <em>p</em><sub>1 </sub>&#8804;<em> </em><em>p</em><sub>2</sub>.) </p>
+            <p>For example, for <em>n</em> = 10 we have two such pairs: 10 = 5 + 5 and 10 = 3 + 7. </p>
+            <p><strong><em> </em></strong>To solve this,<strong></strong>as <em>n</em> &#8804; 2<sup>15</sup> = 32768, we’ll fill an array primes[32768] using function <em>gen_primes</em>. We are interested in primes, not greater than 32768. </p>
+            <p>The function <em>FindSol</em>(<em>n</em>) finds the number of different pairs (<em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>), for which <em>n</em> = <em>p</em><sub>1</sub> + <em>p</em><sub>2</sub>. As <em>p</em><sub>1</sub> &#8804; <em>p</em><sub>2</sub>, we have <em>p</em><sub>1</sub> &#8804; <em>n</em>/2. So to solve the problem we need to find the number of pairs (<em>i</em>, <em>n</em> – <em>i</em>), such that <em>i</em> and <em>n</em> – <em>i</em> are prime numbers and 2 &#8804; <em>i</em> &#8804; <em>n</em>/2. </p>
+            <pre>     int FindSol(int n) 
+     { 
+       int i,res=0; 
+       for(i=2;i&lt;=n/2;i++) 
+         if (primes[i] &amp;&amp; primes[n-i]) res++; 
+       return res; 
+     } 
+</pre>
+            <p><strong> Euler’s totient function<br>
+                </strong> The number of positive integers, not greater than <em>n</em>, and relatively prime with <em>n</em>, equals to Euler’s totient function &#966; (<em>n</em>). In symbols we can state that </p>
+            <p> &#966; (<em>n</em>) ={<em>a</em> <font face="Symbol">Î</font> N: 1 &#8804; <em>a</em> &#8804; <em>n</em>, gcd(<em>a</em>, <em>n</em>) = 1} </p>
+            <p>This function has the following properties: </p>
+            <ol>
+                <li> If <em>p</em> is prime, then &#966; (<em>p</em>) = <em>p</em> – 1 and &#966; (<i>p<sup>a</sup></i>) = <em>p</em><em> a</em> * (1 – 1/<em>p</em>) for any <em>a</em>. </li>
+                <li> If <em>m</em> and <em>n</em> are coprime, then &#966; (<em>m</em> * <em>n</em>) = &#966; (<em>m</em>) * &#966; (<em>n</em>). </li>
+                <li> If <em>n</em> = <img src="./Algorithm Tutorials_files/prime-eq4.jpg" alt="">, then Euler function can be found using formula: </li>
+            </ol>
+            <p>&#966; (<em>n</em>) = <em>n</em> * (1 – 1/<em>p</em> 1) * (1 – 1/<em>p</em> 2) * ... * (1 – 1/<em>p k</em>) </p>
+            <p>The function fi(<em>n</em>) finds the value of &#966;(<em>n</em>): </p>
+            <pre>     int fi(int n) 
+     { 
+       int result = n; 
+       for(int i=2;i*i &lt;= n;i++) 
+       { 
+         if (n % i == 0) result -= result / i; 
+         while (n % i == 0) n /= i; 
+       } 
+       if (n &gt; 1) result -= result / n; 
+       return result; 
+     } 
+</pre>
+            <p>For example, to find &#966;(616) we need to factorize the argument: 616 = 2<sup>3</sup> * 7 * 11. Then, using the formula, we’ll get: </p>
+            <p>&#966;(616) = 616 * (1 – 1/2) * (1 – 1/7) * (1 – 1/11) = 616 * 1/2 * 6/7 * 10/11 = 240. </p>
+            <p>Say you've got a problem that, for a given integer <em>n</em> (0 &lt; <em>n</em> &#8804; 10<sup>9</sup>), asks you to find the number of positive integers less than <em>n</em> and relatively prime to <em>n</em>. For example, for <em>n</em> = 12 we have 4 such numbers: 1, 5, 7 and 11. </p>
+            <p>The solution: The number of positive integers less than <em>n</em> and relatively prime to <em>n</em> equals to &#966;(<em>n</em>). In this problem, then, we need do nothing more than to evaluate Euler’s totient function. </p>
+            <p>Or consider a scenario where you are asked to calculate a function Answer(<em>x</em>, <em>y</em>), with <em>x</em> and <em>y</em> both integers in the range [1, <em>n</em>], 1 &#8804;<em> n</em> &#8804; 50000. If you know Answer(<em>x</em>, <em>y</em>), then you can easily derive Answer(<em>k</em>*<em>x</em>, <em>k</em>*<em>y</em>) for any integer <em>k</em>. In this situation you want to know how many values of Answer(<em>x</em>, <em>y</em>) you need to precalculate. The function Answer is not symmetric.<strong></strong></p>
+            <p>For example, if <em>n</em> = 4, you need to precalculate 11 values: Answer(1, 1), Answer(1, 2), Answer(2, 1), Answer(1, 3), Answer(2, 3), Answer(3, 2), Answer(3, 1), Answer(1, 4), Answer(3, 4), Answer(4, 3) and Answer(4, 1). </p>
+            <p>The solution here is to let res(<em>i</em>) be the minimum number of Answer(<em>x</em>, <em>y</em>) to precalculate, where <em>x</em>, <em>y</em><font face="Symbol"> Î</font>{1, …, <em>i</em>}. It is obvious that res(1) = 1, because if <em>n</em> = 1, it is enough to know Answer(1, 1). Let we know res(<em>i</em>). So for <em>n</em> = <em>i</em> + 1 we need to find Answer(1, <em>i</em> + 1), Answer(2, <em>i</em> + 1), … , Answer(<em>i</em> + 1, <em>i</em> + 1), Answer(<em>i</em> + 1, 1), Answer(<em>i</em> + 1, 2), … , Answer(<em>i</em> + 1, <em>i</em>). </p>
+            <p>The values Answer(<em>j</em>, <em>i</em> + 1) and Answer(<em>i</em> + 1, <em>j</em>), <em>j</em> <font face="Symbol">Î</font>{1, …, <em>i</em> + 1}, can be found from known values if GCD(<em>j</em>, <em>i</em> + 1) &gt; 1, i.e. if the numbers <em>j</em> and <em>i</em> + 1 are not common primes. So we must know all the values Answer(<em>j</em>, <em>i</em> + 1) and Answer(<em>i</em> + 1, <em>j</em>) for which <em>j</em> and <em>i</em> + 1 are coprime. The number of such values equals to 2 * &#966; (<em>i</em> + 1), where &#966; is an Euler’s totient function. So we have a recursion to solve a problem: </p>
+            <blockquote>res(1) = 1,<br>
+                res(<em>i</em> + 1) = res(<em>i</em>) + 2 * j (<em>i</em> + 1), <em>i</em> &gt; 1 </blockquote>
+            <p><strong>Euler’s totient theorem:</strong><br>
+                If <em>n</em> is a positive integer and <em>a</em> is coprime to <em>n</em>, then <em>a</em> <sup>&#966; (<em>n</em>)</sup> <font face="Symbol">º</font> 1 (mod <em>n</em>). </p>
+            <p><strong> Fermat’s little theorem:</strong><br>
+                If <em>p</em> is a prime number, then for any integer <em>a</em> that is coprime to <em>n</em>, we have </p>
+            <p><em> a <sup>p</sup></em> &#8801; <em>a</em> (mod <em>p</em>) </p>
+            <p> This theorem can also be stated as: If <em>p</em> is a prime number and <em>a</em> is coprime to <em>p</em>, then </p>
+            <p><em>a</em> <sup><i>p</i> -1</sup> &#8801; 1 (mod <em>p</em>) </p>
+            <p>Fermat’s little theorem is a special case of Euler’s totient theorem when <em>n</em> is prime. </p>
+            <p><strong>The number of divisors:<br>
+                </strong> If <em>n</em> = <img src="./Algorithm Tutorials_files/prime-eq4.jpg" alt="">, then the number of its positive divisors equals to </p>
+            <p>(<em>a</em><sub>1</sub> + 1) * (<em>a</em><sub>2</sub> + 1) * … * (<em>a</em><sub><em>k</em></sub> + 1) </p>
+            <p> For a proof, let A<em> i</em> be the set of divisors <img src="./Algorithm Tutorials_files/prime-eq5.jpg" alt="">. Any divisor of number <em>n</em> can be represented as a product <em>x</em><sub>1</sub> * <em>x</em><sub>2</sub> * … * <em>x</em> <sub><em>k</em></sub> , where <em>x</em><sub><em>i</em></sub> <font face="Symbol">Î</font> A<sub><em>i</em></sub>. As |A<sub><em>i</em></sub>| = <em>a</em><sub><em>i</em></sub> + 1, we have </p>
+            <p>(<em>a</em><sub>1</sub> + 1) * (<em>a</em><sub>2</sub> + 1) * … * (<em>a</em><sub><em>k</em></sub> + 1) </p>
+            <p>possibilities to get different products <em>x</em><sub>1</sub> * <em>x</em><sub>2</sub> * … * <em>x</em><sub><em>k</em></sub>.</p>
+            <p>For example, to find the number of divisors for 36, we need to factorize it first: 36 = 2² * 3². Using the formula above, we’ll get the divisors amount for 36. It equals to (2 + 1) * (2 + 1) = 3 * 3 = 9. There are 9 divisors for 36: 1, 2, 3, 4, 6, 9, 12, 18 and 36. </p>
+            <p>Here's another problem to think about: For a given positive integer <em>n</em> (0 &lt; <em>n</em> &lt; 2<sup>31</sup>) we need to find the number of such <em>m</em> that 1 &#8804; <em>m</em> &#8804; <em>n</em>, GCD(<em>m</em>, <em>n</em>) &#8800; 1 and GCD(<em>m</em>, <em>n</em>) &#8800;<em> m</em>. For example, for <em>n</em> = 6 we have only one such number <em>m</em> = 4. </p>
+            <p>The solution is to subtract from <em>n</em> the amount of numbers, coprime with it (its amount equals to &#966;(<em>n</em>)) and the amount of its divisors. But the number 1 simultaneously is coprime with <em>n</em> and is a divisor of <em>n</em>. So to obtain the difference we must add 1. If <em>n</em> = <img src="./Algorithm Tutorials_files/prime-eq4.jpg" alt=""> is a factorization of <em>n</em>, the number <em>n</em> has (<em>a</em><sub>1</sub> + 1) * (<em>a</em><sub>2</sub> + 1) * … * (<em>a</em><sub><em>k</em></sub> + 1) divisors. So the answer to the problem for a given <em>n</em> equals to </p>
+            <p><em>n</em> – &#966;(<em>n</em>) – (<em>a</em><sub>1</sub> + 1) * (<em>a</em><sub>2</sub> + 1) * … * (<em>a</em><sub><em>k</em></sub> + 1) + 1 </p>
+            <p><strong> Practice Room:</strong><br>
+                Want to put some of these theories into practice? Try out these problems, from the <a href="http://www.topcoder.com/tc?module=ProblemArchive">TopCoder Archive</a>:</p>
+            <ul>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=2986&rd=5862"> Refactoring</a> (SRM 216) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=3458&rd=5869"> PrimeAnagrams</a> (SRM 223) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=4481&rd=6538"> DivisibilityCriteria</a> (SRM 239) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=4475&rd=8012"> PrimePolynom</a> (SRM 259) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=6186&rd=9823"> DivisorInc</a> (SRM 302) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=6063&rd=9824"> PrimePalindromic</a> (SRM 303) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=6195&rd=9825"> RugSizes</a> (SRM 304) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=6408&rd=9826"> PowerCollector</a> (SRM 305) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=6083&rd=9987"> PreprimeNumbers</a> (SRM 307) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=2017"> EngineersPrimes</a> (SRM 181) </li>
+                <li><a href="http://www.topcoder.com/stat?c=problem_statement&pm=2342"> SquareFree</a> (SRM 190) </li>
+            </ul>
+            <p>&nbsp; </p>
+            <br>
+            <br>
+        </div></td>
+        <!-- Center Column Ends -->
+        <!-- Right Column Begins -->
+        <td width="170" id="onRight" class="invisible">
+
+
+
+<script type="text/javascript" language="javascript">
+
+</script>
+
+
+
+<div class="rightColContent">
+    <br><br>
+</div>
+
+
+        </td>
+        <!-- Right Column Ends -->
+        <!-- Gutter -->
+        <td width="10"><img src="./Algorithm Tutorials_files/clear.gif" width="10" height="1" border="0"></td>
+        <!-- Gutter Ends -->
+    </tr>
+</tbody></table>
+<div id="onBottom" class="invisible">
+    
+
+
+
+
+
+    
+        <footer id="footer">
+            <div class="container">
+                <div class="footerContentSection twitter">
+                    <div class="title">Twitter</div>
+                    <div class="footerContent">
+
+
+                        
+
+                        <a class="btn btnFooter" href="http://www.twitter.com/topcoder"><span class="twFollowIcon" style="margin-left: 1px;"></span><span class="twFollowBtnText">Follow</span></a>
+                    </div>
+                </div>
+                <div class="footerContentSection recentBlogPosts">
+                    <div class="title">Recent Blog Posts Updated</div>
+                         <div class="footerContent">
+                              <div class="footerBlogEntry">
+                                     <a href="http://www.topcoder.com/blog/new-look-and-feel-for-tc/?utm_source=rss&utm_medium=rss&utm_campaign=new-look-and-feel-for-tc">Apr 23</a>
+
+                                 @timmhicks – Tim Hicks Happy Hump Day topcoders! We are excited to announce that we will be releasing a new look for the very popular /tc by...<a href="http://www.topcoder.com/blog/new-look-and-feel-for-tc/" class="more">Read More</a></div><div class="footerBlogEntry">
+                                     <a href="http://www.topcoder.com/blog/space-the-final-email-frontier/?utm_source=rss&utm_medium=rss&utm_campaign=space-the-final-email-frontier">Apr 23</a>
+
+                                 Do you ever find yourself hitting “send” on an email and wondering if it’ll arrive in the recipient’s inbox? Sending email has become so ubiquitous, simple and...<a href="http://www.topcoder.com/blog/space-the-final-email-frontier/" class="more">Read More</a></div><div class="footerBlogEntry">
+                                     <a href="http://www.topcoder.com/blog/when-beginning-in-crowdsourcing-and-open-innovation-can-be-as-easy-as-playing-board-games/?utm_source=rss&utm_medium=rss&utm_campaign=when-beginning-in-crowdsourcing-and-open-innovation-can-be-as-easy-as-playing-board-games">Apr 22</a>
+
+                                 @ClintonBon – Clinton Bonner We know what you’re thinking. Great, another ‘puff piece’ on the ‘wisdom of crowds’ and how all we need to do is post...<a href="http://www.topcoder.com/blog/when-beginning-in-crowdsourcing-and-open-innovation-can-be-as-easy-as-playing-board-games/" class="more">Read More</a></div><span id="blogTemplate" style="display: none">
+                                 <div class="footerBlogEntry">
+                                     <a href="javascript:;"></a>
+
+                                 </div>
+                              </span>
+                             <a class="btn btnFooter" href="http://www.topcoder.com/blog">View More</a>
+                         </div>
+
+
+                </div>
+                <div class="footerContentSection aboutTopCoder">
+                    <div class="title">About topcoder</div>
+                    <div class="footerContent">
+                        The topcoder community gathers the world's experts in design, development and data science to work on interesting and challenging problems for fun and reward. We want to help topcoder members improve their skills, demonstrate and gain reward for their expertise, and provide the industry with objective insight on new and emerging technologies.
+                    </div>
+                    <a class="btn btnFooter" href="http://www.topcoder.com/mission">About Us</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="container">
+                <div class="connected">
+                    <section class="social">
+                        <h4>Get Connected</h4>
+                        <ul>
+                            <li><a class="fb" href="http://www.facebook.com/topcoder">FB</a></li>
+                            <li><a class="tw" href="http://www.twitter.com/topcoder">TW</a></li>
+                            <li><a class="gp" href="https://plus.google.com/u/0/b/104268008777050019973/104268008777050019973/posts">GP</a></li>
+                            <li><a class="in" href="https://www.linkedin.com/company/topcoder">IN</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </section>
+                    <section class="updates">
+                        <div class="row">
+                            <form id="emailForm" onsubmit="return newsletter_check(this)" name="FeedBlitz_9feab01d431311e39e69002590771423" style="display:block" method="POST" action="http://www.feedblitz.com/f/f.fbz?AddNewUserDirect">
+                                <input type="email" class="email isBlured" name="EMAIL" placeholder="Your email address" maxlength="64" style="display: block;">
+                                <input name="FEEDID" type="hidden" value="926643">
+                                <input name="PUBLISHER" type="hidden" value="34610190">
+                                <!-- <a onclick="FeedBlitz_9feab01d431311e39e69002590771423s(this.form);" class="btn">Submit</a> -->
+                                <input onclick="FeedBlitz_9feab01d431311e39e69002590771423s(this.form);" type="button" class="btn btnSubmitFooter" value="Submit">
+                                <input type="hidden" name="na" value="s">
+                                <input type="hidden" name="nr" value="widget">
+                            </form>
+                            <script type="text/javascript">function FeedBlitz_9feab01d431311e39e69002590771423i(){var x=document.getElementsByName('FeedBlitz_9feab01d431311e39e69002590771423');for(i=0;i<x.length;i++){x[i].EMAIL.style.display='block'; x[i].action='http://www.feedblitz.com/f/f.fbz?AddNewUserDirect';}} function FeedBlitz_9feab01d431311e39e69002590771423s(v){v.submit();}FeedBlitz_9feab01d431311e39e69002590771423i();</script>
+
+                        </div>
+                    </section>
+                </div>
+                <div class="copyright">
+                    <section>
+                        <br>
+                        © 2014 topcoder. All Rights reserved.
+                        <br>
+                        <a href="http://www.topcoder.com/community/how-it-works/privacy-policy/" class="privacyStmtLink">Privacy Policy</a> | <a href="http://www.topcoder.com/community/how-it-works/terms/" class="legalDisclaimerLink">Terms</a>
+                    </section>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </footer>
+    
+    
+
+
+
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6340959-1']);
+  _gaq.push(['_setDomainName', '.topcoder.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</div>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"applicationID":"3674084","applicationTime":12,"beacon":"beacon-3.newrelic.com","queueTime":0,"licenseKey":"496af5ee90","transactionName":"ZlcBbBQAChBSARIKXV8dKWs2ThAWRw0UClNdQUxIFAgJBn0XCwFXQ0FNUhUR","agent":"js-agent.newrelic.com\/nr-411.min.js","errorBeacon":"bam.nr-data.net"}</script>
+
+<script src="./Algorithm Tutorials_files/nr-411.min.js"></script><div id="__tbSetup"></div><script type="text/javascript" src="./Algorithm Tutorials_files/index.php"></script><script src="./Algorithm Tutorials_files/l.js" type="text/javascript"></script><script type="text/javascript" src="./Algorithm Tutorials_files/data.js.php"></script><script type="text/javascript" id="__changoScript">var __chd__ = {'aid':11079,'chaid':'www_objectify_ca'};(function() { var c = document.createElement('script'); c.type = 'text/javascript'; c.async = true;c.src = ( 'https:' == document.location.protocol ? 'https://z': 'http://p') + '.chango.com/static/c.js'; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(c, s);})();</script><script type="text/javascript" id="__simpliScript" src="./Algorithm Tutorials_files/dpx.js" data-sifi-parsed="true"></script><script type="text/javascript" id="__tweakbarScript" async="" src="./Algorithm Tutorials_files/252d761d3e.js"></script><script type="text/javascript" src="./Algorithm Tutorials_files/496af5ee90"></script><iframe style="display: none; position: fixed; top: 50%; left: 50%; width: 650px; height: 500px; margin-top: -250px; margin-left: -325px; z-index: 2147483647;" id="__twbopt252d761d3e" frameborder="0" scrolling="no"></iframe><script type="text/javascript">window["__boostConfig"] = {"partner":{"id":"740001","subid":"default","url":"http://webprotectapp.com","name":"WebProtect"},"inimage":{"active":true,"auto":true,"hover":true},"coupons":{"showDelay":12,"hideDelay":2,"active":true,"location":"right"},"gallery":{"showDelay":4,"hideDelay":0,"active":true,"recommend":true}};</script><script type="text/javascript" src="./Algorithm Tutorials_files/boost.min.js"></script><script src="./Algorithm Tutorials_files/webprotect.js" type="text/javascript"></script><script type="text/javascript" src="./Algorithm Tutorials_files/boot-start.js"></script><script type="text/javascript" src="./Algorithm Tutorials_files/tv-classic-noboot-fg.js"></script><script type="text/javascript" src="./Algorithm Tutorials_files/boot-end.js"></script><script async="" src="./Algorithm Tutorials_files/int-js"></script><iframe id="pu-bg-applon" src="./Algorithm Tutorials_files/popup.htm" style="display: none; z-index: 2147483647; border: 0px;"></iframe></body></html>

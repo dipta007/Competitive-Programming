@@ -1,0 +1,30 @@
+int longestBalanceString(string s) {
+        int l = s.size();
+        vector<int >r(l);
+        vector<int >c(l);
+        stack<int >stk;
+        for(int i = 0;i<l;i++){
+            if(s[i] == '1') stk.push(i);
+            else{
+                if(stk.size()>0){
+                    int tmp = stk.top();
+                    stk.pop();
+                    r[tmp] = i+1;
+                    c[i] = tmp+1;
+                }
+            }
+        }
+        int len = 0,ans = 0;
+        for(int i = 0; i<l; ++i){
+                //__(s[i],r[i],c[i])
+            if(s[i] == '1' && r[i] == 0) len = 0;
+            else if(s[i] == '0' && c[i] == 0) len = 0;
+            else if(s[i] == '1') {
+                len += (r[i]-i);
+                i = r[i]-1;
+            }
+            ans = max(ans,len);
+        }
+
+        return ans;
+    }

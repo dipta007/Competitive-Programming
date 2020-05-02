@@ -1,0 +1,130 @@
+/// https://discuss.codechef.com/questions/101647/persistence-made-simple-tutorial
+
+#define MAX 100005
+#define SIZE 8*MAX*10
+
+int l[SIZE], r[SIZE], st[SIZE], NODES = 0;
+int newleaf(int value) {
+    int p = ++NODES;
+    l[p] = r[p] = 0; /// null
+    st[p] = value;
+    return p;
+}
+
+int newparent(int lef, int rig) {
+    int p = ++NODES;
+    l[p] = lef;
+    r[p] = rig;
+    st[p] = st[lef] + st[rig]; /// immediately update value from children
+    return p;
+}
+
+#define M ((L+R)/2)
+int build(int arr[], int L=0, int R=n-1) {
+    if (L == R) return newleaf(arr[L]); /// construct as leaf
+    else return newparent(build(arr, L, M), build(arr, M+1, R)); /// construct as parent
+}
+/// Usage: int root = build(arr, 0, n - 1);
+
+/******** Point Update ************/
+
+/// return an int, a pointer to the new root of the tree
+int update(int i, int x, int p, int L=0, int R=n-1) {
+    if (L == R) return newleaf(st[p] + x);
+    if (i <= M) return newparent(update(i, x, l[p], L, M), r[p]);
+    else        return newparent(l[p], update(i, x, r[p], M + 1, R));
+}
+
+/// Usage:
+/// int new_version_root = update(i, x, root);
+/// Both roots are valid, you can query from both of them!
+
+/********* Range Copy ***************/
+
+/// revert range [a:b] of p
+int rangecopy(int a, int b, int p, int revert, int L=0, int R=n-1) {
+    if (b < L || R < a) return p; // keep version
+    if (a <= L && R <= b) return revert; // reverted version
+    return newparent(rangecopy(a, b, l[p], l[revert], L, M),
+                     rangecopy(a, b, r[p], r[revert], M+1, R));
+}
+
+/// Usage: (revert a range [a:b] back to an old version)
+/// int reverted_root = rangecopy(a, b, root, old_version_root);
+
+/****** Persistent lazy prop ***********/
+
+bool hasflag[]; // if node has a flag (sometimes, you can omit this)
+int flag[];     // the actual value of the flag
+
+// returns a new node with a lazy flag
+int newlazykid(int node, int delta, int L, int R);
+
+void propagate(int p, int L, int R) {
+    if (hasflag[p]) {
+        if (L != R) { // spread the laziness
+            l[p] = newlazykid(l[p], flag[p], L, M);
+            r[p] = newlazykid(r[p], flag[p], M + 1, R);
+        }
+        // reset flag
+        hasflag[p] = false;
+    }
+}
+
+int newlazykid(int node, int delta, int L, int R) {
+    int p = ++NODES;
+    l[p] = l[node];
+    r[p] = r[node];
+    flag[p] = flag[node]; // need this since lazy kid might be lazy before
+    hasflag[p] = true;
+
+    /* range increase */
+    flag[p] += delta;
+    st[p] = st[node] + (R - L + 1) * delta;
+    /* edit depending on the problem */
+
+    return p;
+}
+
+/*********** lazy range update/quert ***********/
+
+// range update on [a:b] with value x, on the tree rooted at p
+
+int update(int a, int b, int x, int p, int L=0, int R=n-1) {
+    if (b < L || R < a)   return p;
+    if (a <= L && R <= b) return newlazykid(p, x, L, R); 
+    propagate(p, L, R); // always do this before going down
+    return newparent(update(a, b, l[p], x, L, M),
+                     update(a, b, r[p], x, M + 1, R));
+}
+Now, every time we query down we should also propagate. We'll achieve very similar code after.
+
+// range query on [a:b], on the tree rooted at p
+
+int query(int a, int b, int p, int L=0, int R=n-1) {
+    if (b < L || R < a)   return 0;
+    if (a <= L && R <= b) return st[p];
+    propagate(p, L, R); // always do this before going down
+    return query(a, b, l[p], x, L, M) + query(a, b, r[p], x, M + 1, R);
+}
+
+
+/**************** example **************/
+// Example RSQ, call sum_query(a, b, root)
+
+int sum_query(int a, int b, int p, int L=0, int R=n-1) {
+    if (b < L || R < a) return 0; // outside range
+    if (a <= L && R <= b) return st[p]; // inside range
+    return sum_query(a, b, l[p], L, M)
+         + sum_query(a, b, r[p], M + 1, R);
+}
+
+// range revert
+int arr[] = {7, 1, 5, 2, 3}; n=5;
+int tree0 = build(arr);
+int tree1 = update(1, -4, tree0);  // {7, -4, 5, 2, 3}
+int tree2 = update(2, -10, tree1); // {7, -4, -10, 2, 3};
+int tree3 = update(4, -25, tree2); // {7, -4, -10, 2, -25};
+
+// revert range [0..2] back to initial [tree0]
+int tree4 = rangecopy(0, 2, tree3, tree0); // {7, 1, 5, 2, -25}

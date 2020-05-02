@@ -1,0 +1,41 @@
+/// from sgtlaugh
+const long long string_hash(const char* str){
+    long long h1 = 0, h2 = 0;
+    for (int i = 0; str[i] != 0; i++){
+        h1 = ((h1 * 10007) + str[i] + 97) % 1000000009;
+        h2 = ((h2 * 997) + str[i] + 143) % 666666667;
+    }
+    return (h1 << 31) | h2;
+}
+
+/// hashing 
+long long base = 10007;
+long long mod = 1000000007;
+ll val[100005], pre[100005];
+long long get_hash(string str)
+{
+	long long hash_val =0;
+	for(int i=0;str[i];i++)
+	{
+		hash_val = hash_val*base + str[i]-'A';
+		hash_val %= mod;
+		pre[i] = hash_val;
+	}
+	return hash_val;
+}
+void call()
+{
+    val[0] = 1;
+    rep(i,100001)
+    {
+        val[i] = val[i-1]*base;
+        val[i] %= mod;
+    }
+}
+
+int main()
+{
+	char str[100];
+	gets(str);
+	cout<<get_hash(str)<<endl;
+}

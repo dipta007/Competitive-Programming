@@ -1,0 +1,89 @@
+struct Mat {
+    int a[2][2];
+    void clear() {
+        memset(a, 0, sizeof(a));
+    }
+    void one() {
+        a[0][0] = a[1][1] = 1;
+        a[0][1] = a[1][0] = 0;
+    }
+    Mat operator + (const Mat &b) const {
+        Mat tmp;
+        tmp.clear();
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                tmp.a[i][j] = a[i][j] + b.a[i][j];
+                if (tmp.a[i][j] >= MOD) {
+                    tmp.a[i][j] -= MOD;
+                }
+            }
+        }
+        return tmp;
+    }
+    Mat operator * (const Mat &b) const {
+        Mat tmp;
+        tmp.clear();
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                for (int k = 0; k < 2; k++) {
+                    tmp.a[i][k] += (long long)a[i][j] * b.a[j][k] % MOD;
+                    if (tmp.a[i][k] >= MOD) {
+                        tmp.a[i][k] -= MOD;
+                    }
+                }
+            }
+        }
+        return tmp;
+    }
+    Mat pw(int x) {
+        Mat ans, num = *this;
+        ans.one();
+        while (x > 0) {
+            if (x & 1) {
+                ans = ans * num;
+            }
+            num = num * num;
+            x >>= 1;
+        }
+        return ans;
+    }
+};
+///*********sgtlaugh****************/
+struct matrix{
+    int row, col, ar[17][17];
+
+    matrix(){}
+    matrix(int n, int m, int diagonal = 0){
+        CLR(ar);
+        row = n, col = m;
+        for (int i = min(n, m) - 1; i >= 0; i--) ar[i][i] = diagonal;
+    }
+
+    matrix operator* (const matrix& other) const{
+        int i, j, k;
+		matrix res(row, other.col);
+		long long x, y = (long long)MOD * MOD;
+
+		for(i = 0; i < row; i++){
+			for(j = 0; j < other.col; j++){
+				for(k = 0, x = 0; k < col; k++){
+					x += ((long long)ar[i][k] * other.ar[k][j]);
+					if (x >= y) x -= y;
+				}
+				res.ar[i][j] = x % MOD;
+			}
+		}
+		return res;
+	}
+
+	matrix operator^ (long long n) const{
+	    matrix x = *this, res = matrix(row, col, 1);
+		while (n){
+			if (n & 1) res = res * x;
+			n = n >> 1, x = x * x;
+		}
+		return res;
+	}
+};
+///  struct matrix mat = matrix(16, 16);
+/// mat ^ len;

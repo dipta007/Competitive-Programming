@@ -1,0 +1,66 @@
+struct node
+{
+    int val;
+    node *left;
+    node *right;
+};
+class BST
+{
+
+public:
+    node *root;
+    BST()
+    {
+        root=new node;
+        root->val=-1;
+        root->left=NULL;
+        root->right=NULL;
+    }
+    void insert(int x)
+    {
+        if(root->val==-1)
+        {
+            root->val=x;
+            //debug("m");
+            return;
+        }
+        node *cur=root;
+        while(1)
+        {
+            if(x>cur->val)
+            {
+                if(cur->right!=NULL)
+                    cur=cur->right;
+                else
+                {
+                    cur->right=new node;
+                    cur->right->val=x;
+                    cur->right->left=NULL;
+                    cur->right->right=NULL;
+                    break;
+                }
+            }
+            else
+            {
+                if(cur->left!=NULL)
+                    cur=cur->left;
+                else
+                {
+                    //debug("x");
+                    cur->left=new node;
+                    cur->left->val=x;
+                    cur->left->left=NULL;
+                    cur->left->right=NULL;
+                    break;
+                }
+            }
+        }
+    }
+    void post(node *cur)
+    {
+        //if(cur->left==NULL&&cur->right==NULL)return;
+        if(cur->left!=NULL)post(cur->left);
+        if(cur->right!=NULL)post(cur->right);
+        cout<<cur->val<<endl;
+    }
+};

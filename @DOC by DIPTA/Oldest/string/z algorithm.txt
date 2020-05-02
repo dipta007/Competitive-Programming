@@ -1,0 +1,66 @@
+/**********shakil's blog************/
+const int NX = 1e5 + 10  ; // string size 
+char text[NX] ;
+int Z[NX];
+
+void Z_Algorithm()
+{
+     int position , starting_point , ending_point ;
+     int sz = strlen( text );
+     Z[0] = sz ; // always ;
+     for ( position = 1 , starting_point = 0 , ending_point = 0 ; position < sz ; position++ )
+     {
+          if( position <= ending_point ) Z[position] = min( ending_point - position + 1 , Z[position-starting_point] );
+          while( position + Z[position] < sz && text[Z[position]] == text[ position + Z[position] ] ) ++Z[position] ;
+          if ( position + Z[position] - 1  > ending_point ) // need to update
+          starting_point = position , ending_point = position + Z[position] - 1 ;
+     }
+}
+/** 
+ Z algorithm এ একটা array থাকে যেখানে পার পজিশনে i > 0 to size_of_length ,  longest prefix এর length store থাকে ।
+S = AAAA
+Z[] = 4321
+**/
+
+/******prefix==suffix************/
+for ( i = sz - 1 ; i >= 0 ; i-- )
+    {
+        if( Z[i] == sz - i ) // suffix matches
+    }
+/***********************
+bool zAlgorithm(string pattern, string target)
+{
+    string s = pattern + '$' + target ;
+    int n = s.length();
+    vector<int> z(n,0);
+     
+    int goal = pattern.length();
+    int r = 0, l = 0, i;
+    for (int k = 1; k<n; k++)
+    {
+        if (k>r)
+        {
+            for (i = k; i<n && s[i]==s[i-k]; i++);
+            if (i>k)
+            {
+                z[k] = i - k;
+                l = k;
+                r = i - 1;
+            }
+        }
+        else
+        {
+            int kt = k - l, b = r - k + 1;
+            if (z[kt]>b)
+            {
+                for (i = r + 1; i<n && s[i]==s[i-k]; i++);
+                z[k] = i - k;
+                l = k;
+                r = i - 1;
+            }
+        }
+        if (z[k]==goal)
+            return true;
+    }
+    return false;
+}

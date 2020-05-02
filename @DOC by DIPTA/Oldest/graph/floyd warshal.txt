@@ -1,0 +1,22 @@
+int d[100][100]; // d[i][j] = distance from i to j
+int midMan[100][100] //first set -1 
+rep(k,n) rep(i,n) rep(j,n)
+	if (d[i][j] > d[i][k] + d[k][j])
+	{
+		d[i][j] = d[i][k] + d[k][j];
+		next[i][j]=next[i][k];
+	}
+// at 1st in all position = INF
+// After floyd if diagonal has <INF -> cycle
+// After floyd if diagonal has <0 -> Neg cycle
+
+void print(int a,int b)
+{
+	int k = midMan[a][b];
+	if(k==-1) v.PB(b);
+	else
+	{
+		print(k,b);
+		print(a,k);
+	}
+}

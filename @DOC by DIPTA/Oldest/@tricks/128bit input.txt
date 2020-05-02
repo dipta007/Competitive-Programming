@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef __int128 myint;
+
+int main() {
+  int a_int = 2;  long long a_long = 3;  myint a_myint = 4;
+  printf ( "%d %d %d\n", sizeof(a_int), sizeof(a_long), sizeof(a_myint) );
+  ///Outputs: 4 8 16
+}
+
+// Note that there is no input/output for __int128. You have to write your own function. For example:
+
+string myintToString (myint k) {
+  if(k == 0) return "0";
+  char res[50] = {}; int curPos = 0;
+  if(k < 0) k = -k, res[curPos++] = '-';
+  while(k) res[curPos++] = (k%10)+'0', k /= 10;
+  reverse(res+(res[0]=='-'?1:0),res+curPos);
+  res[curPos++] = 0;
+  return res;
+}

@@ -1,0 +1,37 @@
+/**
+G[][]: undirected graph
+Separates bi-connected component by edges.
+**/
+ 
+vector< int > G[MAX];
+stack< pii > S;
+int dfstime;
+int low[MAX], vis[MAX], used[MAX];
+ 
+void dfs(int u, int par) {
+    int v, i, sz = G[u].size();
+    pii e, curr;
+    used[u] = 1;
+    vis[u] = low[u] = ++dfstime;
+    for(i = 0; i < sz; i++) {
+        v = G[u][i];
+        if(v == par) continue;
+        if(!used[v]) {
+            S.push(pii(u, v));
+            dfs(v, u);
+            if(low[v] >= vis[u]) {
+                // new component
+                curr = pii(u, v);
+                do {
+                    e = S.top(); S.pop();
+                    // e is an edge in current bcc
+                } while(e != curr);
+            }
+            low[u] = min(low[u], low[v]);
+        }
+        else if(vis[v] < vis[u]) {
+            S.push(pii(u, v));
+            low[u] = min(low[u], vis[v]);
+        }
+    }
+}

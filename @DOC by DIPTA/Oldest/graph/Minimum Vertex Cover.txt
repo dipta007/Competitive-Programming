@@ -1,0 +1,55 @@
+int t,n,m;
+#define MAXN 1005
+int dp[MAXN][5];
+int par[MAXN];
+vector<int>edges[MAXN];
+
+int call(int u, int isGuard)
+{
+    if (edges[u].size() == 0)
+        return 0;
+    if (dp[u][isGuard] != -1)
+        return dp[u][isGuard];
+    int sum = 0;
+    for (int i = 0; i < (int)edges[u].size(); i++)
+    {
+        int v = edges[u][i];
+        if (v != par[u])
+        {
+            par[v] = u;
+            if (isGuard == 0)
+                sum += call(v, 1);
+            else
+                sum += min(call(v, 1), call(v, 0));
+        }
+    }
+    return dp[u][isGuard] = sum + isGuard;
+}
+
+int main()
+{
+#ifdef mamun
+        READ("in.txt");
+//        WRITE("out.txt");
+#endif // mamun
+//    ios_base::sync_with_stdio(0);cin.tie(0);
+    getI(t);
+    rep(cs,t)
+    {
+        getII(n,m);
+        rep(i,n)edges[i].clear();
+        rep(i,m)
+        {
+            int u, v;
+            getII(u,v);
+            edges[u].push_back(v);
+            edges[v].push_back(u);
+        }
+		SET(par);
+        SET(dp);
+        int ans=0;
+        ans = min(call(1, 1), call(1, 0));
+        printf("%d\n",ans);
+    }
+    return 0;
+}

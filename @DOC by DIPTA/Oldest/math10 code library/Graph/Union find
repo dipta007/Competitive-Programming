@@ -1,0 +1,17 @@
+int prev[mx];
+int Parent(int i){
+    if(i==prev[i])return i;
+    return (prev[i]=Parent(prev[i]));
+}
+
+int isUnion(int a,int b){
+    return Parent(a)==Parent(b);
+}
+
+void makeUnion(int a,int b ){
+    int u = Parent(a);
+    int v = Parent(b);
+    if(u<v)
+        prev[v] = u;
+    else prev[u] = v;
+}

@@ -1,0 +1,22 @@
+int* dp[MAXX][MAXX];
+int value[MAXX][MAXX];
+void dfs(int x, int y)
+{
+ 
+    if(x<0 || x == count_row || y<0 || y == count_column || visited[x][y] || graph[x][y] == '#') return;
+	///here is the trick
+    dp[x][y] = &value[p][q];
+    visited[x][y] = true;
+    if(graph[x][y] == 'C')
+    {
+        value[p][q]++;
+    }
+ 
+    dfs(x+1, y);
+    dfs(x-1, y);
+    dfs(x, y-1);
+    dfs(x, y+1);
+ 
+    return;
+}
+/// printf("%d\n", *(dp[p][q]));

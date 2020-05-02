@@ -1,0 +1,75 @@
+//adjacency list
+//adj[i] contains all neighbors of i
+vector<int> adj[N];
+
+//functions as defined above
+int dp1[N],dp2[N];
+
+/*The first problem we solve is as follows: Given a tree T of N nodes, 
+where each node i has Ci coins attached with it. You have to choose a 
+subset of nodes such that no two adjacent nodes(i.e. nodes connected directly 
+by an edge) are chosen and sum of coins attached with nodes in chosen subset 
+is maximum.
+*/
+//pV is parent of node V
+void dfs(int V, int pV){
+
+    //for storing sums of dp1 and max(dp1, dp2) for all children of V
+    int sum1=0, sum2=0;
+
+    //traverse over all children
+    for(auto v: adj[V]){
+    if(v == pV) continue;
+    dfs(v, V);
+    sum1 += dp2[v];
+    sum2 += max(dp1[v], dp2[v]);
+    }
+
+    dp1[V] = C[V] + sum1;
+    dp2[V] = sum2;
+}
+
+int main(){
+    int n;
+    cin >> n;
+
+    for(int i=1; i<n; i++){
+    cin >> u >> v;
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+    }
+
+    dfs(1, 0);
+    int ans = max(dp1[1], dp2[1]);
+    cout << ans << endl;
+}
+/******************* 161D ****************/
+// number of ways of distance k
+vector<int> a[50005];
+int dp[50005][505];
+int n, k;
+long long ans;
+
+void go(int x, int from=-1) {
+	dp[x][0] = 1;
+	for(int i=0;i<(int)a[x].size();i++)
+		if(a[x][i]!=from) {
+			int c=a[x][i];
+			go(c, x);
+			for(int j=0;j<k;j++) ans += dp[x][j] * dp[c][k-j-1];
+			for(int j=0;j<k;j++) dp[x][j+1] += dp[c][j];
+		}
+}
+
+int main(void) {
+	scanf("%d%d", &n, &k);
+	for(int i=0;i<n-1;i++) {
+		int x, y;
+		scanf("%d%d", &x, &y);
+		a[x].push_back(y);
+		a[y].push_back(x);
+	}
+	go(1);
+	printf("%I64d\n", ans);
+	return 0;
+}

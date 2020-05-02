@@ -1,0 +1,74 @@
+int t,n,m;
+ll pal[25];
+void palindrome()
+{
+    ll range=9,cum=0;
+    int i=1;
+    while(cum<=2000000000)
+    {
+        pal[i]=range;
+        cum+=range;
+        i++;
+        if(i%2==1)range*=10;
+    }
+//    debug(cum)
+//    rep(i,19)debug(i,pal[i]);
+}
+///http://shipuahamed.com/2013/04/uva-12050-palindrome-numbers.html
+int main() {
+    ///check for 0 or -1 if input not specified
+    #ifdef mamun
+//        READ("in.txt");
+//        WRITE("out.txt");
+    #endif // mamun
+    palindrome();
+    ll n;
+    while(~getL(n)&&n)
+    {
+        if(n<10)
+        {
+            printf("%lld\n",n);
+            continue;
+        }
+        int dig=1;
+        while(n>pal[dig])
+        {
+//            debug(n,dig)
+            n-=pal[dig++];
+        }
+//        debug(dig)
+        int mid=(dig+1)/2;
+        stack<int>st;
+        int gun=1;
+        rep(i,mid-1)gun*=10;
+        int flag=1;
+//        debug(dig,mid,gun)
+        int hoise=1;
+        while(hoise<=mid)
+        {
+            hoise++;
+//            debug(n,gun)
+            int cnt=flag;
+            flag=0;
+            while(n>gun)
+            {
+                n-=gun;
+                cnt++;
+            }
+            gun/=10;
+            printf("%d",cnt);
+            st.push(cnt);
+        }
+//        debug("")
+        if(dig%2!=0&&!st.empty())st.pop();
+        while(!st.empty())
+        {
+            printf("%d",st.top());
+            st.pop();
+        }
+        puts("");
+    }
+
+
+    return 0;
+}

@@ -1,0 +1,161 @@
+/// main convex hull algorithm
+
+/**
+ConvexHull : Graham's Scan O(n lg n), integer implementation
+P[]: holds all the points, C[]: holds points on the hull
+np: number of points in P[], nc: number of points in C[]
+to handle duplicate, call makeUnique() before calling convexHull()
+call convexHull() if you have np >= 3
+to remove co-linear points on hull, call compress() after convexHull()
+**/
+point P[MAX], C[MAX], P0;
+
+inline int triArea2(const point &a, const point &b, const point &c) {
+    return (a.x*(b.y-c.y) + b.x*(c.y-a.y) + c.x*(a.y-b.y));
+}
+
+inline int sqDist(const point &a, const point &b) {
+    return ((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y));
+}
+
+inline bool comp(const point &a, const point &b) {
+    int d = triArea2(P0, a, b);
+    if(d < 0) return false;
+    if(!d && sqDist(P0, a) > sqDist(P0, b)) return false;
+    return true;
+}
+
+inline bool normal(const point &a, const point &b) {
+    return ((a.x==b.x) ? a.y < b.y : a.x < b.x);
+}
+
+inline bool issame(const point &a, const point &b) {
+    return (a.x == b.x && a.y == b.y);
+}
+
+inline void makeUnique(int &np) {
+    sort(&P[0], &P[np], normal);
+    np = unique(&P[0], &P[np], issame) - P;
+}
+
+void convexHull(int &np, int &nc) {
+    int i, j, pos = 0;
+    for(i = 1; i < np; i++)
+        if(P[i].y<P[pos].y || (P[i].y==P[pos].y && P[i].x<P[pos].x))
+            pos = i;
+    swap(P[0], P[pos]);
+    P0 = P[0];
+    sort(&P[1], &P[np], comp);
+    for(i = 0; i < 3; i++) C[i] = P[i];
+    for(i = j = 3; i < np; i++) {
+        while(triArea2(C[j-2], C[j-1], P[i]) < 0) j--;
+        C[j++] = P[i];
+    }
+    nc = j;
+}
+
+void compress(int &nc) {
+    int i, j, d;
+    C[nc] = C[0];
+    for(i=j=1; i < nc; i++) {
+        d = triArea2(C[j-1], C[i], C[i+1]);
+        if(d || (!d && issame(C[j-1], C[i+1]))) C[j++] = C[i];
+    }
+    nc = j;
+}
+
+/// point in convex hull
+
+/**
+C[] array of points of convex polygon in ccw order,
+nc number of points in C, p target points.
+returns true if p is inside C (including edge) or false otherwise.
+complexity O(lg n)
+**/
+
+inline bool inConvexPoly(point *C, int nc, const point &p) {
+    int st = 1, en = nc - 1, mid;
+    while(en - st > 1) {
+        mid = (st + en)>>1;
+        if(triArea2(C[0], C[mid], p) < 0) en = mid;
+        else st = mid;
+    }
+    if(triArea2(C[0], C[st], p) < 0) return false;
+    if(triArea2(C[st], C[en], p) < 0) return false;
+    if(triArea2(C[en], C[0], p) < 0) return false;
+    return true;
+}
+
+/// polygon area
+
+/**
+P[] holds the points, must be either in cw or ccw
+function returns double of the area.
+**/
+
+inline int dArea(int np) {
+    int area = 0;
+    for(int i = 0; i < np; i++) {
+        area += p[i].x*p[i+1].y - p[i].y*p[i+1].x;
+    }
+    return abs(area);
+}
+
+/// closest pair
+
+/**
+closestPair(Point *X, Point *Y, int n);
+X contains the points sorted by x co-ordinate,
+Y contains the points sorted by y co-ordinate,
+One additional item in Point structure is needed, the original index.
+**/
+
+typedef long long i64;
+typedef struct { int x, y, i; } Point;
+
+int flag[MAX];
+
+inline i64 sq(const i64 &x) {
+    return x*x;
+}
+
+inline i64 sqdist(const Point &a, const Point &b) {
+    return sq(a.x-b.x) + sq(a.y-b.y);
+}
+
+inline i64 closestPair(Point *X, Point *Y, int n) {
+    if(n == 1) return INF;
+    if(n == 2) return sqdist(X[0], X[1]);
+
+    int i, j, k, n1, n2, ns, m = n >> 1;
+    Point Xm = X[m-1], *XL, *XR, *YL, *YR, *YS;
+    i64 lt, rt, dd, tmp;
+
+    XL = new Point[m], YL = new Point[m];
+    XR = new Point[m+1], YR = new Point[m+1];
+    YS = new Point[n];
+
+    for(i = 0; i < m; i++) XL[i] = X[i], flag[X[i].i] = 0;
+    for(; i < n; i++) XR[i - m] = X[i], flag[X[i].i] = 1;
+    for(i = n2 = n1 = 0; i < n; i++) {
+        if(!flag[Y[i].i]) YL[n1++] = Y[i];
+        else YR[n2++] = Y[i];
+    }
+
+    lt = closestPair(XL, YL, n1);
+    rt = closestPair(XR, YR, n2);
+    dd = min(lt, rt);
+
+    for(i = ns = 0; i < n; i++)
+        if(sq(Y[i].x - Xm.x) < dd)
+            YS[ns++] = Y[i];
+    for(j = 0; j < ns; j++)
+        for(k = j + 1; k < ns && sq(YS[k].y - YS[j].y) < dd; k++)
+            dd = min(dd, sqdist(YS[j], YS[k]));
+
+    delete[] XL; delete[] XR;
+    delete[] YL; delete[] YR;
+    delete[] YS;
+
+    return dd;
+}

@@ -1,0 +1,77 @@
+struct pt{
+	double x, y;
+	
+	pt(){}
+	pt(double a, double b) : x(a), y(b) {}
+	pt(pair<pt,pt> l) { (*this) = l.second - l.first; }
+	
+	double norm() { return hypot(x, y); }
+	double norm_sq() { return x*x + y*y; }
+	void normalize() { double l = norm(); x /= l; y /= l; }
+	pt operator+(pt a)     { return pt(x + a.x, y + a.y); }
+	pt operator-(pt a) 	   { return pt(x - a.x, y - a.y); }
+	pt operator*(double s) { return pt(x * s, y * s); }
+	double dot(pt a)       { return x * a.x + y * a.y; }
+	double cross(pt a)     { return x * a.y - y * a.x; }
+	
+	void print() { printf("(%.6f, %.6f) ", x, y); }
+};
+
+typedef pair<pt,pt> line;
+#define p1 first
+#define p2 second
+
+double dist(pt a, pt b) { return (a - b).norm(); }
+double trap(pt a, pt b) { return 0.5 * (b.x - a.x) * (b.y + a.y); }
+double triarea(pt a, pt b, pt c)  { return fabs(trap(a,b) + trap(b,c) + trap(c,a)); }
+bool colineares(pt a, pt b, pt c) { return fabs((a-b).cross(a-c)) < EPS; }
+
+struct circle {
+	pt c;
+	double r;
+	circle(){}
+    bool inside(pt a) { return (a - c).norm_sq() <= r * r; }
+};
+
+pt closestpt(line l, pt p)
+{
+    if(colineares(l.p1, l.p2, p)) return p;
+	pt v(l);
+	v.normalize();
+	double pr = (p - l.p1).dot(v);
+	return l.p1 + v * pr;
+}
+
+int lineAndCircle(circle c, line l, pt &r1, pt &r2)
+{
+	pt m = closestpt(l, c.c);
+	pt v(l);
+	v.normalize();
+
+	double d = dist(c.c, m);
+	if(fabs(d - c.r) < EPS) return r1 = r2 = m, 1;
+	if(d > c.r) return -1;
+	
+	double dd = sqrt(c.r*c.r - d*d);
+	r1 = m - v*dd; r2 = m + v*dd;
+	return 0;
+}
+
+double angle(pt p1, pt p2, pt p3)
+// angulo de p1->p2 para p2->p3, retorna -PI a PI
+{
+    pt va = p1 - p2, v = p3 - p2;
+    va.normalize();
+    pt vb = pt(-va.y, va.x);
+    double x = v.dot(va), y = v.dot(vb);
+    return atan2(y, x);
+}
+
+const double PI = acos(-1.0);
+double area_secao(circle c, pt a, pt b)
+{
+	double pct = 2 * PI / angle(a, c.c, b);
+	double r = PI * c.r * c.r / pct;
+	if(r < 0) r += PI * c.r * c.r;
+	return r;
+}

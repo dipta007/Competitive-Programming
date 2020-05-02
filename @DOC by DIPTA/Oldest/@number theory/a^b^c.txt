@@ -1,0 +1,44 @@
+///	a^x % m = ((a%m) ^ (x%phi(m))) %m (provided a and m coprime)
+
+int64 call(int pos,int l,int cnt){
+    if(adj[pos].size() == 0) return b[pos]%mod[cnt];
+    int64 &ret = a[l][pos];
+    if(ret != -1) return ret;
+    ret = 0;
+    for(auto x : adj[pos]){
+        ret += BigMod(b[pos],call(x, l, cnt+1), mod[cnt]);
+        ret %= mod[cnt];
+    }
+    return ret;
+}
+
+int main(){
+    #ifdef Sanim
+        freopen("in.txt", "r", stdin);
+        //freopen("out.txt", "w", stdout);
+    #endif
+    mod[0] = MOD;
+    For(i,20)mod[i] = phi(mod[i-1]);
+    memo(a,-1);
+    n = II,m = II,k = II;
+    For(i,n) b[i] = IL;
+    For(i,k){
+        int x = II;
+        rep(j,x){
+            int y = II;
+            lev[y] = i;
+        }
+    }
+    rep(i,m){
+        int u = II,v = II;
+        if(lev[u] > lev[v]) swap(u,v);
+        adj[u].pb(v);
+    }
+
+    int q = II;
+    while(q--){
+        int y = II;
+        int64 x = call(y,lev[y],0);
+        printf("%lld\n",x);
+    }
+}

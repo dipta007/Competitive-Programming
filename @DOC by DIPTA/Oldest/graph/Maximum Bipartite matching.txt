@@ -1,0 +1,175 @@
+/********** khun's algorithm *******/
+#define MAX 105
+
+vector < int > edges[MAX];
+bool visited[MAX];
+int Left[MAX], Right[MAX];
+
+bool dfs(int u) {
+    if(visited[u]) return false;
+    visited[u] = true;
+    int len = edges[u].size(), i, v;
+    for(i=0; i<len; i++) {
+        v = edges[u][i];
+        if(Right[v]==-1) {
+            Right[v] = u, Left[u] = v;
+            return true;
+        }
+    }
+    for(i=0; i<len; i++) {
+        v = edges[u][i];
+        if(dfs(Right[v])) {
+            Right[v] = u, Left[u] = v;
+            return true;
+        }
+    }
+    return false;
+}
+
+int match(int n)
+{
+    SET(Left);
+    SET(Right);
+    int i, ret = 0;
+    bool done;
+    do
+    {
+        done = true;
+        CLR(visited);
+        rep(i,n)if(Left[i]==-1 && dfs(i))done = false;
+    }while(!done);
+    rep(i,n) ret += (Left[i]!=-1);
+    return ret;
+}
+
+/******************* hopcroft algorithm ***********/
+/// max must be double of nodes
+/// in edges u,v  v must be n+v
+
+#define MAX 100001
+#define NIL 0
+#define INF (1<<28)
+
+vector< int > G[MAX];
+int n, m, match[MAX], dist[MAX];
+// n: number of nodes on left side, nodes are numbered 1 to n
+// m: number of nodes on right side, nodes are numbered n+1 to n+m
+// G = NIL[0] ? G1[G[1---n]] ? G2[G[n+1---n+m]]
+
+bool bfs() {
+    int i, u, v, len;
+    queue< int > Q;
+    for(i=1; i<=n; i++) {
+        if(match[i]==NIL) {
+            dist[i] = 0;
+            Q.push(i);
+        }
+        else dist[i] = INF;
+    }
+    dist[NIL] = INF;
+    while(!Q.empty()) {
+        u = Q.front(); Q.pop();
+        if(u!=NIL) {
+            len = G[u].size();
+            for(i=0; i<len; i++) {
+                v = G[u][i];
+                if(dist[match[v]]==INF) {
+                    dist[match[v]] = dist[u] + 1;
+                    Q.push(match[v]);
+                }
+            }
+        }
+    }
+    return (dist[NIL]!=INF);
+}
+
+bool dfs(int u) {
+    int i, v, len;
+    if(u!=NIL) {
+        len = G[u].size();
+        for(i=0; i<len; i++) {
+            v = G[u][i];
+            if(dist[match[v]]==dist[u]+1) {
+                if(dfs(match[v])) {
+                    match[v] = u;
+                    match[u] = v;
+                    return true;
+                }
+            }
+        }
+        dist[u] = INF;
+        return false;
+    }
+    return true;
+}
+
+int hopcroft_karp() {
+        CLR(match);
+    int matching = 0, i;
+    // match[] is assumed NIL for all vertex in G
+    while(bfs())
+        for(i=1; i<=n; i++)
+            if(match[i]==NIL && dfs(i))
+                matching++;
+    return matching;
+}
+
+/*****************************************************************/
+/// hopcroft karp
+/// 1 indexed
+struct HopcroftKarp {
+	static const int MAXV = 10000 + 10;
+	static const int MAXE = 1000000 + 10;
+	int nx, ny, E, adj[MAXE], next[MAXE], last[MAXV], run[MAXV], level[MAXV], que[MAXV], matx[MAXV], maty[MAXV];
+	void init(int _nx, int _ny) {
+		nx = _nx; ny = _ny;
+		E = 0; memset(last, -1, sizeof(last));
+		memset(matx, -1, sizeof(matx)); memset(maty, -1, sizeof(maty));
+	}
+	void add(int x, int y) {
+		adj[E] = y; next[E] = last[x]; last[x] = E++;
+	}
+	bool bfs() {
+		int qsize = 0;
+		for (int x = 1; x <= nx; x++) if (matx[x] != -1) level[x] = -1;
+		else {
+			level[x] = 0;
+			que[qsize++] = x;
+		}
+		bool found = false;
+		for (int i = 0; i < qsize; i++) {
+			for (int x = que[i], e = last[x]; e != -1; e = next[e]) {
+				int y = adj[e];
+				if (maty[y] == -1) found = true;
+				else if (level[maty[y]] == -1) {
+					level[maty[y]] = level[x] + 1;
+					que[qsize++] = maty[y];
+				}
+			}
+		}
+		return found;
+	}
+	int dfs(int x) {
+		for (int &e = run[x]; e != -1; e = next[e]) {
+			int y = adj[e];
+			if (maty[y] == -1 || (level[maty[y]] == level[x] + 1 && dfs(maty[y]))) {
+				matx[x] = y;
+				maty[y] = x;
+				return 1;
+			}
+		}
+		return 0;
+	}
+	int maxmat() {
+		int total = 0;
+		while (bfs()) {
+			for (int x = 1; x <= nx; x++) run[x] = last[x];
+			for (int x = 1; x <= nx; x++) if (matx[x] == -1) total += dfs(x);
+		}
+		return total;
+	}
+} hopkarp;
+
+//hopkarp.init(n, n);
+//hopkarp.add(u, v);
+//hopkarp.maxmat();

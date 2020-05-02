@@ -1,0 +1,7 @@
+const int M = 100;
+
+bitset<M> all,tmp;
+///m=meaning mod value
+inline void apply(bitset<M> &b, int sh) {
+  b = ((b << sh) & all) | (b >> (m - sh));
+}

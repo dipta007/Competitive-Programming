@@ -1,0 +1,145 @@
+#define MAXN 100005
+struct edge
+{
+    int u,v,w;
+    edge(int a,int b,int c)
+    {
+        u=a;
+        v=b;
+        w=c;
+    }
+    bool operator < ( const edge& p ) const
+    {
+        return w < p.w;
+    }
+};
+int pr[MAXN];
+vector<edge>e;
+vector< pii > g[MAXN];
+int find(int r)
+{
+    if(pr[r]==r) return r;
+    return pr[r]=find(pr[r]);
+}
+int depth[MAXN];
+int parent[MAXN][30];
+int T[MAXN],D[MAXN]; //
+int dist[MAXN][30];
+void dfs(int from,int u,int dep)
+{
+//    T[u]=from;
+    depth[u]=dep;
+    repI(i,g[u].size())
+    {
+        int v=g[u][i].ff;
+        if(v==from) continue;
+        T[v]=u;
+        D[v]=g[u][i].ss;
+        dfs(u,v,dep+1);
+    }
+}
+void lca_init(int N)
+{
+    SET(parent);
+    int i, j;
+    for (i = 1; i <= N; i++)
+    {
+        parent[i][0] = T[i];
+        dist[i][0]=D[i];
+    }
+    //can be modified here by looping only to depth from dfs
+    for (j = 1; 1 << j < N; j++)
+        for (i = 1; i <= N; i++)
+        {
+            if (parent[i][j - 1] != -1)
+            {
+                dist[i][j]=max(dist[i][j-1],dist[parent[i][j-1]][j-1]);
+                parent[i][j] = parent[parent[i][j-1]][j-1];
+            }
+        }
+}
+int lca_query(int N, int p, int q)
+{
+    int  log, i;
+
+    if (depth[p] < depth[q])swap(p,q);
+
+    for (log = 1; 1 << log <= depth[p]; log++);
+    log--;
+    int ans=0;
+    for (i = log; i >= 0; i--)
+        if (depth[p] - (1 << i) >= depth[q])
+        {
+            ans=max(ans,dist[p][i]);
+            p = parent[p][i];
+        }
+
+    if (p == q)
+        return ans;
+
+    for (i = log; i >= 0; i--)
+        if (parent[p][i] != -1 && parent[p][i] != parent[q][i])
+        {
+            ans=max(ans,dist[p][i]);
+            ans=max(ans,dist[q][i]);
+
+            p = parent[p][i];
+            q = parent[q][i];
+        }
+    ans=max(D[p],ans);
+    ans=max(D[q],ans);
+
+    return ans;
+}
+
+int main()
+{
+    ///check for 0 or -1 if input not specified
+#ifdef mamun
+        READ("in.txt");
+//        WRITE("out.txt");
+#endif // mamun
+//    ios_base::sync_with_stdio(0);cin.tie(0);
+    while(~getII(n,m))
+    {
+        e.clear();
+        rep(i,m)
+        {
+            int u,v,w;
+            getIII(u,v,w);
+            e.push_back(edge(u,v,w));
+        }
+        for(int i=1; i<=n; i++)
+        {
+            g[i].clear();
+            pr[i]=i;
+        }
+
+        ///mst here
+        sort(e.begin(),e.end());
+        repI(i,e.size())
+        {
+            int x=e[i].u,y=e[i].v;
+            int u=find(x);
+            int v=find(y);
+            if(u!=v)
+            {
+                int c=e[i].w;
+                pr[u]=v;
+                g[x].push_back(pii(y,c));
+                g[y].push_back(pii(x,c));
+            }
+        }
+        dfs(-1,1,1);
+        lca_init(n);
+        int q,a,b;
+        getI(q);
+        while(q--)
+        {
+            getII(a,b);
+            printf("%d\n",lca_query(n,a,b));
+        }
+    }
+
+    return 0;
+}

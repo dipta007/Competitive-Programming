@@ -1,0 +1,20 @@
+///https://www.sgi.com/tech/stl/Rope.html
+///Include in the header file
+///crope data input neoa jai na,char array input niye insert korte hoi
+#include<ext/rope>
+using namespace __gnu_cxx;
+///Declare as
+crope version[50005],r,str;///Works like a string
+///Insert
+r.insert(p,s); ///char s[N] is inserted from position p..string cannot be inserted,has to b char      array
+///suppose r="abcd" and char s[]="xyz",p=2 then r will be r="abxyzcd"
+///Erase
+r.erase(p,c);
+///Removes C character from the position p
+
+///Substring
+str=r.substr(p,c)///Takes C character from p position
+
+///Count
+int temp=count(str.begin(),str.end(),'c');
+///Return how many 'c' is there in str;

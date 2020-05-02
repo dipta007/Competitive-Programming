@@ -1,0 +1,32 @@
+#define MAXE 10005
+#define MAXN 105
+int dist[MAXN], edge_u[MAXE], edge_v[MAXE], edge_cost[MAXE];
+int main()
+{
+    int n, m;
+    getII(n, m);
+    MEM(dist, 63);
+    dist[1] = 0;
+    rep(i, m) getIII(edge_u[i], edge_v[i], edge_cost[i]);
+    int neg_cycle = false;
+    rep(step, n)
+    {
+        int updated = false;
+        rep(i, m)
+        {
+            int u = edge_u[i], v = edge_v[i];
+            if (dist[u] + edge_cost[i] < dist[v])
+            {
+                updated = true;
+                if (step == n) neg_cycle = true;
+                dist[v] = dist[u] + edge_cost[i];
+            }
+        }
+        if (updated == false) break;
+    }
+    if (neg_cycle == false)
+    {
+        rep(i, n) cout << dist[i] << endl;
+    }
+    else puts("Negative Cycle");
+}

@@ -1,0 +1,88 @@
+///LCA using sparse table
+///Complexity: O(NlgN,lgN)
+#define mx 100002
+int depth[mx],sparse[mx][22],parent[mx];
+vector<int>adj[mx];
+int strt[mx],fin[mx];
+int tme ;
+void dfs(int from,int u,int dep)
+{
+    strt[u] = ++tme;
+    parent[u] = from;
+    depth[u] = dep;
+    repI(i,adj[u].size())
+    {
+        int v = adj[u][i];
+        if(v == from) continue;
+        dfs(u, v, dep+1);
+    }
+    fin[u] = tme;
+}
+
+int lca_query(int N, int p, int q) //N=???? ??????
+{
+    int tmp, log, i;
+
+    if (depth[p] < depth[q])swap(p,q);
+
+    log=1;
+    while(1)
+    {
+        int next = log+1;
+        if( (1 << next) > depth[p])break;
+        log++;
+    }
+    for (i = log; i >= 0; i--)
+        if (depth[p] - (1 << i) >= depth[q])
+            p = sparse[p][i];
+
+    if (p == q)
+        return p;
+
+    for (i = log; i >= 0; i--)
+        if (sparse[p][i] != -1 && sparse[p][i] != sparse[q][i])
+            p = sparse[p][i], q = sparse[q][i];
+
+    return parent[p];
+}
+
+void lca_init(int N)
+{
+    SET(sparse);
+    for (int i = 0; i < N; i++)sparse[i][0] = parent[i];
+    for (int j = 1; (1 << j) < N; j++)
+        for (int i = 0; i < N; i++)
+            if (sparse[i][j - 1] != -1)
+            {
+                int tmp=sparse[i][j - 1];
+                sparse[i][j] = sparse[tmp][j - 1];
+            }
+}
+int dis(int u,int v)
+{
+    return depth[u]+depth[v]-(2 * depth[lca_query(n,u,v)]);
+}
+/// find the last parent under u
+/// here order matters
+/// find par of u,v and send the par first then the other one
+int find_last_par(int u,int v)
+{
+    repI(k,20)
+    {
+        if((depth[v]-depth[u]-1) >> k & 1)
+            v = sparse[v][k];
+    }
+    return v;
+}
+
+int main(void)
+{
+    adj[0].pb(1);
+    adj[0].pb(2);
+    adj[2].pb(3);
+    adj[2].pb(4);
+    dfs(0, 0, 0);
+    lca_init(5);
+    printf( "%d\n", lca_query(5,3,4) );
+    return 0;
+}
