@@ -1,8 +1,0 @@
-probability
-//modular inverse
-//chinese remainder theorem
-somabesh
-binnash
-//token
-//modular arithmatic
-kmp

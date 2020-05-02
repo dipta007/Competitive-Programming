@@ -1,10 +1,4 @@
-#include <iostream>
-#include <cmath>
-#include <stdlib.h>
-#include <stdio.h>
-#include <vector>
-#include <string>
-#include <cstring>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define    READ(f) 	         freopen(f, "r", stdin)
@@ -49,6 +43,13 @@ using namespace std;
 #define    FMT(...)           (sprintf(CRTBUFF, __VA_ARGS__)?CRTBUFF:0)
 char CRTBUFF[30000];
 
+
+#define printbits(x, n) cout << #x << " = " << x << " = " << bitset<n>(x) << endl /// Least significant n bits of x, n must be constant
+#define tobinary(x) string(bitset<64>(x).to_string<char, string::traits_type, string::allocator_type>()).substr(min(63, __builtin_clzll(x)), 64)
+#define lastbits(x, n) cout << string(bitset<64>(x).to_string<char, string::traits_type, string::allocator_type>()).substr(64 - n, 64) << endl
+#define firstbits(x, n) cout << string(bitset<64>(x).to_string<char, string::traits_type, string::allocator_type>()).substr(min(63, __builtin_clzll(x)), 64).substr(0, n) << endl;
+
+
 #ifdef dipta007
      #define debug(args...) {cerr<<"Debug: "; dbg,args; cerr<<endl;}
      #define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
@@ -86,7 +87,7 @@ ll dp[100004];
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
+//        READ("in.txt");
        //WRITE("out.txt");
     #endif // dipta007
 //    ios_base::sync_with_stdio(0);cin.tie(0);
@@ -126,6 +127,7 @@ int main() {
         FOR(i,0,total)
         {
             if((dp[i] & (1LL << (n/2))) || (dp[i] & (1LL << ((n+1)/2))))
+//            if(bitCount(dp[i]) == (n/2) || bitCount(dp[i]) == (n+1)/2)
             {
                 if(diff > abs(total - 2*i))
                 {
@@ -133,7 +135,8 @@ int main() {
                     q = max(i, total - i);
                     diff = abs(total - 2*i);
                 }
-//                trace(i, diff, total, p, q);
+//                trace(i, diff, total, p, q, bitCount(dp[i]));
+//                printbits(dp[i], 10);
             }
         }
 

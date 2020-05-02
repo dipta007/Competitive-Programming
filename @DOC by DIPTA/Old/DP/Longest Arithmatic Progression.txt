@@ -1,0 +1,28 @@
+int Solution::solve(const vector<int> &A) {
+    // i, j = j last pos i = pos befor last
+    vector<vector<int> > dp(A.size(), vector<int> (A.size(), 0));
+    int n = A.size(), ans = 1;
+    unordered_map<int, int> mp;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            dp[i][j] = 2;
+            int diff = (A[j] - A[i]);
+            /*
+        		a[i] - x == a[j] - a[i]
+        		x == 2 * a[i] - a[j]
+		    */
+		    int need = A[i] - diff, pos = -1;
+			  //  for (int k = 0; k < i; k++) {
+			  //      if (A[k] == need)
+			  //          pos = k;
+			  //  }
+		    if (mp.find(need) != mp.end())pos = mp[need];
+		    if (pos != -1) {
+		        dp[i][j] = max(dp[i][j], dp[pos][i] + 1);
+		    }
+		    ans = max(ans, dp[i][j]);
+        }
+        mp[A[i]] = i;
+    }
+    return ans;
+}

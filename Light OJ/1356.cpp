@@ -190,8 +190,8 @@ int a[40004];
 
 int main() {
     #ifdef dipta007
-        READ("in.txt");
-       WRITE("out.txt");
+//        READ("in.txt");
+//       WRITE("out.txt");
     #endif // dipta007
    // ios_base::sync_with_stdio(0);cin.tie(0);
 

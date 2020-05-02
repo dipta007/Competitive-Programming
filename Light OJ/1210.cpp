@@ -83,6 +83,7 @@ int t,n,m;
 int tcnt;
 //Cycle contains which scc node belongs too.
 #define NODE 20004
+int mark[NODE];
 
 struct SCC{
     int num[NODE], low[NODE], col[NODE], cycle[NODE], st[NODE];
@@ -111,7 +112,8 @@ struct SCC{
                 low[s]=min(low[s],low[t]);
         }
         if ( low[s] == num[s] ) {
-                tcnt++;
+            tcnt++;
+            mark[s] = 1;
             while ( 1 ) {
                 int temp=st[tail-1];
                 tail--;
@@ -143,7 +145,8 @@ struct SCC{
     }
 
     void findSCC( int n ) {
-        FOR(i,0,n) {
+        tcnt = 0;
+        FOR(i,1,n) {
             if ( col[i] <= cc ) {
                 tarjan ( i );
             }
@@ -151,6 +154,7 @@ struct SCC{
     }
 }sc;
 
+int in[NODE], out[NODE];
 
 int main() {
     #ifdef dipta007
@@ -168,15 +172,12 @@ int main() {
 
         sc.clear();
 
-        int mark[n+2];
         CLR(mark);
         FOR(i,1,m)
         {
             int x,y;
             getII(x,y);
             sc.adj[x].PB(y);
-            mark[x] = 1;
-            mark[y] = 1;
         }
 
         if(n==1)
@@ -185,28 +186,29 @@ int main() {
             continue;
         }
 
-        tcnt = 0;
-
         sc.findSCC(n);
 
-//        if(tcnt <= 1)
-//        {
-//            printf("Case %d: 0\n",ci);
-//            continue;
-//        }
+        if(tcnt == 1)
+        {
+            printf("Case %d: 0\n",ci);
+            continue;
+        }
 
         sc.shrink(n);
 
-        int in[n+4], out[n+4],a=0,b=0;
+        int a=0,b=0;
         CLR(in);
         CLR(out);
 
         FOR(i,1,n)
         {
+            trace(i);
             FOR(j,0,(int)sc.adj[i].size()-1)
             {
                 int x = sc.adj[i][j];
                 if(i==x) continue;
+
+//                trace(i, x);
 
                 out[i]++;
                 in[x]++;
@@ -215,11 +217,8 @@ int main() {
 
         FOR(i,1,n)
         {
-//            debug(mark[i], in[i], out[i])
-            if(mark[i]==0)
-            {
-                a++,b++;
-            }
+            if(mark[i] == 0) continue;
+//            trace(i, in[i], out[i]);
             if(in[i]==0) a++;
             if(out[i]==0) b++;
         }

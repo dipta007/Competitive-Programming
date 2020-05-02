@@ -1,0 +1,126 @@
+﻿#pragma warning(disable:4786)
+#pragma warning(disable:4996)
+#include<list>
+#include<bitset>
+#include<iostream>
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<set>
+#include<map>
+#include<functional>
+#include<string>
+#include<cstring>
+#include<cstdlib>
+#include<queue>
+#include<utility>
+#include<fstream>
+#include<sstream>
+#include<cmath>
+#include<stack>
+#include<assert.h>
+#include<unordered_set>
+using namespace std;
+
+#define MEM(a, b) memset(a, (b), sizeof(a))
+#define CLR(a) memset(a, 0, sizeof(a))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define ABS(X) ( (X) > 0 ? (X) : ( -(X) ) )
+#define S(X) ( (X) * (X) )
+#define SZ(V) (int )V.size()
+#define FORN(i, n) for(int i = 0; i < n; i++)
+#define FORAB(i, a, b) for(int i = a; i <= b; i++)
+#define ALL(V) V.begin(), V.end()
+#define IN(A, B, C)  ((B) <= (A) && (A) <= (C))
+#define AIN(A, B, C) assert(IN(A, B, C))
+
+//typedef int LL;
+typedef long long int LL;
+//typedef __int64 LL;
+
+typedef pair<int, int> PII;
+typedef pair<LL, LL> PLL;
+typedef pair<double, double> PDD;
+typedef vector<int> VI;
+typedef vector<PII > VP;
+
+int n, m, H[200005];
+LL W, X, Y, Z;
+
+int R[200005], L[200005];
+
+double solve() {
+	scanf("%d %d", &n, &m);
+	//n = 200000, m = 20;
+	scanf("%d %d", &H[1], &H[2]);
+	//H[1] = rand() % 1000000, H[2] = rand() % 1000000;
+	scanf("%lld %lld %lld %lld", &W, &X, &Y, &Z);
+	//Z = 1 + rand() % 1000000;
+	//X = rand() % Z;
+	//Y = rand() % Z;
+	//W = rand() % Z;
+
+	for (int i = 1; i < n; i++) {
+		L[i] = R[i] = 1000000000;
+	}
+
+	for (int i = 3; i <= n; i++) {
+		H[i] = (W * H[i - 2] + X * H[i - 1] + Y) % Z;
+	}
+
+	for (int i = 1; i <= m; i++) {
+		int a, b, u, d;
+		scanf("%d %d %d %d", &a, &b, &u, &d);
+		//a = rand() % n + 1;
+		//b = rand() % n + 1;
+		//u = rand() % 1000000;
+		//d = rand() % 1000000;
+	
+		if (a < b) {
+			for (int j = a; j < b; j++) {
+				R[j] = MIN(R[j], u);
+				L[j] = MIN(L[j], d);
+			}
+		}
+		else {
+			for (int j = b; j < a; j++) {
+				L[j] = MIN(L[j], u);
+				R[j] = MIN(R[j], d);
+			}
+		}
+	}
+
+	LL minDown = -H[1]; // t - H[1]
+	double t = 0;
+	for (int i = 2; i <= n; i++) {
+		minDown += L[i - 1];
+		minDown = MIN(minDown, -H[i]);
+		// H[i] + minDown + 2t >= 0
+		double tt = (-minDown - H[i]) / 2.;
+		t = MAX(t, tt);
+	}
+
+	minDown = -H[n];
+	for (int i = n - 1; i >= 1; i--) {
+		minDown += R[i];
+		minDown = MIN(minDown, -H[i]);
+		double tt = (-minDown - H[i]) / 2.;
+		t = MAX(t, tt);
+	}
+	return t;
+}
+
+int main() {
+#ifdef LOCAL
+	freopen("C:\\Home\\ContestCodes\\sample.in", "r", stdin);
+	//	freopen("out.out", "w", stdout);
+#endif
+	int T;
+	scanf("%d", &T);
+	FORAB(ks, 1, T) {
+		double ans = solve();
+		printf("Case #%d: %.10lf\n", ks, ans);
+	}
+	return 0;
+}
