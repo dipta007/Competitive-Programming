@@ -1,0 +1,117 @@
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <vector>
+#include <set>
+using namespace std;
+
+typedef long long int64;
+typedef long double float128;
+/**Note: No line will be vertical. **/
+const int64 is_query = -(1LL<<62), inf = 1e18;
+
+struct Line {
+    int64 m, b;
+    mutable function<const Line*()> succ;
+    bool operator<(const Line& rhs) const {
+        if (rhs.b != is_query) return m < rhs.m;
+        const Line* s = succ();
+        if (!s) return 0;
+        int64 x = rhs.m;
+        return b - s->b < (s->m - m) * x;
+    }
+};
+
+struct HullDynamic : public multiset<Line> { // will maintain upper hull for maximum
+    bool bad(iterator y) {
+        auto z = next(y);
+        if (y == begin()) {
+            if (z == end()) return 0;
+            return y->m == z->m && y->b <= z->b;
+        }
+        auto x = prev(y);
+        if (z == end()) return y->m == x->m && y->b <= x->b;
+        return (float128)(x->b - y->b)*(z->m - y->m) >= (float128)(y->b - z->b)*(y->m - x->m);
+    }
+    void insert_line(int64 m, int64 b) {
+        auto y = insert({ m, b });
+        y->succ = [=] { return next(y) == end() ? 0 : &*next(y); };
+        if (bad(y)) { erase(y); return; }
+        while (next(y) != end() && bad(next(y))) erase(next(y));
+        while (y != begin() && bad(prev(y))) erase(prev(y));
+    }
+
+    int64 eval(int64 x) {
+        auto l = *lower_bound((Line) { x, is_query });
+        return l.m * x + l.b;
+    }
+};
+
+int main() {
+    int n, k; cin >> n >> k;
+
+    vector<int> els(n + 1);
+    for (int i = 1; i <= n; i += 1) {
+        cin >> els[i];
+    }
+
+    vector<int64> dp(n + 1, +inf);
+    dp[0] = 0;
+
+    for (int j = 0; j < k; j += 1) {
+        vector<int64> current_dp(n + 1, inf);
+
+        HullDynamic hd;
+        for (int j = 1; j <= n; j += 1) {
+            hd.insert_line(2 * els[j], -(1LL * els[j] * els[j] + dp[j - 1]));
+            auto best = -hd.eval(els[j]) + 1LL * els[j] * els[j];
+            best = min(best, inf);
+            current_dp[j] = best;
+        }
+
+        dp = current_dp;
+    }
+
+    cout << dp[n] << '\n';
+    return 0;
+}
+
+/*****************************/
+statement : You are given an array AA of NN integers. The cost of a subarray [A_l, A_{l+1},...A_r]is equal to (A_l -A_r)^2. Partition the array in KK subarrays having a minimum total cost.
+
+
+This is mostly a tehnical problem. If we let D(i, j)D(i,j) be the minimum cost to cover a prefix of size jj with ii subarrays, then 
+
+D(i, j) = min( D(i−1,k−1) + (A_k −A_j) ^ 2) 
+i = baki
+j = current pos
+k = last pos where i am going
+Opening the paranthesis (A_k - A_j)^2 = -2A_k * A_j + A_k^2 + D(i - 1, k - 1) + T, where T only depends on jj. 
+
+/****************************/
+ll dp[10005][105];
+int arr[100005];
+ll call(int pos, int baki)
+{
+    if(pos == n + 1)
+        return 0;
+    ll &ret = dp[pos][baki];
+    if(ret != -1)
+        return ret;
+    ret = LLONG_MAX;
+    int lst = n - baki + 1;
+    FOR(i, pos, lst){
+        if(baki == 1)
+            i = lst;
+        ll cost = (arr[i] - arr[pos]);
+        cost *= cost;
+        if(cost < ret)
+            ret = min(ret, call(i + 1, baki - 1) + cost);
+        if(baki == 1)break;
+    }
+    return ret;
+}
+Above convex hull problem is the dp solution of the above dp
+
+
+

@@ -1,0 +1,53 @@
+#define SIZE 105
+int arr[SIZE][SIZE],vertical[SIZE][SIZE],cum[SIZE][SIZE];
+int tmp[SIZE];
+int twopointer(int frst,int scnd)
+{
+    CLR(tmp);
+    rep(i,m)tmp[i]=vertical[scnd][i]-vertical[frst-1][i];
+    int lft=1,rght=1,res=-INF,sum=0;
+    while(rght<=m)
+    {
+        if(sum+tmp[rght]>=tmp[rght])sum+=tmp[rght];
+        else
+        {
+            while(lft<rght&&sum+tmp[rght]<tmp[rght])
+            {
+                sum-=tmp[lft];
+                lft++;
+            }
+            sum+=tmp[rght];
+        }
+        res=max(res,sum);
+        rght++;
+    }
+    res=max(res,sum);
+    return res;
+}
+
+int findmaximumsum()
+{
+    CLR(vertical);
+    CLR(cum);
+    ///first find the vertical cum sum of every row
+    rep(i,n)
+    {
+        rep(j,m)vertical[i][j]=vertical[i-1][j]+arr[i][j];
+    }
+    ///then find horizontal cum sum to find the total cum sum
+//    rep(i,n)
+//    {
+//        rep(j,m)cum[i][j]=cum[i][j-1]+vertical[i][j];
+//    }
+    ///now fix the row using n^2 loop
+    ///and search using two pointer to find the maximum sum
+    int ans=-INT_MAX;
+    for(int first=1;first<=n;first++)
+    {
+        for(int scnd=first;scnd<=n;scnd++)
+        {
+            ans=max(ans,twopointer(first,scnd));
+        }
+    }
+    return ans;
+}

@@ -1,0 +1,57 @@
+///  Cost function should be increasing for fixed pos on increasing j
+
+
+#define long double lld
+const int N = 50001;
+const int K = 101;
+lld dp[K][N];
+
+void init(){
+	// function to precompute the cost function for optimization
+}
+
+lld getcost(int l, int r) {
+	// return the computed cost of this array
+	lld cost = 0;
+    return cost;
+} 
+
+void prepareDP()
+{
+	// if we need to calculate the first state or reset the dp
+	for(int i = 0; i <= k; i++)
+        for(int j = 0; j <= n; j++) 
+            dp[i][j] = inf;
+	dp[0][0] = 0.0;
+}
+
+void compute(int i, int L, int R, int optL, int optR) {
+
+    if(L > R) return;
+    int mid = (L + R) / 2, best = optL;
+    
+    dp[i][mid] = inf;
+
+    for(int k = optL; k <= min(mid - 1, optR); k++) {
+        auto cur = dp[i - 1][k] + getcost(k + 1, mid);
+        if(cur < dp[i][mid]) {
+            dp[i][mid] = cur;
+            best = k;
+        }
+    }
+
+    compute(i, L, mid - 1, optL, best);
+    compute(i, mid + 1, R, best, optR);
+
+    return;
+}
+
+int main()
+{
+	init();
+	prepareDP();
+	// how many cluster are we using right now
+	for(int i = 1; i <= k; i++)
+		compute(i, 1, n, 1, n);
+}
+

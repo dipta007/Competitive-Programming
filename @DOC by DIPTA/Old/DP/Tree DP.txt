@@ -1,0 +1,145 @@
+//adjacency list
+//adj[i] contains all neighbors of i
+vector<int> adj[N];
+
+//functions as defined above
+int dp1[N],dp2[N];
+
+/*The first problem we solve is as follows: Given a tree T of N nodes, 
+where each node i has Ci coins attached with it. You have to choose a 
+subset of nodes such that no two adjacent nodes(i.e. nodes connected directly 
+by an edge) are chosen and sum of coins attached with nodes in chosen subset 
+is maximum.
+*/
+//pV is parent of node V
+void dfs(int V, int pV){
+
+    //for storing sums of dp1 and max(dp1, dp2) for all children of V
+    int sum1=0, sum2=0;
+
+    //traverse over all children
+    for(auto v: adj[V]){
+    if(v == pV) continue;
+    dfs(v, V);
+    sum1 += dp2[v];
+    sum2 += max(dp1[v], dp2[v]);
+    }
+
+    dp1[V] = C[V] + sum1;
+    dp2[V] = sum2;
+}
+
+int main(){
+    int n;
+    cin >> n;
+
+    for(int i=1; i<n; i++){
+    cin >> u >> v;
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+    }
+
+    dfs(1, 0);
+    int ans = max(dp1[1], dp2[1]);
+    cout << ans << endl;
+}
+/******************* 161D ****************/
+// Find the number of distinct pairs of the vertices which have a distance of exactly k between them.
+#define MAXN 50005
+vector<int> adj[MAXN];
+int dp[MAXN][505];
+
+ll ans = 0;
+void dfs(int src,int par)
+{
+    dp[src][0] = 1;
+    for(auto v: adj[src])
+    {
+        if(v == par)continue;
+        dfs(v,src);
+        /// child node theke kon length koita path ase ta ber korlam
+        rep(i,m)dp[src][i] += dp[v][i-1];
+        /// child node r amr uporer parent or sibling die koita path banano jai
+        /// ta,minus korsi bcz current path tao oitar under e pore jaitese
+        rep(i,m-1)ans += dp[v][i-1] * (dp[src][m-i]-dp[v][m-i-1]);
+    }
+    /// current node er m ta path o jog korte hbe
+    ans += dp[src][m];
+}
+
+int main() {
+    while(~getII(n,m))
+    {
+        ans = 0;
+        rep(i,n)adj[i].clear();
+        rep(i,n-1)
+        {
+            int a,b;
+            getII(a,b);
+            adj[a].PB(b);adj[b].PB(a);
+        }
+        CLR(dp);
+        dfs(1,0);
+        printf("%lld\n",ans);
+    }
+}
+/***********************************/
+/* height of tree when every node is considered as root */
+vi g[N];
+int a[N], in[N], out[N], dp[N];
+
+void dfs1(int u, int par){
+	in[u] = 0;
+	for(int v:g[u]){
+		if (v == par) continue;
+		dfs1(v, u);
+		in[u] = max(in[u], 1+in[v]);
+	}
+}
+
+void dfs2(int u, int par){
+	int mx1(-1), mx2(-1);
+    
+    //find top 2 maximum values of in[v]
+    for(int v: g[u]){
+            if(v == par) continue;
+            if(in[v] >= mx1) mx2 = mx1, mx1 = in[v];
+            else if(in[v] > mx2) mx2 = in[v];
+    }
+	for(int v:g[u]){
+		if (v == par) continue;
+		int use = mx1;
+		
+		if(mx1 == in[v]) 
+			use = mx2;
+		
+		out[v] = max(1+out[u], 2+use);
+		
+		dfs2(v, u);
+	}
+}
+
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int i,n,k,j,u,v;
+    
+	cin >> n;
+	fo(i, n-1){
+		cin >> u >> v;
+		g[u].pb(v);
+		g[v].pb(u);
+	}
+	
+	dfs1(1, 0);
+	dfs2(1, 0);
+	
+	Fo(i, 1, n+1){
+		dp[i] = max(in[i], out[i]);
+		cout << dp[i] << " " ;
+	}
+
+	return 0;
+} 

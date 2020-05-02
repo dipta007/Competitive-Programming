@@ -1,0 +1,76 @@
+/// http://www.topcoder.com/tc?module=Static&d1=match_editorials&d2=srm261
+/// Your task is to find and return the largest N such that N of the boxes can be 
+/// selected and placed one atop another in some order such that none of the boxes collapse.
+/// You will be given this information in two String[]s: weight and canCarry. Each element 
+/// of weight will contain the weights of some of the boxes. Similarly, each element of canCarry 
+/// will contain the carrying capacities of some of the boxes.
+// assumptions:
+// W[i] is the weight of the i-th box
+// C[i] is its carrying capacity
+// for all i, W[i] + C[i] <= W[i+1] + C[i+1]
+
+// in the beginning, the only valid stack is the empty one
+for (int i=0; i<=N; i++) best[i]=1000000047;
+best[0]=0;
+
+
+// the largest stack size so far is zero
+int maxCount=0;
+
+for (int i=0; i<N; i++) {
+  // we now process the i-th box
+  for (int j=maxCount+1; j>0; j--) {
+    // let's try to make a stack with j boxes
+    // with the current one on the bottom
+    // for this to work, the currently smallest stack
+
+    // of j-1 boxes mustn't be too heavy
+    if (C[i] >= best[j-1]  &&  best[j-1]+W[i] < best[j]) {
+        best[j]=best[j-1]+W[i];
+        if (j>maxCount) maxCount=j;
+    }
+  }
+}
+/*********************************************************/
+/// recursive
+const int INF = 1 << 25;
+int n, W[MAX], C[MAX], dp[MAX][MAX];
+
+int F(int i, int k){
+    if (k == 0) return 0;
+    if (i > n) return INF;
+    if (dp[i][k] != -1) return dp[i][k];
+
+    int res = F(i + 1, k);
+    if (C[i] >= F(i + 1, k - 1)){
+        int x = F(i + 1, k - 1) + W[i];
+        if (x < res && C[i] >= x) res = x;
+    }
+
+    return (dp[i][k] = res);
+}
+
+int main(){
+    int t, i, j, k, l, w, c, res;
+
+    scanf("%d", &t);
+    while (t--){
+        scanf("%d", &n);
+        vector <pair<int, int> > v;
+        for (i = 0; i < n; i++){
+            scanf("%d %d", &w, &c);
+            v.push_back(make_pair(-c, -w));
+        }
+        sort(v.begin(), v.end());
+        for (i = 1; i <= n; i++) C[i] = -v[i - 1].first, W[i] = -v[i - 1].second;
+
+        res = 0;
+        memset(dp, -1, sizeof(dp));
+        for (i = 1; i <= n; i++){
+            if (F(1, i) < INF) res = i;
+        }
+
+        printf("%d\n", res);
+    }
+    return 0;
+}
