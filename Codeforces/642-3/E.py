@@ -29,42 +29,28 @@ def main():
   for ci in range(t):
     n, m = input2()
     arr = list(map(int, input_string()))
-    cum = [0 for _ in arr]
-    cum[0] = arr[0]
-    last = (0 if arr[0] else -1)
-    for i in range(1, n):
-      cum[i] = cum[i-1] + arr[i]
-      if arr[i] == 1:
-        last = i
-      
-    if last == -1:
-      print(0)
-      continue
-      
-    # print(last)
     
-    prev_del = 0
-    res = 2000000
-    for i in range(n):
-      if i and i % m == 0:
-        break
-      lft = i
-      now_del = prev_del + (1 if arr[i] == 0 else 0)
-      for j in range(i+m, last+1, m):
-        now_del += get_val(lft + 1, j-1, cum)
-        now_del += (1 if arr[j] == 0 else 0)
-        lft = j
-        # print("in", j, now_del)
-      
-      # print(lft)
-      now_del += get_val(lft, last, cum)
-      res = min(res, now_del)
-
+    tot_on = 0
+    last = -1
+    res = 2e6
+    for i in range(0, n):
       if arr[i] == 1:
-        prev_del += 1
+        tot_on += 1
+        last = i
+    
+    dp = [0 for _ in range(n+2)]
+    for i in range(last+1):
+      now = 0
+      if arr[i] == 1:
+        now += 1
+      else:
+        now -= 1
 
-      # print(i, now_del, prev_del, res, arr[i])
+      dp[i % m] += now
+      dp[i % m] = max(dp[i % m], 0)
+      res = min(res, tot_on - dp[i%m])
 
+    res = 0 if last == -1 else res
     print(res)
   return
 
