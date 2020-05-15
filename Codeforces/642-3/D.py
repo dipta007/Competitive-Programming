@@ -17,7 +17,7 @@ def input_string():
   return list(s)
 
 # from queue import PriorityQueue
-
+import heapq as pq
 
 def get_l(sz, m):
   md = sz // 2
@@ -46,7 +46,6 @@ def main():
   for ci in range(t):
     n = input1()
 
-    import heapq as pq
     # pq = heapq()
     h = []
     pq.heappush(h, (-n, mid_point(0, n-1)))
