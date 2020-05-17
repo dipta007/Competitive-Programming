@@ -11,10 +11,10 @@ if sys.version_info[0] < 3:
   map = itertools.imap
   zip = itertools.izip
 
-input = sys.stdin.read().split('\n')[::-1].pop
+# input = sys.stdin.read().split('\n')[::-1].pop
 
-import __pypy__
-out = __pypy__.builders.StringBuilder()
+# import __pypy__
+# out = __pypy__.builders.StringBuilder()
 
 
 def give_it_all():
@@ -111,9 +111,7 @@ def main():
     else:
       low = mid
 
-  result_out(solve(low + 1, arr[:], a, r, m))
-
-  give_it_all()
+  print(solve(low + 1, arr[:], a, r, m))
 
   pass
 
