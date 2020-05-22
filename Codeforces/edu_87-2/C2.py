@@ -117,12 +117,7 @@ def main():
     n = n*2
     deg = 360 / n
 
-    r = get_r(deg)
-    # print(r)
-    d = r + r
-    # print(d)
-    res = math.sqrt(d * d - 1)
-    # res = d
+    res = math.cos(math.radians(180.0/(n*2))) / math.sin(math.radians(180/n))
     print(res)
   pass
 

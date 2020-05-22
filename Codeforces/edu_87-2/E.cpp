@@ -76,6 +76,7 @@ typedef pair<int, int> pii;
 #define FMT(...) (sprintf(CRTBUFF, __VA_ARGS__) ? CRTBUFF : 0)
 char CRTBUFF[30000];
 
+#define dipta00
 #ifdef dipta007
 #define debug(args...)              \
     {                               \
@@ -136,110 +137,143 @@ inline T MAX(T a, Args... args) { return max(a, (T)MAX(args...)); }
 int deg[5004];
 int mark[5004];
 vii adj;
+int r1, r2;
+vector <pair<int, int>> vp;
+vi com;
 
-void dfs(int v, int c) {
+bool dfs(int v, int c) {
   mark[v] = c;
+  if (c == 1) r1 += 1;
+  else r2 += 1;
+  int ret = 1;
   FOR(i, 0, (int)adj[v].size() - 1) {
     int nw = adj[v][i];
     if (mark[nw] == 0) {
-      dfs(nw, c == 2 ? 1 : 2);
+      ret = ret && dfs(nw, c == 2 ? 1 : 2);
+    } else if (mark[nw] == c) {
+      return false;
     }
+  }
+  return true;
+}
+
+int dp[5004][5004];
+int path[5004][5004];
+string res = "";
+
+bool call(int ind, int rem) {
+  if (ind >= vp.size()) {
+    return rem == 0;
+  }
+  int &ret = dp[ind][rem];
+  if (ret != -1) return ret;
+
+  ret = 0;
+  int o1 = call(ind + 1, rem - vp[ind].ff);
+  if (o1) {
+    path[ind][rem] = 1;
+    return ret = 1;
+  }
+  int o2 = call(ind+1, rem - vp[ind].ss);
+  if (o2) {
+    path[ind][rem] = 2;
+    return ret = 2;
+  }
+
+  return ret;
+}
+
+int n1, n2, n3;
+
+void dfs_1(int u, int c) {
+  debug(u);
+  if (mark[u] == c) {
+    res[u-1] = '2';
+  } else {
+    if (n1) {
+      res[u-1] = '1';
+      n1 -= 1;
+    } else {
+      res[u-1] = '3';
+      n3 -= 1;
+    }
+  }
+  mark[u] = -1;
+  FOR(i, 0, (int)adj[u].size() - 1) {
+    int nw = adj[u][i];
+    if (mark[nw] != -1) {
+      dfs_1(nw, c);
+    }
+  }
+}
+
+void path_print(int ind, int rem) {
+  if (ind >= vp.size()) {
+    return;
+  }
+  int p = path[ind][rem];
+  if (p == 1) {
+    dfs_1(com[ind], 1);
+    path_print(ind+1, rem - vp[ind].ff);
+  } else {
+    dfs_1(com[ind], 2);
+    path_print(ind+1, rem - vp[ind].ss);
   }
 }
 
 int main()
 {
 #ifdef dipta007
-    //READ("in.txt");
+    READ("in.txt");
     //WRITE("out.txt");
 #endif // dipta007
   ios_base::sync_with_stdio(0);cin.tie(0);
 
   int n, m;
   while (cin >> n >> m) {
-    int n1, n2, n3;
     cin >> n1 >> n2 >> n3;
 
     adj.assign(n+1, vi());
-    // CLR(vis);
-    CLR(deg);
     FOR(i, 1, m) {
       int x, y;
       cin >> x >> y;
       adj[x].push_back(y);
       adj[y].push_back(x);
-      deg[x]++;
-      deg[y]++;
     }
 
     CLR(mark);
+    int ret = 1;
+    vp.clear();
+    com.clear();
+
     FOR(i, 1, n) {
-      if (mark[i] == 0 && deg[i] == 1) {
-        dfs(i, 1);
+      res += "#";
+      if (mark[i] == 0) {
+        r1 = 0, r2 = 0;
+        ret = ret && dfs(i, 1);
+        // cout << r1 << " " << r2 << endl;
+        vp.push_back(MP(r1, r2));
+        com.push_back(i);
       }
     }
+    // for (auto v: vp) {
+    //   debug(v.ff, v.ss)
+    // }
 
-    int left = 0, rgt = 0, extra = 0;
-    FOR (i, 1, n) {
-      if (deg[i] > 0) {
-        if (mark[i] == 1) left += 1;
-        else rgt += 1;
-      } else {
-        extra += 1;
-      }
+    if (!ret) {
+      cout << "NO" << endl;
+      continue;
     }
 
-    if (n1+n3 == left + extra && n2 == rgt) {
-      cout << "YES" << endl;
-      string st = "";
-      FOR(i, 1, n) {
-        if (mark[i] == 1 || deg[i] == 0) {
-          st += (n1 > 0 ? "1" : "3");
-          if (n1 > 0) n1--;
-          else n3--;
-        }
-        else st += "2";
-      }
-      cout << st << endl;
-    } else if (n1 + n3 == rgt + extra && n2 == left) {
-      cout << "YES" << endl;
-      string st = "";
-      FOR(i, 1, n) {
-        if (mark[i] == 2 || deg[i] == 0) {
-          st += (n1 > 0 ? "1" : "3");
-          if (n1 > 0) n1--;
-          else n3--;
-        }
-        else st += "2";
-      }
-      cout << st << endl;
-    } else if (n1 + n3 == left && n2 == rgt + extra) {
-      cout << "YES" << endl;
-      string st = "";
-      FOR(i, 1, n) {
-        if (mark[i] == 1) {
-          st += (n1 > 0 ? "1" : "3");
-          if (n1 > 0) n1--;
-          else n3--;
-        }
-        else st += "2";
-      }
-      cout << st << endl;
-    } else if (n1 + n3 == rgt && n2 == left + extra) {
-      cout << "YES" << endl;
-      string st = "";
-      FOR(i, 1, n) {
-        if (mark[i] == 2) {
-          st += (n1 > 0 ? "1" : "3");
-          if (n1 > 0) n1--;
-          else n3--;
-        }
-        else st += "2";
-      }
-      cout << st << endl;
+    SET(dp);
+    ret = call(0, n2);
+    if (ret) {
+      path_print(0, n2);
+      cout << "YES" << endl << res << endl;
     } else {
       cout << "NO" << endl;
     }
+
   }
 
   return 0;
