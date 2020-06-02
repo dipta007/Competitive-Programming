@@ -141,14 +141,7 @@ def main():
   for ci in range(t):
     global a, b, c, d, s, mp
     [a, b, c, d] = input_array()
-    a-=1
-    b-=1
-    c-=1
-    d-=1
-    s.clear()
-    mp = {}
-    call(a, b, 0)
-    print(len(s), s, mp)
+    print((c-a) * (d-b) + 1)
 
   pass
 
