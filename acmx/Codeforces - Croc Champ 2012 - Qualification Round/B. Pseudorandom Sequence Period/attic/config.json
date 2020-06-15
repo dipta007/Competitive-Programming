@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Croc Champ 2012 - Qualification Round/B. Pseudorandom Sequence Period/template.py"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "B. Pseudorandom Sequence Period",
+      "group": "Codeforces - Croc Champ 2012 - Qualification Round",
+      "url": "https://codeforces.com/problemset/problem/172/B",
+      "memoryLimit": 256,
+      "timeLimit": 2000
+    }
+  }
+}
