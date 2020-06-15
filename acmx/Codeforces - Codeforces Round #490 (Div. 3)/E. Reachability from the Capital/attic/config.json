@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #490 (Div. 3)/E. Reachability from the Capital/template.cpp"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "E. Reachability from the Capital",
+      "group": "Codeforces - Codeforces Round #490 (Div. 3)",
+      "url": "https://codeforces.com/problemset/problem/999/E",
+      "memoryLimit": 256,
+      "timeLimit": 2000
+    }
+  }
+}
