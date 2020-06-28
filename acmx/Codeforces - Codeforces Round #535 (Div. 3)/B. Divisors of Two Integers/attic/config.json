@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #535 (Div. 3)/B. Divisors of Two Integers/template.cpp"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "B. Divisors of Two Integers",
+      "group": "Codeforces - Codeforces Round #535 (Div. 3)",
+      "url": "https://codeforces.com/problemset/problem/1108/B",
+      "memoryLimit": 256,
+      "timeLimit": 1000
+    }
+  }
+}

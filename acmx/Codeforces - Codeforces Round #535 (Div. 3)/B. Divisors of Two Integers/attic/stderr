@@ -1,0 +1,15 @@
+[1m/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #535 (Div. 3)/B. Divisors of Two Integers/template.cpp:167:40: [0m[0;1;31merror: [0m[1mexpected ';' after expression[0m
+                                flg = 0
+[0;1;32m                                       ^
+[0m[0;32m                                       ;
+[0m[1m/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #535 (Div. 3)/B. Divisors of Two Integers/template.cpp:171:38: [0m[0;1;35mwarning: [0m[1m& has lower precedence than ==; == will be evaluated first [-Wparentheses][0m
+                        } else if (y & p.ss == 0) {
+[0;1;32m                                     ^~~~~~~~~~~
+[0m[1m/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #535 (Div. 3)/B. Divisors of Two Integers/template.cpp:171:38: [0m[0;1;30mnote: [0mplace parentheses around the '==' expression to silence this warning[0m
+                        } else if (y & p.ss == 0) {
+[0;1;32m                                     ^
+[0m[0;32m                                       (        )
+[0m[1m/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #535 (Div. 3)/B. Divisors of Two Integers/template.cpp:171:38: [0m[0;1;30mnote: [0mplace parentheses around the & expression to evaluate it first[0m
+                        } else if (y & p.ss == 0) {
+[0;1;32m                                   ~~^~~~~~
+[0m1 warning and 1 error generated.
