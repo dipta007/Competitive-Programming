@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Educational Codeforces Round 90 (Rated for Div. 2)/D. Maximum Sum on Even Positions/template.py"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "D. Maximum Sum on Even Positions",
+      "group": "Codeforces - Educational Codeforces Round 90 (Rated for Div. 2)",
+      "url": "http://codeforces.com/contest/1373/problem/D",
+      "memoryLimit": 256,
+      "timeLimit": 2000
+    }
+  }
+}
