@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #605 (Div. 3)/A. Three Friends/template.cpp"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "A. Three Friends",
+      "group": "Codeforces - Codeforces Round #605 (Div. 3)",
+      "url": "https://codeforces.com/problemset/problem/1272/A",
+      "memoryLimit": 256,
+      "timeLimit": 1000
+    }
+  }
+}
