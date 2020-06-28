@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Global Round 7/A. Bad Ugly Numbers/template.py"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "A. Bad Ugly Numbers",
+      "group": "Codeforces - Codeforces Global Round 7",
+      "url": "https://codeforces.com/problemset/problem/1326/A",
+      "memoryLimit": 256,
+      "timeLimit": 1000
+    }
+  }
+}
