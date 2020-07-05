@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #615 (Div. 3)/A. Collecting Coins/template.py"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "A. Collecting Coins",
+      "group": "Codeforces - Codeforces Round #615 (Div. 3)",
+      "url": "https://codeforces.com/problemset/problem/1294/A",
+      "memoryLimit": 256,
+      "timeLimit": 2000
+    }
+  }
+}
