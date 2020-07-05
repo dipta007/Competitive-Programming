@@ -1,0 +1,16 @@
+[1m/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #653 (Div. 3)/D. Zero Remainder Array/template.cpp:152:20: [0m[0;1;31merror: [0m[1muse of undeclared identifier 'x'[0m
+            cin >> x;
+[0;1;32m                   ^
+[0m[1m/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #653 (Div. 3)/D. Zero Remainder Array/template.cpp:153:17: [0m[0;1;31merror: [0m[1muse of undeclared identifier 'x'[0m
+            if (x%k != 0) {
+[0;1;32m                ^
+[0m[1m/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #653 (Div. 3)/D. Zero Remainder Array/template.cpp:154:34: [0m[0;1;31merror: [0m[1muse of undeclared identifier 'x'[0m
+                ll tmp = x /k + (x%k ? 1 : 0);
+[0;1;32m                                 ^
+[0m[1m/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #653 (Div. 3)/D. Zero Remainder Array/template.cpp:154:26: [0m[0;1;31merror: [0m[1muse of undeclared identifier 'x'[0m
+                ll tmp = x /k + (x%k ? 1 : 0);
+[0;1;32m                         ^
+[0m[1m/Users/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #653 (Div. 3)/D. Zero Remainder Array/template.cpp:155:36: [0m[0;1;31merror: [0m[1muse of undeclared identifier 'x'[0m
+                ll rem = tmp * k - x;
+[0;1;32m                                   ^
+[0m5 errors generated.
