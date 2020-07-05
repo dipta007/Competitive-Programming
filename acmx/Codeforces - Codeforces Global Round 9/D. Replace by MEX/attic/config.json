@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Global Round 9/D. Replace by MEX/template.cpp"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "D. Replace by MEX",
+      "group": "Codeforces - Codeforces Global Round 9",
+      "url": "https://codeforces.com/contest/1375/problem/D",
+      "memoryLimit": 256,
+      "timeLimit": 1000
+    }
+  }
+}
