@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #629 (Div. 3)/E. Tree Queries/template.cpp"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "E. Tree Queries",
+      "group": "Codeforces - Codeforces Round #629 (Div. 3)",
+      "url": "https://codeforces.com/problemset/problem/1328/E",
+      "memoryLimit": 256,
+      "timeLimit": 2000
+    }
+  }
+}
