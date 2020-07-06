@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #238 (Div. 2)/B. Domino Effect/template.cpp"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "B. Domino Effect",
+      "group": "Codeforces - Codeforces Round #238 (Div. 2)",
+      "url": "https://codeforces.com/problemset/problem/405/B",
+      "memoryLimit": 256,
+      "timeLimit": 1000
+    }
+  }
+}
