@@ -1,0 +1,479 @@
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;35m[Kwarning: [m[Kmulti-character character constant [[01;35m[K-Wmultichar[m[K]
+             if (st == [01;35m[K'add'[m[K) s.push(x);
+                       [01;35m[K^~~~~[m[K
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:20:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator==[m[K’ (operand types are ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ and ‘[01m[Kint[m[K’)
+             if ([01;31m[Kst == 'add'[m[K) s.push(x);
+                 [01;31m[K~~~^~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/utility:70:0[m[K,
+                 from [01m[K/usr/include/c++/7/algorithm:60[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:1[m[K:
+[01m[K/usr/include/c++/7/bits/stl_pair.h:448:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _T1, class _T2> constexpr bool std::operator==(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     [01;36m[Koperator[m[K==(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_pair.h:448:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::pair<_T1, _T2>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
+                 from [01m[K/usr/include/c++/7/algorithm:61[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:1[m[K:
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:302:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Iterator> constexpr bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     [01;36m[Koperator[m[K==(const reverse_iterator<_Iterator>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:302:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::reverse_iterator<_Iterator>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
+                 from [01m[K/usr/include/c++/7/algorithm:61[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:1[m[K:
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:340:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _IteratorL, class _IteratorR> constexpr bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     [01;36m[Koperator[m[K==(const reverse_iterator<_IteratorL>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:340:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::reverse_iterator<_Iterator>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
+                 from [01m[K/usr/include/c++/7/algorithm:61[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:1[m[K:
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:1121:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _IteratorL, class _IteratorR> constexpr bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     [01;36m[Koperator[m[K==(const move_iterator<_IteratorL>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:1121:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::move_iterator<_IteratorL>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
+                 from [01m[K/usr/include/c++/7/algorithm:61[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:1[m[K:
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:1127:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Iterator> constexpr bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     [01;36m[Koperator[m[K==(const move_iterator<_Iterator>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:1127:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::move_iterator<_IteratorL>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/char_traits.h:40:0[m[K,
+                 from [01m[K/usr/include/c++/7/string:40[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/bits/postypes.h:216:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _StateT> bool std::operator==(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     [01;36m[Koperator[m[K==(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/postypes.h:216:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::fpos<_StateT>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/string:41:0[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/bits/allocator.h:146:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _T1, class _T2> bool std::operator==(const std::allocator<_Tp>&, const std::allocator<_Tp>&)
+     [01;36m[Koperator[m[K==(const allocator<_T1>&, const allocator<_T2>&)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/allocator.h:146:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::allocator<_Tp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/string:41:0[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/bits/allocator.h:152:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp> bool std::operator==(const std::allocator<_Tp>&, const std::allocator<_Tp>&)
+     [01;36m[Koperator[m[K==(const allocator<_Tp>&, const allocator<_Tp>&)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/allocator.h:152:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::allocator<_Tp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/basic_string.h:48:0[m[K,
+                 from [01m[K/usr/include/c++/7/string:52[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/string_view:450:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> constexpr bool std::operator==(std::basic_string_view<_CharT, _Traits>, std::basic_string_view<_CharT, _Traits>)
+     [01;36m[Koperator[m[K==(basic_string_view<_CharT, _Traits> __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/string_view:450:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’ is not derived from ‘[01m[Kstd::basic_string_view<_CharT, _Traits>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/basic_string.h:48:0[m[K,
+                 from [01m[K/usr/include/c++/7/string:52[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/string_view:456:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> constexpr bool std::operator==(std::basic_string_view<_CharT, _Traits>, std::__detail::__idt<std::basic_string_view<_CharT, _Traits> >)
+     [01;36m[Koperator[m[K==(basic_string_view<_CharT, _Traits> __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/string_view:456:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’ is not derived from ‘[01m[Kstd::basic_string_view<_CharT, _Traits>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/basic_string.h:48:0[m[K,
+                 from [01m[K/usr/include/c++/7/string:52[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/string_view:462:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> constexpr bool std::operator==(std::__detail::__idt<std::basic_string_view<_CharT, _Traits> >, std::basic_string_view<_CharT, _Traits>)
+     [01;36m[Koperator[m[K==(__detail::__idt<basic_string_view<_CharT, _Traits>> __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/string_view:462:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kstd::basic_string_view<_CharT, _Traits>[m[K’ and ‘[01m[Kint[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/string:52:0[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/bits/basic_string.h:6009:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     [01;36m[Koperator[m[K==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/basic_string.h:6009:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::__cxx11::basic_string<_CharT, _Traits, _Alloc>[m[K’ and ‘[01m[Kint[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/string:52:0[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/bits/basic_string.h:6017:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT> typename __gnu_cxx::__enable_if<std::__is_char<_Tp>::__value, bool>::__type std::operator==(const std::__cxx11::basic_string<_CharT>&, const std::__cxx11::basic_string<_CharT>&)
+     [01;36m[Koperator[m[K==(const basic_string<_CharT>& __lhs,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/basic_string.h:6017:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::__cxx11::basic_string<_CharT>[m[K’ and ‘[01m[Kint[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/string:52:0[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/bits/basic_string.h:6031:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     [01;36m[Koperator[m[K==(const _CharT* __lhs,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/basic_string.h:6031:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst _CharT*[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/string:52:0[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/bits/basic_string.h:6043:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     [01;36m[Koperator[m[K==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/basic_string.h:6043:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst _CharT*[m[K’ and ‘[01m[Kint[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/ios_base.h:46:0[m[K,
+                 from [01m[K/usr/include/c++/7/ios:42[m[K,
+                 from [01m[K/usr/include/c++/7/istream:38[m[K,
+                 from [01m[K/usr/include/c++/7/fstream:38[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:10[m[K:
+[01m[K/usr/include/c++/7/system_error:292:3:[m[K [01;36m[Knote: [m[Kcandidate: bool std::operator==(const std::error_code&, const std::error_code&)
+   [01;36m[Koperator[m[K==(const error_code& __lhs, const error_code& __rhs) noexcept
+   [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/system_error:292:3:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ to ‘[01m[Kconst std::error_code&[m[K’
+[01m[K/usr/include/c++/7/system_error:297:3:[m[K [01;36m[Knote: [m[Kcandidate: bool std::operator==(const std::error_code&, const std::error_condition&)
+   [01;36m[Koperator[m[K==(const error_code& __lhs, const error_condition& __rhs) noexcept
+   [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/system_error:297:3:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ to ‘[01m[Kconst std::error_code&[m[K’
+[01m[K/usr/include/c++/7/system_error:304:3:[m[K [01;36m[Knote: [m[Kcandidate: bool std::operator==(const std::error_condition&, const std::error_code&)
+   [01;36m[Koperator[m[K==(const error_condition& __lhs, const error_code& __rhs) noexcept
+   [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/system_error:304:3:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ to ‘[01m[Kconst std::error_condition&[m[K’
+[01m[K/usr/include/c++/7/system_error:311:3:[m[K [01;36m[Knote: [m[Kcandidate: bool std::operator==(const std::error_condition&, const std::error_condition&)
+   [01;36m[Koperator[m[K==(const error_condition& __lhs,
+   [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/system_error:311:3:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ to ‘[01m[Kconst std::error_condition&[m[K’
+In file included from [01m[K/usr/include/c++/7/bits/locale_facets.h:48:0[m[K,
+                 from [01m[K/usr/include/c++/7/bits/basic_ios.h:37[m[K,
+                 from [01m[K/usr/include/c++/7/ios:44[m[K,
+                 from [01m[K/usr/include/c++/7/istream:38[m[K,
+                 from [01m[K/usr/include/c++/7/fstream:38[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:10[m[K:
+[01m[K/usr/include/c++/7/bits/streambuf_iterator.h:204:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _CharT, class _Traits> bool std::operator==(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     [01;36m[Koperator[m[K==(const istreambuf_iterator<_CharT, _Traits>& __a,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/streambuf_iterator.h:204:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::istreambuf_iterator<_CharT, _Traits>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/tuple:39:0[m[K,
+                 from [01m[K/usr/include/c++/7/bits/unique_ptr.h:37[m[K,
+                 from [01m[K/usr/include/c++/7/bits/locale_conv.h:41[m[K,
+                 from [01m[K/usr/include/c++/7/locale:43[m[K,
+                 from [01m[K/usr/include/c++/7/iomanip:43[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:12[m[K:
+[01m[K/usr/include/c++/7/array:252:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, long unsigned int _Nm> bool std::operator==(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+     [01;36m[Koperator[m[K==(const array<_Tp, _Nm>& __one, const array<_Tp, _Nm>& __two)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/array:252:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::array<_Tp, _Nm>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/unique_ptr.h:37:0[m[K,
+                 from [01m[K/usr/include/c++/7/bits/locale_conv.h:41[m[K,
+                 from [01m[K/usr/include/c++/7/locale:43[m[K,
+                 from [01m[K/usr/include/c++/7/iomanip:43[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:12[m[K:
+[01m[K/usr/include/c++/7/tuple:1397:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class ... _TElements, class ... _UElements> constexpr bool std::operator==(const std::tuple<_Tps ...>&, const std::tuple<_Elements ...>&)
+     [01;36m[Koperator[m[K==(const tuple<_TElements...>& __t,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/tuple:1397:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::tuple<_Tps ...>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/locale_conv.h:41:0[m[K,
+                 from [01m[K/usr/include/c++/7/locale:43[m[K,
+                 from [01m[K/usr/include/c++/7/iomanip:43[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:12[m[K:
+[01m[K/usr/include/c++/7/bits/unique_ptr.h:679:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Dp, class _Up, class _Ep> bool std::operator==(const std::unique_ptr<_Tp, _Dp>&, const std::unique_ptr<_Up, _Ep>&)
+     [01;36m[Koperator[m[K==(const unique_ptr<_Tp, _Dp>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/unique_ptr.h:679:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::unique_ptr<_Tp, _Dp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/locale_conv.h:41:0[m[K,
+                 from [01m[K/usr/include/c++/7/locale:43[m[K,
+                 from [01m[K/usr/include/c++/7/iomanip:43[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:12[m[K:
+[01m[K/usr/include/c++/7/bits/unique_ptr.h:685:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Dp> bool std::operator==(const std::unique_ptr<_Tp, _Dp>&, std::nullptr_t)
+     [01;36m[Koperator[m[K==(const unique_ptr<_Tp, _Dp>& __x, nullptr_t) noexcept
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/unique_ptr.h:685:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::unique_ptr<_Tp, _Dp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/locale_conv.h:41:0[m[K,
+                 from [01m[K/usr/include/c++/7/locale:43[m[K,
+                 from [01m[K/usr/include/c++/7/iomanip:43[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:12[m[K:
+[01m[K/usr/include/c++/7/bits/unique_ptr.h:690:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Dp> bool std::operator==(std::nullptr_t, const std::unique_ptr<_Tp, _Dp>&)
+     [01;36m[Koperator[m[K==(nullptr_t, const unique_ptr<_Tp, _Dp>& __x) noexcept
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/unique_ptr.h:690:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::unique_ptr<_Tp, _Dp>[m[K’ and ‘[01m[Kint[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/iterator:66:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:13[m[K:
+[01m[K/usr/include/c++/7/bits/stream_iterator.h:130:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _CharT, class _Traits, class _Dist> bool std::operator==(const std::istream_iterator<_Tp, _CharT, _Traits, _Dist>&, const std::istream_iterator<_Tp, _CharT, _Traits, _Dist>&)
+     [01;36m[Koperator[m[K==(const istream_iterator<_Tp, _CharT, _Traits, _Dist>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stream_iterator.h:130:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::istream_iterator<_Tp, _CharT, _Traits, _Dist>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/list:63:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:14[m[K:
+[01m[K/usr/include/c++/7/bits/stl_list.h:287:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Val> bool std::operator==(const std::_List_iterator<_Tp>&, const std::_List_const_iterator<_Tp>&)
+     [01;36m[Koperator[m[K==(const _List_iterator<_Val>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_list.h:287:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::_List_iterator<_Tp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/list:63:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:14[m[K:
+[01m[K/usr/include/c++/7/bits/stl_list.h:1884:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Alloc> bool std::operator==(const std::__cxx11::list<_Tp, _Alloc>&, const std::__cxx11::list<_Tp, _Alloc>&)
+     [01;36m[Koperator[m[K==(const list<_Tp, _Alloc>& __x, const list<_Tp, _Alloc>& __y)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_list.h:1884:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::__cxx11::list<_Tp, _Alloc>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/node_handle.h:39:0[m[K,
+                 from [01m[K/usr/include/c++/7/bits/stl_tree.h:72[m[K,
+                 from [01m[K/usr/include/c++/7/map:60[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:15[m[K:
+[01m[K/usr/include/c++/7/optional:792:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Up> constexpr std::__optional_relop_t<decltype ((declval<_Tp>() == declval<_Up>()))> std::operator==(const std::optional<_Tp>&, const std::optional<_Up>&)
+     [01;36m[Koperator[m[K==(const optional<_Tp>& __lhs, const optional<_Up>& __rhs)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/optional:792:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::optional<_Tp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/node_handle.h:39:0[m[K,
+                 from [01m[K/usr/include/c++/7/bits/stl_tree.h:72[m[K,
+                 from [01m[K/usr/include/c++/7/map:60[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:15[m[K:
+[01m[K/usr/include/c++/7/optional:843:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp> constexpr bool std::operator==(const std::optional<_Tp>&, std::nullopt_t)
+     [01;36m[Koperator[m[K==(const optional<_Tp>& __lhs, nullopt_t) noexcept
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/optional:843:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::optional<_Tp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/node_handle.h:39:0[m[K,
+                 from [01m[K/usr/include/c++/7/bits/stl_tree.h:72[m[K,
+                 from [01m[K/usr/include/c++/7/map:60[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:15[m[K:
+[01m[K/usr/include/c++/7/optional:848:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp> constexpr bool std::operator==(std::nullopt_t, const std::optional<_Tp>&)
+     [01;36m[Koperator[m[K==(nullopt_t, const optional<_Tp>& __rhs) noexcept
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/optional:848:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::optional<_Tp>[m[K’ and ‘[01m[Kint[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/node_handle.h:39:0[m[K,
+                 from [01m[K/usr/include/c++/7/bits/stl_tree.h:72[m[K,
+                 from [01m[K/usr/include/c++/7/map:60[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:15[m[K:
+[01m[K/usr/include/c++/7/optional:904:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Up> constexpr std::__optional_relop_t<decltype ((declval<_Tp>() == declval<_Up>()))> std::operator==(const std::optional<_Tp>&, const _Up&)
+     [01;36m[Koperator[m[K==(const optional<_Tp>& __lhs, const _Up& __rhs)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/optional:904:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::optional<_Tp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/node_handle.h:39:0[m[K,
+                 from [01m[K/usr/include/c++/7/bits/stl_tree.h:72[m[K,
+                 from [01m[K/usr/include/c++/7/map:60[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:15[m[K:
+[01m[K/usr/include/c++/7/optional:910:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Up> constexpr std::__optional_relop_t<decltype ((declval<_Up>() == declval<_Tp>()))> std::operator==(const _Up&, const std::optional<_Tp>&)
+     [01;36m[Koperator[m[K==(const _Up& __lhs, const optional<_Tp>& __rhs)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/optional:910:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::optional<_Tp>[m[K’ and ‘[01m[Kint[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/map:60:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:15[m[K:
+[01m[K/usr/include/c++/7/bits/stl_tree.h:406:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Val> bool std::operator==(const std::_Rb_tree_iterator<_Tp>&, const std::_Rb_tree_const_iterator<_Val>&)
+     [01;36m[Koperator[m[K==(const _Rb_tree_iterator<_Val>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_tree.h:406:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::_Rb_tree_iterator<_Tp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/map:60:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:15[m[K:
+[01m[K/usr/include/c++/7/bits/stl_tree.h:1533:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc> bool std::operator==(const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)
+     [01;36m[Koperator[m[K==(const _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_tree.h:1533:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/map:61:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:15[m[K:
+[01m[K/usr/include/c++/7/bits/stl_map.h:1394:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator==(const std::map<_Key, _Tp, _Compare, _Alloc>&, const std::map<_Key, _Tp, _Compare, _Alloc>&)
+     [01;36m[Koperator[m[K==(const map<_Key, _Tp, _Compare, _Alloc>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_map.h:1394:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::map<_Key, _Tp, _Compare, _Alloc>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/map:62:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:15[m[K:
+[01m[K/usr/include/c++/7/bits/stl_multimap.h:1059:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator==(const std::multimap<_Key, _Tp, _Compare, _Alloc>&, const std::multimap<_Key, _Tp, _Compare, _Alloc>&)
+     [01;36m[Koperator[m[K==(const multimap<_Key, _Tp, _Compare, _Alloc>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_multimap.h:1059:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::multimap<_Key, _Tp, _Compare, _Alloc>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/deque:64:0[m[K,
+                 from [01m[K/usr/include/c++/7/queue:60[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:17[m[K:
+[01m[K/usr/include/c++/7/bits/stl_deque.h:267:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Ref, class _Ptr> bool std::operator==(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     [01;36m[Koperator[m[K==(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_deque.h:267:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::_Deque_iterator<_Tp, _Ref, _Ptr>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/deque:64:0[m[K,
+                 from [01m[K/usr/include/c++/7/queue:60[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:17[m[K:
+[01m[K/usr/include/c++/7/bits/stl_deque.h:274:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> bool std::operator==(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     [01;36m[Koperator[m[K==(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_deque.h:274:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::_Deque_iterator<_Tp, _Ref, _Ptr>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/deque:64:0[m[K,
+                 from [01m[K/usr/include/c++/7/queue:60[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:17[m[K:
+[01m[K/usr/include/c++/7/bits/stl_deque.h:2258:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Alloc> bool std::operator==(const std::deque<_Tp, _Alloc>&, const std::deque<_Tp, _Alloc>&)
+     [01;36m[Koperator[m[K==(const deque<_Tp, _Alloc>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_deque.h:2258:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::deque<_Tp, _Alloc>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/vector:64:0[m[K,
+                 from [01m[K/usr/include/c++/7/queue:61[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:17[m[K:
+[01m[K/usr/include/c++/7/bits/stl_vector.h:1601:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Alloc> bool std::operator==(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)
+     [01;36m[Koperator[m[K==(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_vector.h:1601:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::vector<_Tp, _Alloc>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/queue:64:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:17[m[K:
+[01m[K/usr/include/c++/7/bits/stl_queue.h:318:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Seq> bool std::operator==(const std::queue<_Tp, _Seq>&, const std::queue<_Tp, _Seq>&)
+     [01;36m[Koperator[m[K==(const queue<_Tp, _Seq>& __x, const queue<_Tp, _Seq>& __y)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_queue.h:318:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::queue<_Tp, _Seq>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/set:61:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:18[m[K:
+[01m[K/usr/include/c++/7/bits/stl_set.h:913:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Key, class _Compare, class _Alloc> bool std::operator==(const std::set<_Key, _Compare, _Alloc>&, const std::set<_Key, _Compare, _Alloc>&)
+     [01;36m[Koperator[m[K==(const set<_Key, _Compare, _Alloc>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_set.h:913:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::set<_Key, _Compare, _Alloc>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/set:62:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:18[m[K:
+[01m[K/usr/include/c++/7/bits/stl_multiset.h:896:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Key, class _Compare, class _Alloc> bool std::operator==(const std::multiset<_Key, _Compare, _Alloc>&, const std::multiset<_Key, _Compare, _Alloc>&)
+     [01;36m[Koperator[m[K==(const multiset<_Key, _Compare, _Alloc>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_multiset.h:896:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::multiset<_Key, _Compare, _Alloc>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/stack:61:0[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:20[m[K:
+[01m[K/usr/include/c++/7/bits/stl_stack.h:293:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp, class _Seq> bool std::operator==(const std::stack<_Tp, _Seq>&, const std::stack<_Tp, _Seq>&)
+     [01;36m[Koperator[m[K==(const stack<_Tp, _Seq>& __x, const stack<_Tp, _Seq>& __y)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_stack.h:293:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst std::stack<_Tp, _Seq>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h:33:0[m[K,
+                 from [01m[K/usr/include/c++/7/bits/allocator.h:46[m[K,
+                 from [01m[K/usr/include/c++/7/string:41[m[K,
+                 from [01m[K/usr/include/c++/7/bitset:47[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:2[m[K:
+[01m[K/usr/include/c++/7/ext/new_allocator.h:155:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Tp> bool __gnu_cxx::operator==(const __gnu_cxx::new_allocator<_Tp>&, const __gnu_cxx::new_allocator<_Tp>&)
+     [01;36m[Koperator[m[K==(const new_allocator<_Tp>&, const new_allocator<_Tp>&)
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/ext/new_allocator.h:155:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst __gnu_cxx::new_allocator<_Tp>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
+                 from [01m[K/usr/include/c++/7/algorithm:61[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:1[m[K:
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:869:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _Iterator, class _Container> bool __gnu_cxx::operator==(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
+     [01;36m[Koperator[m[K==(const __normal_iterator<_Iterator, _Container>& __lhs,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:869:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst __gnu_cxx::__normal_iterator<_Iterator, _Container>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/c++/7/bits/stl_algobase.h:67:0[m[K,
+                 from [01m[K/usr/include/c++/7/algorithm:61[m[K,
+                 from [01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:1[m[K:
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:862:5:[m[K [01;36m[Knote: [m[Kcandidate: template<class _IteratorL, class _IteratorR, class _Container> bool __gnu_cxx::operator==(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
+     [01;36m[Koperator[m[K==(const __normal_iterator<_IteratorL, _Container>& __lhs,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/7/bits/stl_iterator.h:862:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp:142:23:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string {aka std::__cxx11::basic_string<char>}[m[K’ is not derived from ‘[01m[Kconst __gnu_cxx::__normal_iterator<_IteratorL, _Container>[m[K’
+             if (st == [01;36m[K'add'[m[K) s.push(x);
+                       [01;36m[K^~~~~[m[K

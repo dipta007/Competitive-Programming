@@ -1,0 +1,17 @@
+{
+  "mainSolution": {
+    "value": "/home/dipta007/my-world/gdrive/Programming/Contest-LIFE/@SITES/acmx/Codeforces - Codeforces Round #420 (Div. 2)/C. Okabe and Boxes/template.cpp"
+  },
+  "bruteSolution": {},
+  "generator": {},
+  "checker": {},
+  "companionConfig": {
+    "value": {
+      "name": "C. Okabe and Boxes",
+      "group": "Codeforces - Codeforces Round #420 (Div. 2)",
+      "url": "https://codeforces.com/problemset/problem/821/C",
+      "memoryLimit": 256,
+      "timeLimit": 3000
+    }
+  }
+}
